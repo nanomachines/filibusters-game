@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DepositManager : MonoBehaviour {
 
@@ -16,6 +18,8 @@ public class DepositManager : MonoBehaviour {
     private float depositTime = 2f;
     [SerializeField]
     private int winCondition = 10;
+    [SerializeField]
+    private Text winText;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -29,16 +33,28 @@ public class DepositManager : MonoBehaviour {
         }
     }
 
+    IEnumerator DisplayWinner(string winnerName)
+    {
+        if (winText)
+        {
+            winText.text = winnerName + " WINS!!!";
+        }
+        print(winnerName + " WINS!!!");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Instructions");
+    }
+
+    public void DisablePlayer(string playerName)
+    {
+        if (playerName == "Player1")
+            player1 = false;
+        else if (playerName == "Player2")
+            player2 = false;
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player1")
-        {
-            player1 = false;
-        }
-        else if (other.gameObject.name == "Player2")
-        {
-            player2 = false;
-        }
+        DisablePlayer(other.gameObject.name);
     }
 
     void Update()
@@ -63,7 +79,7 @@ public class DepositManager : MonoBehaviour {
                 CoinManager coinManager = curPlayer.GetComponent<CoinManager>();
                 if (coinManager.Deposit() >= winCondition)
                 {
-                    print(curPlayer.name + " WINS!!!");
+                    StartCoroutine(DisplayWinner(curPlayer.name));
                 }
             }
         }

@@ -12,10 +12,20 @@ public class LifeManager : MonoBehaviour {
     private int waitSecs = 1;
     [SerializeField]
     private GameObject[] spawnPoints;
+    [SerializeField]
+    private DepositManager depositManager = null;
 
     public void Die()
     {
         coinManager.ResetCoins();
+        if (depositManager)
+        {
+            depositManager.DisablePlayer(gameObject.name);
+        }
+        else
+        {
+            print("No deposit manager");
+        }
         GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length - 1)];
         StartCoroutine(DieAndRespawn(spawnPoint));
     }
@@ -43,9 +53,13 @@ public class LifeManager : MonoBehaviour {
 
     void Update ()
     {
-	    if (Input.GetKeyDown(KeyCode.K))
+	    if (Input.GetKeyDown(KeyCode.Alpha1) && gameObject.name == "Player1")
         {
             Die();
         }
-	}
+        if (Input.GetKeyDown(KeyCode.Alpha2) && gameObject.name == "Player2")
+        {
+            Die();
+        }
+    }
 }

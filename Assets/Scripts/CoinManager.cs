@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour {
+
+    [SerializeField]
+    private Text coinCount;
+    [SerializeField]
+    private Text depositCount;
 
     private int coins = 3;
     private int deposited = 0;
@@ -34,5 +40,17 @@ public class CoinManager : MonoBehaviour {
     void Start()
     {
         playerName = gameObject.name;
+    }
+
+    void Update()
+    {
+        if (coinCount)
+        {
+            coinCount.text = "Coins: " + coins;
+        }
+        if (depositCount)
+        {
+            depositCount.text = "Deposited: " + deposited;
+        }
     }
 }
