@@ -316,11 +316,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011728982884, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.26
       objectReference: {fileID: 0}
     - target: {fileID: 4000011728982884, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 4000011728982884, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -346,6 +346,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 212000010279668216, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300012, guid: ec2fffef5b1e3e64095953e28a1024f0,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
   m_IsPrefabParent: 0
@@ -1204,6 +1210,28 @@ Transform:
   m_PrefabParentObject: {fileID: 4000012383859812, guid: 910d7730ed5d5c348afaafc06485bb82,
     type: 2}
   m_PrefabInternal: {fileID: 1931627648}
+--- !u!1 &1140171168 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011243474286, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
+    type: 2}
+  m_PrefabInternal: {fileID: 164698856}
+--- !u!95 &1140171173
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140171168}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 411dfd8c38088324388cc3f0fee053f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1143612351
 Prefab:
   m_ObjectHideFlags: 0
@@ -1792,7 +1820,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010176828420, guid: 2033b73119237f44eb06bb5f60fb8599, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.14
+      value: -7.13
       objectReference: {fileID: 0}
     - target: {fileID: 4000010176828420, guid: 2033b73119237f44eb06bb5f60fb8599, type: 2}
       propertyPath: m_LocalPosition.y
