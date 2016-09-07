@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
         bool upPressed = left_vertical > Mathf.Epsilon;
 		if (IsGrounded && left_vertical > Mathf.Epsilon && jumpTimer > jumpCoolDown)
         {
+            SoundManager.instance.Play("jump");
 			jumpTimer = 0f;
 			GetComponent<Rigidbody2D>().AddForce(JumpForce);
         }

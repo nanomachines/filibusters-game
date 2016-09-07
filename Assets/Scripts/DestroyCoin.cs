@@ -28,6 +28,7 @@ public class DestroyCoin : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            SoundManager.instance.Play("coin");
             CoinManager coinManager = other.gameObject.GetComponent<CoinManager>();
             coinManager.AddCoin();
             StartCoroutine(HideAndRespawn());

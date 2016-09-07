@@ -23,6 +23,7 @@ public class CoinManager : MonoBehaviour {
     {
         if (coins > 0)
         {
+            SoundManager.instance.Play("deposit");
             coins--;
             deposited++;
             print(playerName + " deposited " + deposited + " coin(s)");
