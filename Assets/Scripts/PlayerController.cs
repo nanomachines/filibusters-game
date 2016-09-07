@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform GroundCheck;
     public LayerMask WhatIsGround;
+    [SerializeField]
     private float GroundCheckRadius = 0.1f;
     bool IsGrounded = false;
     
