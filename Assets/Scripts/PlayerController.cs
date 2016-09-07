@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public int PlayerNum;
 
     private float BaseMovement = 20f;
+    [SerializeField]
     private Vector2 JumpForce = new Vector2(0, 300);
 
     private const int NumInputs = 5;
@@ -18,6 +19,10 @@ public class PlayerController : MonoBehaviour
         "Jump"
     };
 
+    [SerializeField]
+    private float jumpCoolDown = 0.5f;
+    private float jumpTimer = 0f;
+
     const int LeftHorizontalId = 0;
     const int RightHorizontalId = 1;
     const int LeftVerticalId = 2;
@@ -29,7 +34,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float GroundCheckRadius = 0.1f;
     bool IsGrounded = false;
-    
+
+    bool facingRight = true;
+
+
+    Animator animator;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -38,6 +48,8 @@ public class PlayerController : MonoBehaviour
         {
             InputMap[i] = "P" + PlayerNum + InputPostFixes[i];
         }
+
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -51,10 +63,32 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
     {
+		jumpTimer += Time.deltaTime;
         float left_vertical = Input.GetAxis(InputMap[LeftVerticalId]);
-        if (IsGrounded && left_vertical > Mathf.Epsilon)
+        bool downPressed = left_vertical < -Mathf.Epsilon;
+        bool upPressed = left_vertical > Mathf.Epsilon;
+		if (IsGrounded && left_vertical > Mathf.Epsilon && jumpTimer > jumpCoolDown)
         {
-            GetComponent<Rigidbody2D>().AddForce(JumpForce);
+			jumpTimer = 0f;
+			GetComponent<Rigidbody2D>().AddForce(JumpForce);
+        }
+
+		var rb = GetComponent<Rigidbody2D>();
+		animator.SetFloat("vSpeed", rb.velocity.y);
+		animator.SetBool("Ground", IsGrounded || rb.velocity.y == 0f);
+
+		animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+		if (rb.velocity.x < -Mathf.Epsilon && facingRight)
+        {
+			// flip
+			GetComponent<SpriteRenderer>().flipX = true;
+			facingRight = false;
+        }
+        if (rb.velocity.x > Mathf.Epsilon && !facingRight)
+        {
+        	// flip
+			GetComponent<SpriteRenderer>().flipX = false;
+			facingRight = true;
         }
 	}
 
