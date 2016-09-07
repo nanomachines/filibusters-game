@@ -1151,7 +1151,7 @@ Prefab:
     - target: {fileID: 114000010583412730, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
         type: 2}
       propertyPath: WhatIsGround.m_Bits
-      value: 55
+      value: 1079
       objectReference: {fileID: 0}
     - target: {fileID: 1000014034325296, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
       propertyPath: m_Layer
@@ -1169,7 +1169,17 @@ Prefab:
     - target: {fileID: 114000010583412730, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
         type: 2}
       propertyPath: JumpForce.y
-      value: 500
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010583412730, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
+        type: 2}
+      propertyPath: GroundCheckRadius
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 50000013547127898, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
@@ -1380,7 +1390,7 @@ Prefab:
     - target: {fileID: 114000010583412730, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
         type: 2}
       propertyPath: WhatIsGround.m_Bits
-      value: 55
+      value: 1079
       objectReference: {fileID: 0}
     - target: {fileID: 1000014034325296, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
       propertyPath: m_Layer
@@ -1394,6 +1404,16 @@ Prefab:
     - target: {fileID: 1000014034325296, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010583412730, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
+        type: 2}
+      propertyPath: JumpForce.y
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010583412730, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b,
+        type: 2}
+      propertyPath: GroundCheckRadius
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 81000012963321938, guid: 85e172a7ae55d2a4fb5d7ac730de9b3b, type: 2}
@@ -1475,6 +1495,10 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010098223262, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
@@ -2502,6 +2526,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.25490198
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010098223262, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
   m_IsPrefabParent: 0
@@ -2696,6 +2724,10 @@ Prefab:
     - target: {fileID: 4000014127231778, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
       propertyPath: m_LocalScale.x
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010098223262, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
@@ -3112,6 +3144,10 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010098223262, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aef6bf90136e22469bfc69044122845, type: 2}
