@@ -40,8 +40,11 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
-	// Use this for initialization
-	void Start ()
+    GameObject me = null;
+    GameObject enemy = null;
+
+    // Use this for initialization
+    void Start ()
     {
         InputMap = new string[NumInputs];
         for (int i = 0; i < NumInputs; ++i)
@@ -50,7 +53,21 @@ public class PlayerController : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
-	}
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        
+
+        if (players[0].GetComponent<PlayerController>().PlayerNum == PlayerNum)
+        {
+            me = players[0];
+            enemy = players[1];
+        }
+        else
+        {
+            me = players[1];
+            enemy = players[0];
+        }
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate ()
@@ -90,7 +107,20 @@ public class PlayerController : MonoBehaviour
 			GetComponent<SpriteRenderer>().flipX = false;
 			facingRight = true;
         }
-	}
+
+        bool inRange = Vector2.Distance(me.transform.position, enemy.transform.position) < 5f;
+        print(inRange);
+        if (((PlayerNum == 1 && Input.GetKeyDown(KeyCode.LeftShift)) || (PlayerNum == 2 && Input.GetKeyDown(KeyCode.RightShift))))
+        {
+            // ADD HIT SOUND HERE
+            animator.Play("PlayerPunch");
+            if (inRange)
+            {
+                enemy.GetComponent<LifeManager>().Die();
+            }
+        }
+        
+    }
 
     private float AnalogToDigital(float v)
     {
