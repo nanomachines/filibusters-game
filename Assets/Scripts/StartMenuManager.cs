@@ -3,6 +3,10 @@ using System.Collections;
 
 public class StartMenuManager : MonoBehaviour
 {
+    enum MenuState { Start, Host, Join };
+
+    private MenuState mState;
+
     private static GUIStyle TitleStyle;
     private static float TitleWidthPercentage = .3f;
     private static float TitleHeightPercentage = .2f;
@@ -17,6 +21,8 @@ public class StartMenuManager : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
+        mState = MenuState.Start;
+
         TitleStyle = new GUIStyle();
         TitleStyle.fontSize = 32;
         ButtonStyle = new GUIStyle();
@@ -26,11 +32,34 @@ public class StartMenuManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+        // Todo: more robust menu navigation (possibly place a button somewhere for back navigation
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            mState = MenuState.Start;
+        }
 	}
     #endregion
 
     #region Callbacks
     void OnGUI()
+    {
+        switch (mState)
+        {
+            case MenuState.Start:
+                RenderStartScreen();
+                break;
+            case MenuState.Host:
+                RenderHostScreen();
+                break;
+            case MenuState.Join:
+                RenderJoinScreen();
+                break;
+        }
+    }
+    #endregion
+
+    #region Private Methods
+    private void RenderStartScreen()
     {
         float titleWidth = Screen.width * TitleWidthPercentage;
         float titleHeight = Screen.height * TitleHeightPercentage;
@@ -48,7 +77,7 @@ public class StartMenuManager : MonoBehaviour
                 ButtonStyle
            ))
         {
-            Debug.Log("Host Game!!!!");
+            mState = MenuState.Host;
         }
 
         float joinBtnWidth = Screen.width * ButtonWidthPercentage;
@@ -61,8 +90,16 @@ public class StartMenuManager : MonoBehaviour
                 ButtonStyle
            ))
         {
-            Debug.Log("Join Game!!!!");
+            mState = MenuState.Join;
         }
+    }
+
+    private void RenderHostScreen()
+    {
+    }
+
+    private void RenderJoinScreen()
+    {
     }
     #endregion
 }
