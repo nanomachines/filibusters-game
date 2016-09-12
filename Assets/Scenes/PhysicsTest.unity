@@ -120,9 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9aa6a3bdb853743815bf4ddc086af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMaxSpeed: 200
+  mMaxSpeed: 300
   mCurSpeed: 0
-  mAcceleration: 200
+  mAcceleration: 300
+  mGrounded: 0
+  mFalling: 0
   mCollisionLayers:
     serializedVersion: 2
     m_Bits: 512

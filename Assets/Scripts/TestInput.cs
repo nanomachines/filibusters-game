@@ -10,6 +10,12 @@ public class TestInput : MonoBehaviour
     [SerializeField]
     private float mAcceleration = 4f;
 
+    [SerializeField]
+    private bool mGrounded = false;
+	[SerializeField]
+	private bool mFalling = false;
+    
+
     private Vector2 mBoxSize = Vector2.zero;
     private Vector2 mBoxOffset = Vector2.zero;
 
@@ -44,6 +50,7 @@ public class TestInput : MonoBehaviour
             mCurSpeed = IntegrateAccel(xTargetSpeed);
         }
         // Currently the player is immediately stopped on no input
+        // TODO: is this necessary?
         else
         {
             mCurSpeed = 0f;
@@ -73,11 +80,9 @@ public class TestInput : MonoBehaviour
 
     private float xAxisCollisions(float deltaX)
     {
-
+		float direction = Mathf.Sign(deltaX);
         for (int level = 0; level < 3; level++)
         {
-            float direction = Mathf.Sign(deltaX);
-
             float x = transform.position.x + mBoxOffset.x + mBoxSize.x / 2f * direction;
             float y = (transform.position.y + mBoxOffset.y - mBoxSize.y / 2f) + mBoxSize.y / 2f * level;
 
@@ -92,5 +97,10 @@ public class TestInput : MonoBehaviour
             }
         }
         return deltaX;
+    }
+
+    private float yAxisCollisions(float deltaY)
+    {
+    	return -1f;
     }
 }
