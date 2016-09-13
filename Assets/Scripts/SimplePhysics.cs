@@ -4,6 +4,10 @@ using System.Collections;
 public class SimplePhysics : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip mJumpSound;
+    private AudioSource mAudioSource;
+
+    [SerializeField]
     private float mAerialSpeed = 0.05f;
     [SerializeField]
     private float mGravity = -0.5f;
@@ -37,7 +41,11 @@ public class SimplePhysics : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Add a BoxCollider2D component!");
+        }
+
+        if (!(mAudioSource = GetComponent<AudioSource>()))
+        {
+            Debug.LogWarning("Add an AudioSource component!");
         }
     }
 
@@ -57,6 +65,8 @@ public class SimplePhysics : MonoBehaviour
             if (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))
             {
                 mVelY = mJumpVel;
+                mAudioSource.clip = mJumpSound;
+                mAudioSource.Play();
             }
             else
             {
@@ -67,10 +77,10 @@ public class SimplePhysics : MonoBehaviour
             }
         }
         // Allow aerial acceleration
-        else
-        {
-            mVelX = UseAccel(xInput * mAerialSpeed, mVelX, mMaxSpeed);
-        }
+        //else
+        //{
+        //    mVelX = UseAccel(xInput * mAerialSpeed, mVelX, mMaxSpeed);
+        //}
 
         float deltaX = mVelX * Time.deltaTime;
         float deltaY = mVelY * Time.deltaTime;
@@ -86,9 +96,10 @@ public class SimplePhysics : MonoBehaviour
         mVelY += mGravity;
     }
 
+    // TODO: Bug where character accelerates much more quickly in x dir
     private float UseAccel(float accel, float curSpeed, float maxSpeed)
     {
-        float newSpeed = curSpeed + accel;
+        float newSpeed = accel + curSpeed;
         return (newSpeed < maxSpeed) ? newSpeed : maxSpeed;
     }
 
