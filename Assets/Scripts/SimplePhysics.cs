@@ -72,11 +72,12 @@ public class SimplePhysics : MonoBehaviour
         // Keep track of the previous position to account for two-way platforms
         mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
 
-        float xInput = Input.GetAxis("LeftStickXAxis");
+        float xInput = Input.GetAxis("Horizontal");
         // Note: Pressing down results in positive values
         // so I flip the input
-        float yInput = -Input.GetAxis("LeftStickYAxis");
+        float yInput = Input.GetAxis("Vertical");
         mPressedDown = Mathf.Sign(yInput) == -1f;
+        print(mPressedDown);
 
         if (mGrounded)
         {
@@ -100,7 +101,7 @@ public class SimplePhysics : MonoBehaviour
             mVelX = UseAccel(xInput * mAerialSpeed, mVelX, mMaxSpeed);
         }
 
-        Flip();
+        Flip(xInput);
         mAnim.SetFloat("VelXMult", Mathf.Abs(xInput));
         mAnim.SetFloat("VelocityX", Mathf.Abs(mVelX));
         mAnim.SetFloat("VelocityY", mVelY);
@@ -128,10 +129,10 @@ public class SimplePhysics : MonoBehaviour
         return (newSpeed < maxSpeed) ? newSpeed : maxSpeed;
     }
 
-    private void Flip()
+    private void Flip(float dir)
     {
         // Facing left
-        if (mVelX < -Mathf.Epsilon)
+        if (dir < -Mathf.Epsilon)
         {
             mRenderer.flipX = true;
         }
