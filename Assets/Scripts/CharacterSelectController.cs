@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Photon;
+using UnityEngine;
 
-public class CharacterSelectController : MonoBehaviour
+public class CharacterSelectController : PunBehaviour 
 {
 	void Start()
 	{
@@ -9,5 +9,9 @@ public class CharacterSelectController : MonoBehaviour
 	
 	void Update()
 	{
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CharacterSelectManager.instance.ToggleLocalPlayerReady();
+        }
 	}
 }

@@ -2,29 +2,11 @@
 using System.Collections.Generic;
 using Photon;
 
-struct CharacterSelectOptions
-{
-    public CharacterSelectOptions(bool isReady = false)
-    {
-        IsReady = isReady;
-    }
-
-    public void ToggleReady()
-    {
-        IsReady = !IsReady;
-    }
-
-    public bool IsReady { get; private set; }
-    // other fields go here...
-    // character selected
-    // character variant selected
-    // name
-}
-
 public class CharacterSelectManager : PunBehaviour
 {
-    [HideInInspector] public CharacterSelectManager instance = null;
-    Dictionary<int, CharacterSelectOptions> mCharacterSelectInfo;
+    [HideInInspector] public static CharacterSelectManager instance = null;
+
+    private int mPlayersReady;
 
 	// Use this for initialization
 	void Awake()
@@ -32,39 +14,50 @@ public class CharacterSelectManager : PunBehaviour
         if (instance == null)
         {
             instance = this;
-            mCharacterSelectInfo = new Dictionary<int, CharacterSelectOptions>();
+            PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable{ { "IsReady", false}, {"IsNew", true } });
+            mPlayersReady = 0;
             foreach (var player in PhotonNetwork.playerList)
             {
-                mCharacterSelectInfo.Add(player.ID, new CharacterSelectOptions());
+                bool isReady = player.customProperties.ContainsKey("IsReady") ? (bool)player.customProperties["IsReady"] : false;
+                if (isReady)
+                {
+                    ++mPlayersReady;
+                }
             }
         }
 	}
 
     void OnGUI()
     {
-        var labelBuilder = new System.Text.StringBuilder(80);
-        foreach (var info in mCharacterSelectInfo)
+        var labelBuilder = new System.Text.StringBuilder(90);
+        labelBuilder.AppendLine("PlayersReady: " + mPlayersReady);
+        foreach (var player in PhotonNetwork.playerList)
         {
-            labelBuilder.Append(info.Key);
-            labelBuilder.Append(": ");
-            labelBuilder.Append(info.Value.IsReady);
-            labelBuilder.Append("\n");
+            var isReady = player.customProperties.ContainsKey("IsReady") ? player.customProperties["IsReady"] : false;
+            labelBuilder.AppendLine(player.ID + ": " + isReady);
         }
         GUILayout.Label(labelBuilder.ToString());
     }
 
-    public void TogglePlayerReady(int id)
+    public void ToggleLocalPlayerReady()
     {
-        mCharacterSelectInfo[id].ToggleReady();
+        bool isReady = !(bool)PhotonNetwork.player.customProperties["IsReady"];
+        PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable{ { "IsReady", isReady} });
     }
 
-    public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+    public override void OnPhotonPlayerPropertiesChanged(object[] playerAndUpdatedProps)
     {
-        mCharacterSelectInfo.Add(newPlayer.ID, new CharacterSelectOptions());
-    }
-
-    public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
-    {
-        mCharacterSelectInfo.Remove(otherPlayer.ID);
+        var properties = playerAndUpdatedProps[1] as ExitGames.Client.Photon.Hashtable;
+        if (properties.ContainsKey("IsReady"))
+        {
+            if ((bool)properties["IsReady"])
+            {
+                ++mPlayersReady;
+            }
+            else if (!properties.ContainsKey("IsNew"))
+            {
+                --mPlayersReady;
+            }
+        }
     }
 }
