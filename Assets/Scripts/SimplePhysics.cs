@@ -63,6 +63,7 @@ public class SimplePhysics : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning("Add a BoxCollider2D component!");
         }
     }
 
