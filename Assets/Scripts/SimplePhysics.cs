@@ -19,6 +19,8 @@ public class SimplePhysics : MonoBehaviour
     private float mVelX = 0f;
     private float mVelY = 0f;
 
+    private float mPrevY = 0f;
+
     private Vector2 mSize = Vector2.zero;
     private Vector2 mOffset = Vector2.zero;
     public LayerMask mColLayersX;
@@ -40,7 +42,10 @@ public class SimplePhysics : MonoBehaviour
 
     void Update()
     {
-        float input = Input.GetAxis("LeftStickXAxis");
+        // Keep track of the previous position to account for two-way platforms
+        mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
+
+        float xInput = Input.GetAxis("LeftStickXAxis");
         if (mGrounded)
         {
             if (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))
@@ -49,7 +54,7 @@ public class SimplePhysics : MonoBehaviour
             }
             else
             {
-                mVelX = input * mMaxSpeed;
+                mVelX = xInput * mMaxSpeed;
                 // This prevents the y velocity from growing arbitrarily large
                 // while the player is grounded
                 mVelY = mGravity;
@@ -58,7 +63,7 @@ public class SimplePhysics : MonoBehaviour
         // Allow aerial acceleration
         else
         {
-            mVelX += input * mAerialSpeed;
+            mVelX = UseAccel(xInput * mAerialSpeed, mVelX, mMaxSpeed);
         }
 
         float deltaX = mVelX * Time.deltaTime;
@@ -73,6 +78,12 @@ public class SimplePhysics : MonoBehaviour
 
         transform.Translate(deltaX, deltaY, 0f);
         mVelY += mGravity;
+    }
+
+    private float UseAccel(float accel, float curSpeed, float maxSpeed)
+    {
+        float newSpeed = curSpeed + accel;
+        return (newSpeed < maxSpeed) ? newSpeed : maxSpeed;
     }
 
     private float GetXChange(float delta, float dir)
@@ -156,6 +167,13 @@ public class SimplePhysics : MonoBehaviour
         {
             Debug.DrawRay(ray.origin, ray.direction, Color.red);
 
+            // Ignore two-way platforms the player was below
+            GameObject other = hit.transform.gameObject;
+            if (other.tag == "TwoWay" && (other.transform.position.y > mPrevY))
+            {
+                return true;
+            }
+            
             float distance = Vector2.Distance(ray.origin, hit.point);
             if (distance > mSkin)
             {
@@ -167,6 +185,7 @@ public class SimplePhysics : MonoBehaviour
             }
             mGrounded = true;
             return true;
+            
         }
         return false;
     }
