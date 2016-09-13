@@ -19,6 +19,7 @@ public class SimplePhysics : MonoBehaviour
     private float mVelX = 0f;
     private float mVelY = 0f;
 
+    private bool mPressedDown = false;
     private float mPrevY = 0f;
 
     private Vector2 mSize = Vector2.zero;
@@ -46,6 +47,11 @@ public class SimplePhysics : MonoBehaviour
         mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
 
         float xInput = Input.GetAxis("LeftStickXAxis");
+        // Note: Pressing down results in positive values
+        // so I flip the input
+        float yInput = -Input.GetAxis("LeftStickYAxis");
+        mPressedDown = Mathf.Sign(yInput) == -1f;
+
         if (mGrounded)
         {
             if (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))
@@ -168,8 +174,9 @@ public class SimplePhysics : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction, Color.red);
 
             // Ignore two-way platforms the player was below
+            // and fall through these platforms when the player presses down
             GameObject other = hit.transform.gameObject;
-            if (other.tag == "TwoWay" && (other.transform.position.y > mPrevY))
+            if (other.tag == "TwoWay" && (other.transform.position.y >= mPrevY || mPressedDown))
             {
                 return true;
             }
