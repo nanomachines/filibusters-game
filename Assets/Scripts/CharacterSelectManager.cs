@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Photon;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelectManager : PunBehaviour
 {
@@ -30,6 +31,10 @@ public class CharacterSelectManager : PunBehaviour
     void OnGUI()
     {
         var labelBuilder = new System.Text.StringBuilder(90);
+        if (PhotonNetwork.isMasterClient)
+        {
+            labelBuilder.AppendLine("Host/Master Client");
+        }
         labelBuilder.AppendLine("PlayersReady: " + mPlayersReady);
         foreach (var player in PhotonNetwork.playerList)
         {
@@ -37,6 +42,27 @@ public class CharacterSelectManager : PunBehaviour
             labelBuilder.AppendLine(player.ID + ": " + isReady);
         }
         GUILayout.Label(labelBuilder.ToString());
+
+        if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
+        {
+            if (GUILayout.Button("Start Game"))
+            {
+                OnStartGame();
+            }
+        }
+    }
+
+    public void OnStartGame()
+    {
+        GetComponent<PhotonView>().RPC("LaunchGame", PhotonTargets.All);
+    }
+
+    [PunRPC]
+    public void LaunchGame()
+    {
+        SceneManager.LoadScene("Scenes/TestMultiplayerScene");
+        // TODO: instantiate player prefabs here using player custom properties
+        //
     }
 
     public void ToggleLocalPlayerReady()
