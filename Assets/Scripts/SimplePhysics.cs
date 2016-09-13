@@ -20,7 +20,8 @@ public class SimplePhysics : MonoBehaviour
 
     private Vector2 mSize = Vector2.zero;
     private Vector2 mOffset = Vector2.zero;
-    public LayerMask mColLayers;
+    public LayerMask mColLayersX;
+    public LayerMask mColLayersY;
 
     void Awake()
     {
@@ -113,12 +114,12 @@ public class SimplePhysics : MonoBehaviour
         float y = (transform.position.y + mOffset.y - mSize.y / 2f) + mSize.y / 2f * height;
 
         Ray2D ray = new Ray2D(new Vector2(x, y), new Vector2(dir, 0));
-        Debug.DrawRay(ray.origin, new Vector2(delta, 0), Color.green);
+        Debug.DrawRay(ray.origin, ray.direction, Color.green);
 
         RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(delta), mColLayers))
+        if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(delta), mColLayersX))
         {
-            Debug.DrawRay(ray.origin, new Vector2(delta, 0), Color.red);
+            Debug.DrawRay(ray.origin, ray.direction, Color.red);
 
             float distance = Vector2.Distance(ray.origin, hit.point);
             if (distance > mSkin)
@@ -142,12 +143,12 @@ public class SimplePhysics : MonoBehaviour
         float y = transform.position.y + mOffset.y + mSize.y / 2f * dir;
 
         Ray2D ray = new Ray2D(new Vector2(x, y), new Vector2(0, dir));
-        Debug.DrawRay(ray.origin, new Vector2(0f, delta), Color.yellow);
+        Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
 
         RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(delta), mColLayers))
+        if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(delta), mColLayersY))
         {
-            Debug.DrawRay(ray.origin, new Vector2(0f, delta), Color.red);
+            Debug.DrawRay(ray.origin, ray.direction, Color.red);
 
             float distance = Vector2.Distance(ray.origin, hit.point);
             if (distance > mSkin)

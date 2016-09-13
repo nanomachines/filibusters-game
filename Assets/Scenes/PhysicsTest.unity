@@ -208,9 +208,12 @@ MonoBehaviour:
   mJumpVel: 12
   mMaxSpeed: 4
   mSkin: 0.005
-  mColLayers:
+  mColLayersX:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 512
+  mColLayersY:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &583211219
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +224,7 @@ GameObject:
   - 4: {fileID: 583211221}
   - 212: {fileID: 583211220}
   - 61: {fileID: 583211222}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
