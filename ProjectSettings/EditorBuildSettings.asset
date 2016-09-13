@@ -10,4 +10,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterSelect.unity
   - enabled: 1
-    path: Assets/Scenes/TestMultiplayerScene.unity
+    path: Assets/Scenes/NetworkMapTest.unity
