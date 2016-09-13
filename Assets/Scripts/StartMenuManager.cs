@@ -3,10 +3,6 @@ using System.Collections;
 
 public class StartMenuManager : MonoBehaviour
 {
-    enum MenuState { Start, Host, Join };
-
-    private MenuState mState;
-
     private static GUIStyle TitleStyle;
     private static float TitleWidthPercentage = .3f;
     private static float TitleHeightPercentage = .2f;
@@ -17,12 +13,9 @@ public class StartMenuManager : MonoBehaviour
     private static float ButtonWidthPercentage = .3f;
     private static float ButtonHeightPercentage = .2f;
 
-    #region Unity Methods
     // Use this for initialization
     void Start ()
 	{
-        mState = MenuState.Start;
-
         TitleStyle = new GUIStyle();
         TitleStyle.fontSize = 32;
         ButtonStyle = new GUIStyle();
@@ -32,35 +25,12 @@ public class StartMenuManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        // Todo: more robust menu navigation (possibly place a button somewhere for back navigation
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            mState = MenuState.Start;
-        }
 	}
-    #endregion
 
-    #region Callbacks
     void OnGUI()
     {
-        switch (mState)
-        {
-            case MenuState.Start:
-                RenderStartScreen();
-                break;
-            case MenuState.Host:
-                RenderHostScreen();
-                break;
-            case MenuState.Join:
-                RenderJoinScreen();
-                break;
-        }
-    }
-    #endregion
+        GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
 
-    #region Private Methods
-    private void RenderStartScreen()
-    {
         float titleWidth = Screen.width * TitleWidthPercentage;
         float titleHeight = Screen.height * TitleHeightPercentage;
         float titleX = Screen.width * TitleRelativeXPos;
@@ -77,7 +47,7 @@ public class StartMenuManager : MonoBehaviour
                 ButtonStyle
            ))
         {
-            mState = MenuState.Host;
+            NetworkManager.Instance.CreateAndJoinGameSession("Default Session");
         }
 
         float joinBtnWidth = Screen.width * ButtonWidthPercentage;
@@ -90,16 +60,7 @@ public class StartMenuManager : MonoBehaviour
                 ButtonStyle
            ))
         {
-            mState = MenuState.Join;
+            NetworkManager.Instance.JoinGameSession("Default Session");
         }
     }
-
-    private void RenderHostScreen()
-    {
-    }
-
-    private void RenderJoinScreen()
-    {
-    }
-    #endregion
 }

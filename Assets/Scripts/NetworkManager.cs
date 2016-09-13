@@ -1,29 +1,18 @@
 ﻿using UnityEngine;
 using Photon;
+using UnityEngine.SceneManagement;
 
 public class NetworkManager : Photon.PunBehaviour
 {
-    #region Public Fields
     public static NetworkManager Instance = null;
-    #endregion
 
-    #region Public Methods
-    void CreateGameSession(string sessionName)
-    {
-    }
-
-    void JoinGameSession(string sessionName)
-    {
-    }
-    #endregion
-
-    #region Unity Methods
     // Use this for initialization
     void Awake()
 	{
         if (Instance == null)
         {
             Instance = this;
+            Object.DontDestroyOnLoad(this);
         }
         PhotonNetwork.ConnectUsingSettings(GameConstants.VERSION_STRING);
 	}
@@ -31,13 +20,29 @@ public class NetworkManager : Photon.PunBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	
 	}
-	#endregion
 
-	#region Callbacks
-	#endregion
+    public void CreateAndJoinGameSession(string sessionName)
+    {
+        if (!PhotonNetwork.insideLobby)
+        {
+            return;
+        }
 
-	#region Private Methods
-	#endregion
+        RoomOptions options = new RoomOptions();
+        options.MaxPlayers = (byte)4;
+        options.IsOpen = true;
+        options.IsVisible = true;
+        PhotonNetwork.CreateRoom(sessionName, options, TypedLobby.Default);
+    }
+
+    public void JoinGameSession(string sessionName)
+    {
+        PhotonNetwork.JoinRoom(sessionName);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        SceneManager.LoadScene("Scenes/CharacterSelect");
+    }
 }
