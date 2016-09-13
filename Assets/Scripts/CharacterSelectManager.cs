@@ -60,7 +60,7 @@ public class CharacterSelectManager : PunBehaviour
     [PunRPC]
     public void LaunchGame()
     {
-        SceneManager.LoadScene("Scenes/TestMultiplayerScene");
+        PhotonNetwork.LoadLevel("Scenes/TestMultiplayerScene");
         // TODO: instantiate player prefabs here using player custom properties
         //
     }

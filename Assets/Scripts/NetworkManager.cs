@@ -13,8 +13,9 @@ public class NetworkManager : Photon.PunBehaviour
         {
             Instance = this;
             Object.DontDestroyOnLoad(this);
+            PhotonNetwork.automaticallySyncScene = true;
+            PhotonNetwork.ConnectUsingSettings(GameConstants.VERSION_STRING);
         }
-        PhotonNetwork.ConnectUsingSettings(GameConstants.VERSION_STRING);
 	}
 	
 	// Update is called once per frame
@@ -43,6 +44,6 @@ public class NetworkManager : Photon.PunBehaviour
 
     public override void OnJoinedRoom()
     {
-        SceneManager.LoadScene("Scenes/CharacterSelect");
+        PhotonNetwork.LoadLevel("Scenes/CharacterSelect");
     }
 }
