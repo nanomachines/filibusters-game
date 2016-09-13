@@ -4,11 +4,15 @@ using System.Collections;
 public class TestInput : MonoBehaviour
 {
     [SerializeField]
-    private float mMaxSpeed = 150f;
+    private float mMaxSpeed = 300f;
     [SerializeField]
-    private float mCurSpeed = 0f;
+    private float mCurXSpeed = 0f;
     [SerializeField]
-    private float mAcceleration = 4f;
+    private float mCurYSpeed = 0f;
+    [SerializeField]
+    private float mAcceleration = 300f;
+    [SerializeField]
+    private float mGravity = 0f;
 
     [SerializeField]
     private bool mGrounded = false;
@@ -31,6 +35,7 @@ public class TestInput : MonoBehaviour
         print(mBoxOffset);
 	}
 	
+    // TODO: Introduce notion of move amount
 	void Update()
     {
         float xTargetSpeed = 0f;
@@ -41,24 +46,25 @@ public class TestInput : MonoBehaviour
         bool changedDirection = Mathf.Sign(mDirection) != Mathf.Sign(xInput);
         if (changedDirection)
         {
-            mCurSpeed = 0f;
+            mCurXSpeed = 0f;
         }
 
         if (xInput != 0)
         {
             xTargetSpeed = xInput * mMaxSpeed;
-            mCurSpeed = IntegrateAccel(xTargetSpeed);
+            mCurXSpeed = IntegrateAccel(xTargetSpeed);
         }
         // Currently the player is immediately stopped on no input
-        // TODO: is this necessary?
+        // TODO: is this necessary? I think it is if accel != maxSpeed
         else
         {
-            mCurSpeed = 0f;
+            mCurXSpeed = 0f;
         }
-        mCurSpeed = xAxisCollisions(mCurSpeed * Time.deltaTime);
-        transform.Translate(mCurSpeed, 0f, 0f);
-        mDirection = Mathf.Sign(mCurSpeed);
 
+        mCurXSpeed = GetDeltaX(mCurXSpeed * Time.deltaTime);
+        mCurYSpeed = GetDeltaY(mCurYSpeed * Time.deltaTime - mGravity * Time.deltaTime, mCurXSpeed);
+        transform.Translate(mCurXSpeed, mCurYSpeed, 0f);
+        mDirection = Mathf.Sign(mCurXSpeed);
     }
 
     void LateUpdate()
@@ -68,30 +74,23 @@ public class TestInput : MonoBehaviour
 
     private float IntegrateAccel(float targetSpeed)
     {
-        if (mCurSpeed == targetSpeed)
+        if (mCurXSpeed == targetSpeed)
         {
-            return mCurSpeed;
+            return mCurXSpeed;
         }
-        float direction = Mathf.Sign(targetSpeed - mCurSpeed);
-        mCurSpeed += mAcceleration * direction * Time.deltaTime;
+        float direction = Mathf.Sign(targetSpeed - mCurXSpeed);
+        mCurXSpeed += mAcceleration * direction * Time.deltaTime;
         // Check and rectify if targetSpeed was overshot
-        return direction == Mathf.Sign(targetSpeed - mCurSpeed) ? mCurSpeed : targetSpeed;
+        return direction == Mathf.Sign(targetSpeed - mCurXSpeed) ? mCurXSpeed : targetSpeed;
     }
 
-    private float xAxisCollisions(float deltaX)
+    private float GetDeltaX(float deltaX)
     {
 		float direction = Mathf.Sign(deltaX);
         for (int level = 0; level < 3; level++)
         {
-            float x = transform.position.x + mBoxOffset.x + mBoxSize.x / 2f * direction;
-            float y = (transform.position.y + mBoxOffset.y - mBoxSize.y / 2f) + mBoxSize.y / 2f * level;
-
-            RaycastHit2D hit;
-            Ray2D ray = new Ray2D(new Vector2(x, y), new Vector2(direction, 0));
-            Debug.DrawRay(ray.origin, ray.direction);
-            if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(deltaX), mCollisionLayers))
+            if (XRayHit(direction, ref deltaX, level))
             {
-                Debug.DrawRay(ray.origin, ray.direction, Color.red);
                 deltaX = 0f;
                 break;
             }
@@ -99,8 +98,83 @@ public class TestInput : MonoBehaviour
         return deltaX;
     }
 
-    private float yAxisCollisions(float deltaY)
+    private bool XRayHit(float direction, ref float deltaX, int level)
     {
-    	return -1f;
+        float x = transform.position.x + mBoxOffset.x + mBoxSize.x / 2f * direction;
+        float y = (transform.position.y + mBoxOffset.y - mBoxSize.y / 2f) + mBoxSize.y / 2f * level;
+
+        RaycastHit2D hit;
+        Ray2D ray = new Ray2D(new Vector2(x, y), new Vector2(direction, 0));
+        Debug.DrawRay(ray.origin, new Vector2(deltaX, 0), Color.green);
+        if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(deltaX), mCollisionLayers))
+        {
+            Debug.DrawRay(ray.origin, new Vector2(deltaX, 0), Color.red);
+            float distance = Vector2.Distance(ray.origin, hit.point);
+            if (distance > 0.005f)
+            {
+                deltaX = distance * direction + 0.005f;
+            }
+            else
+            {
+                deltaX = 0;
+            }
+        }
+        return false;
+    }
+
+    private float GetDeltaY(float deltaY, float deltaX)
+    {
+        float directionX = Mathf.Sign(deltaX);
+        float direction = Mathf.Sign(deltaY);
+        // Facing right; cast rays down right to left
+        if (directionX == 1f)
+        {
+            for (int level = 2; level > -1; level--)
+            {
+                if (YRayHit(direction, ref deltaY, level))
+                {
+                    break;
+                }
+            }
+        }
+        // Facing left; cast rays down left to right
+        else
+        {
+            for (int level = 0; level < 3; level++)
+            {
+                if (YRayHit(direction, ref deltaY, level))
+                {
+                    break;
+                }
+            }
+        }
+        
+        return deltaY;
+    }
+
+    private bool YRayHit(float direction, ref float deltaY, int level)
+    {
+        float x = (transform.position.x + mBoxOffset.x - mBoxSize.x / 2f) + mBoxSize.x / 2f * level;
+        float y = transform.position.y + mBoxOffset.y + mBoxSize.y / 2f * direction;
+
+        // TODO: Make this a function that x and y can share
+        RaycastHit2D hit;
+        Ray2D ray = new Ray2D(new Vector2(x, y), new Vector2(0, direction));
+        Debug.DrawRay(ray.origin, new Vector2(0f, deltaY), Color.yellow);
+        if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(deltaY), mCollisionLayers))
+        {
+            Debug.DrawRay(ray.origin, new Vector2(0f, deltaY), Color.red);
+            float distance = Vector2.Distance(ray.origin, hit.point);
+            if (distance > 0.005f)
+            {
+                deltaY = distance * direction + 0.005f;
+            }
+            else
+            {
+                deltaY = 0;
+            }
+            return true;
+        }
+        return false;
     }
 }
