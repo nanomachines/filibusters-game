@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dc21f65bca265408241f294ed5da94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAerialSpeed: 0.05
   mGravity: -0.5
   mJumpVel: 12
   mMaxSpeed: 4

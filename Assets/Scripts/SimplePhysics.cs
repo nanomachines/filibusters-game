@@ -3,7 +3,8 @@ using System.Collections;
 
 public class SimplePhysics : MonoBehaviour
 {
-
+    [SerializeField]
+    private float mAerialSpeed = 0.05f;
     [SerializeField]
     private float mGravity = -0.5f;
     [SerializeField]
@@ -39,20 +40,25 @@ public class SimplePhysics : MonoBehaviour
 
     void Update()
     {
+        float input = Input.GetAxis("LeftStickXAxis");
         if (mGrounded)
         {
-            if (Input.GetButtonDown("A"))
+            if (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))
             {
                 mVelY = mJumpVel;
             }
             else
             {
-                float input = Input.GetAxis("LeftStickXAxis");
                 mVelX = input * mMaxSpeed;
                 // This prevents the y velocity from growing arbitrarily large
                 // while the player is grounded
                 mVelY = mGravity;
             }
+        }
+        // Allow aerial acceleration
+        else
+        {
+            mVelX += input * mAerialSpeed;
         }
 
         float deltaX = mVelX * Time.deltaTime;
