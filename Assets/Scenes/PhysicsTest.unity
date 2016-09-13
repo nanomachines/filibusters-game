@@ -101,6 +101,7 @@ GameObject:
   - 212: {fileID: 464854929}
   - 114: {fileID: 464854928}
   - 61: {fileID: 464854931}
+  - 114: {fileID: 464854932}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -114,18 +115,21 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464854927}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd9aa6a3bdb853743815bf4ddc086af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mJumpHeight: 3
+  mJumpForce: 11
   mMaxSpeed: 300
-  mCurXSpeed: 0
-  mCurYSpeed: 0
+  mVelocityX: 0
+  mVelocityY: 0
   mAcceleration: 300
-  mGravity: 20
+  mGravity: -8
   mGrounded: 0
   mFalling: 0
+  mJumping: 0
   mCollisionLayers:
     serializedVersion: 2
     m_Bits: 1536
@@ -169,7 +173,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464854927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -189,6 +193,24 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
+--- !u!114 &464854932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 464854927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8dc21f65bca265408241f294ed5da94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mGravity: -0.5
+  mJumpVel: 12
+  mMaxSpeed: 4
+  mSkin: 0.005
+  mColLayers:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!1 &583211219
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,11 +4,16 @@ using System.Collections;
 public class TestInput : MonoBehaviour
 {
     [SerializeField]
+    private float mJumpHeight = 0f;
+    private float mJumpTarget = 0f;
+    [SerializeField]
+    private float mJumpForce = 100f;
+    [SerializeField]
     private float mMaxSpeed = 300f;
     [SerializeField]
-    private float mCurXSpeed = 0f;
+    private float mVelocityX = 0f;
     [SerializeField]
-    private float mCurYSpeed = 0f;
+    private float mVelocityY = 0f;
     [SerializeField]
     private float mAcceleration = 300f;
     [SerializeField]
@@ -18,6 +23,8 @@ public class TestInput : MonoBehaviour
     private bool mGrounded = false;
 	[SerializeField]
 	private bool mFalling = false;
+    [SerializeField]
+    private bool mJumping = false;
     
 
     private Vector2 mBoxSize = Vector2.zero;
@@ -32,56 +39,73 @@ public class TestInput : MonoBehaviour
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         mBoxSize = boxCollider.size;
         mBoxOffset = boxCollider.offset;
-        print(mBoxOffset);
 	}
 	
     // TODO: Introduce notion of move amount
 	void Update()
     {
-        float xTargetSpeed = 0f;
+        float xTargetVelocity = 0f;
         float xInput = Input.GetAxis("LeftStickXAxis");
+
+        if (mGrounded && Input.GetButtonDown("A"))
+        {
+            mJumping = true;
+            mJumpTarget = transform.position.y + mJumpHeight;
+            mAcceleration = 10f;
+        }
+        else
+        {
+            mVelocityY = GetDeltaY(mVelocityY * Time.deltaTime + mGravity * Time.deltaTime, mVelocityX);
+        }
+
+        if (mJumping && transform.position.y < mJumpTarget)
+        {
+            mVelocityY = mJumpForce * Time.deltaTime * 0.5f;
+        }
+        else
+        {
+            mAcceleration = 300f;
+            mJumping = false;
+        }
 
         // If the player changes direction, they should not slide
         // AKA the switch should be immediate
         bool changedDirection = Mathf.Sign(mDirection) != Mathf.Sign(xInput);
-        if (changedDirection)
+        if (mGrounded && changedDirection)
         {
-            mCurXSpeed = 0f;
+            mVelocityX = 0f;
         }
 
-        if (xInput != 0)
+        if (mGrounded && xInput != 0)
         {
-            xTargetSpeed = xInput * mMaxSpeed;
-            mCurXSpeed = IntegrateAccel(xTargetSpeed);
+            xTargetVelocity = xInput * mMaxSpeed;
+            mVelocityX = IntegrateAccel(xTargetVelocity);
         }
         // Currently the player is immediately stopped on no input
         // TODO: is this necessary? I think it is if accel != maxSpeed
-        else
+        else if (mGrounded)
         {
-            mCurXSpeed = 0f;
+            mVelocityX = 0f;
         }
 
-        mCurXSpeed = GetDeltaX(mCurXSpeed * Time.deltaTime);
-        mCurYSpeed = GetDeltaY(mCurYSpeed * Time.deltaTime - mGravity * Time.deltaTime, mCurXSpeed);
-        transform.Translate(mCurXSpeed, mCurYSpeed, 0f);
-        mDirection = Mathf.Sign(mCurXSpeed);
-    }
+        
 
-    void LateUpdate()
-    {
-
+        print(mVelocityX);
+        mVelocityX = GetDeltaX(mVelocityX * Time.deltaTime);
+        transform.Translate(mVelocityX, mVelocityY, 0f);
+        mDirection = Mathf.Sign(mVelocityX);
     }
 
     private float IntegrateAccel(float targetSpeed)
     {
-        if (mCurXSpeed == targetSpeed)
+        if (mVelocityX == targetSpeed)
         {
-            return mCurXSpeed;
+            return mVelocityX;
         }
-        float direction = Mathf.Sign(targetSpeed - mCurXSpeed);
-        mCurXSpeed += mAcceleration * direction * Time.deltaTime;
+        float direction = Mathf.Sign(targetSpeed - mVelocityX);
+        mVelocityX += mAcceleration * direction * Time.deltaTime;
         // Check and rectify if targetSpeed was overshot
-        return direction == Mathf.Sign(targetSpeed - mCurXSpeed) ? mCurXSpeed : targetSpeed;
+        return direction == Mathf.Sign(targetSpeed - mVelocityX) ? mVelocityX : targetSpeed;
     }
 
     private float GetDeltaX(float deltaX)
@@ -154,6 +178,7 @@ public class TestInput : MonoBehaviour
 
     private bool YRayHit(float direction, ref float deltaY, int level)
     {
+        mGrounded = false;
         float x = (transform.position.x + mBoxOffset.x - mBoxSize.x / 2f) + mBoxSize.x / 2f * level;
         float y = transform.position.y + mBoxOffset.y + mBoxSize.y / 2f * direction;
 
@@ -173,6 +198,7 @@ public class TestInput : MonoBehaviour
             {
                 deltaY = 0;
             }
+            mGrounded = true;
             return true;
         }
         return false;
