@@ -3,10 +3,16 @@ using System.Collections;
 
 public class SimplePhysics : MonoBehaviour
 {
+    // Animation
+    Animator mAnim;
+    SpriteRenderer mRenderer;
+
+    // Audio
     [SerializeField]
     private AudioClip mJumpSound;
     private AudioSource mAudioSource;
 
+    // Physics
     [SerializeField]
     private float mAerialSpeed = 0.05f;
     [SerializeField]
@@ -33,19 +39,30 @@ public class SimplePhysics : MonoBehaviour
 
     void Awake()
     {
-        BoxCollider2D bCol;
-        if (bCol = GetComponent<BoxCollider2D>())
+        if (!(mAnim = GetComponent<Animator>()))
         {
-            mSize = bCol.size;
-            mOffset = bCol.offset;
+            Debug.LogWarning("Add an Animator component!");
         }
-        else
+
+        if (!(mRenderer = GetComponent<SpriteRenderer>()))
         {
+            Debug.LogWarning("Add a SpriteRenderer component!");
         }
 
         if (!(mAudioSource = GetComponent<AudioSource>()))
         {
             Debug.LogWarning("Add an AudioSource component!");
+        }
+
+        Vector3 scale = transform.localScale;
+        BoxCollider2D bCol;
+        if (bCol = GetComponent<BoxCollider2D>())
+        {
+            mSize = new Vector2(bCol.size.x * scale.x, bCol.size.y * scale.y);
+            mOffset = new Vector2(bCol.offset.x * scale.x, bCol.offset.y * scale.y);
+        }
+        else
+        {
         }
     }
 
@@ -77,10 +94,17 @@ public class SimplePhysics : MonoBehaviour
             }
         }
         // Allow aerial acceleration
-        //else
-        //{
-        //    mVelX = UseAccel(xInput * mAerialSpeed, mVelX, mMaxSpeed);
-        //}
+        else
+        {
+            mVelX = UseAccel(xInput * mAerialSpeed, mVelX, mMaxSpeed);
+        }
+
+        Flip();
+        mAnim.SetFloat("VelXMult", Mathf.Abs(xInput));
+        mAnim.SetFloat("VelocityX", Mathf.Abs(mVelX));
+        mAnim.SetFloat("VelocityY", mVelY);
+        mAnim.SetBool("Grounded", mGrounded);
+
 
         float deltaX = mVelX * Time.deltaTime;
         float deltaY = mVelY * Time.deltaTime;
@@ -101,6 +125,20 @@ public class SimplePhysics : MonoBehaviour
     {
         float newSpeed = accel + curSpeed;
         return (newSpeed < maxSpeed) ? newSpeed : maxSpeed;
+    }
+
+    private void Flip()
+    {
+        // Facing left
+        if (mVelX < -Mathf.Epsilon)
+        {
+            mRenderer.flipX = true;
+        }
+        // Facing right
+        else
+        {
+            mRenderer.flipX = false;
+        }
     }
 
     private float GetXChange(float delta, float dir)
@@ -186,6 +224,7 @@ public class SimplePhysics : MonoBehaviour
 
             // Ignore two-way platforms the player was below
             // and fall through these platforms when the player presses down
+            // TODO: Make sure the player is above the TOP of the two-way platform's box collider
             GameObject other = hit.transform.gameObject;
             if (other.tag == "TwoWay" && (other.transform.position.y >= mPrevY || mPressedDown))
             {

@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013629607018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalPosition: {x: -1.872, y: 5.841, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -145,7 +145,7 @@ MonoBehaviour:
   mJumpSound: {fileID: 8300000, guid: f0c3c4c79fb101e47a7050ba8eb15680, type: 3}
   mAerialSpeed: 0.2
   mGravity: -0.5
-  mJumpVel: 12
+  mJumpVel: 8
   mMaxSpeed: 4
   mSkin: 0.005
   mColLayersX:
