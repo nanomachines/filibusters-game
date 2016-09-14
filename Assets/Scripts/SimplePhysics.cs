@@ -4,7 +4,6 @@ using System.Collections;
 public class SimplePhysics : MonoBehaviour
 {
     // Animation
-    Animator mAnim;
     SpriteRenderer mRenderer;
 
     // Audio
@@ -24,10 +23,32 @@ public class SimplePhysics : MonoBehaviour
     [SerializeField]
     private float mSkin = 0.005f;
 
-    private bool mGrounded = false;
-
-    private float mVelX = 0f;
-    private float mVelY = 0f;
+    private MotionState mMotionState;
+    private bool mGrounded
+    {
+        get { return mMotionState.mGrounded; }
+        set { mMotionState.mGrounded = value; }
+    }
+    private bool mFacingRight
+    {
+        get { return mMotionState.mFacingRight; }
+        set { mMotionState.mFacingRight = value; }
+    }
+    private float mVelX
+    {
+        get { return mMotionState.mVelX; }
+        set { mMotionState.mVelX = value; }
+    }
+    private float mVelY
+    {
+        get { return mMotionState.mVelY; }
+        set { mMotionState.mVelY = value; }
+    }
+    private float mVelXMult
+    {
+        get { return mMotionState.mVelXMult; }
+        set { mMotionState.mVelXMult = value; }
+    }
 
     private bool mPressedDown = false;
     private float mPrevY = 0f;
@@ -39,10 +60,7 @@ public class SimplePhysics : MonoBehaviour
 
     void Awake()
     {
-        if (!(mAnim = GetComponent<Animator>()))
-        {
-            Debug.LogWarning("Add an Animator component!");
-        }
+        mMotionState = GetComponent<MotionState>();
 
         if (!(mRenderer = GetComponent<SpriteRenderer>()))
         {
@@ -102,11 +120,7 @@ public class SimplePhysics : MonoBehaviour
         }
 
         Flip(xInput);
-        mAnim.SetFloat("VelXMult", Mathf.Abs(xInput));
-        mAnim.SetFloat("VelocityX", Mathf.Abs(mVelX));
-        mAnim.SetFloat("VelocityY", mVelY);
-        mAnim.SetBool("Grounded", mGrounded);
-
+        mVelXMult = Mathf.Abs(xInput);
 
         float deltaX = mVelX * Time.deltaTime;
         float deltaY = mVelY * Time.deltaTime;
@@ -134,12 +148,12 @@ public class SimplePhysics : MonoBehaviour
         // Facing left
         if (dir < -Mathf.Epsilon)
         {
-            mRenderer.flipX = true;
+            mFacingRight = false;
         }
         // Facing right
         else
         {
-            mRenderer.flipX = false;
+            mFacingRight = true;
         }
     }
 
@@ -232,7 +246,7 @@ public class SimplePhysics : MonoBehaviour
             {
                 return true;
             }
-            
+
             float distance = Vector2.Distance(ray.origin, hit.point);
             if (distance > mSkin)
             {
@@ -244,7 +258,6 @@ public class SimplePhysics : MonoBehaviour
             }
             mGrounded = true;
             return true;
-            
         }
         return false;
     }

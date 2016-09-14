@@ -25,6 +25,8 @@ GameObject:
   - 82: {fileID: 82000013552817744}
   - 95: {fileID: 95000011397001752}
   - 114: {fileID: 114000013725662570}
+  - 114: {fileID: 114000011304187516}
+  - 114: {fileID: 114000014250066124}
   m_Layer: 8
   m_Name: NetPlayer
   m_TagString: Untagged
@@ -150,6 +152,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000011304187516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013579360384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41c2171f7498f244b54155fe99c5d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mVelX: 0
+  mVelY: 0
+  mVelXMult: 0
+  mGrounded: 0
 --- !u!114 &114000013725662570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +187,7 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 4000011015281184}
+  - {fileID: 114000011304187516}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -198,6 +215,17 @@ MonoBehaviour:
   mColLayersY:
     serializedVersion: 2
     m_Bits: 3072
+--- !u!114 &114000014250066124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013579360384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad86a9279ec650e40869b60cdf92255c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000011426961584
 SpriteRenderer:
   m_ObjectHideFlags: 1
