@@ -3,17 +3,33 @@ using System.Collections;
 
 public class MotionState : Photon.MonoBehaviour
 {
-    private Vector3 mAccuratePosition;
-
     [HideInInspector] public bool mFacingRight;
     [HideInInspector] public float mVelX = 0f;
     [HideInInspector] public float mVelY = 0f;
     [HideInInspector] public float mVelXMult = 0f;
     [HideInInspector] public bool mGrounded = false;
 
+    /*
+     * Fields used to linearly interpolate
+     * between position updates for the other
+     * clients
+     */
+    private Vector3 mAccuratePosition;
+    private Vector3 mPreviousPosition;
+    private float mPositionLerpTime;
+    private float mPositionUpdateRate = 0.1f;
+    private int mNumUpdates;
+    private float mTotalTime;
+
+
 	// Use this for initialization
 	void Awake()
 	{
+        mAccuratePosition = Vector3.zero;
+        mPreviousPosition = Vector3.zero;
+        mPositionLerpTime = 0;
+        mNumUpdates = 1;
+        mTotalTime = .1f;
 	}
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -34,7 +50,12 @@ public class MotionState : Photon.MonoBehaviour
             mVelY = (float)stream.ReceiveNext();
             mGrounded = (bool)stream.ReceiveNext();
             mFacingRight = (bool)stream.ReceiveNext();
+            mPreviousPosition = mAccuratePosition;
             mAccuratePosition = (Vector3)stream.ReceiveNext();
+
+            mPositionLerpTime = 0;
+            ++mNumUpdates;
+            mPositionUpdateRate = mTotalTime / mNumUpdates;
         }
     }
 
@@ -42,7 +63,9 @@ public class MotionState : Photon.MonoBehaviour
     {
         if (!photonView.isMine)
         {
-            transform.position = Vector3.Lerp(transform.position, mAccuratePosition, Time.deltaTime * 10);
+            mTotalTime += Time.deltaTime;
+            mPositionLerpTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(mPreviousPosition, mAccuratePosition, mPositionLerpTime / mPositionUpdateRate);
         }
     }
 }
