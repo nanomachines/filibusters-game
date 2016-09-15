@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MotionState : MonoBehaviour
+public class MotionState : Photon.MonoBehaviour
 {
+    private Vector3 mAccuratePosition;
+
     [HideInInspector] public bool mFacingRight;
     [HideInInspector] public float mVelX = 0f;
     [HideInInspector] public float mVelY = 0f;
@@ -32,7 +34,15 @@ public class MotionState : MonoBehaviour
             mVelY = (float)stream.ReceiveNext();
             mGrounded = (bool)stream.ReceiveNext();
             mFacingRight = (bool)stream.ReceiveNext();
-            transform.position = (Vector3)stream.ReceiveNext();
+            mAccuratePosition = (Vector3)stream.ReceiveNext();
+        }
+    }
+
+    void Update()
+    {
+        if (!photonView.isMine)
+        {
+            transform.position = Vector3.Lerp(transform.position, mAccuratePosition, Time.deltaTime * 10);
         }
     }
 }
