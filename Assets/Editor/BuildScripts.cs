@@ -18,10 +18,20 @@ class BuildScripts
         BuildWin64();
     }
 
+    [MenuItem("Builds/Build and Run Two Win64 Clients")]
+    public static void BuildAndRunTwoWindowsClients()
+    {
+        string buildPathAndName = System.IO.Path.Combine("Builds", "FilibustersWin64.exe");
+        const string successMsg = "Win64 build successful";
+        const string failMsg = "win64 build failed";
+        BuildAndRunXClients(buildPathAndName, BuildTarget.StandaloneWindows64,
+            BuildOptions.None, successMsg, failMsg, 2);
+    }
+ 
     [MenuItem("Builds/Build Win64")]
     public static void BuildWin64()
     {
-        const string buildPathAndName = "Builds/FilibustersWin64.exe";
+        string buildPathAndName = System.IO.Path.Combine("Builds", "FilibustersWin64.exe");
         const string successMsg = "Win64 build successful";
         const string failMsg = "win64 build failed";
         Build(buildPathAndName, BuildTarget.StandaloneWindows64,
@@ -31,7 +41,7 @@ class BuildScripts
     [MenuItem("Builds/Build Mac")]
     public static void BuildMac()
     {
-        const string buildPathAndName = "Builds/FilibustersMac.app";
+        string buildPathAndName = System.IO.Path.Combine("Builds", "FilibustersMac.app");
         const string successMsg = "Mac build successful";
         const string failMsg = "Mac build failed";
         Build(buildPathAndName, BuildTarget.StandaloneOSXUniversal,
