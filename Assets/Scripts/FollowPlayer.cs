@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowPlayer : MonoBehaviour
+namespace Filibusters
 {
-    [SerializeField]
-    public GameObject mPlayer;
-
-    void Update()
+    public class FollowPlayer : MonoBehaviour
     {
-        if (mPlayer)
+        [SerializeField]
+        public GameObject mPlayer;
+
+        void Update()
         {
-            Vector3 pos = mPlayer.transform.position;
-            transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+            if (mPlayer)
+            {
+                Vector3 pos = mPlayer.transform.position;
+                transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+            }
         }
     }
 }
