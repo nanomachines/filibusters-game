@@ -1,24 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartMenuManager : Photon.PunBehaviour 
+namespace Filibusters
 {
-    void OnGUI()
+    public class StartMenuManager : Photon.PunBehaviour 
     {
-        GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-        GUILayout.Label("Filibusters");
-        if (GUILayout.Button("Host Game"))
+        void OnGUI()
         {
-            NetworkManager.Instance.CreateAndJoinGameSession("Default Session");
+            GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+            GUILayout.Label("Filibusters");
+            if (GUILayout.Button("Host Game"))
+            {
+                NetworkManager.Instance.CreateAndJoinGameSession("Default Session");
+            }
+            if (GUILayout.Button("Join Game"))
+            {
+                NetworkManager.Instance.JoinGameSession("Default Session");
+            }
         }
-        if (GUILayout.Button("Join Game"))
+    
+        public override void OnJoinedRoom()
         {
-            NetworkManager.Instance.JoinGameSession("Default Session");
+            PhotonNetwork.LoadLevel("Scenes/CharacterSelect");
         }
-    }
-
-    public override void OnJoinedRoom()
-    {
-        PhotonNetwork.LoadLevel("Scenes/CharacterSelect");
     }
 }

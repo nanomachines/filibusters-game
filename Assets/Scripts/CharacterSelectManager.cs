@@ -3,105 +3,109 @@ using System.Collections.Generic;
 using Photon;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelectManager : PunBehaviour
+namespace Filibusters
 {
-    [HideInInspector] public static CharacterSelectManager instance = null;
+    public class CharacterSelectManager : PunBehaviour
+    {
+        [HideInInspector]
+        public static CharacterSelectManager instance = null;
 
-    private int mPlayersReady;
+        private int mPlayersReady;
 
-	// Use this for initialization
-	void Start()
-	{
-        if (instance == null)
+        // Use this for initialization
+        void Start()
         {
-            instance = this;
-            PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable{ { "IsReady", false}, {"IsNew", true } });
-
-            // If we are in offline mode we need to explicitly call the properties changed callback
-            if (PhotonNetwork.offlineMode)
+            if (instance == null)
             {
-                OfflineReadyUpdate(false, true);
-            }
-
-            mPlayersReady = 0;
-            foreach (var player in PhotonNetwork.playerList)
-            {
-                bool isReady = player.customProperties.ContainsKey("IsReady") ? (bool)player.customProperties["IsReady"] : false;
-                if (isReady)
+                instance = this;
+                PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable{ { "IsReady", false}, {"IsNew", true } });
+    
+                // If we are in offline mode we need to explicitly call the properties changed callback
+                if (PhotonNetwork.offlineMode)
                 {
-                    ++mPlayersReady;
+                    OfflineReadyUpdate(false, true);
+                }
+    
+                mPlayersReady = 0;
+                foreach (var player in PhotonNetwork.playerList)
+                {
+                    bool isReady = player.customProperties.ContainsKey("IsReady") ? (bool)player.customProperties["IsReady"] : false;
+                    if (isReady)
+                    {
+                        ++mPlayersReady;
+                    }
                 }
             }
         }
-	}
 
-    void OnGUI()
-    {
-        var labelBuilder = new System.Text.StringBuilder(90);
-        if (PhotonNetwork.isMasterClient)
+        void OnGUI()
         {
-            labelBuilder.AppendLine("Host/Master Client");
-        }
-        labelBuilder.AppendLine("PlayersReady: " + mPlayersReady);
-        foreach (var player in PhotonNetwork.playerList)
-        {
-            var isReady = player.customProperties.ContainsKey("IsReady") ? player.customProperties["IsReady"] : false;
-            labelBuilder.AppendLine(player.ID + ": " + isReady);
-        }
-        GUILayout.Label(labelBuilder.ToString());
-
-        if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
-        {
-            if (GUILayout.Button("Start Game"))
+            var labelBuilder = new System.Text.StringBuilder(90);
+            if (PhotonNetwork.isMasterClient)
             {
-                OnStartGame();
+                labelBuilder.AppendLine("Host/Master Client");
+            }
+            labelBuilder.AppendLine("PlayersReady: " + mPlayersReady);
+            foreach (var player in PhotonNetwork.playerList)
+            {
+                var isReady = player.customProperties.ContainsKey("IsReady") ? player.customProperties["IsReady"] : false;
+                labelBuilder.AppendLine(player.ID + ": " + isReady);
+            }
+            GUILayout.Label(labelBuilder.ToString());
+
+            if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
+            {
+                if (GUILayout.Button("Start Game"))
+                {
+                    OnStartGame();
+                }
             }
         }
-    }
 
-    public void OnStartGame()
-    {
-        GetComponent<PhotonView>().RPC("LaunchGame", PhotonTargets.All);
-    }
-
-    [PunRPC]
-    public void LaunchGame()
-    {
-        PhotonNetwork.LoadLevel("Scenes/NetworkMapTest");
-    }
-
-    public void ToggleLocalPlayerReady()
-    {
-        bool isReady = !(bool)PhotonNetwork.player.customProperties["IsReady"];
-        PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable{ { "IsReady", isReady} });
-
-        // If we are in offline mode we need to explicitly call the properties changed callback
-        if (PhotonNetwork.offlineMode)
+        public void OnStartGame()
         {
-            OfflineReadyUpdate(isReady, false);
+            GetComponent<PhotonView>().RPC("LaunchGame", PhotonTargets.All);
         }
-    }
 
-    public override void OnPhotonPlayerPropertiesChanged(object[] playerAndUpdatedProps)
-    {
-        var properties = playerAndUpdatedProps[1] as ExitGames.Client.Photon.Hashtable;
-        if ((bool)properties["IsReady"])
+        [PunRPC]
+        public void LaunchGame()
         {
-            ++mPlayersReady;
+            PhotonNetwork.LoadLevel("Scenes/NetworkMapTest");
         }
-        else if (!(bool)properties["IsNew"])
+    
+        public void ToggleLocalPlayerReady()
         {
-            --mPlayersReady;
+            bool isReady = !(bool)PhotonNetwork.player.customProperties["IsReady"];
+            PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable{ { "IsReady", isReady} });
+    
+            // If we are in offline mode we need to explicitly call the properties changed callback
+            if (PhotonNetwork.offlineMode)
+            {
+                OfflineReadyUpdate(isReady, false);
+            }
         }
-    }
-
-    private void OfflineReadyUpdate(bool isReady, bool isNew)
-    {
-        object[] playerAndUpdatedProps = new object[2];
-        var properties = new ExitGames.Client.Photon.Hashtable();
-        properties.Add("IsReady", isReady);
-        properties.Add("IsNew", isNew);
-        playerAndUpdatedProps[1] = properties;
-        OnPhotonPlayerPropertiesChanged(playerAndUpdatedProps);
+    
+        public override void OnPhotonPlayerPropertiesChanged(object[] playerAndUpdatedProps)
+        {
+            var properties = playerAndUpdatedProps[1] as ExitGames.Client.Photon.Hashtable;
+            if ((bool)properties["IsReady"])
+            {
+                ++mPlayersReady;
+            }
+            else if (!(bool)properties["IsNew"])
+            {
+                --mPlayersReady;
+            }
+        }
+    
+        private void OfflineReadyUpdate(bool isReady, bool isNew)
+        {
+            object[] playerAndUpdatedProps = new object[2];
+            var properties = new ExitGames.Client.Photon.Hashtable();
+            properties.Add("IsReady", isReady);
+            properties.Add("IsNew", isNew);
+            playerAndUpdatedProps[1] = properties;
+            OnPhotonPlayerPropertiesChanged(playerAndUpdatedProps);
+        }
     }
 }
