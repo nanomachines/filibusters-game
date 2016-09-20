@@ -5,9 +5,6 @@ namespace Filibusters
 {
     public class SimplePhysics : MonoBehaviour
     {
-        // Animation
-        SpriteRenderer mRenderer;
-
         // Audio
         [SerializeField]
         private AudioClip mJumpSound;
@@ -63,11 +60,6 @@ namespace Filibusters
         void Awake()
         {
             mMotionState = GetComponent<MotionState>();
-
-            if (!(mRenderer = GetComponent<SpriteRenderer>()))
-            {
-                Debug.LogWarning("Add a SpriteRenderer component!");
-            }
 
             if (!(mAudioSource = GetComponent<AudioSource>()))
             {

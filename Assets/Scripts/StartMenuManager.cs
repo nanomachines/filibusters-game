@@ -3,18 +3,8 @@ using System.Collections;
 
 namespace Filibusters
 {
-    public class StartMenuManager : MonoBehaviour
+    public class StartMenuManager : Photon.PunBehaviour 
     {
-        // Use this for initialization
-        void Start()
-        {
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
-
         void OnGUI()
         {
             GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
@@ -27,6 +17,11 @@ namespace Filibusters
             {
                 NetworkManager.Instance.JoinGameSession("Default Session");
             }
+        }
+    
+        public override void OnJoinedRoom()
+        {
+            PhotonNetwork.LoadLevel("Scenes/CharacterSelect");
         }
     }
 }

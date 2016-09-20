@@ -9,22 +9,29 @@ namespace Filibusters
         public static NetworkManager Instance = null;
 
         // Use this for initialization
-        void Awake()
+        void Start()
         {
             if (Instance == null)
             {
                 Instance = this;
                 Object.DontDestroyOnLoad(this);
                 PhotonNetwork.automaticallySyncScene = true;
-                PhotonNetwork.ConnectUsingSettings(GameConstants.VERSION_STRING);
+                if (!SceneManager.GetSceneByName("StartMenu").isLoaded)
+                {
+                    PhotonNetwork.offlineMode = true;
+                    PhotonNetwork.CreateRoom("OfflineRoom");
+                }
+                else
+                {
+                    PhotonNetwork.ConnectUsingSettings(GameConstants.VERSION_STRING);
+                }
+            }
+            else
+            {
+                Destroy(gameObject);
             }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
-
+	
         public void CreateAndJoinGameSession(string sessionName)
         {
             if (!PhotonNetwork.insideLobby)
@@ -42,11 +49,6 @@ namespace Filibusters
         public void JoinGameSession(string sessionName)
         {
             PhotonNetwork.JoinRoom(sessionName);
-        }
-
-        public override void OnJoinedRoom()
-        {
-            PhotonNetwork.LoadLevel("Scenes/CharacterSelect");
         }
     }
 }
