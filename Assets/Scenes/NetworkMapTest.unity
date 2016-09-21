@@ -3887,6 +3887,14 @@ Prefab:
       propertyPath: m_Name
       value: Spawn Point
       objectReference: {fileID: 0}
+    - target: {fileID: 4000013635920502, guid: 96d756e47e8e3c64c886b0067d487a83, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013635920502, guid: 96d756e47e8e3c64c886b0067d487a83, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96d756e47e8e3c64c886b0067d487a83, type: 2}
   m_IsPrefabParent: 0
@@ -4635,6 +4643,14 @@ Prefab:
     - target: {fileID: 4000013635920502, guid: 96d756e47e8e3c64c886b0067d487a83, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013635920502, guid: 96d756e47e8e3c64c886b0067d487a83, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013635920502, guid: 96d756e47e8e3c64c886b0067d487a83, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96d756e47e8e3c64c886b0067d487a83, type: 2}
