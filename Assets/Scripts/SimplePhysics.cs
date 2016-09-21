@@ -43,6 +43,7 @@ namespace Filibusters
             get { return mMotionState.mVelY; }
             set { mMotionState.mVelY = value; }
         }
+        // TODO: Remove this
         private float mVelXMult
         {
             get { return mMotionState.mVelXMult; }
@@ -56,9 +57,12 @@ namespace Filibusters
         private Vector2 mOffset = Vector2.zero;
         public LayerMask mColLayersX;
         public LayerMask mColLayersY;
+        private int mTwoWay;
 
         void Awake()
         {
+            mTwoWay = LayerMask.NameToLayer("TwoWayPlatform");
+
             mMotionState = GetComponent<MotionState>();
 
             if (!(mAudioSource = GetComponent<AudioSource>()))
@@ -89,7 +93,6 @@ namespace Filibusters
             // so I flip the input
             float yInput = Input.GetAxis("Vertical");
             mPressedDown = Mathf.Sign(yInput) == -1f;
-            print(mPressedDown);
 
             if (mGrounded)
             {
@@ -110,7 +113,7 @@ namespace Filibusters
             // Allow aerial acceleration
             else
             {
-                mVelX = UseAccel(xInput * mAerialSpeed, mVelX, mMaxSpeed);
+                mVelX = UseAccel(xInput * mAerialSpeed, mVelX, xInput * mMaxSpeed);
             }
 
             Flip(xInput);
@@ -130,11 +133,10 @@ namespace Filibusters
             mVelY += mGravity;
         }
 
-        // TODO: Bug where character accelerates much more quickly in x dir
         private float UseAccel(float accel, float curSpeed, float maxSpeed)
         {
             float newSpeed = accel + curSpeed;
-            return (newSpeed < maxSpeed) ? newSpeed : maxSpeed;
+            return (Mathf.Abs(newSpeed) < maxSpeed) ? newSpeed : maxSpeed;
         }
 
         private void Flip(float dir)
@@ -153,7 +155,7 @@ namespace Filibusters
 
         private float GetXChange(float delta, float dir)
         {
-            for (int height = 0; height < 3; height++)
+            for (float height = 0.1f; height <= 1.9f; height+=0.9f)
             {
                 if (RaycastX(ref delta, dir, height))
                 {
@@ -165,10 +167,11 @@ namespace Filibusters
 
         private float GetYChange(float delta, float dir, bool facingRight)
         {
+            // TODO: Set a begin end and increment to avoid having identical for loops
             // Cast rays downward right to left
             if (facingRight)
             {
-                for (int width = 2; width > -1; width--)
+                for (float width = 1.9f; width >= 0.1f; width-=0.9f)
                 {
                     if (RaycastY(ref delta, dir, width))
                     {
@@ -179,7 +182,7 @@ namespace Filibusters
             // Cast rays downward left to right
             else
             {
-                for (int width = 0; width < 3; width++)
+                for (float width = 0.1f; width <= 1.9f; width+=0.9f)
                 {
                     if (RaycastY(ref delta, dir, width))
                     {
@@ -190,7 +193,7 @@ namespace Filibusters
             return delta;
         }
 
-        private bool RaycastX(ref float delta, float dir, int height)
+        private bool RaycastX(ref float delta, float dir, float height)
         {
             float x = transform.position.x + mOffset.x + mSize.x / 2f * dir;
             float y = (transform.position.y + mOffset.y - mSize.y / 2f) + mSize.y / 2f * height;
@@ -217,7 +220,7 @@ namespace Filibusters
             return false;
         }
 
-        private bool RaycastY(ref float delta, float dir, int width)
+        private bool RaycastY(ref float delta, float dir, float width)
         {
             mGrounded = false;
 
@@ -234,13 +237,12 @@ namespace Filibusters
 
                 // Ignore two-way platforms the player was below
                 // and fall through these platforms when the player presses down
-                // TODO: Make sure the player is above the TOP of the two-way platform's box collider
-                GameObject other = hit.transform.gameObject;
-                if (other.tag == "TwoWay" && (other.transform.position.y >= mPrevY || mPressedDown))
+                if (TwoWayPlatform(hit.transform.gameObject))
                 {
                     return true;
                 }
 
+                // OTHERWISE Ground the player
                 float distance = Vector2.Distance(ray.origin, hit.point);
                 if (distance > mSkin)
                 {
@@ -252,6 +254,22 @@ namespace Filibusters
                 }
                 mGrounded = true;
                 return true;
+            }
+            return false;
+        }
+
+        private bool TwoWayPlatform(GameObject other)
+        {
+            if (other.layer == mTwoWay)
+            {
+                float scale = Mathf.Abs(other.transform.localScale.y);
+                BoxCollider2D bCol = other.GetComponent<BoxCollider2D>();
+                float size = bCol.size.y / 2f * scale;
+                float offset = bCol.offset.y * scale;
+
+                // Get the top position of the box collider
+                float top = other.transform.position.y + size + offset;
+                return top >= mPrevY || mPressedDown;
             }
             return false;
         }
