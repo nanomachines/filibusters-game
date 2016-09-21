@@ -12,7 +12,7 @@ namespace Filibusters
         {
             SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
             Vector3 spawnPositon = GetRandomSpawnPoint();
-            GameObject LocalPlayer = PhotonNetwork.Instantiate("NetPlayer", spawnPositon, Quaternion.identity, 0);
+            LocalPlayer = PhotonNetwork.Instantiate("NetPlayer", spawnPositon, Quaternion.identity, 0);
             LocalPlayer.GetComponent<SimplePhysics>().enabled = true;
             FollowPlayer followScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowPlayer>();
             followScript.mPlayer = LocalPlayer;
@@ -23,9 +23,14 @@ namespace Filibusters
         {
         }
 
-        void RespawnLocalPlayer()
+        public void RespawnLocalPlayer()
         {
             LocalPlayer.transform.position = GetRandomSpawnPoint();
+        }
+
+        public bool IsMyLocalPlayer(GameObject g)
+        {
+            return g.GetInstanceID() == LocalPlayer.GetInstanceID();
         }
 
         private Vector3 GetRandomSpawnPoint()
