@@ -45,9 +45,10 @@ namespace Filibusters
         // Update is called once per frame
         void Update()
         {
-            mAnimator.SetFloat("VelocityX", Mathf.Abs(mVelX));
             mAnimator.SetFloat("VelocityY", mVelY);
             mAnimator.SetBool("Grounded", mGrounded);
+            mAnimator.SetBool("Moving", Mathf.Abs(mVelX) > 0.001f);
+            mAnimator.SetBool("FacingRight", mFacingRight);
             mRenderer.flipX = !mFacingRight;
         }
     }
