@@ -1,9 +1,77 @@
 fileFormatVersion: 2
 guid: 4afa93445f119499a8f1e8860738a4dc
-timeCreated: 1474406777
+timeCreated: 1474413481
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: sprite_sheet_man_01_01_0
+    21300002: sprite_sheet_man_01_01_1
+    21300004: sprite_sheet_man_01_01_2
+    21300006: sprite_sheet_man_01_01_3
+    21300008: sprite_sheet_man_01_01_4
+    21300010: sprite_sheet_man_01_01_5
+    21300012: sprite_sheet_man_01_01_6
+    21300014: sprite_sheet_man_01_01_7
+    21300016: sprite_sheet_man_01_01_8
+    21300018: sprite_sheet_man_01_01_9
+    21300020: sprite_sheet_man_01_01_10
+    21300022: sprite_sheet_man_01_01_11
+    21300024: sprite_sheet_man_01_01_12
+    21300026: sprite_sheet_man_01_01_13
+    21300028: sprite_sheet_man_01_01_14
+    21300030: sprite_sheet_man_01_01_15
+    21300032: sprite_sheet_man_01_01_16
+    21300034: sprite_sheet_man_01_01_17
+    21300036: sprite_sheet_man_01_01_18
+    21300038: sprite_sheet_man_01_01_19
+    21300040: sprite_sheet_man_01_01_20
+    21300042: sprite_sheet_man_01_01_21
+    21300044: sprite_sheet_man_01_01_22
+    21300046: sprite_sheet_man_01_01_23
+    21300048: sprite_sheet_man_01_01_24
+    21300050: sprite_sheet_man_01_01_25
+    21300052: sprite_sheet_man_01_01_26
+    21300054: sprite_sheet_man_01_01_27
+    21300056: sprite_sheet_man_01_01_28
+    21300058: sprite_sheet_man_01_01_29
+    21300060: sprite_sheet_man_01_01_30
+    21300062: sprite_sheet_man_01_01_31
+    21300064: sprite_sheet_man_01_01_32
+    21300066: sprite_sheet_man_01_01_33
+    21300068: sprite_sheet_man_01_01_34
+    21300070: sprite_sheet_man_01_01_35
+    21300072: sprite_sheet_man_01_01_36
+    21300074: sprite_sheet_man_01_01_37
+    21300076: sprite_sheet_man_01_01_38
+    21300078: sprite_sheet_man_01_01_39
+    21300080: sprite_sheet_man_01_01_40
+    21300082: sprite_sheet_man_01_01_41
+    21300084: sprite_sheet_man_01_01_42
+    21300086: sprite_sheet_man_01_01_43
+    21300088: sprite_sheet_man_01_01_44
+    21300090: sprite_sheet_man_01_01_45
+    21300092: sprite_sheet_man_01_01_46
+    21300094: sprite_sheet_man_01_01_47
+    21300096: sprite_sheet_man_01_01_48
+    21300098: sprite_sheet_man_01_01_49
+    21300100: sprite_sheet_man_01_01_50
+    21300102: sprite_sheet_man_01_01_51
+    21300104: sprite_sheet_man_01_01_52
+    21300106: sprite_sheet_man_01_01_53
+    21300108: sprite_sheet_man_01_01_54
+    21300110: sprite_sheet_man_01_01_55
+    21300112: sprite_sheet_man_01_01_56
+    21300114: sprite_sheet_man_01_01_57
+    21300116: sprite_sheet_man_01_01_58
+    21300118: sprite_sheet_man_01_01_59
+    21300120: sprite_sheet_man_01_01_60
+    21300122: sprite_sheet_man_01_01_61
+    21300124: sprite_sheet_man_01_01_62
+    21300126: sprite_sheet_man_01_01_63
+    21300128: sprite_sheet_man_01_01_64
+    21300130: sprite_sheet_man_01_01_65
+    21300132: sprite_sheet_man_01_01_66
+    21300134: sprite_sheet_man_01_01_67
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +98,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +106,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +119,878 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_0
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 2445
+        width: 154
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_1
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 2445
+        width: 154
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_2
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 2446
+        width: 169
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_3
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 2444
+        width: 148
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_4
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 2447
+        width: 127
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_5
+      rect:
+        serializedVersion: 2
+        x: 1706
+        y: 2440
+        width: 120
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_6
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 2445
+        width: 154
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_7
+      rect:
+        serializedVersion: 2
+        x: 2204
+        y: 2445
+        width: 160
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_8
+      rect:
+        serializedVersion: 2
+        x: 2443
+        y: 2445
+        width: 148
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_9
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 2148
+        width: 162
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_11
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 2148
+        width: 122
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_12
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 2150
+        width: 92
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_13
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 2146
+        width: 104
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_14
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 2145
+        width: 139
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_15
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 2146
+        width: 154
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_16
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 2150
+        width: 160
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_17
+      rect:
+        serializedVersion: 2
+        x: 2198
+        y: 2148
+        width: 125
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_18
+      rect:
+        serializedVersion: 2
+        x: 2472
+        y: 2150
+        width: 86
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_19
+      rect:
+        serializedVersion: 2
+        x: 2705
+        y: 2148
+        width: 123
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_20
+      rect:
+        serializedVersion: 2
+        x: 2936
+        y: 2146
+        width: 157
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_21
+      rect:
+        serializedVersion: 2
+        x: 3181
+        y: 2152
+        width: 172
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_22
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1847
+        width: 166
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_23
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 1847
+        width: 124
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_24
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 1849
+        width: 91
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_25
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 1847
+        width: 106
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_26
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 1847
+        width: 143
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_27
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 1847
+        width: 158
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_28
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 1851
+        width: 165
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_29
+      rect:
+        serializedVersion: 2
+        x: 2198
+        y: 1847
+        width: 128
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_30
+      rect:
+        serializedVersion: 2
+        x: 2468
+        y: 1847
+        width: 89
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_31
+      rect:
+        serializedVersion: 2
+        x: 2705
+        y: 1851
+        width: 127
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_32
+      rect:
+        serializedVersion: 2
+        x: 2938
+        y: 1847
+        width: 159
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_33
+      rect:
+        serializedVersion: 2
+        x: 3181
+        y: 1849
+        width: 180
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_34
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1448
+        width: 145
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_35
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 1450
+        width: 110
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_36
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 1452
+        width: 60
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_37
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 1448
+        width: 98
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_38
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 1448
+        width: 131
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_39
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 1448
+        width: 146
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_40
+      rect:
+        serializedVersion: 2
+        x: 1922
+        y: 1452
+        width: 152
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_41
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 1450
+        width: 122
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_42
+      rect:
+        serializedVersion: 2
+        x: 2456
+        y: 1448
+        width: 63
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_43
+      rect:
+        serializedVersion: 2
+        x: 2686
+        y: 1452
+        width: 96
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_44
+      rect:
+        serializedVersion: 2
+        x: 2917
+        y: 1450
+        width: 131
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_45
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 1450
+        width: 143
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_46
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1085
+        width: 146
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_47
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 1083
+        width: 159
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_48
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 1062
+        width: 141
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_49
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 1087
+        width: 148
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_50
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 1079
+        width: 155
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_51
+      rect:
+        serializedVersion: 2
+        x: 1966
+        y: 1062
+        width: 137
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_52
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 653
+        width: 141
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_53
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 655
+        width: 129
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_54
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 651
+        width: 156
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_55
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 651
+        width: 164
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_56
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 651
+        width: 167
+        height: 226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_57
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 651
+        width: 182
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_58
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 651
+        width: 166
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_59
+      rect:
+        serializedVersion: 2
+        x: 2198
+        y: 649
+        width: 148
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_60
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 250
+        width: 146
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_61
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 250
+        width: 131
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_62
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 252
+        width: 156
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_63
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 252
+        width: 165
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_64
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 252
+        width: 178
+        height: 226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_65
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 250
+        width: 202
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_66
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 250
+        width: 167
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_sheet_man_01_01_67
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 250
+        width: 139
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
