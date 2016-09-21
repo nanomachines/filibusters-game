@@ -60,7 +60,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.57, y: 2.1}
+  m_Size: {x: 1.57, y: 2}
 --- !u!82 &82000013552817744
 AudioSource:
   m_ObjectHideFlags: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
   mJumpSound: {fileID: 8300000, guid: f0c3c4c79fb101e47a7050ba8eb15680, type: 3}
   mAerialSpeed: 0.2
   mGravity: -0.5
-  mJumpVel: 8
+  mJumpVel: 12
   mMaxSpeed: 4
   mSkin: 0.005
   mColLayersX:

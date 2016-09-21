@@ -21,9 +21,9 @@ GameObject:
   - 4: {fileID: 4000011810478156}
   - 212: {fileID: 212000010054684710}
   - 61: {fileID: 61000010256837998}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Chandelier
-  m_TagString: Untagged
+  m_TagString: TwoWay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
