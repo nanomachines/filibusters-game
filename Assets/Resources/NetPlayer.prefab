@@ -207,7 +207,7 @@ MonoBehaviour:
   mJumpSound: {fileID: 8300000, guid: f0c3c4c79fb101e47a7050ba8eb15680, type: 3}
   mAerialSpeed: 0.2
   mGravity: -0.5
-  mJumpVel: 12
+  mJumpVel: 8
   mMaxSpeed: 4
   mSkin: 0.005
   mColLayersX:
