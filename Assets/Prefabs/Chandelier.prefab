@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011810478156}
   - 212: {fileID: 212000010054684710}
-  - 65: {fileID: 65000013301934378}
-  m_Layer: 0
+  - 61: {fileID: 61000010256837998}
+  m_Layer: 10
   m_Name: Chandelier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,24 +35,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011381954968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -2.67, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.48, y: -1.62, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!65 &65000013301934378
-BoxCollider:
+--- !u!61 &61000010256837998
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011381954968}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 2.27}
   serializedVersion: 2
-  m_Size: {x: 5.52, y: 0.67, z: 0.2}
-  m_Center: {x: 0, y: 2.27, z: 0}
+  m_Size: {x: 5.52, y: 0.67}
 --- !u!212 &212000010054684710
 SpriteRenderer:
   m_ObjectHideFlags: 1
