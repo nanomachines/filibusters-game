@@ -4,16 +4,13 @@ namespace Filibusters
 {
     public class SpawnManager : MonoBehaviour
     {
-        private Vector3[] SpawnLocations = {
-        new Vector3(0.09f, -0.317f, 0f),
-        new Vector3(-14.45f, -0.31f, 0f)
-    };
-
+        private GameObject[] SpawnPoints;
 
         // Use this for initialization
         void Start()
         {
-            Vector3 spawnPositon = SpawnLocations[Random.Range(0, SpawnLocations.Length)];
+            SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+            Vector3 spawnPositon = GetRandomSpawnPoint();
             GameObject localPlayer = PhotonNetwork.Instantiate("NetPlayer", spawnPositon, Quaternion.identity, 0);
             localPlayer.GetComponent<SimplePhysics>().enabled = true;
             FollowPlayer followScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowPlayer>();
@@ -23,6 +20,11 @@ namespace Filibusters
         // Update is called once per frame
         void Update()
         {
+        }
+
+        private Vector3 GetRandomSpawnPoint()
+        {
+            return SpawnPoints[Random.Range(0, SpawnPoints.Length)].transform.position;
         }
     }
 }
