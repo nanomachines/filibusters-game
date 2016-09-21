@@ -136,7 +136,7 @@ namespace Filibusters
         private float UseAccel(float accel, float curSpeed, float maxSpeed)
         {
             float newSpeed = accel + curSpeed;
-            return (Mathf.Abs(newSpeed) < maxSpeed) ? newSpeed : maxSpeed;
+            return (Mathf.Abs(newSpeed) < Mathf.Abs(maxSpeed)) ? newSpeed : maxSpeed;
         }
 
         private void Flip(float dir)
@@ -155,8 +155,9 @@ namespace Filibusters
 
         private float GetXChange(float delta, float dir)
         {
-            for (float height = 0.1f; height <= 1.9f; height+=0.9f)
+            for (int i = 0; i < 3; i++)
             {
+                float height = 0.1f + i * 0.9f;
                 if (RaycastX(ref delta, dir, height))
                 {
                     break;
@@ -171,8 +172,9 @@ namespace Filibusters
             // Cast rays downward right to left
             if (facingRight)
             {
-                for (float width = 1.9f; width >= 0.1f; width-=0.9f)
+                for (int i = 2; i > -1; i--)
                 {
+                    float width = 0.1f + i * 0.9f;
                     if (RaycastY(ref delta, dir, width))
                     {
                         break;
@@ -182,8 +184,9 @@ namespace Filibusters
             // Cast rays downward left to right
             else
             {
-                for (float width = 0.1f; width <= 1.9f; width+=0.9f)
+                for (int i = 0; i < 3; i++)
                 {
+                    float width = 0.1f + i * 0.9f;
                     if (RaycastY(ref delta, dir, width))
                     {
                         break;
@@ -237,7 +240,7 @@ namespace Filibusters
 
                 // Ignore two-way platforms the player was below
                 // and fall through these platforms when the player presses down
-                if (TwoWayPlatform(hit.transform.gameObject))
+                if (ShouldPassThroughPlatform(hit.transform.gameObject))
                 {
                     return true;
                 }
@@ -258,7 +261,7 @@ namespace Filibusters
             return false;
         }
 
-        private bool TwoWayPlatform(GameObject other)
+        private bool ShouldPassThroughPlatform(GameObject other)
         {
             if (other.layer == mTwoWay)
             {
