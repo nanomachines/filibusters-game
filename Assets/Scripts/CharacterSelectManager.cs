@@ -76,7 +76,8 @@ namespace Filibusters
         public void ToggleLocalPlayerReady()
         {
             bool isReady = !(bool)PhotonNetwork.player.customProperties["IsReady"];
-            PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable{ { "IsReady", isReady} });
+            PhotonNetwork.SetPlayerCustomProperties(
+                new ExitGames.Client.Photon.Hashtable{ { "IsReady", isReady}, {"IsNew", false} });
     
             // If we are in offline mode we need to explicitly call the properties changed callback
             if (PhotonNetwork.offlineMode)
