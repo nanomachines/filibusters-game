@@ -142,12 +142,12 @@ namespace Filibusters
         private void Flip(float dir)
         {
             // Facing left
-            if (dir < -Mathf.Epsilon)
+            if (dir < 0)
             {
                 mFacingRight = false;
             }
             // Facing right
-            else
+            else if (dir > 0)
             {
                 mFacingRight = true;
             }
