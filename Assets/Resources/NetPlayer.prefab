@@ -212,10 +212,10 @@ MonoBehaviour:
   mSkin: 0.005
   mColLayersX:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   mColLayersY:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 3584
 --- !u!114 &114000014250066124
 MonoBehaviour:
   m_ObjectHideFlags: 1
