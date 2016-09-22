@@ -10,7 +10,7 @@ namespace Filibusters
         {
         System.IO.Path.Combine(scenesDirRoot, "StartMenu.unity"),
         System.IO.Path.Combine(scenesDirRoot, "CharacterSelect.unity"),
-        System.IO.Path.Combine(scenesDirRoot, "NetworkMapTest.unity")
+        System.IO.Path.Combine(scenesDirRoot, "MainGame.unity")
         };
 
         [MenuItem("Builds/Build Both")]

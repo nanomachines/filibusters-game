@@ -70,7 +70,7 @@ namespace Filibusters
         [PunRPC]
         public void LaunchGame()
         {
-            PhotonNetwork.LoadLevel("Scenes/NetworkMapTest");
+            PhotonNetwork.LoadLevel("Scenes/MainGame");
         }
     
         public void ToggleLocalPlayerReady()
