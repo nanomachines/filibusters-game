@@ -265,13 +265,14 @@ namespace Filibusters
         {
             if (other.layer == mTwoWay)
             {
-                float scale = Mathf.Abs(other.transform.localScale.y);
                 BoxCollider2D bCol = other.GetComponent<BoxCollider2D>();
-                float size = bCol.size.y / 2f * scale;
-                float offset = bCol.offset.y * scale;
+                float size = bCol.size.y / 2f;
+                float offset = bCol.offset.y;
 
                 // Get the top position of the box collider
-                float top = other.transform.position.y + size + offset;
+                Vector3 localPos = other.transform.localPosition;
+                float topOfsInWorldCoords = other.transform.TransformVector(new Vector3(localPos.x, size + offset)).y;
+                float top = other.transform.position.y + topOfsInWorldCoords;
                 return top >= mPrevY || mPressedDown;
             }
             return false;
