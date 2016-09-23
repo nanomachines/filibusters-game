@@ -23,28 +23,27 @@ public class CoinManager : Photon.PunBehaviour
 	{
 		Debug.Log("coin");
 		// this is an id that maps 1-to-1 with the player who collected the coin
-		int ownerId = other.gameObject.GetComponent<PhotonView>().ownerId;
-		mPhotonView.RPC("OnCoinTriggered", PhotonTargets.MasterClient, ownerId);
+		int viewId = other.gameObject.GetComponent<PhotonView>().viewID;
+		mPhotonView.RPC("OnCoinTriggered", PhotonTargets.MasterClient, viewId);
 	}
 
 	[PunRPC]
-	public void OnCoinTriggered(int ownerId)
+	public void OnCoinTriggered(int viewId)
 	{
 		if (!mHasBeenCollected)
 		{
 			mHasBeenCollected = true;
 			Debug.Log("Master Verified Coin Collected");
-			mPhotonView.RPC("OnCoinCollectionVerified", PhotonTargets.All, ownerId);
+			mPhotonView.RPC("OnCoinCollectionVerified", PhotonTargets.All, viewId);
 		}
 	}
 
 	[PunRPC]
-	public void OnCoinCollectionVerified(int ownerId)
+	public void OnCoinCollectionVerified(int viewId)
 	{
 		Debug.Log("Coin Collection Verified");
-
+        AddCoin(viewId);
 		Despawn();
-		AddCoin(ownerId);
 		if (PhotonNetwork.isMasterClient)
 		{
 			StartCoroutine(RespawnTimer());
@@ -58,9 +57,10 @@ public class CoinManager : Photon.PunBehaviour
 		mHasBeenCollected = true;
 	}
 
-	private void AddCoin(int ownerId)
+	private void AddCoin(int viewId)
 	{
-
+        PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().AddCoin();
+        // TODO play sound
 	}
 
 	private IEnumerator RespawnTimer()
