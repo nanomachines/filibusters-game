@@ -7,7 +7,6 @@ namespace Filibusters
     public class NetworkManager : Photon.PunBehaviour
     {
         public static NetworkManager Instance = null;
-
         // Use this for initialization
         void Start()
         {
@@ -49,6 +48,13 @@ namespace Filibusters
         public void JoinGameSession(string sessionName)
         {
             PhotonNetwork.JoinRoom(sessionName);
+        }
+
+        public void CloseGameSession()
+        {
+            var room = PhotonNetwork.room;
+            room.visible = false;
+            room.open = false;
         }
     }
 }
