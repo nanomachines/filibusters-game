@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CoinInventory : MonoBehaviour
+namespace Filibusters
 {
-    [SerializeField]
-    private int mCoinCount;
-
-	// Use this for initialization
-	void Start()
-	{
-        mCoinCount = 0;
-	}
-
-    public void AddCoin()
+    public class CoinInventory : MonoBehaviour
     {
-        ++mCoinCount;
+        private int mCoinCount;
+
+        // Use this for initialization
+        void Start()
+        {
+            mCoinCount = 0;
+        }
+
+        public void AddCoin()
+        {
+            ++mCoinCount;
+        }
     }
 }
