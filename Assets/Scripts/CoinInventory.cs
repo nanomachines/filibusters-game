@@ -5,7 +5,9 @@ namespace Filibusters
 {
     public class CoinInventory : MonoBehaviour
     {
+    	[SerializeField]
         private int mCoinCount;
+        [SerializeField]
         private int mDepositCount;
 
         void Start()
@@ -19,10 +21,18 @@ namespace Filibusters
             ++mCoinCount;
         }
 
-        public void DepositCoin()
+        public bool DepositCoin()
         {
-        	--mCoinCount;
-			++mDepositCount;
+        	if (mCoinCount > 0)
+        	{
+				--mCoinCount;
+				++mDepositCount;
+				return true;
+        	}
+        	else
+        	{
+        		return false;
+        	}
         }
     }
 }

@@ -64,8 +64,10 @@ namespace Filibusters
 				if (mTimeSinceDeposit >= mDepositTime)
 				{
 					// deposit player coin
-					int viewId = mPlayersInZone.GetEnumerator().Current;
-					//mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
+					var itr = mPlayersInZone.GetEnumerator();
+					itr.MoveNext();
+					int viewId = itr.Current;
+					mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
 					// reset the time
 					mTimeSinceDeposit = 0f;
 				}
@@ -79,12 +81,21 @@ namespace Filibusters
 		[PunRPC]
 		public void DepositCoin(int viewId)
 		{
-			PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().DepositCoin();
-			if (mPlayerDepositCounts.ContainsKey(viewId))
+			if (!mPlayerDepositCounts.ContainsKey(viewId))
 			{
 				mPlayerDepositCounts.Add(viewId, 0);
 			}
-			++mPlayerDepositCounts[viewId];
+
+			if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().DepositCoin())
+			{
+				int newDepositBalance = ++mPlayerDepositCounts[viewId];
+				if (newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
+				{
+					// FIRE WIN EVENT HERE
+					Debug.Log("GAME OVER: " + PhotonView.Find(viewId).owner);
+				}
+			}
+
 		}
 
 		public void OnZoneExit(int viewId)
