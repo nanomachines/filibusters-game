@@ -36,4 +36,5 @@ MonoBehaviour:
   - OnCoinCollectionVerified
   - OnCoinTriggered
   - Respawn
+  - DepositCoin
   DisableAutoOpenWizard: 1
