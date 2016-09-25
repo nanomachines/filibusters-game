@@ -33,4 +33,7 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - LaunchGame
+  - OnCoinCollectionVerified
+  - OnCoinTriggered
+  - Respawn
   DisableAutoOpenWizard: 1
