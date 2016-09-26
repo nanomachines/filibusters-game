@@ -155,9 +155,9 @@ namespace Filibusters
 
         private float GetXChange(float delta, float dir)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
-                float height = 0.1f + i * 0.9f;
+                float height = 0.1f + i * 0.36f;
                 if (RaycastX(ref delta, dir, height))
                 {
                     break;
@@ -172,9 +172,9 @@ namespace Filibusters
             // Cast rays downward right to left
             if (facingRight)
             {
-                for (int i = 2; i > -1; i--)
+                for (int i = 4; i > -1; i--)
                 {
-                    float width = 0.1f + i * 0.9f;
+                    float width = 0.1f + i * 0.36f;
                     if (RaycastY(ref delta, dir, width))
                     {
                         break;
@@ -184,9 +184,9 @@ namespace Filibusters
             // Cast rays downward left to right
             else
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 5; i++)
                 {
-                    float width = 0.1f + i * 0.9f;
+                    float width = 0.1f + i * 0.36f;
                     if (RaycastY(ref delta, dir, width))
                     {
                         break;
