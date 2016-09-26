@@ -80,16 +80,16 @@ namespace Filibusters
         private IEnumerator RespawnTimer()
         {
             yield return new WaitForSeconds(SecondsToRespawn);
-            mPhotonView.RPC("Respawn", PhotonTargets.All);
+            Vector3 respawnPos = SpawnManager.Instance.GetRandomSpawnPoint();
+            mPhotonView.RPC("Respawn", PhotonTargets.All, respawnPos);
         }
 
         [PunRPC]
-        public void Respawn()
+        public void Respawn(Vector3 respawnPos)
         {
-            transform.position = SpawnManager.Instance.GetRandomSpawnPoint();
             mIsDead = false;
             mPhysics.enabled = mIsLocalPlayer;
-			mPhysics.ResetPhysicsState();
+			mPhysics.ResetPhysicsState(respawnPos);
             mRenderer.enabled = true;
             mCollider.enabled = true;
         }
