@@ -37,4 +37,6 @@ MonoBehaviour:
   - OnCoinTriggered
   - Respawn
   - DepositCoin
+  - OnDeath
+  - OnPlayerDeathVerified
   DisableAutoOpenWizard: 1
