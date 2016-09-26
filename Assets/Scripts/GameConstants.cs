@@ -9,5 +9,7 @@ namespace Filibusters
         public static int VERSION_MINOR = 1;
         public static string VERSION_STRING = VERSION_MAJOR.ToString() + "." +
                 VERSION_MINOR.ToString();
+
+        public static int AMOUNT_OF_COINS_TO_WIN = 3;
     }
 }

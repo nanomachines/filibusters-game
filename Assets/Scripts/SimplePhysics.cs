@@ -277,5 +277,15 @@ namespace Filibusters
             }
             return false;
         }
+
+        public void ResetPhysicsState()
+        {
+			mGrounded = false;
+        	mFacingRight = true;
+	        mVelX = 0f;
+	        mVelY = 0f;
+        	mPressedDown = false;
+        	mPrevY = 0f;
+        }
     }
 }
