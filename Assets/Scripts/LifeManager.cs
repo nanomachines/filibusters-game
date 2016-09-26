@@ -14,6 +14,9 @@ namespace Filibusters
 		private SimplePhysics mPhysics;
 		private bool mIsLocalPlayer;
 
+		// TODO: replace with event system
+		private DepositManager mDepositManager;
+
 		// Use this for initialization
 		void Start()
 		{
@@ -23,6 +26,8 @@ namespace Filibusters
 			mCollider = GetComponent<BoxCollider2D>();
 			mPhysics = GetComponent<SimplePhysics>();
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
+			// TODO: Replace with event system
+			mDepositManager = GameObject.Find("DepositBox").GetComponent<DepositManager>();
 		}
 		
 		// Update is called once per frame
@@ -55,6 +60,7 @@ namespace Filibusters
 		public void OnPlayerDeathVerified()
 		{
 			Debug.Log("Death Verified");
+			mDepositManager.OnDeath(GetComponent<PhotonView>().viewID);
 			Despawn();
 			if (PhotonNetwork.isMasterClient)
 			{

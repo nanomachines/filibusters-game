@@ -98,6 +98,14 @@ namespace Filibusters
 
 		}
 
+		public void OnDeath(int viewId)
+		{
+			if (mPlayersInZone.Contains(viewId))
+			{
+				OnZoneExit(viewId);
+			}
+		}
+
 		public void OnZoneExit(int viewId)
 		{
 			// remove player from deposit zone
