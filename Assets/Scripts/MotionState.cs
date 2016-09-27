@@ -32,8 +32,8 @@ namespace Filibusters
         // Use this for initialization
         void Awake()
         {
-            mAccuratePosition = Vector3.zero;
-            mPreviousPosition = Vector3.zero;
+            mAccuratePosition = transform.position;
+            mPreviousPosition = transform.position;
             mPositionLerpTime = 0;
             mNumUpdates = 1;
             mTotalTime = .1f;
