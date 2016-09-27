@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Photon;
 using UnityEngine.SceneManagement;
 
 namespace Filibusters
@@ -7,6 +6,7 @@ namespace Filibusters
     public class NetworkManager : Photon.PunBehaviour
     {
         public static NetworkManager Instance = null;
+
         // Use this for initialization
         void Start()
         {

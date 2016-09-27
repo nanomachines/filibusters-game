@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TwoWay
   - Deposit
+  - InactiveIndicator
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Column
     uniqueID: 1981252951
+    locked: 0
+  - name: Foreground
+    uniqueID: 1124339781
     locked: 0

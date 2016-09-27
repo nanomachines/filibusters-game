@@ -21,7 +21,7 @@ namespace Filibusters
     
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel("Scenes/CharacterSelect");
+            PhotonNetwork.LoadLevel("Scenes/ReadyMenu");
         }
     }
 }

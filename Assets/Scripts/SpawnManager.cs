@@ -27,7 +27,12 @@ namespace Filibusters
         	{
         		DestroyObject(this);
         	}
-            
+
+            Debug.Log("Player list");
+            foreach (var player in PhotonNetwork.playerList)
+            {
+                Debug.Log(player.ID + " :: " + player.isLocal);
+            }
         }
 
         // Update is called once per frame
