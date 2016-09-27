@@ -7,6 +7,7 @@ TagManager:
   - TwoWay
   - CoinText
   - VoteText
+  - UI
   layers:
   - Default
   - TransparentFX

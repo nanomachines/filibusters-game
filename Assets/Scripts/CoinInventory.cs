@@ -11,22 +11,20 @@ namespace Filibusters
         [SerializeField]
         private int mDepositCount;
 
-        private Text mCoinText;
-        private Text mVotesText;
+        public Text mCoinText;
+        public Text mVotesText;
 
         void Start()
         {
             mCoinCount = 0;
 			mDepositCount = 0;
 
-            mCoinText = GameObject.FindWithTag("CoinText").GetComponent<Text>();
             if (!mCoinText)
             {
                 Debug.LogError("No text display for coins found! Tag a text object with a CoinText tag.");
             }
-            mCoinText.text = "Coin Count: 0";
+            mCoinText.text = "Coins: 0";
 
-            mVotesText = GameObject.FindWithTag("VoteText").GetComponent<Text>();
             if (!mVotesText)
             {
                 Debug.LogError("No text display for votes found! Tag a text object with a VoteText tag.");
@@ -37,7 +35,7 @@ namespace Filibusters
         public void AddCoin()
         {
             ++mCoinCount;
-            mCoinText.text = "Coin Count: " + mCoinCount;
+            mCoinText.text = "Coins: " + mCoinCount;
         }
 
         public bool DepositCoin()
@@ -47,7 +45,7 @@ namespace Filibusters
 				--mCoinCount;
 				++mDepositCount;
 
-                mCoinText.text = "Coin Count: " + mCoinCount;
+                mCoinText.text = "Coins: " + mCoinCount;
                 mVotesText.text = "Votes: " + mDepositCount;
                 return true;
         	}
