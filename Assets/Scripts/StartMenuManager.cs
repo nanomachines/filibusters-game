@@ -5,17 +5,19 @@ namespace Filibusters
 {
     public class StartMenuManager : Photon.PunBehaviour 
     {
+        public static readonly string SESSION_NAME = "Default Session Scott";
+
         void OnGUI()
         {
             GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
             GUILayout.Label("Filibusters");
             if (GUILayout.Button("Host Game"))
             {
-                NetworkManager.Instance.CreateAndJoinGameSession("Default Session");
+                NetworkManager.Instance.CreateAndJoinGameSession(SESSION_NAME);
             }
             if (GUILayout.Button("Join Game"))
             {
-                NetworkManager.Instance.JoinGameSession("Default Session");
+                NetworkManager.Instance.JoinGameSession(SESSION_NAME);
             }
         }
     

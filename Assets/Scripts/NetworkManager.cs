@@ -27,6 +27,7 @@ namespace Filibusters
             }
             else
             {
+                Object.DontDestroyOnLoad(Instance);
                 Destroy(gameObject);
             }
         }

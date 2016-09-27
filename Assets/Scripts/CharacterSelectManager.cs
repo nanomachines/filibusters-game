@@ -97,9 +97,22 @@ namespace Filibusters
             PhotonNetwork.LoadLevel("Scenes/MainGame");
         }
     
+        // TODO: delete this method if we never need toggling
         public void ToggleLocalPlayerReady()
         {
             bool isReady = !(bool)PhotonNetwork.player.customProperties[IS_READY_KEY];
+            PhotonNetwork.SetPlayerCustomProperties(
+                new ExitGames.Client.Photon.Hashtable{ { IS_READY_KEY, isReady}, {IS_NEW_KEY, false} });
+    
+            // If we are in offline mode we need to explicitly call the properties changed callback
+            if (PhotonNetwork.offlineMode)
+            {
+                OfflineReadyUpdate(isReady, false);
+            }
+        }
+
+        private void MarkLocalPlayerReadyState(bool isReady)
+        {
             PhotonNetwork.SetPlayerCustomProperties(
                 new ExitGames.Client.Photon.Hashtable{ { IS_READY_KEY, isReady}, {IS_NEW_KEY, false} });
     
@@ -178,14 +191,16 @@ namespace Filibusters
                     GetChildWithTag(mReadyRooms[mLocalPlayerNum], "Respawn").transform.position,
                     Quaternion.identity, 0);
                 localPlayer.GetComponent<SimplePhysics>().enabled = true;
-                localPlayer.GetComponent<LifeManager>().mDepositManager = 
-                    GetChildWithTag(mReadyRooms[mLocalPlayerNum], "Deposit").GetComponent<DepositManager>();
+                var mLocalDepositManager = GetChildWithTag(mReadyRooms[mLocalPlayerNum], "Deposit").GetComponent<DepositManager>();
+                mLocalDepositManager.LocalDepositEvent += () => { MarkLocalPlayerReadyState(true);  };
+                localPlayer.GetComponent<LifeManager>().mDepositManager = mLocalDepositManager;
             }
         }
     
         private void OfflineReadyUpdate(bool isReady, bool isNew)
         {
             object[] playerAndUpdatedProps = new object[2];
+            playerAndUpdatedProps[0] = PhotonNetwork.player;
             var properties = new ExitGames.Client.Photon.Hashtable();
             properties.Add(IS_READY_KEY, isReady);
             properties.Add(IS_NEW_KEY, isNew);
