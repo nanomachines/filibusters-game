@@ -13,6 +13,7 @@ namespace Filibusters
         public static readonly string PLAYER_ACTIVE_KEY = "PlayerNumberActive";
         public static readonly string IS_READY_KEY = "IsReady";
         public static readonly string IS_NEW_KEY = "IsNew";
+        public static readonly string PLAYER_CHARACTER_RESOURCE_NAME = "SelectMenuNetPlayer";
 
         [HideInInspector]
         public static CharacterSelectManager instance = null;
@@ -21,6 +22,7 @@ namespace Filibusters
 
         private int mPlayersReady;
         private BitArray mPlayerNumberAllocator;
+        private int mLocalPlayerNum;
 
         // Use this for initialization
         void Start()
@@ -40,6 +42,7 @@ namespace Filibusters
                     ResetPlayerNumberAllocatorFromRoomSettings();
                     ResetRooms();
                 }
+
                 // If we are in offline mode we need to explicitly call the properties changed callback
                 if (PhotonNetwork.offlineMode)
                 {
@@ -157,6 +160,7 @@ namespace Filibusters
 
         public override void OnPhotonPlayerPropertiesChanged(object[] playerAndUpdatedProps)
         {
+            var player = playerAndUpdatedProps[0] as PhotonPlayer;
             var properties = playerAndUpdatedProps[1] as PhotonHashtable;
             if (properties.ContainsKey(IS_READY_KEY) && (bool)properties[IS_READY_KEY])
             {
@@ -165,6 +169,17 @@ namespace Filibusters
             else if (properties.ContainsKey(IS_NEW_KEY) && !(bool)properties[IS_NEW_KEY])
             {
                 --mPlayersReady;
+            }
+
+            if (player.isLocal && properties.ContainsKey(PLAYER_NUMBER_KEY))
+            {
+                mLocalPlayerNum = (int)PhotonNetwork.player.customProperties[PLAYER_NUMBER_KEY];
+                var localPlayer = PhotonNetwork.Instantiate(PLAYER_CHARACTER_RESOURCE_NAME,
+                    GetChildWithTag(mReadyRooms[mLocalPlayerNum], "Respawn").transform.position,
+                    Quaternion.identity, 0);
+                localPlayer.GetComponent<SimplePhysics>().enabled = true;
+                localPlayer.GetComponent<LifeManager>().mDepositManager = 
+                    GetChildWithTag(mReadyRooms[mLocalPlayerNum], "Deposit").GetComponent<DepositManager>();
             }
         }
     
