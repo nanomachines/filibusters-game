@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mJumpSound: {fileID: 8300000, guid: f0c3c4c79fb101e47a7050ba8eb15680, type: 3}
-  mAerialSpeed: 0.2
+  mAerialSpeed: 0.6
   mGravity: -1
   mJumpVel: 21
   mMaxSpeed: 12

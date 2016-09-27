@@ -88,15 +88,14 @@ namespace Filibusters
             // Keep track of the previous position to account for two-way platforms
             mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
 
-            float xInput = Input.GetAxis("Horizontal");
-            // Note: Pressing down results in positive values
-            // so I flip the input
-            float yInput = Input.GetAxis("Vertical");
-            mPressedDown = Mathf.Sign(yInput) == -1f;
-
+            float xInput = 0f;
+            float yInput = 0f;
+            bool jumpPressed = false;
+            HandleInput(ref xInput, ref yInput, ref jumpPressed);
+            
             if (mGrounded)
             {
-                if (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))
+                if (jumpPressed)
                 {
                     mVelY = mJumpVel;
                     mAudioSource.clip = mJumpSound;
@@ -131,6 +130,26 @@ namespace Filibusters
 
             transform.Translate(deltaX, deltaY, 0f);
             mVelY += mGravity;
+        }
+
+        private void HandleInput(ref float xInput, ref float yInput, ref bool jumpPressed)
+        {
+            // left/right input
+            if (Mathf.Abs(xInput = Input.GetAxis("LeftStickXAxis")) <= Mathf.Epsilon)
+            {
+                xInput = Input.GetAxis("LeftRightKeyboard");
+            }
+
+            // down input
+            // Note: Pressing down results in positive values so I flip the input
+            if (Mathf.Abs(yInput = -Input.GetAxis("LeftStickYAxis")) <= Mathf.Epsilon)
+            {
+                yInput = Input.GetAxis("DownUpKeyboard");
+            }
+            mPressedDown = Mathf.Sign(yInput) == -1f;
+
+            // jump input
+            jumpPressed = Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space);
         }
 
         private float UseAccel(float accel, float curSpeed, float maxSpeed)
