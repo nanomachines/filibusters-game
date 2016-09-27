@@ -1,14 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 namespace Filibusters
 {
     public class CoinInventory : MonoBehaviour
     {
-    	[SerializeField]
         private int mCoinCount;
-        [SerializeField]
+        public int CoinCount
+        {
+        	get
+        	{
+        		return mCoinCount;
+        	}
+        }
+
         private int mDepositCount;
+        public int DepositCount
+        {
+        	get
+        	{
+        		return mDepositCount;
+        	}
+        }
 
         void Start()
         {
@@ -27,7 +41,7 @@ namespace Filibusters
         	{
 				--mCoinCount;
 				++mDepositCount;
-				return true;
+                return true;
         	}
         	else
         	{
