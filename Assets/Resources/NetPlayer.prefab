@@ -44,8 +44,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013579360384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: -0.317, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -237,10 +237,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mJumpSound: {fileID: 8300000, guid: f0c3c4c79fb101e47a7050ba8eb15680, type: 3}
-  mAerialSpeed: 0.2
-  mGravity: -0.5
-  mJumpVel: 8
-  mMaxSpeed: 4
+  mAerialSpeed: 0.6
+  mGravity: -1
+  mJumpVel: 21
+  mMaxSpeed: 12
   mSkin: 0.005
   mColLayersX:
     serializedVersion: 2
@@ -259,8 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c1eea3d1c57194ebf08d9a1171e6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCoinCount: 0
-  mDepositCount: 0
 --- !u!114 &114000014250066124
 MonoBehaviour:
   m_ObjectHideFlags: 1

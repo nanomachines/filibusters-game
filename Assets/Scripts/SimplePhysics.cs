@@ -88,15 +88,14 @@ namespace Filibusters
             // Keep track of the previous position to account for two-way platforms
             mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
 
-            float xInput = Input.GetAxis("Horizontal");
-            // Note: Pressing down results in positive values
-            // so I flip the input
-            float yInput = Input.GetAxis("Vertical");
-            mPressedDown = Mathf.Sign(yInput) == -1f;
-
+            float xInput = 0f;
+            float yInput = 0f;
+            bool jumpPressed = false;
+            HandleInput(ref xInput, ref yInput, ref jumpPressed);
+            
             if (mGrounded)
             {
-                if (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))
+                if (jumpPressed)
                 {
                     mVelY = mJumpVel;
                     mAudioSource.clip = mJumpSound;
@@ -133,6 +132,26 @@ namespace Filibusters
             mVelY += mGravity;
         }
 
+        private void HandleInput(ref float xInput, ref float yInput, ref bool jumpPressed)
+        {
+            // left/right input
+            if (Mathf.Abs(xInput = Input.GetAxis("LeftStickXAxis")) <= Mathf.Epsilon)
+            {
+                xInput = Input.GetAxis("LeftRightKeyboard");
+            }
+
+            // down input
+            // Note: Pressing down results in positive values so I flip the input
+            if (Mathf.Abs(yInput = -Input.GetAxis("LeftStickYAxis")) <= Mathf.Epsilon)
+            {
+                yInput = Input.GetAxis("DownUpKeyboard");
+            }
+            mPressedDown = Mathf.Sign(yInput) == -1f;
+
+            // jump input
+            jumpPressed = Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space);
+        }
+
         private float UseAccel(float accel, float curSpeed, float maxSpeed)
         {
             float newSpeed = accel + curSpeed;
@@ -155,9 +174,9 @@ namespace Filibusters
 
         private float GetXChange(float delta, float dir)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
-                float height = 0.1f + i * 0.9f;
+                float height = 0.2f + i * 0.4f;
                 if (RaycastX(ref delta, dir, height))
                 {
                     break;
@@ -168,29 +187,14 @@ namespace Filibusters
 
         private float GetYChange(float delta, float dir, bool facingRight)
         {
+            mGrounded = false;
             // TODO: Set a begin end and increment to avoid having identical for loops
-            // Cast rays downward right to left
-            if (facingRight)
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 2; i > -1; i--)
+                float width = 0.2f + i * 0.4f;
+                if (RaycastY(ref delta, dir, width))
                 {
-                    float width = 0.1f + i * 0.9f;
-                    if (RaycastY(ref delta, dir, width))
-                    {
-                        break;
-                    }
-                }
-            }
-            // Cast rays downward left to right
-            else
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    float width = 0.1f + i * 0.9f;
-                    if (RaycastY(ref delta, dir, width))
-                    {
-                        break;
-                    }
+                    mGrounded = true;
                 }
             }
             return delta;
@@ -225,8 +229,6 @@ namespace Filibusters
 
         private bool RaycastY(ref float delta, float dir, float width)
         {
-            mGrounded = false;
-
             float x = (transform.position.x + mOffset.x - mSize.x / 2f) + mSize.x / 2f * width;
             float y = transform.position.y + mOffset.y + mSize.y / 2f * dir;
 
@@ -237,12 +239,11 @@ namespace Filibusters
             if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(delta), mColLayersY))
             {
                 Debug.DrawRay(ray.origin, ray.direction, Color.red);
-
                 // Ignore two-way platforms the player was below
                 // and fall through these platforms when the player presses down
                 if (ShouldPassThroughPlatform(hit.transform.gameObject))
                 {
-                    return true;
+                    return false;
                 }
 
                 // OTHERWISE Ground the player
@@ -255,7 +256,6 @@ namespace Filibusters
                 {
                     delta = 0;
                 }
-                mGrounded = true;
                 return true;
             }
             return false;
@@ -272,15 +272,19 @@ namespace Filibusters
                 // Get the top position of the box collider
                 Vector3 localPos = other.transform.localPosition;
                 float topOfsInWorldCoords = other.transform.TransformVector(new Vector3(localPos.x, size + offset)).y;
-                float top = other.transform.position.y + topOfsInWorldCoords;
-                return top >= mPrevY || mPressedDown;
+                float colTop = other.transform.position.y + topOfsInWorldCoords;
+                // If the collider is above the player or the down key was pressed
+                // pass through the platform
+                return colTop >= mPrevY || mPressedDown;
             }
             return false;
         }
 
-        public void ResetPhysicsState()
+        public void ResetPhysicsState(Vector3 pos)
         {
-			mGrounded = false;
+            transform.position = pos;
+            mMotionState.ResetPosition();
+            mGrounded = false;
         	mFacingRight = true;
 	        mVelX = 0f;
 	        mVelY = 0f;

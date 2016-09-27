@@ -75,5 +75,11 @@ namespace Filibusters
                 transform.position = Vector3.Lerp(mPreviousPosition, mAccuratePosition, mPositionLerpTime / mPositionUpdateRate);
             }
         }
+
+        public void ResetPosition()
+        {
+            mAccuratePosition = transform.position;
+            mPreviousPosition = transform.position;
+        }
     }
 }

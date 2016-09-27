@@ -78,7 +78,7 @@ namespace Filibusters
         public void Respawn()
         {
             // TODO: get random position for coin
-            transform.position = Vector3.zero;
+            //transform.position = Vector3.zero;
             mHasBeenCollected = false;
             mRenderer.enabled = true;
             mCollider.enabled = true;
