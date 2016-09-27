@@ -157,7 +157,7 @@ namespace Filibusters
         {
             for (int i = 0; i < 5; i++)
             {
-                float height = 0.1f + i * 0.36f;
+                float height = 0.2f + i * 0.4f;
                 if (RaycastX(ref delta, dir, height))
                 {
                     break;
@@ -170,28 +170,12 @@ namespace Filibusters
         {
             mGrounded = false;
             // TODO: Set a begin end and increment to avoid having identical for loops
-            // Cast rays downward right to left
-            if (facingRight)
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 4; i > -1; i--)
+                float width = 0.2f + i * 0.4f;
+                if (RaycastY(ref delta, dir, width))
                 {
-                    float width = 0.1f + i * 0.36f;
-                    if (RaycastY(ref delta, dir, width))
-                    {
-                        mGrounded = true;
-                    }
-                }
-            }
-            // Cast rays downward left to right
-            else
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    float width = 0.1f + i * 0.36f;
-                    if (RaycastY(ref delta, dir, width))
-                    {
-                        mGrounded = true;
-                    }
+                    mGrounded = true;
                 }
             }
             return delta;
@@ -236,7 +220,6 @@ namespace Filibusters
             if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Abs(delta), mColLayersY))
             {
                 Debug.DrawRay(ray.origin, ray.direction, Color.red);
-
                 // Ignore two-way platforms the player was below
                 // and fall through these platforms when the player presses down
                 if (ShouldPassThroughPlatform(hit.transform.gameObject))
@@ -270,8 +253,10 @@ namespace Filibusters
                 // Get the top position of the box collider
                 Vector3 localPos = other.transform.localPosition;
                 float topOfsInWorldCoords = other.transform.TransformVector(new Vector3(localPos.x, size + offset)).y;
-                float top = other.transform.position.y + topOfsInWorldCoords;
-                return top >= mPrevY || mPressedDown;
+                float colTop = other.transform.position.y + topOfsInWorldCoords;
+                // If the collider is above the player or the down key was pressed
+                // pass through the platform
+                return colTop >= mPrevY || mPressedDown;
             }
             return false;
         }
