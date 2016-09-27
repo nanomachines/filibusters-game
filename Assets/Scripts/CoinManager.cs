@@ -67,8 +67,11 @@ namespace Filibusters
 
         private IEnumerator RespawnTimer()
         {
-            yield return new WaitForSeconds(SecondsToRespawn);
-            mPhotonView.RPC("Respawn", PhotonTargets.All);
+            if (SecondsToRespawn >= 0)
+            {
+                yield return new WaitForSeconds(SecondsToRespawn);
+                mPhotonView.RPC("Respawn", PhotonTargets.All);
+            }
         }
 
         [PunRPC]

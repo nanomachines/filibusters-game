@@ -6,6 +6,10 @@ namespace Filibusters
 {
 	public class DepositManager : Photon.PunBehaviour 
 	{
+        public delegate void DepositListener();
+        public static event DepositListener GlobalDepositEvent;
+        public event DepositListener LocalDepositEvent;
+
 		[SerializeField]
 		private bool mDepositing;
 		private HashSet<int> mPlayersInZone;
@@ -94,8 +98,15 @@ namespace Filibusters
 					// FIRE WIN EVENT HERE
 					Debug.Log("GAME OVER: " + PhotonView.Find(viewId).owner);
 				}
+                if (GlobalDepositEvent != null)
+                {
+                    GlobalDepositEvent();
+                }
+                if (LocalDepositEvent != null)
+                {
+                    LocalDepositEvent();
+                }
 			}
-
 		}
 
 		public void OnDeath(int viewId)

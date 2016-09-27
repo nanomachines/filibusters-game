@@ -5,23 +5,25 @@ namespace Filibusters
 {
     public class StartMenuManager : Photon.PunBehaviour 
     {
+        public static readonly string SESSION_NAME = "Default Session Scott";
+
         void OnGUI()
         {
             GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
             GUILayout.Label("Filibusters");
             if (GUILayout.Button("Host Game"))
             {
-                NetworkManager.Instance.CreateAndJoinGameSession("Default Session");
+                NetworkManager.CreateAndJoinGameSession(SESSION_NAME);
             }
             if (GUILayout.Button("Join Game"))
             {
-                NetworkManager.Instance.JoinGameSession("Default Session");
+                NetworkManager.JoinGameSession(SESSION_NAME);
             }
         }
     
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel("Scenes/CharacterSelect");
+            PhotonNetwork.LoadLevel("Scenes/ReadyMenu");
         }
     }
 }

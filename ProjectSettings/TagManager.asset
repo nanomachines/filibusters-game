@@ -7,6 +7,8 @@ TagManager:
   - TwoWay
   - CoinText
   - VoteText
+  - Deposit
+  - InactiveIndicator
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - TwoWayPlatform
   - Background
   - Trigger
-  - 
+  - Deposit
   - 
   - 
   - 
@@ -52,4 +54,7 @@ TagManager:
     locked: 0
   - name: Column
     uniqueID: 1981252951
+    locked: 0
+  - name: Foreground
+    uniqueID: 1124339781
     locked: 0

@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
-using Photon;
 using UnityEngine.SceneManagement;
 
 namespace Filibusters
 {
-    public class NetworkManager : Photon.PunBehaviour
+    public class NetworkManager : MonoBehaviour
     {
-        public static NetworkManager Instance = null;
+
+        static bool NetworkInitialized = false;
+
         // Use this for initialization
         void Start()
         {
-            if (Instance == null)
+            if (!NetworkInitialized)
             {
-                Instance = this;
-                Object.DontDestroyOnLoad(this);
+                //Object.DontDestroyOnLoad(this);
                 PhotonNetwork.automaticallySyncScene = true;
                 if (!SceneManager.GetSceneByName("StartMenu").isLoaded)
                 {
@@ -24,14 +24,11 @@ namespace Filibusters
                 {
                     PhotonNetwork.ConnectUsingSettings(GameConstants.VERSION_STRING);
                 }
-            }
-            else
-            {
-                Destroy(gameObject);
+                NetworkInitialized = true;
             }
         }
 	
-        public void CreateAndJoinGameSession(string sessionName)
+        public static void CreateAndJoinGameSession(string sessionName)
         {
             if (!PhotonNetwork.insideLobby)
             {
@@ -45,16 +42,9 @@ namespace Filibusters
             PhotonNetwork.CreateRoom(sessionName, options, TypedLobby.Default);
         }
 
-        public void JoinGameSession(string sessionName)
+        public static void JoinGameSession(string sessionName)
         {
             PhotonNetwork.JoinRoom(sessionName);
-        }
-
-        public void CloseGameSession()
-        {
-            var room = PhotonNetwork.room;
-            room.visible = false;
-            room.open = false;
         }
     }
 }

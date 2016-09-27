@@ -8,9 +8,9 @@ namespace Filibusters
 
         public static string[] levels = new string[]
         {
-        System.IO.Path.Combine(scenesDirRoot, "StartMenu.unity"),
-        System.IO.Path.Combine(scenesDirRoot, "CharacterSelect.unity"),
-        System.IO.Path.Combine(scenesDirRoot, "Main.unity")
+            System.IO.Path.Combine(scenesDirRoot, "StartMenu.unity"),
+            System.IO.Path.Combine(scenesDirRoot, "ReadyMenu.unity"),
+            System.IO.Path.Combine(scenesDirRoot, "Main.unity")
         };
 
         [MenuItem("Builds/Build Both")]
