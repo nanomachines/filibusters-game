@@ -168,6 +168,7 @@ namespace Filibusters
 
         private float GetYChange(float delta, float dir, bool facingRight)
         {
+            mGrounded = false;
             // TODO: Set a begin end and increment to avoid having identical for loops
             // Cast rays downward right to left
             if (facingRight)
@@ -177,7 +178,7 @@ namespace Filibusters
                     float width = 0.1f + i * 0.36f;
                     if (RaycastY(ref delta, dir, width))
                     {
-                        break;
+                        mGrounded = true;
                     }
                 }
             }
@@ -189,7 +190,7 @@ namespace Filibusters
                     float width = 0.1f + i * 0.36f;
                     if (RaycastY(ref delta, dir, width))
                     {
-                        break;
+                        mGrounded = true;
                     }
                 }
             }
@@ -225,8 +226,6 @@ namespace Filibusters
 
         private bool RaycastY(ref float delta, float dir, float width)
         {
-            mGrounded = false;
-
             float x = (transform.position.x + mOffset.x - mSize.x / 2f) + mSize.x / 2f * width;
             float y = transform.position.y + mOffset.y + mSize.y / 2f * dir;
 
@@ -242,7 +241,7 @@ namespace Filibusters
                 // and fall through these platforms when the player presses down
                 if (ShouldPassThroughPlatform(hit.transform.gameObject))
                 {
-                    return true;
+                    return false;
                 }
 
                 // OTHERWISE Ground the player
@@ -255,7 +254,6 @@ namespace Filibusters
                 {
                     delta = 0;
                 }
-                mGrounded = true;
                 return true;
             }
             return false;
