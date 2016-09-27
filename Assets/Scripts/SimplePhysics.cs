@@ -280,9 +280,11 @@ namespace Filibusters
             return false;
         }
 
-        public void ResetPhysicsState()
+        public void ResetPhysicsState(Vector3 pos)
         {
-			mGrounded = false;
+            transform.position = pos;
+            mMotionState.ResetPosition();
+            mGrounded = false;
         	mFacingRight = true;
 	        mVelX = 0f;
 	        mVelY = 0f;
