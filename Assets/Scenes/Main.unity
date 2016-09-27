@@ -4160,35 +4160,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1214927641}
   m_RootOrder: 2
---- !u!1 &1348328840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1348328841}
-  m_Layer: 0
-  m_Name: UI
-  m_TagString: UI
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1348328841
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1348328840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1804995333}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!4 &1362701503
 Transform:
   m_ObjectHideFlags: 0
@@ -5774,7 +5745,7 @@ GameObject:
   - 114: {fileID: 1804995332}
   - 114: {fileID: 1804995331}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: UI Event System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5823,8 +5794,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1348328841}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1815670634
 GameObject:
   m_ObjectHideFlags: 0
@@ -6815,7 +6786,7 @@ Transform:
   - {fileID: 348063295}
   - {fileID: 2029227895}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &2102693257
 GameObject:
   m_ObjectHideFlags: 0
