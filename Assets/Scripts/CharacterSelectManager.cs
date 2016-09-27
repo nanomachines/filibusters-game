@@ -88,7 +88,6 @@ namespace Filibusters
         public void OnStartGame()
         {
             GetComponent<PhotonView>().RPC("LaunchGame", PhotonTargets.All);
-//            NetworkManager.Instance.CloseGameSession();
         }
 
         [PunRPC]

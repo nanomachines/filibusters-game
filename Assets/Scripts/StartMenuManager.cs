@@ -13,11 +13,11 @@ namespace Filibusters
             GUILayout.Label("Filibusters");
             if (GUILayout.Button("Host Game"))
             {
-                NetworkManager.Instance.CreateAndJoinGameSession(SESSION_NAME);
+                NetworkManager.CreateAndJoinGameSession(SESSION_NAME);
             }
             if (GUILayout.Button("Join Game"))
             {
-                NetworkManager.Instance.JoinGameSession(SESSION_NAME);
+                NetworkManager.JoinGameSession(SESSION_NAME);
             }
         }
     
