@@ -15,7 +15,11 @@ namespace Filibusters
 		private bool mIsLocalPlayer;
 
 		// TODO: replace with event system
-		private DepositManager mDepositManager;
+        // TODO: delete once we get the event system up and running
+        // Right now mDepositManager is a settable property because
+        // the life manager directly alerts the deposit box if a player
+        // dies. This will be replaced when event systems are implemented
+		public DepositManager mDepositManager { private get; set; }
 
 		// Use this for initialization
 		void Start()
@@ -26,8 +30,6 @@ namespace Filibusters
 			mCollider = GetComponent<BoxCollider2D>();
 			mPhysics = GetComponent<SimplePhysics>();
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
-			// TODO: Replace with event system
-			mDepositManager = GameObject.Find("DepositBox").GetComponent<DepositManager>();
 		}
 		
 		// Update is called once per frame

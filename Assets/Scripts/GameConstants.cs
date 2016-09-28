@@ -11,5 +11,6 @@ namespace Filibusters
                 VERSION_MINOR.ToString();
 
         public static int AMOUNT_OF_COINS_TO_WIN = 3;
+        public static int MAX_ONLINE_PLAYERS_IN_GAME = 4;
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - TwoWay
   - CoinText
   - VoteText
+  - Deposit
+  - InactiveIndicator
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - TwoWayPlatform
   - Background
   - Trigger
-  - 
+  - Deposit
   - 
   - 
   - 
