@@ -49,11 +49,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 186491909
-    locked: 0
   - name: Column
     uniqueID: 1981252951
+    locked: 0
+  - name: Interactable
+    uniqueID: 1661287921
+    locked: 0
+  - name: Player
+    uniqueID: 186491909
     locked: 0
   - name: Foreground
     uniqueID: 1620295617

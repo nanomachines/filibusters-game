@@ -17,6 +17,7 @@ namespace Filibusters
 			var canvas = GetComponent<Canvas>();
 			canvas.enabled = true;
 			canvas.worldCamera = mainCamera;
+            canvas.sortingLayerName = "Player";
 
 			// Assign Coin and Votes Text elements
 	        foreach (Transform t in transform)
