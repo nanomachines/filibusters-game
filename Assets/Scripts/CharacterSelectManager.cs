@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Photon;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 using UnityEngine.Assertions;
-using ExitGames.Client.Photon;
 
 namespace Filibusters
 {
@@ -15,48 +13,42 @@ namespace Filibusters
         public static readonly string IS_NEW_KEY = "IsNew";
         public static readonly string PLAYER_CHARACTER_RESOURCE_NAME = "SelectMenuNetPlayer";
 
-        [HideInInspector]
-        public static CharacterSelectManager instance = null;
-
         public GameObject[] mReadyRooms;
 
         private int mPlayersReady;
-        private BitArray mPlayerNumberAllocator;
         private int mLocalPlayerNum;
 
         // Use this for initialization
         void Start()
         {
-            if (instance == null)
+            // alert the other players in the room that a new player has joined that is not ready to start
+            PhotonNetwork.SetPlayerCustomProperties(new PhotonHashtable { { IS_READY_KEY, false }, { IS_NEW_KEY, true } });
+            if (PhotonNetwork.isMasterClient)
             {
-                instance = this;
-                mPlayerNumberAllocator = new BitArray(GameConstants.MAX_ONLINE_PLAYERS_IN_GAME);
-                PhotonNetwork.SetPlayerCustomProperties(new PhotonHashtable { { IS_READY_KEY, false }, { IS_NEW_KEY, true } });
-                if (PhotonNetwork.isMasterClient)
-                {
-                    ResetActivePlayers();
-                    OnPhotonPlayerConnected(PhotonNetwork.player);
-                }
-                else
-                {
-                    ResetPlayerNumberAllocatorFromRoomSettings();
-                    ResetRooms();
-                }
+                InitPlayerAllocator();
+                OnPhotonPlayerConnected(PhotonNetwork.player);
+            }
+            else
+            {
+                InitRoomsFromNetworkPlayerAllocator();
+            }
 
-                // If we are in offline mode we need to explicitly call the properties changed callback
-                if (PhotonNetwork.offlineMode)
+            // If we are in offline mode we need to explicitly call the properties changed callback
+            if (PhotonNetwork.offlineMode)
+            {
+                OfflineReadyUpdate(false, true);
+            }
+
+            // initialize the counter for number of players ready
+            mPlayersReady = 0;
+            foreach (var player in PhotonNetwork.playerList)
+            {
+                bool isReady = player.customProperties.ContainsKey(IS_READY_KEY) ?
+                    (bool)player.customProperties[IS_READY_KEY] : false;
+
+                if (isReady)
                 {
-                    OfflineReadyUpdate(false, true);
-                }
-    
-                mPlayersReady = 0;
-                foreach (var player in PhotonNetwork.playerList)
-                {
-                    bool isReady = player.customProperties.ContainsKey(IS_READY_KEY) ? (bool)player.customProperties[IS_READY_KEY] : false;
-                    if (isReady)
-                    {
-                        ++mPlayersReady;
-                    }
+                    ++mPlayersReady;
                 }
             }
         }
@@ -124,12 +116,18 @@ namespace Filibusters
 
         public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
         {
+            // Only allocate Player numbers on the master client to avoid redundancy and ensure consistency
             if (PhotonNetwork.isMasterClient)
             {
-                int nextOpenPlayerNumber = FindNextPlayerNumber(mPlayerNumberAllocator);
+                int nextOpenPlayerNumber = FindNextPlayerNumber(PhotonNetwork.room.customProperties);
                 Assert.IsTrue(nextOpenPlayerNumber != -1);
-                mPlayerNumberAllocator.Set(nextOpenPlayerNumber, true);
+
+                // Set this player's custom properties so that if they leave the room we will have a record
+                // of what player number they had
                 newPlayer.SetCustomProperties(new PhotonHashtable{ { PLAYER_NUMBER_KEY, nextOpenPlayerNumber } });
+
+                // Alert that the player number is taken so that the room can be activated and no one else
+                // will take the same number
                 PhotonNetwork.room.SetCustomProperties(
                     new PhotonHashtable { { PLAYER_NUMBER_KEY + nextOpenPlayerNumber, true } });
             }
@@ -140,21 +138,8 @@ namespace Filibusters
             if (PhotonNetwork.isMasterClient)
             {
                 int playerNumberToFree = (int)otherPlayer.customProperties[PLAYER_NUMBER_KEY];
-                mPlayerNumberAllocator.Set(playerNumberToFree, false);
                 PhotonNetwork.room.SetCustomProperties(
                     new PhotonHashtable { { PLAYER_NUMBER_KEY + playerNumberToFree, false} });
-            }
-        }
-
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.isWriting)
-            {
-                stream.SendNext(SerializeBitArray(mPlayerNumberAllocator));
-            }
-            else
-            {
-                mPlayerNumberAllocator = DeserializeBitArray((string)stream.ReceiveNext());
             }
         }
 
@@ -162,10 +147,11 @@ namespace Filibusters
         {
             for (int i = 0; i < GameConstants.MAX_ONLINE_PLAYERS_IN_GAME; ++i)
             {
+                // if this player number has be allocated or released, update the appropriate ready room
                 if (propertiesThatChanged.ContainsKey(PLAYER_NUMBER_KEY + i))
                 {
                     var playerIsActive = (bool)propertiesThatChanged[PLAYER_NUMBER_KEY + i];
-                    GetChildWithTag(mReadyRooms[i], "InactiveIndicator").SetActive(!playerIsActive);
+                    Utility.GetChildWithTag(mReadyRooms[i], Tags.INACTIVE_OVERLAY).SetActive(!playerIsActive);
                 }
             }
         }
@@ -174,23 +160,30 @@ namespace Filibusters
         {
             var player = playerAndUpdatedProps[0] as PhotonPlayer;
             var properties = playerAndUpdatedProps[1] as PhotonHashtable;
+
+            // if a player has marked themselves as ready then update the count
             if (properties.ContainsKey(IS_READY_KEY) && (bool)properties[IS_READY_KEY])
             {
                 ++mPlayersReady;
             }
+
+            // if a player has marked themselves as not ready and they are not just joining
+            // the room, decrement their player count
             else if (properties.ContainsKey(IS_NEW_KEY) && !(bool)properties[IS_NEW_KEY])
             {
                 --mPlayersReady;
             }
 
+            // when a player is allocated a player number, locally spawn the player in the
+            // appropriate ready room
             if (player.isLocal && properties.ContainsKey(PLAYER_NUMBER_KEY))
             {
                 mLocalPlayerNum = (int)PhotonNetwork.player.customProperties[PLAYER_NUMBER_KEY];
                 var localPlayer = PhotonNetwork.Instantiate(PLAYER_CHARACTER_RESOURCE_NAME,
-                    GetChildWithTag(mReadyRooms[mLocalPlayerNum], "Respawn").transform.position,
+                    Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.RESPAWN).transform.position,
                     Quaternion.identity, 0);
                 localPlayer.GetComponent<SimplePhysics>().enabled = true;
-                var mLocalDepositManager = GetChildWithTag(mReadyRooms[mLocalPlayerNum], "Deposit").GetComponent<DepositManager>();
+                var mLocalDepositManager = Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.DEPOSIT).GetComponent<DepositManager>();
                 mLocalDepositManager.LocalDepositEvent += () => { MarkLocalPlayerReadyState(true);  };
                 localPlayer.GetComponent<LifeManager>().mDepositManager = mLocalDepositManager;
             }
@@ -200,81 +193,40 @@ namespace Filibusters
         {
             object[] playerAndUpdatedProps = new object[2];
             playerAndUpdatedProps[0] = PhotonNetwork.player;
-            var properties = new ExitGames.Client.Photon.Hashtable();
-            properties.Add(IS_READY_KEY, isReady);
-            properties.Add(IS_NEW_KEY, isNew);
-            playerAndUpdatedProps[1] = properties;
+            playerAndUpdatedProps[1] = new PhotonHashtable { { IS_READY_KEY, isReady }, {IS_NEW_KEY, isNew} };
             OnPhotonPlayerPropertiesChanged(playerAndUpdatedProps);
         }
 
-        private void ResetActivePlayers()
+        private void InitPlayerAllocator()
         {
-            var resetTable = new PhotonHashtable();
+            var playerNumberAllocator = new PhotonHashtable();
             for (int i = 0; i < GameConstants.MAX_ONLINE_PLAYERS_IN_GAME; ++i)
             {
-                resetTable.Add(PLAYER_NUMBER_KEY + i, false);
+                playerNumberAllocator.Add(PLAYER_NUMBER_KEY + i, false);
             }
-            PhotonNetwork.room.SetCustomProperties(resetTable);
+            PhotonNetwork.room.SetCustomProperties(playerNumberAllocator);
         }
         
-        private void ResetPlayerNumberAllocatorFromRoomSettings()
+        private void InitRoomsFromNetworkPlayerAllocator()
         {
             for (int i = 0; i < GameConstants.MAX_ONLINE_PLAYERS_IN_GAME; ++i)
             {
-                mPlayerNumberAllocator[i] = (bool)PhotonNetwork.room.customProperties[PLAYER_NUMBER_KEY + i];
+                bool isReadyRoomUnused = !(bool)PhotonNetwork.room.customProperties[PLAYER_NUMBER_KEY + i];
+                Utility.GetChildWithTag(mReadyRooms[i], Tags.INACTIVE_OVERLAY).SetActive(isReadyRoomUnused);
             }
         }
 
-        private void ResetRooms()
+        private int FindNextPlayerNumber(PhotonHashtable playerNumberMap)
         {
-            for (int i = 0; i < mPlayerNumberAllocator.Length; ++i)
+            for (int i = 0; i < GameConstants.MAX_ONLINE_PLAYERS_IN_GAME; ++i)
             {
-                GetChildWithTag(mReadyRooms[i], "InactiveIndicator").SetActive(!mPlayerNumberAllocator[i]);
-            }
-        }
-
-        private int FindNextPlayerNumber(BitArray playerNumberMap)
-        {
-            for (int i = 0; i < playerNumberMap.Length; ++i)
-            {
-                if (!playerNumberMap.Get(i))
+                bool playerNumberTaken = (bool)playerNumberMap[PLAYER_NUMBER_KEY + i];
+                if (!playerNumberTaken)
                 {
                     return i;
                 }
             }
             return -1;
-        }
-
-        private GameObject GetChildWithTag(GameObject parent, string tag)
-        {
-            foreach (Transform childTransform in parent.transform)
-            {
-                if (childTransform.gameObject.tag.Equals(tag))
-                {
-                    return childTransform.gameObject;
-                }
-            }
-            return null;
-        }
-
-        private string SerializeBitArray(BitArray bitArray)
-        {
-            var strBuilder = new System.Text.StringBuilder(bitArray.Length);
-            for (int i = 0; i < bitArray.Length; ++i)
-            {
-                strBuilder.Append(bitArray[i] ? "1" : "0");
-            }
-            return strBuilder.ToString();
-        }
-
-        private BitArray DeserializeBitArray(string bitStr)
-        {
-            var bitArray = new BitArray(bitStr.Length);
-            for (int i = 0; i < bitStr.Length; ++i)
-            {
-                bitArray[i] = bitStr[i] == '1';
-            }
-            return bitArray;
         }
     }
 }
