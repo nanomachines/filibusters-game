@@ -23,7 +23,9 @@ namespace Filibusters
 
 		private PhotonView mPhotonView;
 
-		void Start()
+        private AudioSource mAudio;
+
+        void Start()
 		{
 			mPlayersInZone = new HashSet<int>();
 			mPlayerDepositCounts = new Dictionary<int, int>();
@@ -32,7 +34,9 @@ namespace Filibusters
 			mDepositing = false;
 
 			mPhotonView = GetComponent<PhotonView>();
-		}
+
+            mAudio = GetComponent<AudioSource>();
+        }
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
@@ -92,7 +96,9 @@ namespace Filibusters
 
 			if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().DepositCoin())
 			{
-				int newDepositBalance = ++mPlayerDepositCounts[viewId];
+                mAudio.PlayOneShot(mAudio.clip);
+
+                int newDepositBalance = ++mPlayerDepositCounts[viewId];
 				if (newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
 				{
 					// FIRE WIN EVENT HERE
