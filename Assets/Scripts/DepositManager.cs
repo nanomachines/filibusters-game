@@ -99,11 +99,6 @@ namespace Filibusters
                 mAudio.PlayOneShot(mAudio.clip);
 
                 int newDepositBalance = ++mPlayerDepositCounts[viewId];
-				if (newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
-				{
-					// FIRE WIN EVENT HERE
-					Debug.Log("GAME OVER: " + PhotonView.Find(viewId).owner);
-				}
                 if (GlobalDepositEvent != null)
                 {
                     GlobalDepositEvent();
@@ -112,8 +107,20 @@ namespace Filibusters
                 {
                     LocalDepositEvent();
                 }
+				if (PhotonNetwork.isMasterClient && newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
+				{
+                    // FIRE WIN EVENT HERE
+                    mPhotonView.RPC("GameOver", PhotonTargets.All, PhotonView.Find(viewId).owner.ID);
+				}
 			}
 		}
+
+        [PunRPC]
+        public void GameOver(int winnersOwnerId)
+        {
+            GameGlobals.LocalPlayerWonGame = winnersOwnerId == PhotonNetwork.player.ID;
+            PhotonNetwork.LoadLevel(Scenes.SCENE_DIR + Scenes.GAME_OVER);
+        }
 
 		public void OnDeath(int viewId)
 		{

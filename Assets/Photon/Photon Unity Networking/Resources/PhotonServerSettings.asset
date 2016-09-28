@@ -39,4 +39,5 @@ MonoBehaviour:
   - DepositCoin
   - OnDeath
   - OnPlayerDeathVerified
+  - GameOver
   DisableAutoOpenWizard: 1

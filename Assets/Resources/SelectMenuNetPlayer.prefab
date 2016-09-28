@@ -247,8 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c1eea3d1c57194ebf08d9a1171e6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCoinCount: 0
-  mDepositCount: 0
 --- !u!114 &114000014083731390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dc21f65bca265408241f294ed5da94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mJumpSound: {fileID: 8300000, guid: f0c3c4c79fb101e47a7050ba8eb15680, type: 3}
+  mJumpSound: {fileID: 8300000, guid: 53ef04c79b6a0554abc319122cf374a3, type: 3}
   mAerialSpeed: 0.2
   mGravity: -1
   mJumpVel: 20
