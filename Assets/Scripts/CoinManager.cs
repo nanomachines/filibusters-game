@@ -16,12 +16,16 @@ namespace Filibusters
         [SerializeField]
         private float SecondsToRespawn;
 
+        private AudioSource mAudio;
+
         void Start()
         {
             mHasBeenCollected = false;
             mRenderer = GetComponent<SpriteRenderer>();
             mCollider = GetComponent<CircleCollider2D>();
             mPhotonView = GetComponent<PhotonView>();
+
+            mAudio = GetComponent<AudioSource>();
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -66,6 +70,7 @@ namespace Filibusters
         {
             PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().AddCoin();
             // TODO play sound
+            mAudio.PlayOneShot(mAudio.clip);
         }
 
         private IEnumerator RespawnTimer()
