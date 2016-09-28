@@ -10,6 +10,9 @@ namespace Filibusters
         private CircleCollider2D mCollider;
         private PhotonView mPhotonView;
 
+        // If SecondsToRespawn is less than zero that means
+        // that we don't want coins to respawn (i.e. in the 
+        // ready menu)
         [SerializeField]
         private float SecondsToRespawn;
 
@@ -67,6 +70,9 @@ namespace Filibusters
 
         private IEnumerator RespawnTimer()
         {
+            // If SecondsToRespawn is less than zero that means
+            // that we don't want coins to respawn (i.e. in the 
+            // ready menu)
             if (SecondsToRespawn >= 0)
             {
                 yield return new WaitForSeconds(SecondsToRespawn);

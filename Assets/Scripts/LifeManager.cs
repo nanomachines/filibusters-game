@@ -16,6 +16,9 @@ namespace Filibusters
 
 		// TODO: replace with event system
         // TODO: delete once we get the event system up and running
+        // Right now mDepositManager is a settable property because
+        // the life manager directly alerts the deposit box if a player
+        // dies. This will be replaced when event systems are implemented
 		public DepositManager mDepositManager { private get; set; }
 
 		// Use this for initialization
