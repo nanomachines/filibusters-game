@@ -68,6 +68,7 @@ namespace Filibusters
             {
                 labelBuilder.AppendLine("Host/Master Client");
             }
+            /*
             labelBuilder.AppendLine("PlayersReady: " + mPlayersReady);
             foreach (var player in PhotonNetwork.playerList)
             {
@@ -75,7 +76,7 @@ namespace Filibusters
                 labelBuilder.AppendLine(player.ID + ": " + isReady);
             }
             GUILayout.Label(labelBuilder.ToString());
-
+            */
             /*
             if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
             {
