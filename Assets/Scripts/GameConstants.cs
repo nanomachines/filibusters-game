@@ -10,7 +10,7 @@ namespace Filibusters
         public static string VERSION_STRING = VERSION_MAJOR.ToString() + "." +
                 VERSION_MINOR.ToString();
 
-        public static int AMOUNT_OF_COINS_TO_WIN = 3;
+        public static int AMOUNT_OF_COINS_TO_WIN = 10;
         public static int MAX_ONLINE_PLAYERS_IN_GAME = 4;
     }
 }
