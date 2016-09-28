@@ -53,6 +53,14 @@ namespace Filibusters
             }
         }
 
+        void Update()
+        {
+            if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
+            {
+                OnStartGame();
+            }
+        }
+
         void OnGUI()
         {
             var labelBuilder = new System.Text.StringBuilder(90);
@@ -68,6 +76,7 @@ namespace Filibusters
             }
             GUILayout.Label(labelBuilder.ToString());
 
+            /*
             if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
             {
                 if (GUILayout.Button("Start Game"))
@@ -75,6 +84,7 @@ namespace Filibusters
                     OnStartGame();
                 }
             }
+            */
         }
 
         public void OnStartGame()
