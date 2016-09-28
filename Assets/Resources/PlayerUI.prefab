@@ -21,6 +21,7 @@ GameObject:
   - 224: {fileID: 224000010968584896}
   - 222: {fileID: 222000012288843460}
   - 114: {fileID: 114000010879831622}
+  - 114: {fileID: 114000011492793784}
   m_Layer: 5
   m_Name: Coin Count
   m_TagString: CoinText
@@ -58,6 +59,7 @@ GameObject:
   - 224: {fileID: 224000013674492354}
   - 222: {fileID: 222000011891012742}
   - 114: {fileID: 114000011023847106}
+  - 114: {fileID: 114000013438688740}
   m_Layer: 5
   m_Name: Vote Count
   m_TagString: VoteText
@@ -98,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7205882, g: 0.70670265, b: 0.21723615, a: 1}
+  m_Color: {r: 0.85490197, g: 0.6784314, b: 0.105882354, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -131,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.038554374, g: 0.6911765, b: 0.015246554, a: 1}
+  m_Color: {r: 0.8745098, g: 0.078431375, b: 0.078431375, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -164,6 +166,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mInventoryScript: {fileID: 0}
+--- !u!114 &114000011492793784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010583773518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114000011494914144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +221,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114000013438688740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013435122652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!222 &222000011891012742
 CanvasRenderer:
   m_ObjectHideFlags: 1
