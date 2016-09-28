@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000013635920502}
   - 212: {fileID: 212000013077197954}
   - 61: {fileID: 61000012205885930}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Spawn Point
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -35,8 +35,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011518838528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -0.01, z: 0}
-  m_LocalScale: {x: 1.73, y: 1.73, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,9 +52,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.07, y: -1.77}
+  m_Offset: {x: 0.2186184, y: -2.036599}
   serializedVersion: 2
-  m_Size: {x: 1.55, y: 0.23}
+  m_Size: {x: 2.312763, y: 0.44643116}
 --- !u!212 &212000013077197954
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 20592098db35b0b4fb7ee1139ea4fb57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d7448ba621075a4abc17d38f01c08a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
