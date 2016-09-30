@@ -185,7 +185,6 @@ namespace Filibusters
                 localPlayer.GetComponent<SimplePhysics>().enabled = true;
                 var mLocalDepositManager = Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.DEPOSIT).GetComponent<DepositManager>();
                 mLocalDepositManager.LocalDepositEvent += () => { MarkLocalPlayerReadyState(true);  };
-                localPlayer.GetComponent<LifeManager>().mDepositManager = mLocalDepositManager;
             }
         }
     
