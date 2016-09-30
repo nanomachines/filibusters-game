@@ -53,6 +53,12 @@ namespace Filibusters
         private bool mPressedDown = false;
         private float mPrevY = 0f;
 
+        // Prevent a player from holding jump and
+        // bouncing around out of control
+        private readonly float mJumpCooldown = 0.15f;
+        private bool mPrevWasGrounded = true;
+        private bool mJumpable = true;
+
         private Vector2 mSize = Vector2.zero;
         private Vector2 mOffset = Vector2.zero;
         public LayerMask mColLayersX;
@@ -87,6 +93,7 @@ namespace Filibusters
         {
             // Keep track of the previous position to account for two-way platforms
             mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
+            mPrevWasGrounded = mGrounded;
 
             float xInput = 0f;
             float yInput = 0f;
@@ -106,7 +113,7 @@ namespace Filibusters
                     mVelX = xInput * mMaxSpeed;
                     // This prevents the y velocity from growing arbitrarily large
                     // while the player is grounded
-                    mVelY = mGravity;
+                    mVelY = Mathf.Max(mGravity, mVelY);
                 }
             }
             // Allow aerial acceleration
@@ -128,6 +135,13 @@ namespace Filibusters
             deltaX = GetXChange(deltaX, dirX);
             deltaY = GetYChange(deltaY, dirY, facingRight);
 
+            // if we have stopped moving in the Y dir,
+            // update our y speed to zero
+            if (deltaY == 0f)
+            {
+                mVelY = 0;
+            }
+
             transform.Translate(deltaX, deltaY, 0f);
             mVelY += mGravity;
         }
@@ -148,8 +162,10 @@ namespace Filibusters
             }
             mPressedDown = Mathf.Sign(yInput) == -1f;
 
-            // jump input
-            jumpPressed = Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space);
+            // jump if the Y axis is pushed up and our jump is enabled
+            jumpPressed = (Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) && mJumpable;
+            // disables jump after pressing it
+            mJumpable = (jumpPressed ^ mJumpable) && mJumpable;
         }
 
         private float UseAccel(float accel, float curSpeed, float maxSpeed)
@@ -192,12 +208,27 @@ namespace Filibusters
             for (int i = 0; i < 5; i++)
             {
                 float width = 0.2f + i * 0.4f;
-                if (RaycastY(ref delta, dir, width))
-                {
-                    mGrounded = true;
-                }
+                // raycast in our moving direction to update our y delta
+                RaycastY(ref delta, dir, width);
+                // raycast to the floor always to check if we are grounded
+                float tmpDel = 0.01f;
+                mGrounded = RaycastY(ref tmpDel, -1, width) || mGrounded;
+            }
+
+            // if we have just become grounded then start our jump
+            // cooldown and allow us to jump when its over
+            if (mGrounded && !mPrevWasGrounded)
+            {
+                StartCoroutine(JumpCooldown());
             }
             return delta;
+        }
+
+        // reenable jump after cooldown time elapses
+        private IEnumerator JumpCooldown()
+        {
+            yield return new WaitForSeconds(mJumpCooldown);
+            mJumpable = true;
         }
 
         private bool RaycastX(ref float delta, float dir, float height)
