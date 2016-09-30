@@ -59,6 +59,8 @@ namespace Filibusters
         private bool mPrevWasGrounded = true;
         private bool mJumpable = true;
 
+        private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
+
         private Vector2 mSize = Vector2.zero;
         private Vector2 mOffset = Vector2.zero;
         public LayerMask mColLayersX;
@@ -143,6 +145,10 @@ namespace Filibusters
             }
 
             transform.Translate(deltaX, deltaY, 0f);
+            if (mPressedDown)
+            {
+                mVelY += mGravity * .5f;
+            }
             mVelY += mGravity;
         }
 
@@ -152,6 +158,14 @@ namespace Filibusters
             if (Mathf.Abs(xInput = Input.GetAxis("LeftStickXAxis")) <= Mathf.Epsilon)
             {
                 xInput = Input.GetAxis("LeftRightKeyboard");
+            }
+            if (xInput > FullXInputThreshold)
+            {
+                xInput = 1f;
+            }
+            else if (xInput < -FullXInputThreshold)
+            {
+                xInput = -1f;
             }
 
             // down input
@@ -163,7 +177,7 @@ namespace Filibusters
             mPressedDown = Mathf.Sign(yInput) == -1f;
 
             // jump if the Y axis is pushed up and our jump is enabled
-            jumpPressed = (Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) && mJumpable;
+            jumpPressed = ((Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) || Input.GetButton("A")) && mJumpable;
             // disables jump after pressing it
             mJumpable = (jumpPressed ^ mJumpable) && mJumpable;
         }
