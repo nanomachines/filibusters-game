@@ -94,6 +94,7 @@ namespace Filibusters
 
 			if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().DepositCoin())
 			{
+                EventSystem.OnCoinDeposited(transform.position);
 				int newDepositBalance = ++mPlayerDepositCounts[viewId];
 				if (newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
 				{

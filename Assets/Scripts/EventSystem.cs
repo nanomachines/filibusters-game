@@ -1,4 +1,6 @@
-﻿namespace Filibusters
+﻿using UnityEngine;
+
+namespace Filibusters
 {
     public static class EventSystem
     {
@@ -29,6 +31,16 @@
             if (OnCoinCollectedEvent != null)
             {
                 OnCoinCollectedEvent(actorId);
+            }
+        }
+
+        public delegate void CoinDepositListener(Vector3 depositBoxPos);
+        public static event CoinDepositListener OnCoinDepositedEvent;
+        public static void OnCoinDeposited(Vector3 depositBoxPos)
+        {
+            if (OnCoinDepositedEvent != null)
+            {
+                OnCoinDepositedEvent(depositBoxPos);
             }
         }
     }

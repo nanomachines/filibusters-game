@@ -14,6 +14,8 @@ namespace Filibusters
         private AudioClip mPlayerJump;
         [SerializeField]
         private AudioClip mCoinCollection;
+        [SerializeField]
+        private AudioClip mCoinDeposited;
 
         // Use this for initialization
         void Start()
@@ -49,6 +51,12 @@ namespace Filibusters
                 {
                     mSource.PlayOneShot(mCoinCollection);
                 }
+            };
+
+            EventSystem.OnCoinDepositedEvent += (Vector3 depositBoxPos) =>
+            {
+                // TODO: Play as 3D sound
+                mSource.PlayOneShot(mCoinDeposited);
             };
         }
     }
