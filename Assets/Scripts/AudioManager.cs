@@ -29,7 +29,7 @@ namespace Filibusters
             }
             else
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
 
