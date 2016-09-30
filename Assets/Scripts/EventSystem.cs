@@ -11,5 +11,15 @@
                 OnDeathEvent(playerViewId);
             }
         }
+
+        public delegate void JumpListener();
+        public static event JumpListener OnJumpEvent;
+        public static void OnJump()
+        {
+            if (OnJumpEvent != null)
+            {
+                OnJumpEvent();
+            }
+        }
     }
 }

@@ -7,8 +7,11 @@ namespace Filibusters
     {
         public static AudioManager Instance = null;
         private AudioSource mSource;
+
         [SerializeField]
         private AudioClip mPlayerDeath;
+        [SerializeField]
+        private AudioClip mPlayerJump;
 
         // Use this for initialization
         void Start()
@@ -31,6 +34,11 @@ namespace Filibusters
             EventSystem.OnDeathEvent += (int playerViewId) =>
             {
                 mSource.PlayOneShot(mPlayerDeath);
+            };
+
+            EventSystem.OnJumpEvent += () =>
+            {
+                mSource.PlayOneShot(mPlayerJump);
             };
         }
     }
