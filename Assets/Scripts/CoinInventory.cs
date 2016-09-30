@@ -26,6 +26,7 @@ namespace Filibusters
 
         void Start()
         {
+            EventSystem.OnDeathEvent += ResetCoins;
             mCoinCount = 0;
 			mDepositCount = 0;
         }
@@ -47,6 +48,11 @@ namespace Filibusters
         	{
         		return false;
         	}
+        }
+
+        public void ResetCoins(int playerViewId)
+        {
+            mCoinCount = 0;
         }
     }
 }
