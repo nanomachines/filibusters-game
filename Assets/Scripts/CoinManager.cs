@@ -47,6 +47,7 @@ namespace Filibusters
         public void OnCoinCollectionVerified(int viewId)
         {
             Debug.Log("Coin Collection Verified");
+
             AddCoin(viewId);
             Despawn();
             if (PhotonNetwork.isMasterClient)
@@ -65,7 +66,6 @@ namespace Filibusters
         private void AddCoin(int viewId)
         {
             PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().AddCoin();
-            // TODO play sound
         }
 
         private IEnumerator RespawnTimer()

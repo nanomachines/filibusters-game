@@ -34,6 +34,7 @@ namespace Filibusters
         public void AddCoin()
         {
             ++mCoinCount;
+            EventSystem.OnCoinCollected(GetComponent<PhotonView>().owner.ID);
         }
 
         public bool DepositCoin()

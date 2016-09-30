@@ -21,5 +21,15 @@
                 OnJumpEvent();
             }
         }
+
+        public delegate void CoinCollectionListener(int actorId);
+        public static event CoinCollectionListener OnCoinCollectedEvent;
+        public static void OnCoinCollected(int actorId)
+        {
+            if (OnCoinCollectedEvent != null)
+            {
+                OnCoinCollectedEvent(actorId);
+            }
+        }
     }
 }

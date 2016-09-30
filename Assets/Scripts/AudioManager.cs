@@ -12,6 +12,8 @@ namespace Filibusters
         private AudioClip mPlayerDeath;
         [SerializeField]
         private AudioClip mPlayerJump;
+        [SerializeField]
+        private AudioClip mCoinCollection;
 
         // Use this for initialization
         void Start()
@@ -39,6 +41,14 @@ namespace Filibusters
             EventSystem.OnJumpEvent += () =>
             {
                 mSource.PlayOneShot(mPlayerJump);
+            };
+
+            EventSystem.OnCoinCollectedEvent += (int actorId) =>
+            {
+                if (actorId == PhotonNetwork.player.ID)
+                {
+                    mSource.PlayOneShot(mCoinCollection);
+                }
             };
         }
     }
