@@ -60,8 +60,6 @@ namespace Filibusters
         private bool mJumpable = true;
         private bool mJumpButtonHeld = false;
 
-        private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
-
         private Vector2 mSize = Vector2.zero;
         private Vector2 mOffset = Vector2.zero;
         public LayerMask mColLayersX;
@@ -156,18 +154,7 @@ namespace Filibusters
         private void HandleInput(ref float xInput, ref float yInput, ref bool jumpPressed)
         {
             // left/right input
-            if (Mathf.Abs(xInput = Input.GetAxis("LeftStickXAxis")) <= Mathf.Epsilon)
-            {
-                xInput = Input.GetAxis("LeftRightKeyboard");
-            }
-            if (xInput > FullXInputThreshold)
-            {
-                xInput = 1f;
-            }
-            else if (xInput < -FullXInputThreshold)
-            {
-                xInput = -1f;
-            }
+            xInput = InputWrapper.Instance.LeftXInput;
 
             // down input
             // Note: Pressing down results in positive values so I flip the input
