@@ -39,4 +39,8 @@ MonoBehaviour:
   - DepositCoin
   - OnDeath
   - OnPlayerDeathVerified
+  - OnGunCollectionVerified
+  - OnGunTriggered
+  - OnWeaponCollectionVerified
+  - OnWeaponTriggered
   DisableAutoOpenWizard: 1

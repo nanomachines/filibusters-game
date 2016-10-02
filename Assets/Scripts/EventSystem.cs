@@ -43,5 +43,15 @@ namespace Filibusters
                 OnCoinDepositedEvent(depositBoxPos);
             }
         }
+
+        public delegate void EquipWeaponListener(int actorId, GameConstants.WeaponId weaponId);
+        public static event EquipWeaponListener OnEquipWeaponEvent;
+        public static void OnEquipWeapon(int actorId, GameConstants.WeaponId weaponId)
+        {
+            if (OnEquipWeaponEvent != null)
+            {
+                OnEquipWeaponEvent(actorId, weaponId);
+            }
+        }
     }
 }

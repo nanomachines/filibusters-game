@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
-    public class MotionState : Photon.MonoBehaviour
+    public class PlayerState : Photon.MonoBehaviour
     {
         [HideInInspector]
         public bool mFacingRight;
@@ -15,6 +16,8 @@ namespace Filibusters
         public float mVelXMult = 0f;
         [HideInInspector]
         public bool mGrounded = false;
+        //[HideInInspector]
+        public WeaponId mWeaponId = WeaponId.FISTS;
 
         /*
          * Fields used to linearly interpolate
@@ -27,7 +30,6 @@ namespace Filibusters
         private float mPositionUpdateRate = 0.1f;
         private int mNumUpdates;
         private float mTotalTime;
-
 
         // Use this for initialization
         void Awake()
@@ -47,6 +49,7 @@ namespace Filibusters
                 stream.SendNext(mVelX);
                 stream.SendNext(mVelY);
                 stream.SendNext(mGrounded);
+                stream.SendNext(mWeaponId);
                 stream.SendNext(mFacingRight);
                 stream.SendNext(transform.position);
             }
@@ -56,6 +59,7 @@ namespace Filibusters
                 mVelX = (float)stream.ReceiveNext();
                 mVelY = (float)stream.ReceiveNext();
                 mGrounded = (bool)stream.ReceiveNext();
+                mWeaponId = (WeaponId)stream.ReceiveNext();
                 mFacingRight = (bool)stream.ReceiveNext();
                 mPreviousPosition = mAccuratePosition;
                 mAccuratePosition = (Vector3)stream.ReceiveNext();
