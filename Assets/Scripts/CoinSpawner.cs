@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Filibusters
 {
-    public class CoinManager : Photon.PunBehaviour
+    public class CoinSpawner : Photon.PunBehaviour
     {
         private bool mHasBeenCollected;
         private SpriteRenderer mRenderer;
