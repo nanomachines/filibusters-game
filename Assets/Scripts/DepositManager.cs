@@ -6,8 +6,10 @@ namespace Filibusters
 {
 	public class DepositManager : Photon.PunBehaviour 
 	{
+        // Used to know when a specific deposit box has a coin deposited into it
+        // This is useful for events such as readying up in the tutorial room
+        // and running visual effects specific to the deposit box that was deposited into
         public delegate void DepositListener();
-        public static event DepositListener GlobalDepositEvent;
         public event DepositListener LocalDepositEvent;
 
 		[SerializeField]
@@ -25,12 +27,12 @@ namespace Filibusters
 
 		void Start()
 		{
+            EventSystem.OnDeathEvent += ClearDeadPlayer;
 			mPlayersInZone = new HashSet<int>();
 			mPlayerDepositCounts = new Dictionary<int, int>();
 			mNumPlayersInZone = 0;
 			mTimeSinceDeposit = 0f;
 			mDepositing = false;
-
 			mPhotonView = GetComponent<PhotonView>();
 		}
 
@@ -92,16 +94,13 @@ namespace Filibusters
 
 			if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().DepositCoin())
 			{
+                EventSystem.OnCoinDeposited(transform.position);
 				int newDepositBalance = ++mPlayerDepositCounts[viewId];
 				if (newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
 				{
 					// FIRE WIN EVENT HERE
 					Debug.Log("GAME OVER: " + PhotonView.Find(viewId).owner);
 				}
-                if (GlobalDepositEvent != null)
-                {
-                    GlobalDepositEvent();
-                }
                 if (LocalDepositEvent != null)
                 {
                     LocalDepositEvent();
@@ -109,7 +108,7 @@ namespace Filibusters
 			}
 		}
 
-		public void OnDeath(int viewId)
+		public void ClearDeadPlayer(int viewId)
 		{
 			if (mPlayersInZone.Contains(viewId))
 			{

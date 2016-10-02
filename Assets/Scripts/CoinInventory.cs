@@ -26,6 +26,7 @@ namespace Filibusters
 
         void Start()
         {
+            EventSystem.OnDeathEvent += ResetCoins;
             mCoinCount = 0;
 			mDepositCount = 0;
         }
@@ -33,6 +34,7 @@ namespace Filibusters
         public void AddCoin()
         {
             ++mCoinCount;
+            EventSystem.OnCoinCollected(GetComponent<PhotonView>().owner.ID);
         }
 
         public bool DepositCoin()
@@ -47,6 +49,11 @@ namespace Filibusters
         	{
         		return false;
         	}
+        }
+
+        public void ResetCoins(int playerViewId)
+        {
+            mCoinCount = 0;
         }
     }
 }

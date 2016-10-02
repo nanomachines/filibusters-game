@@ -19,8 +19,6 @@ namespace Filibusters
         		Instance = this;
                 SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
 	            LocalPlayer = PhotonNetwork.Instantiate("NetPlayer", GetRandomSpawnPoint(), Quaternion.identity, 0);
-                // todo: Delete once event system is in place
-                LocalPlayer.GetComponent<LifeManager>().mDepositManager = GameObject.Find("DepositBox").GetComponent<DepositManager>();
 	            LocalPlayer.GetComponent<SimplePhysics>().enabled = true;
 
                 GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");

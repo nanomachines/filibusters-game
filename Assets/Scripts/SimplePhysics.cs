@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using System.Collections;
 
 namespace Filibusters
 {
     public class SimplePhysics : MonoBehaviour
     {
-        // Audio
-        [SerializeField]
-        private AudioClip mJumpSound;
-        private AudioSource mAudioSource;
-
         // Physics
         [SerializeField]
         private float mAerialSpeed = 0.05f;
@@ -65,22 +61,12 @@ namespace Filibusters
 
             mMotionState = GetComponent<MotionState>();
 
-            if (!(mAudioSource = GetComponent<AudioSource>()))
-            {
-                Debug.LogWarning("Add an AudioSource component!");
-            }
-
             Vector3 scale = transform.localScale;
             BoxCollider2D bCol;
-            if (bCol = GetComponent<BoxCollider2D>())
-            {
-                mSize = new Vector2(bCol.size.x * scale.x, bCol.size.y * scale.y);
-                mOffset = new Vector2(bCol.offset.x * scale.x, bCol.offset.y * scale.y);
-            }
-            else
-            {
-                Debug.LogWarning("Add a BoxCollider2D component!");
-            }
+            bCol = GetComponent<BoxCollider2D>();
+            Assert.IsNotNull(bCol, "BoxCollider2D component missing");
+            mSize = new Vector2(bCol.size.x * scale.x, bCol.size.y * scale.y);
+            mOffset = new Vector2(bCol.offset.x * scale.x, bCol.offset.y * scale.y);
         }
 
         void Update()
@@ -98,8 +84,7 @@ namespace Filibusters
                 if (jumpPressed)
                 {
                     mVelY = mJumpVel;
-                    mAudioSource.clip = mJumpSound;
-                    mAudioSource.Play();
+                    EventSystem.OnJump();
                 }
                 else
                 {
