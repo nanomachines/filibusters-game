@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
@@ -16,6 +17,8 @@ namespace Filibusters
         private AudioClip mCoinCollection;
         [SerializeField]
         private AudioClip mCoinDeposited;
+        [SerializeField]
+        private AudioClip mEquipVeto;
 
         // Use this for initialization
         void Start()
@@ -57,6 +60,30 @@ namespace Filibusters
             {
                 // TODO: Play as 3D sound
                 mSource.PlayOneShot(mCoinDeposited);
+            };
+
+            EventSystem.OnEquipWeaponEvent += (int actorId, WeaponId weaponId) =>
+            {
+                if (actorId == PhotonNetwork.player.ID)
+                {
+                    AudioClip pickup = null;
+                    switch (weaponId)
+                    {
+                        case WeaponId.VETO:
+                            pickup = mEquipVeto;
+                            break;
+                        case WeaponId.MAGIC_BULLET:
+                            pickup = null;
+                            break;
+                        case WeaponId.ANARCHY:
+                            pickup = null;
+                            break;
+                        case WeaponId.LIBEL_AND_SLANDER:
+                            pickup = null;
+                            break;
+                    }
+                    mSource.PlayOneShot(pickup);
+                }
             };
         }
     }

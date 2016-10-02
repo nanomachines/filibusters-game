@@ -9,6 +9,7 @@ TagManager:
   - VoteText
   - Deposit
   - InactiveIndicator
+  - Gun
   layers:
   - Default
   - TransparentFX

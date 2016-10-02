@@ -12,5 +12,7 @@ namespace Filibusters
 
         public static int AMOUNT_OF_COINS_TO_WIN = 3;
         public static int MAX_ONLINE_PLAYERS_IN_GAME = 4;
+
+        public enum WeaponId { FISTS, VETO, MAGIC_BULLET, ANARCHY, LIBEL_AND_SLANDER }
     }
 }
