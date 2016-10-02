@@ -55,9 +55,10 @@ namespace Filibusters
 
         // Prevent a player from holding jump and
         // bouncing around out of control
-        private readonly float mJumpCooldown = 0.15f;
+        private readonly float mHoldJumpCooldown = 0.15f;
         private bool mPrevWasGrounded = true;
         private bool mJumpable = true;
+        private bool mJumpButtonHeld = false;
 
         private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
 
@@ -177,7 +178,8 @@ namespace Filibusters
             mPressedDown = Mathf.Sign(yInput) == -1f;
 
             // jump if the Y axis is pushed up and our jump is enabled
-            jumpPressed = ((Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) || Input.GetButton("A")) && mJumpable;
+            mJumpButtonHeld = ((Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) || Input.GetButton("A"));
+            jumpPressed = mJumpButtonHeld && mJumpable;
             // disables jump after pressing it
             mJumpable = (jumpPressed ^ mJumpable) && mJumpable;
         }
@@ -233,7 +235,14 @@ namespace Filibusters
             // cooldown and allow us to jump when its over
             if (mGrounded && !mPrevWasGrounded)
             {
-                StartCoroutine(JumpCooldown());
+                if (mJumpButtonHeld)
+                {
+                    StartCoroutine(JumpCooldown());
+                }
+                else
+                {
+                    mJumpable = true;
+                }
             }
             return delta;
         }
@@ -241,7 +250,7 @@ namespace Filibusters
         // reenable jump after cooldown time elapses
         private IEnumerator JumpCooldown()
         {
-            yield return new WaitForSeconds(mJumpCooldown);
+            yield return new WaitForSeconds(mHoldJumpCooldown);
             mJumpable = true;
         }
 
