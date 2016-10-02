@@ -178,7 +178,8 @@ namespace Filibusters
             mPressedDown = Mathf.Sign(yInput) == -1f;
 
             // jump if the Y axis is pushed up and our jump is enabled
-            mJumpButtonHeld = ((Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) || Input.GetButton("A"));
+            mJumpButtonHeld = ((Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) ||
+                Input.GetButton("A-Jump") || Input.GetAxis("LT-Jump") > Mathf.Epsilon);
             jumpPressed = mJumpButtonHeld && mJumpable;
             // disables jump after pressing it
             mJumpable = (jumpPressed ^ mJumpable) && mJumpable;
