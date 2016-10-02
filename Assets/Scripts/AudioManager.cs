@@ -19,6 +19,12 @@ namespace Filibusters
         private AudioClip mCoinDeposited;
         [SerializeField]
         private AudioClip mEquipVeto;
+        [SerializeField]
+        private AudioClip mEquipMagicBullet;
+        [SerializeField]
+        private AudioClip mEquipAnarchy;
+        [SerializeField]
+        private AudioClip mEquipLibelAndSlander;
 
         // Use this for initialization
         void Start()
@@ -73,13 +79,13 @@ namespace Filibusters
                             pickup = mEquipVeto;
                             break;
                         case WeaponId.MAGIC_BULLET:
-                            pickup = null;
+                            pickup = mEquipMagicBullet;
                             break;
                         case WeaponId.ANARCHY:
-                            pickup = null;
+                            pickup = mEquipAnarchy;
                             break;
                         case WeaponId.LIBEL_AND_SLANDER:
-                            pickup = null;
+                            pickup = mEquipLibelAndSlander;
                             break;
                     }
                     mSource.PlayOneShot(pickup);
