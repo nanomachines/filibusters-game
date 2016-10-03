@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using System.Collections;
 
 namespace Filibusters
 {
     public class SimplePhysics : MonoBehaviour
     {
-        // Audio
-        [SerializeField]
-        private AudioClip mJumpSound;
-        private AudioSource mAudioSource;
-
         // Physics
         [SerializeField]
         private float mAerialSpeed = 0.05f;
@@ -22,32 +18,32 @@ namespace Filibusters
         [SerializeField]
         private float mSkin = 0.005f;
 
-        private MotionState mMotionState;
+        private PlayerState mPlayerState;
         private bool mGrounded
         {
-            get { return mMotionState.mGrounded; }
-            set { mMotionState.mGrounded = value; }
+            get { return mPlayerState.mGrounded; }
+            set { mPlayerState.mGrounded = value; }
         }
         private bool mFacingRight
         {
-            get { return mMotionState.mFacingRight; }
-            set { mMotionState.mFacingRight = value; }
+            get { return mPlayerState.mFacingRight; }
+            set { mPlayerState.mFacingRight = value; }
         }
         private float mVelX
         {
-            get { return mMotionState.mVelX; }
-            set { mMotionState.mVelX = value; }
+            get { return mPlayerState.mVelX; }
+            set { mPlayerState.mVelX = value; }
         }
         private float mVelY
         {
-            get { return mMotionState.mVelY; }
-            set { mMotionState.mVelY = value; }
+            get { return mPlayerState.mVelY; }
+            set { mPlayerState.mVelY = value; }
         }
         // TODO: Remove this
         private float mVelXMult
         {
-            get { return mMotionState.mVelXMult; }
-            set { mMotionState.mVelXMult = value; }
+            get { return mPlayerState.mVelXMult; }
+            set { mPlayerState.mVelXMult = value; }
         }
 
         private bool mPressedDown = false;
@@ -70,24 +66,14 @@ namespace Filibusters
         {
             mTwoWay = LayerMask.NameToLayer("TwoWayPlatform");
 
-            mMotionState = GetComponent<MotionState>();
-
-            if (!(mAudioSource = GetComponent<AudioSource>()))
-            {
-                Debug.LogWarning("Add an AudioSource component!");
-            }
+            mPlayerState = GetComponent<PlayerState>();
 
             Vector3 scale = transform.localScale;
             BoxCollider2D bCol;
-            if (bCol = GetComponent<BoxCollider2D>())
-            {
-                mSize = new Vector2(bCol.size.x * scale.x, bCol.size.y * scale.y);
-                mOffset = new Vector2(bCol.offset.x * scale.x, bCol.offset.y * scale.y);
-            }
-            else
-            {
-                Debug.LogWarning("Add a BoxCollider2D component!");
-            }
+            bCol = GetComponent<BoxCollider2D>();
+            Assert.IsNotNull(bCol, "BoxCollider2D component missing");
+            mSize = new Vector2(bCol.size.x * scale.x, bCol.size.y * scale.y);
+            mOffset = new Vector2(bCol.offset.x * scale.x, bCol.offset.y * scale.y);
         }
 
         void Update()
@@ -106,8 +92,7 @@ namespace Filibusters
                 if (jumpPressed)
                 {
                     mVelY = mJumpVel;
-                    mAudioSource.clip = mJumpSound;
-                    mAudioSource.Play();
+                    EventSystem.OnJump();
                 }
                 else
                 {
@@ -316,7 +301,7 @@ namespace Filibusters
         public void ResetPhysicsState(Vector3 pos)
         {
             transform.position = pos;
-            mMotionState.ResetPosition();
+            mPlayerState.ResetPosition();
             mGrounded = false;
         	mFacingRight = true;
 	        mVelX = 0f;
