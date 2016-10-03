@@ -62,9 +62,8 @@ namespace Filibusters
 
             mLeftYInput = Input.GetAxis(LeftYInputName);
             mFallInput = Mathf.Sign(mLeftYInput) == -1f;
-            mJumpInput = (Mathf.Sign(mLeftYInput) == 1f && mLeftYInput > Mathf.Epsilon) ||
-            Input.GetButton(Xbox360AButtonName) ||
-            Input.GetAxis(Xbox360LeftTriggerName) > Mathf.Epsilon;
+            mJumpInput = (mLeftYInput > Mathf.Epsilon) || Input.GetButton(Xbox360AButtonName) ||
+                Input.GetAxis(Xbox360LeftTriggerName) > Mathf.Epsilon;
         }
 
         // Private Fields
