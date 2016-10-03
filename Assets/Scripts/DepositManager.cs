@@ -96,15 +96,16 @@ namespace Filibusters
 			{
                 EventSystem.OnCoinDeposited(transform.position);
 				int newDepositBalance = ++mPlayerDepositCounts[viewId];
-				if (newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
-				{
-					// FIRE WIN EVENT HERE
-					Debug.Log("GAME OVER: " + PhotonView.Find(viewId).owner);
-				}
                 if (LocalDepositEvent != null)
                 {
                     LocalDepositEvent();
                 }
+				if (PhotonNetwork.isMasterClient &&
+                    newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
+				{
+					Debug.Log("GAME OVER: " + PhotonView.Find(viewId).owner);
+                    EventSystem.OnGameOver(PhotonView.Find(viewId).owner.ID);
+				}
 			}
 		}
 

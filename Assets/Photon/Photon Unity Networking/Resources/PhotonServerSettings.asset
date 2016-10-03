@@ -43,4 +43,5 @@ MonoBehaviour:
   - OnGunTriggered
   - OnWeaponCollectionVerified
   - OnWeaponTriggered
+  - ShowGameOver
   DisableAutoOpenWizard: 1
