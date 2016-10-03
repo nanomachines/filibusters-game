@@ -155,13 +155,11 @@ namespace Filibusters
         {
             xInput = InputWrapper.Instance.LeftXInput;
             yInput = InputWrapper.Instance.LeftYInput;
-            mPressedDown = InputWrapper.Instance.FallPressed; 
+            mPressedDown = InputWrapper.Instance.FallPressed;
+            mJumpButtonHeld = InputWrapper.Instance.JumpPressed;
 
-            // jump if the Y axis is pushed up and our jump is enabled
-            mJumpButtonHeld = ((Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) ||
-                Input.GetButton("A-Jump") || Input.GetAxis("LT-Jump") > Mathf.Epsilon);
-            jumpPressed = mJumpButtonHeld && mJumpable;
             // disables jump after pressing it
+            jumpPressed = mJumpButtonHeld && mJumpable;
             mJumpable = (jumpPressed ^ mJumpable) && mJumpable;
         }
 
