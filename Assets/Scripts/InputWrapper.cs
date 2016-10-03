@@ -21,7 +21,11 @@ namespace Filibusters
             }
         }
 
-		// Update is called once per frame
+        public void ForcePollInput()
+        {
+            Update();
+        }
+
 		void Update()
 		{
             mLeftXInput = Input.GetAxis(LeftXInputName);
@@ -33,6 +37,9 @@ namespace Filibusters
             {
                 mLeftXInput = -1f;
             }
+
+            mLeftYInput = Input.GetAxis(LeftYInputName);
+            mFallInput = Mathf.Sign(mLeftYInput) == -1f;
 		}
 
         // Public Properties
@@ -55,8 +62,14 @@ namespace Filibusters
             }
         }
 
+        public bool FallPressed
+        {
+            get { return mFallInput; }
+        }
+
         // Private Fields
         private static readonly string LeftXInputName = "LeftX";
+        private static readonly string LeftYInputName = "LeftY";
         private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
 
         private float mLeftXInput = 0f;

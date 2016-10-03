@@ -153,16 +153,9 @@ namespace Filibusters
 
         private void HandleInput(ref float xInput, ref float yInput, ref bool jumpPressed)
         {
-            // left/right input
             xInput = InputWrapper.Instance.LeftXInput;
-
-            // down input
-            // Note: Pressing down results in positive values so I flip the input
-            if (Mathf.Abs(yInput = -Input.GetAxis("LeftStickYAxis")) <= Mathf.Epsilon)
-            {
-                yInput = Input.GetAxis("DownUpKeyboard");
-            }
-            mPressedDown = Mathf.Sign(yInput) == -1f;
+            yInput = InputWrapper.Instance.LeftYInput;
+            mPressedDown = InputWrapper.Instance.FallPressed; 
 
             // jump if the Y axis is pushed up and our jump is enabled
             mJumpButtonHeld = ((Mathf.Sign(yInput) == 1f && yInput > Mathf.Epsilon) ||
