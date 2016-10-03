@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Filibusters
 {
-	public class InputWrapper : MonoBehaviour
+    public class InputWrapper : MonoBehaviour
     {
 
         public static InputWrapper Instance = null;
@@ -48,8 +48,8 @@ namespace Filibusters
             }
         }
 
-		void Update()
-		{
+        void Update()
+        {
             mLeftXInput = Input.GetAxis(LeftXInputName);
             if (mLeftXInput > FullXInputThreshold)
             {
@@ -63,9 +63,9 @@ namespace Filibusters
             mLeftYInput = Input.GetAxis(LeftYInputName);
             mFallInput = Mathf.Sign(mLeftYInput) == -1f;
             mJumpInput = (Mathf.Sign(mLeftYInput) == 1f && mLeftYInput > Mathf.Epsilon) ||
-                Input.GetButton(Xbox360AButtonName) ||
-                Input.GetAxis(Xbox360LeftTriggerName) > Mathf.Epsilon;
-		}
+            Input.GetButton(Xbox360AButtonName) ||
+            Input.GetAxis(Xbox360LeftTriggerName) > Mathf.Epsilon;
+        }
 
         // Private Fields
         private static readonly string LeftXInputName = "Left-X";
@@ -76,11 +76,10 @@ namespace Filibusters
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-LT" : "X360-Win-LT"; 
         private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
 
-
         private float mLeftXInput = 0f;
         private float mLeftYInput = 0f;
         private bool mJumpInput = false;
         private bool mFallInput = false;
 
-	}
+    }
 }
