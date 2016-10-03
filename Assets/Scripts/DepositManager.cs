@@ -155,6 +155,15 @@ namespace Filibusters
 			}
 		}
 
+        public bool isDepositing()
+        {
+            return mNumPlayersInZone == 1;
+        }
+
+        public bool isBlocked()
+        {
+            return mNumPlayersInZone > 1;
+        }
 	}
 }
 
