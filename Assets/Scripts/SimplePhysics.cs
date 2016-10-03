@@ -145,7 +145,7 @@ namespace Filibusters
 
             // disables jump after pressing it
             jumpPressed = mJumpButtonHeld && mJumpable;
-            mJumpable = (jumpPressed ^ mJumpable) && mJumpable;
+            mJumpable = jumpPressed ^ mJumpable;
         }
 
         private float UseAccel(float accel, float curSpeed, float maxSpeed)
