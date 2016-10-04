@@ -63,7 +63,7 @@ namespace Filibusters
             mCoolingDown = false;
         }
 
-        public string GetBulletType()
+        public string GetProjectileType()
         {
             // Decrement ammo count
             if (mAmmo > 0)

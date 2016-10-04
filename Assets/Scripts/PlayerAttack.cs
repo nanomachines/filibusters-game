@@ -25,10 +25,10 @@ namespace Filibusters
                 {
                     Debug.Log("This player CanFire");
 
-                    string bulletName = mWeaponInventory.GetBulletType();
-                    if (bulletName.Length != 0)
+                    string projectileName = mWeaponInventory.GetProjectileType();
+                    if (projectileName.Length != 0)
                     {
-                        InstantiateBullet(bulletName);
+                        InstantiateProjectile(projectileName);
                     }
                     // trigger succesful fire event
                 }
@@ -39,9 +39,14 @@ namespace Filibusters
             }
         }
 
-        void InstantiateBullet(string bulletName)
+        void InstantiateProjectile(string projectileName)
         {
-            GameObject bullet = PhotonNetwork.Instantiate(bulletName, transform.position, Quaternion.identity, 0);
+            Debug.Log("Projectile launched");
+            GameObject projectile = PhotonNetwork.Instantiate(projectileName, transform.position, Quaternion.identity, 0);
+            ProjectileController projScript = projectile.GetComponent<ProjectileController>();
+            // Assign projectile velocity
+            projScript.VelX = 1f;
+            projScript.VelY = 0f;
         }
     }
 }
