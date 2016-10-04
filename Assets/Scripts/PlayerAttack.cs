@@ -44,9 +44,12 @@ namespace Filibusters
             Debug.Log("Projectile launched");
             GameObject projectile = PhotonNetwork.Instantiate(projectileName, transform.position, Quaternion.identity, 0);
             ProjectileController projScript = projectile.GetComponent<ProjectileController>();
+
             // Assign projectile velocity
-            projScript.VelX = 1f;
-            projScript.VelY = 0f;
+            projScript.NewDirection = new Vector3(1f, 0f);
+            // The direction depends on the rotation CHANGE
+            //projScript.NewDirection = new Vector3(0f, 1f);
+            //projectile.transform.Rotate(new Vector3(0f, 0f, 90f));
         }
     }
 }
