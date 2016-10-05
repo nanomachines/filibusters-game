@@ -9,7 +9,7 @@ namespace Filibusters
 		private float SecondsToRespawn;
 		private bool mIsDead;
 		private PhotonView mPhotonView;
-		private SpriteRenderer mRenderer;
+        private NetPlayerAnimationController mAnimController;
 		private BoxCollider2D mCollider;
 		private SimplePhysics mPhysics;
 		private bool mIsLocalPlayer;
@@ -19,7 +19,7 @@ namespace Filibusters
 		{
 			mIsDead = false;
 			mPhotonView = GetComponent<PhotonView>();
-			mRenderer = GetComponent<SpriteRenderer>();
+			mAnimController = GetComponent<NetPlayerAnimationController>();
 			mCollider = GetComponent<BoxCollider2D>();
 			mPhysics = GetComponent<SimplePhysics>();
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
@@ -65,7 +65,7 @@ namespace Filibusters
 
         private void Despawn()
         {
-            mRenderer.enabled = false;
+            mAnimController.SetRenderersEnabled(false);
             mCollider.enabled = false;
             mPhysics.enabled = false;
             mIsDead = true;
@@ -84,7 +84,7 @@ namespace Filibusters
             mIsDead = false;
             mPhysics.enabled = mIsLocalPlayer;
 			mPhysics.ResetPhysicsState(respawnPos);
-            mRenderer.enabled = true;
+            mAnimController.SetRenderersEnabled(true);
             mCollider.enabled = true;
         }
 	}

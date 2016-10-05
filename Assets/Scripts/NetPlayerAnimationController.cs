@@ -80,5 +80,13 @@ namespace Filibusters
                 renderer.flipX = !mFacingRight;
             }
         }
+
+        public void SetRenderersEnabled(bool enabled)
+        {
+            foreach (var renderer in mRenderers)
+            {
+                renderer.enabled = enabled;
+            }
+        }
     }
 }

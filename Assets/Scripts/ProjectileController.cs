@@ -33,7 +33,6 @@ namespace Filibusters
         {
             float movement = mVel * Time.deltaTime;
             transform.Translate(movement, 0f, 0f);
-            Debug.Log(transform.rotation.eulerAngles.z);
 
             DetectCollisions();
         }
@@ -57,9 +56,9 @@ namespace Filibusters
                 {
                     if (obj.GetComponent<PhotonView>().owner.ID != mPhotonView.owner.ID)
                     {
-                        Debug.Log("Hit player");
-                        Destroy(gameObject);
                         mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                        obj.GetComponent<LifeManager>().Die();
+                        Destroy(gameObject);
                     }
                 }
                 // Walls and floors
