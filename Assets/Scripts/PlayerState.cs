@@ -18,6 +18,7 @@ namespace Filibusters
         public bool mGrounded = false;
         //[HideInInspector]
         public WeaponId mWeaponId = WeaponId.FISTS;
+        public Aim mAimingDir = Aim.RIGHT;
 
         /*
          * Fields used to linearly interpolate
