@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d035a91a1cbfd4e4f80a992c2798f09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondsToRespawn: 6
+  SecondsToRespawn: 11
 --- !u!212 &212000013668611940
 SpriteRenderer:
   m_ObjectHideFlags: 1
