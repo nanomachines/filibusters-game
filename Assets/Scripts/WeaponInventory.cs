@@ -14,6 +14,7 @@ namespace Filibusters
         }
 
         private int mAmmo;
+
         [SerializeField]
         private float mCoolDownSeconds;
         private bool mCoolingDown;
@@ -21,6 +22,7 @@ namespace Filibusters
         void Start()
         {
             mPlayerState = GetComponent<PlayerState>();
+
             // Set ammo to -1 for infinite ammo
             mAmmo = -1;
             mCoolingDown = false;
@@ -46,9 +48,14 @@ namespace Filibusters
             }
         }
 
-        public bool CanFire()
+        public bool HasAmmo()
         {
-            if (!mCoolingDown && mAmmo != 0)
+            return mAmmo != 0;
+        }
+
+        public bool CooledDown()
+        {
+            if (!mCoolingDown)
             {
                 StartCoroutine(CoolDownTimer());
                 return true;
@@ -63,22 +70,15 @@ namespace Filibusters
             mCoolingDown = false;
         }
 
-        public string GetProjectileType()
+        public WeaponId UseWeapon()
         {
             // Decrement ammo count
             if (mAmmo > 0)
             {
                 --mAmmo;
             }
-            // Return string resource name to instantiate
-            if (mWeaponId == WeaponId.VETO)
-            {
-                return "VetoBullet";
-            }
-            else
-            {
-                return "";
-            }
+            return mWeaponId;
+
         }
     }
 }

@@ -1,43 +1,65 @@
 ﻿using UnityEngine;
 using System.Collections;
+using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
     public class PlayerAttack : MonoBehaviour
     {
         private WeaponInventory mWeaponInventory;
+//        private PhotonView mPhotonView;
+        private int mActorId;
 
         void Start()
         {
             mWeaponInventory = GetComponent<WeaponInventory>();
+//            mPhotonView = GetComponent<PhotonView>();
+            mActorId = GetComponent<PhotonView>().owner.ID;
         }
 
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("Fire keycode pressed");
-                if (mWeaponInventory.CanFire())
+                if (mWeaponInventory.CooledDown())
                 {
-                    Debug.Log("This player CanFire");
+                    // Grab weapon id to trigger fire button effects
+                    WeaponId weaponId = mWeaponInventory.UseWeapon();
 
-                    string projectileName = mWeaponInventory.GetProjectileType();
-                    if (projectileName.Length != 0)
+                    // Has ammo
+                    if (mWeaponInventory.HasAmmo())
                     {
-                        InstantiateProjectile(projectileName);
+                        string projectileName = GetProjectileName(weaponId);
+                        if (projectileName.Length != 0)
+                        {
+                            InstantiateProjectile(projectileName);
+                        }
+                        EventSystem.OnWeaponFired(mActorId, weaponId);
                     }
-                    // trigger succesful fire event
+                    // Weapon is out of ammo
+                    else
+                    {
+                        EventSystem.OnWeaponMisfired(mActorId, weaponId);
+                    }
                 }
-                else
-                {
-                    // trigger failed fire event
-                }
+            }
+        }
+
+        string GetProjectileName(WeaponId weaponId)
+        {
+            // Return string resource name to instantiate networked projectile
+            if (weaponId == WeaponId.VETO)
+            {
+                return "VetoBullet";
+            }
+            else
+            {
+                return "";
             }
         }
 
         void InstantiateProjectile(string projectileName)
         {
-            Debug.Log("Projectile launched");
             GameObject projectile = PhotonNetwork.Instantiate(projectileName, transform.position, Quaternion.identity, 0);
             ProjectileController projScript = projectile.GetComponent<ProjectileController>();
 
