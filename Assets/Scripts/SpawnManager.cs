@@ -30,6 +30,8 @@ namespace Filibusters
 				var uiScript = PlayerUI.GetComponent<PlayerUIManager>();
 				uiScript.enabled = true;
 				uiScript.mInventoryScript = LocalPlayer.GetComponent<CoinInventory>();
+
+                LocalPlayer.GetComponent<PlayerAttack>().enabled = true;
         	}
         	else
         	{

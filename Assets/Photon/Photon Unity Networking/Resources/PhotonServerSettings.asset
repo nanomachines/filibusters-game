@@ -43,4 +43,6 @@ MonoBehaviour:
   - OnGunTriggered
   - OnWeaponCollectionVerified
   - OnWeaponTriggered
+  - InstantiateBullet
+  - DestroyBullet
   DisableAutoOpenWizard: 1
