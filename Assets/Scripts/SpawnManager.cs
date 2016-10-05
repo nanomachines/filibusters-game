@@ -20,6 +20,7 @@ namespace Filibusters
                 SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
 	            LocalPlayer = PhotonNetwork.Instantiate("NetPlayer", GetRandomSpawnPoint(), Quaternion.identity, 0);
 	            LocalPlayer.GetComponent<SimplePhysics>().enabled = true;
+                LocalPlayer.GetComponent<AimingController>().enabled = true;
 
                 GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
                 FollowPlayer followScript = mainCamera.GetComponent<FollowPlayer>();
@@ -30,6 +31,8 @@ namespace Filibusters
 				var uiScript = PlayerUI.GetComponent<PlayerUIManager>();
 				uiScript.enabled = true;
 				uiScript.mInventoryScript = LocalPlayer.GetComponent<CoinInventory>();
+
+                LocalPlayer.GetComponent<PlayerAttack>().enabled = true;
         	}
         	else
         	{
