@@ -12,6 +12,8 @@ namespace Filibusters
         private NetPlayerAnimationController mAnimController;
 		private BoxCollider2D mCollider;
 		private SimplePhysics mPhysics;
+        private PlayerAttack mAttackScript;
+        private WeaponInventory mWeaponInventory;
 		private bool mIsLocalPlayer;
 
 		// Use this for initialization
@@ -22,6 +24,8 @@ namespace Filibusters
 			mAnimController = GetComponent<NetPlayerAnimationController>();
 			mCollider = GetComponent<BoxCollider2D>();
 			mPhysics = GetComponent<SimplePhysics>();
+            mAttackScript = GetComponent<PlayerAttack>();
+            mWeaponInventory = GetComponent<WeaponInventory>();
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
 		}
 		
@@ -68,6 +72,7 @@ namespace Filibusters
             mAnimController.SetRenderersEnabled(false);
             mCollider.enabled = false;
             mPhysics.enabled = false;
+            mAttackScript.enabled = false;
             mIsDead = true;
         }
 
@@ -85,7 +90,9 @@ namespace Filibusters
             mPhysics.enabled = mIsLocalPlayer;
 			mPhysics.ResetPhysicsState(respawnPos);
             mAnimController.SetRenderersEnabled(true);
+            mAttackScript.enabled = true;
             mCollider.enabled = true;
+            mWeaponInventory.EquipWeapon(GameConstants.WeaponId.FISTS);
         }
 	}
 }

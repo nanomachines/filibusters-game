@@ -131,3 +131,10 @@ MonoBehaviour:
   mCoinCollection: {fileID: 8300000, guid: 83adc0f11ad626f4291fc1d751ceedd0, type: 3}
   mCoinDeposited: {fileID: 8300000, guid: abea5da52377bc343967dad5831d7ca8, type: 3}
   mEquipVeto: {fileID: 8300000, guid: 4ba634c16e30ba342a555e63a9299a86, type: 3}
+  mEquipMagicBullet: {fileID: 0}
+  mEquipAnarchy: {fileID: 0}
+  mEquipLibelAndSlander: {fileID: 0}
+  mUseVeto: {fileID: 8300000, guid: faba5a42e72b77747ac30a259a8522da, type: 3}
+  mUseMagicBullet: {fileID: 0}
+  mUseAnarchy: {fileID: 0}
+  mUseLibelAndSlander: {fileID: 0}
