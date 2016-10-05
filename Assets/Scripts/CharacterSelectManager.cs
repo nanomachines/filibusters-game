@@ -11,7 +11,7 @@ namespace Filibusters
         public static readonly string PLAYER_ACTIVE_KEY = "PlayerNumberActive";
         public static readonly string IS_READY_KEY = "IsReady";
         public static readonly string IS_NEW_KEY = "IsNew";
-        public static readonly string PLAYER_CHARACTER_RESOURCE_NAME = "SelectMenuNetPlayer";
+        public static readonly string PLAYER_CHARACTER_RESOURCE_NAME = "NetPlayer";
 
         public GameObject[] mReadyRooms;
 
@@ -183,6 +183,7 @@ namespace Filibusters
                     Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.RESPAWN).transform.position,
                     Quaternion.identity, 0);
                 localPlayer.GetComponent<SimplePhysics>().enabled = true;
+                localPlayer.GetComponent<AimingController>().enabled = true;
                 var mLocalDepositManager = Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.DEPOSIT).GetComponent<DepositManager>();
                 mLocalDepositManager.LocalDepositEvent += () => { MarkLocalPlayerReadyState(true);  };
             }
