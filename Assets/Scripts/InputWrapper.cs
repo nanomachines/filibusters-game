@@ -106,7 +106,8 @@ namespace Filibusters
                 mRightYInput = mousePos.y;
             }
 
-            mFirePressed = Input.GetAxis(FireAxis) > Mathf.Epsilon;
+            mFirePressed = Input.GetAxis(FireAxis) > Mathf.Epsilon ||
+                Input.GetAxis(Xbox360FireAxis) > Mathf.Epsilon;
         }
 
         Vector2 GetMouseInput()
@@ -127,6 +128,8 @@ namespace Filibusters
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Right-X" : "X360-Win-Right-X";
         private static readonly string Xbox360RightYInputName =
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Right-Y" : "X360-Win-Right-Y";
+        private static readonly string Xbox360FireAxis =
+            Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Fire" : "X360-Win-Fire";
         private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
 
         private float mLeftXInput = 0f;
