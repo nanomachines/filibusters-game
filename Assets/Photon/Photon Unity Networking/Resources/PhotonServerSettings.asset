@@ -43,6 +43,8 @@ MonoBehaviour:
   - OnGunTriggered
   - OnWeaponCollectionVerified
   - OnWeaponTriggered
+  - ShowGameOver
   - InstantiateBullet
   - DestroyBullet
+  - ShowGameOverScreen
   DisableAutoOpenWizard: 1

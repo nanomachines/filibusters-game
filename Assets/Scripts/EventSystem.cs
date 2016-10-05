@@ -73,5 +73,15 @@ namespace Filibusters
                 OnWeaponMisfiredEvent(actorId, weaponId);
             }
         }
+
+        public delegate void GameOverListener(int winningActorId);
+        public static event GameOverListener OnGameOverEvent;
+        public static void OnGameOver(int winningActorId)
+        {
+            if (OnGameOverEvent != null)
+            {
+                OnGameOverEvent(winningActorId);
+            }
+        }
     }
 }
