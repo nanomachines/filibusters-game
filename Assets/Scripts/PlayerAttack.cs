@@ -17,7 +17,7 @@ namespace Filibusters
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (InputWrapper.Instance.FirePressed)
             {
                 if (mWeaponInventory.CooledDown())
                 {

@@ -45,6 +45,11 @@ namespace Filibusters
             get { return mFallInput; }
         }
 
+        public bool FirePressed
+        {
+            get { return mFirePressed; }
+        }
+
         void Start()
         {
             if (Instance == null)
@@ -101,6 +106,7 @@ namespace Filibusters
                 mRightYInput = mousePos.y;
             }
 
+            mFirePressed = Input.GetAxis(FireAxis) > Mathf.Epsilon;
         }
 
         Vector2 GetMouseInput()
@@ -110,6 +116,7 @@ namespace Filibusters
         }
 
         // Private Fields
+        private static readonly string FireAxis = "Fire";
         private static readonly string LeftXInputName = "Left-X";
         private static readonly string LeftYInputName = "Left-Y";
         private static readonly string Xbox360AButtonName= "X360-A";
@@ -130,6 +137,7 @@ namespace Filibusters
         private float mRightYInput = 0f;
         private bool mJumpInput = false;
         private bool mFallInput = false;
+        private bool mFirePressed = false;
 
         private readonly Vector3 mPlayerPos = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
 
