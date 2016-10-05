@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010876488196}
   - 212: {fileID: 212000010142299164}
-  - 61: {fileID: 61000010412625070}
   - 114: {fileID: 114000012919635902}
   - 114: {fileID: 114000011362751524}
   - 114: {fileID: 114000013606253864}
   - 50: {fileID: 50000010613109072}
+  - 58: {fileID: 58000012231135390}
   m_Layer: 0
   m_Name: VetoBullet
   m_TagString: Untagged
@@ -62,8 +62,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61000010412625070
-BoxCollider2D:
+--- !u!58 &58000012231135390
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -75,7 +75,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 1.28}
+  m_Radius: 0.4
 --- !u!114 &114000011362751524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,9 +88,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mVel: 15
-  mColLayers:
-    serializedVersion: 2
-    m_Bits: 1792
 --- !u!114 &114000012919635902
 MonoBehaviour:
   m_ObjectHideFlags: 1
