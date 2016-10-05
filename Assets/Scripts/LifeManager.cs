@@ -9,9 +9,11 @@ namespace Filibusters
 		private float SecondsToRespawn;
 		private bool mIsDead;
 		private PhotonView mPhotonView;
-		private SpriteRenderer mRenderer;
+        private NetPlayerAnimationController mAnimController;
 		private BoxCollider2D mCollider;
 		private SimplePhysics mPhysics;
+        private PlayerAttack mAttackScript;
+        private WeaponInventory mWeaponInventory;
 		private bool mIsLocalPlayer;
 
 		// Use this for initialization
@@ -19,9 +21,11 @@ namespace Filibusters
 		{
 			mIsDead = false;
 			mPhotonView = GetComponent<PhotonView>();
-			mRenderer = GetComponent<SpriteRenderer>();
+			mAnimController = GetComponent<NetPlayerAnimationController>();
 			mCollider = GetComponent<BoxCollider2D>();
 			mPhysics = GetComponent<SimplePhysics>();
+            mAttackScript = GetComponent<PlayerAttack>();
+            mWeaponInventory = GetComponent<WeaponInventory>();
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
 		}
 		
@@ -65,9 +69,10 @@ namespace Filibusters
 
         private void Despawn()
         {
-            mRenderer.enabled = false;
+            mAnimController.SetRenderersEnabled(false);
             mCollider.enabled = false;
             mPhysics.enabled = false;
+            mAttackScript.enabled = false;
             mIsDead = true;
         }
 
@@ -84,8 +89,10 @@ namespace Filibusters
             mIsDead = false;
             mPhysics.enabled = mIsLocalPlayer;
 			mPhysics.ResetPhysicsState(respawnPos);
-            mRenderer.enabled = true;
+            mAnimController.SetRenderersEnabled(true);
+            mAttackScript.enabled = true;
             mCollider.enabled = true;
+            mWeaponInventory.EquipWeapon(GameConstants.WeaponId.FISTS);
         }
 	}
 }

@@ -25,6 +25,14 @@ namespace Filibusters
         private AudioClip mEquipAnarchy;
         [SerializeField]
         private AudioClip mEquipLibelAndSlander;
+        [SerializeField]
+        private AudioClip mUseVeto;
+        [SerializeField]
+        private AudioClip mUseMagicBullet;
+        [SerializeField]
+        private AudioClip mUseAnarchy;
+        [SerializeField]
+        private AudioClip mUseLibelAndSlander;
 
         // Use this for initialization
         void Start()
@@ -89,6 +97,30 @@ namespace Filibusters
                             break;
                     }
                     mSource.PlayOneShot(pickup);
+                }
+            };
+
+            EventSystem.OnWeaponFiredEvent += (int actorId, WeaponId weaponId) =>
+            {
+                if (actorId == PhotonNetwork.player.ID)
+                {
+                    AudioClip clip = null;
+                    switch (weaponId)
+                    {
+                        case WeaponId.VETO:
+                            clip = mUseVeto;
+                            break;
+                        case WeaponId.MAGIC_BULLET:
+                            clip = mUseMagicBullet;
+                            break;
+                        case WeaponId.ANARCHY:
+                            clip = mUseAnarchy;
+                            break;
+                        case WeaponId.LIBEL_AND_SLANDER:
+                            clip = mUseLibelAndSlander;
+                            break;
+                    }
+                    mSource.PlayOneShot(clip);
                 }
             };
         }

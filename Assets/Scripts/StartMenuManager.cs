@@ -10,15 +10,16 @@ namespace Filibusters
         void OnGUI()
         {
             GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-            GUILayout.Label("Filibusters");
-            if (GUILayout.Button("Host Game"))
-            {
-                NetworkManager.CreateAndJoinGameSession(SESSION_NAME);
-            }
-            if (GUILayout.Button("Join Game"))
-            {
-                NetworkManager.JoinGameSession(SESSION_NAME);
-            }
+        }
+
+        public void HostGame()
+        {
+            NetworkManager.CreateAndJoinGameSession(SESSION_NAME);
+        }
+
+        public void JoinGame()
+        {
+            NetworkManager.JoinGameSession(SESSION_NAME);
         }
     
         public override void OnJoinedRoom()

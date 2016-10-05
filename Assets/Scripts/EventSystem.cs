@@ -53,5 +53,35 @@ namespace Filibusters
                 OnEquipWeaponEvent(actorId, weaponId);
             }
         }
+
+        public delegate void WeaponFireListener(int actorId, GameConstants.WeaponId weaponId);
+        public static event WeaponFireListener OnWeaponFiredEvent;
+        public static void OnWeaponFired(int actorId, GameConstants.WeaponId weaponId)
+        {
+            if (OnWeaponFiredEvent != null)
+            {
+                OnWeaponFiredEvent(actorId, weaponId);
+            }
+        }
+
+        public delegate void WeaponMisfireListener(int actorId, GameConstants.WeaponId weaponId);
+        public static event WeaponMisfireListener OnWeaponMisfiredEvent;
+        public static void OnWeaponMisfired(int actorId, GameConstants.WeaponId weaponId)
+        {
+            if (OnWeaponMisfiredEvent != null)
+            {
+                OnWeaponMisfiredEvent(actorId, weaponId);
+            }
+        }
+
+        public delegate void GameOverListener(int winningActorId);
+        public static event GameOverListener OnGameOverEvent;
+        public static void OnGameOver(int winningActorId)
+        {
+            if (OnGameOverEvent != null)
+            {
+                OnGameOverEvent(winningActorId);
+            }
+        }
     }
 }
