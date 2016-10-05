@@ -66,6 +66,8 @@ namespace Filibusters
 
             mLegsAnim.SetBool("RunForward", runningForward);
             mLegsAnim.SetBool("BackPeddle", backpeddling);
+            mLegsAnim.SetFloat("JumpBlend", -mVelY);
+            mLegsAnim.SetBool("Grounded", mGrounded);
 
             mBackArmAnim.SetBool("FacingRight", mFacingRight);
             mBackArmAnim.SetInteger("Aim", mAimingDir);

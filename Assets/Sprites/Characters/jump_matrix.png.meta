@@ -1,0 +1,731 @@
+fileFormatVersion: 2
+guid: 42517539640b89b4a8bff9ff1742341d
+timeCreated: 1475651234
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: jump_matrix_0
+    21300002: jump_matrix_1
+    21300004: jump_matrix_2
+    21300006: jump_matrix_3
+    21300008: jump_matrix_4
+    21300010: jump_matrix_5
+    21300012: jump_matrix_6
+    21300014: jump_matrix_7
+    21300016: jump_matrix_8
+    21300018: jump_matrix_9
+    21300020: jump_matrix_10
+    21300022: jump_matrix_11
+    21300024: jump_matrix_12
+    21300026: jump_matrix_13
+    21300028: jump_matrix_14
+    21300030: jump_matrix_15
+    21300032: jump_matrix_16
+    21300034: jump_matrix_17
+    21300036: jump_matrix_18
+    21300038: jump_matrix_19
+    21300040: jump_matrix_20
+    21300042: jump_matrix_21
+    21300044: jump_matrix_22
+    21300046: jump_matrix_23
+    21300048: jump_matrix_24
+    21300050: jump_matrix_25
+    21300052: jump_matrix_26
+    21300054: jump_matrix_27
+    21300056: jump_matrix_28
+    21300058: jump_matrix_29
+    21300060: jump_matrix_30
+    21300062: jump_matrix_31
+    21300064: jump_matrix_32
+    21300066: jump_matrix_33
+    21300068: jump_matrix_34
+    21300070: jump_matrix_35
+    21300072: jump_matrix_36
+    21300074: jump_matrix_37
+    21300076: jump_matrix_38
+    21300078: jump_matrix_39
+    21300080: jump_matrix_40
+    21300082: jump_matrix_41
+    21300084: jump_matrix_42
+    21300086: jump_matrix_43
+    21300088: jump_matrix_44
+    21300090: jump_matrix_45
+    21300092: jump_matrix_46
+    21300094: jump_matrix_47
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jump_matrix_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1542
+        width: 91
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_1
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1575
+        width: 88
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_2
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1576
+        width: 91
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_3
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1575
+        width: 75
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_4
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 1582
+        width: 86
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_5
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 1588
+        width: 85
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_6
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1590
+        width: 85
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_7
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 1589
+        width: 92
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_8
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1268
+        width: 61
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_9
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 1273
+        width: 47
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_10
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1285
+        width: 64
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_11
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 1297
+        width: 68
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_12
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 1319
+        width: 71
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_13
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 1339
+        width: 81
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_14
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 1303
+        width: 68
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_15
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 1287
+        width: 62
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_16
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 993
+        width: 96
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_17
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1010
+        width: 99
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_18
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1014
+        width: 89
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_19
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 1015
+        width: 101
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_20
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1042
+        width: 78
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_21
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 1023
+        width: 101
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_22
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 1017
+        width: 96
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_23
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 970
+        width: 100
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_24
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 602
+        width: 126
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5055544, y: 0.9845143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_25
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 603
+        width: 89
+        height: 111
+      alignment: 9
+      pivot: {x: 0.49213642, y: 0.99809474}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_26
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 600
+        width: 127
+        height: 131
+      alignment: 9
+      pivot: {x: 0.50243515, y: 0.94549}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_27
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 600
+        width: 147
+        height: 137
+      alignment: 9
+      pivot: {x: 0.37817216, y: 0.7812803}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_28
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 601
+        width: 96
+        height: 115
+      alignment: 9
+      pivot: {x: 0.361262, y: 0.98402524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_29
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 600
+        width: 75
+        height: 138
+      alignment: 9
+      pivot: {x: 0.4305599, y: 0.9831596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_30
+      rect:
+        serializedVersion: 2
+        x: 1569
+        y: 600
+        width: 75
+        height: 138
+      alignment: 9
+      pivot: {x: 0.41189453, y: 0.9947965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_31
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 599
+        width: 75
+        height: 138
+      alignment: 9
+      pivot: {x: 0.44126302, y: 0.9788358}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_32
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 368
+        width: 56
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_33
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 378
+        width: 56
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_34
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 382
+        width: 65
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_35
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 402
+        width: 81
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_36
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 455
+        width: 100
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_37
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 404
+        width: 77
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_38
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 378
+        width: 57
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_39
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 351
+        width: 74
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_40
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 102
+        width: 80
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_41
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 127
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_42
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 115
+        width: 84
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_43
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 149
+        width: 75
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_44
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 113
+        width: 76
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_45
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 100
+        width: 70
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_46
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 68
+        width: 82
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jump_matrix_47
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 91
+        width: 60
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
