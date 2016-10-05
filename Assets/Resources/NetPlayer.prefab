@@ -227,6 +227,7 @@ GameObject:
   - 114: {fileID: 114000011964567098}
   - 114: {fileID: 114000012461576260}
   - 114: {fileID: 114000011866097066}
+  - 114: {fileID: 114000012729707964}
   m_Layer: 8
   m_Name: NetPlayer
   m_TagString: Player
@@ -664,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158d9dfeac407e44d8dc48904b68a293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BarrelReferences:
+  mBarrelReferences:
   - {fileID: 1000013294388218}
   - {fileID: 1000013898143026}
   - {fileID: 1000011885220366}
@@ -697,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3bd7a601e711164ea16d3d47c6c3c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCoolDownSeconds: 0
+  mCoolDownSeconds: 2
 --- !u!114 &114000012729707964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -709,8 +710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f65276da713bab4c9a50ccb5b2ba985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mProjectilePrefab: {fileID: 1000013038138592, guid: ec00d046890162240a2152f3c389955e,
-    type: 2}
 --- !u!114 &114000013725662570
 MonoBehaviour:
   m_ObjectHideFlags: 1

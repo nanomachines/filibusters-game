@@ -6,7 +6,7 @@ namespace Filibusters
 {
 	public class AimingController : MonoBehaviour
 	{
-        public GameObject[] BarrelReferences;
+        public GameObject[] mBarrelReferences;
         private PlayerState mPlayerState;
         public float mAngle;
 
@@ -38,6 +38,11 @@ namespace Filibusters
         {
             UpdateAimFromInput();
             DrawAimingRay();
+        }
+
+        public Transform GetWeaponPointTransform()
+        {
+            return mBarrelReferences[(int)mAimingDir].transform;
         }
 
 		void UpdateAimFromInput()
@@ -124,8 +129,8 @@ namespace Filibusters
 
         void DrawAimingRay()
         {
-            Vector2 barrelOrigin = BarrelReferences[(int)mAimingDir].transform.TransformPoint(Vector2.zero);
-            Vector2 bulletDir = BarrelReferences[(int)mAimingDir].transform.TransformVector(Vector2.right);
+            Vector2 barrelOrigin = mBarrelReferences[(int)mAimingDir].transform.TransformPoint(Vector2.zero);
+            Vector2 bulletDir = mBarrelReferences[(int)mAimingDir].transform.TransformVector(Vector2.right);
             Debug.DrawRay(barrelOrigin, bulletDir, Color.magenta);
         }
 	}

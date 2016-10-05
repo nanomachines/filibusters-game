@@ -7,10 +7,10 @@ namespace Filibusters
     public class WeaponInventory : MonoBehaviour
     {
         private PlayerState mPlayerState;
-        private WeaponId mWeaponId
+        public WeaponId mWeaponId
         {
             get { return mPlayerState.mWeaponId; }
-            set { mPlayerState.mWeaponId = value; }
+            private set { mPlayerState.mWeaponId = value; }
         }
 
         private int mAmmo;
@@ -48,9 +48,21 @@ namespace Filibusters
             }
         }
 
-        public bool HasAmmo()
+        public bool GetRound()
         {
-            return mAmmo != 0;
+            if (mAmmo > 0)
+            {
+                --mAmmo;
+                return true;
+            }
+            else if (mAmmo == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public bool CooledDown()
@@ -68,17 +80,6 @@ namespace Filibusters
             mCoolingDown = true;
             yield return new WaitForSeconds(mCoolDownSeconds);
             mCoolingDown = false;
-        }
-
-        public WeaponId UseWeapon()
-        {
-            // Decrement ammo count
-            if (mAmmo > 0)
-            {
-                --mAmmo;
-            }
-            return mWeaponId;
-
         }
     }
 }

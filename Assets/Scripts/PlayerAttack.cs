@@ -7,13 +7,11 @@ namespace Filibusters
     public class PlayerAttack : MonoBehaviour
     {
         private WeaponInventory mWeaponInventory;
-//        private PhotonView mPhotonView;
         private int mActorId;
 
         void Start()
         {
             mWeaponInventory = GetComponent<WeaponInventory>();
-//            mPhotonView = GetComponent<PhotonView>();
             mActorId = GetComponent<PhotonView>().owner.ID;
         }
 
@@ -24,15 +22,16 @@ namespace Filibusters
                 if (mWeaponInventory.CooledDown())
                 {
                     // Grab weapon id to trigger fire button effects
-                    WeaponId weaponId = mWeaponInventory.UseWeapon();
+                    WeaponId weaponId = mWeaponInventory.mWeaponId;
 
                     // Has ammo
-                    if (mWeaponInventory.HasAmmo())
+                    if (mWeaponInventory.GetRound())
                     {
                         string projectileName = GetProjectileName(weaponId);
                         if (projectileName.Length != 0)
                         {
-                            InstantiateProjectile(projectileName);
+                            Transform xform = GetComponent<AimingController>().GetWeaponPointTransform();
+                            InstantiateProjectile(projectileName, xform.position, xform.rotation);
                         }
                         EventSystem.OnWeaponFired(mActorId, weaponId);
                     }
@@ -47,6 +46,7 @@ namespace Filibusters
 
         string GetProjectileName(WeaponId weaponId)
         {
+            // TODO: replace with mWeaponId indexed array
             // Return string resource name to instantiate networked projectile
             if (weaponId == WeaponId.VETO)
             {
@@ -58,17 +58,9 @@ namespace Filibusters
             }
         }
 
-        void InstantiateProjectile(string projectileName)
+        void InstantiateProjectile(string projectileName, Vector3 origin, Quaternion rotation)
         {
-            GameObject projectile = PhotonNetwork.Instantiate(projectileName, transform.position, Quaternion.identity, 0);
-            ProjectileController projScript = projectile.GetComponent<ProjectileController>();
-
-            // Assign projectile velocity
-            projScript.NewDirection = new Vector3(1f, 0f);
-
-            // The direction depends on the rotation CHANGE
-            //projScript.NewDirection = new Vector3(0f, 1f);
-            //projectile.transform.Rotate(new Vector3(0f, 0f, 90f));
+            GameObject projectile = PhotonNetwork.Instantiate(projectileName, origin, rotation, 0);
         }
     }
 }

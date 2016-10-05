@@ -6,24 +6,9 @@ namespace Filibusters
 {
     public class ProjectileController : MonoBehaviour 
     {
-        private Vector3 mDirection;
-        public Vector3 NewDirection
-        {
-            set
-            {
-                mDirection = value;
-                mDirX = value.x;
-                mDirY = value.y;
-            }
-        }
         // TODO: Let PlayerAttack set mVel based on the bullet type
         [SerializeField]
         private float mVel;
-        private float mDirX;
-        private float mDirY;
-
-        private Quaternion mCurRotation;
-        private Quaternion mPrevRotation;
 
         private PhotonView mPhotonView;
 
@@ -34,9 +19,6 @@ namespace Filibusters
 
         void Start()
         {
-            mCurRotation = transform.rotation;
-            mPrevRotation = mCurRotation;
-
             mPhotonView = GetComponent<PhotonView>();
 
             Vector3 scale = transform.localScale;
@@ -49,33 +31,19 @@ namespace Filibusters
         
         void Update() 
         {
-            UpdateRotation();
-
             float movement = mVel * Time.deltaTime;
             transform.Translate(movement, 0f, 0f);
+            Debug.Log(transform.rotation.eulerAngles.z);
 
             DetectCollisions();
         }
 
-        void UpdateRotation()
-        {
-            mCurRotation = transform.rotation;
-            if (mCurRotation != mPrevRotation)
-            {
-                float angle = mCurRotation.eulerAngles.z - mPrevRotation.eulerAngles.z;
-                NewDirection = Quaternion.AngleAxis(angle, Vector3.forward) * mDirection;
-            }
-            mPrevRotation = mCurRotation;
-        }
-
         void DetectCollisions()
         {
-            float x = transform.position.x;
-            float y = transform.position.y;
             float castDistance = mSize.x / 2f + 0.1f;
 
-            Vector2 origin = new Vector2(x, y);
-            Vector2 direction = new Vector2(mDirX, mDirY);
+            Vector2 origin = new Vector2(transform.position.x, transform.position.y);
+            Vector2 direction = transform.TransformDirection(Vector2.right);
 
             Ray2D ray = new Ray2D(origin, direction);
             Debug.DrawRay(ray.origin, ray.direction, Color.cyan);
