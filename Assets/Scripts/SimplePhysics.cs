@@ -27,7 +27,6 @@ namespace Filibusters
         private bool mFacingRight
         {
             get { return mPlayerState.mFacingRight; }
-            set { mPlayerState.mFacingRight = value; }
         }
         private float mVelX
         {
@@ -108,7 +107,6 @@ namespace Filibusters
                 mVelX = UseAccel(xInput * mAerialSpeed, mVelX, xInput * mMaxSpeed);
             }
 
-            Flip(xInput);
             mVelXMult = Mathf.Abs(xInput);
 
             float deltaX = mVelX * Time.deltaTime;
@@ -152,20 +150,6 @@ namespace Filibusters
         {
             float newSpeed = accel + curSpeed;
             return (Mathf.Abs(newSpeed) < Mathf.Abs(maxSpeed)) ? newSpeed : maxSpeed;
-        }
-
-        private void Flip(float dir)
-        {
-            // Facing left
-            if (dir < 0)
-            {
-                mFacingRight = false;
-            }
-            // Facing right
-            else if (dir > 0)
-            {
-                mFacingRight = true;
-            }
         }
 
         private float GetXChange(float delta, float dir)
@@ -303,7 +287,6 @@ namespace Filibusters
             transform.position = pos;
             mPlayerState.ResetPosition();
             mGrounded = false;
-        	mFacingRight = true;
 	        mVelX = 0f;
 	        mVelY = 0f;
         	mPressedDown = false;
