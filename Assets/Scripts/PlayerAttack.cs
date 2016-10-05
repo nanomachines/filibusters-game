@@ -6,14 +6,10 @@ namespace Filibusters
     public class PlayerAttack : MonoBehaviour
     {
         private WeaponInventory mWeaponInventory;
-        private PhotonView mPhotonView;
-        private int mViewId;
 
         void Start()
         {
             mWeaponInventory = GetComponent<WeaponInventory>();
-            mPhotonView = GetComponent<PhotonView>();
-            mViewId = gameObject.GetComponent<PhotonView>().viewID;
         }
 
         void Update()
@@ -47,6 +43,7 @@ namespace Filibusters
 
             // Assign projectile velocity
             projScript.NewDirection = new Vector3(1f, 0f);
+
             // The direction depends on the rotation CHANGE
             //projScript.NewDirection = new Vector3(0f, 1f);
             //projectile.transform.Rotate(new Vector3(0f, 0f, 90f));

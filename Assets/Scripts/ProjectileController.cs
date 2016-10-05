@@ -30,7 +30,7 @@ namespace Filibusters
         [SerializeField]
         private LayerMask mColLayers;
         private Vector2 mSize = Vector2.zero;
-        private Vector2 mOffset = Vector2.zero;
+//        private Vector2 mOffset = Vector2.zero;
 
         void Start()
         {
@@ -49,6 +49,16 @@ namespace Filibusters
         
         void Update() 
         {
+            UpdateRotation();
+
+            float movement = mVel * Time.deltaTime;
+            transform.Translate(movement, 0f, 0f);
+
+            DetectCollisions();
+        }
+
+        void UpdateRotation()
+        {
             mCurRotation = transform.rotation;
             if (mCurRotation != mPrevRotation)
             {
@@ -56,22 +66,13 @@ namespace Filibusters
                 NewDirection = Quaternion.AngleAxis(angle, Vector3.forward) * mDirection;
             }
             mPrevRotation = mCurRotation;
-
-            float movement = mVel * Time.deltaTime;
-            transform.Translate(movement, 0f, 0f);
-
-            // Currently only the master can resolve collisions
-            if (PhotonNetwork.isMasterClient)
-            {
-                DetectCollisions();
-            }
         }
 
         void DetectCollisions()
         {
             float x = transform.position.x;
             float y = transform.position.y;
-            float castDistance = mSize.x / 2f;
+            float castDistance = mSize.x / 2f + 0.1f;
 
             Vector2 origin = new Vector2(x, y);
             Vector2 direction = new Vector2(mDirX, mDirY);
@@ -83,16 +84,31 @@ namespace Filibusters
             if (hit = Physics2D.Raycast(ray.origin, ray.direction, castDistance, mColLayers))
             {
                 GameObject obj = hit.transform.gameObject;
+                // Player
                 if (obj.tag == "Player")
                 {
-                    // TODO: Ensure bullet doesn't hit player who created it
                     if (obj.GetComponent<PhotonView>().owner.ID != mPhotonView.owner.ID)
                     {
                         Debug.Log("Hit player");
                         Destroy(gameObject);
+                        mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
                     }
                 }
+                // Walls and floors
+                if (obj.layer != LayerMask.NameToLayer("Player"))
+                {
+                    Debug.Log("Hit wall");
+                    Destroy(gameObject);
+                    mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                }
             }
+        }
+
+        [PunRPC]
+        public void DestroyBullet(int viewId)
+        {
+            Debug.Log("Hit player");
+            Destroy(PhotonView.Find(viewId).gameObject);
         }
     }
 }
