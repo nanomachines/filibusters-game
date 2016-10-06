@@ -22,7 +22,7 @@ GameObject:
   - 212: {fileID: 212000014164373736}
   - 61: {fileID: 61000012063585586}
   m_Layer: 11
-  m_Name: Select Menu Two Way Platform
+  m_Name: Mid Floor 2W
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
