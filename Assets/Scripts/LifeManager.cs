@@ -29,15 +29,6 @@ namespace Filibusters
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
 		}
 		
-		// Update is called once per frame
-		void Update()
-		{
-			if (Input.GetKeyDown(KeyCode.P) && GetComponent<PhotonView>().owner.ID == PhotonNetwork.player.ID)
-			{
-				Die();
-			}
-		}
-
 		public void Die()
 		{
 			mPhotonView.RPC("OnDeath", PhotonTargets.MasterClient);
