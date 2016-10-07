@@ -33,10 +33,6 @@ namespace Filibusters
         {
             get { return mPlayerState.mVelY; }
         }
-        private float mVelXMult
-        {
-            get { return mPlayerState.mVelXMult; }
-        }
         private int mAimingDir
         {
             get { return (int)mPlayerState.mAimingDir; }

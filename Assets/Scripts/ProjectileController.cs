@@ -16,7 +16,7 @@ namespace Filibusters
             mPhotonView = GetComponent<PhotonView>();
         }
         
-        void Update() 
+        void FixedUpdate() 
         {
             transform.Translate(mVel * Time.deltaTime, 0f, 0f);
         }

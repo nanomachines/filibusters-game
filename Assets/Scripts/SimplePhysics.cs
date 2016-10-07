@@ -38,12 +38,6 @@ namespace Filibusters
             get { return mPlayerState.mVelY; }
             set { mPlayerState.mVelY = value; }
         }
-        // TODO: Remove this
-        private float mVelXMult
-        {
-            get { return mPlayerState.mVelXMult; }
-            set { mPlayerState.mVelXMult = value; }
-        }
 
         private bool mPressedDown = false;
         private float mPrevY = 0f;
@@ -75,7 +69,7 @@ namespace Filibusters
             mOffset = new Vector2(bCol.offset.x * scale.x, bCol.offset.y * scale.y);
         }
 
-        void Update()
+        void FixedUpdate()
         {
             // Keep track of the previous position to account for two-way platforms
             mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
@@ -106,8 +100,6 @@ namespace Filibusters
             {
                 mVelX = UseAccel(xInput * mAerialSpeed, mVelX, xInput * mMaxSpeed);
             }
-
-            mVelXMult = Mathf.Abs(xInput);
 
             float deltaX = mVelX * Time.deltaTime;
             float deltaY = mVelY * Time.deltaTime;

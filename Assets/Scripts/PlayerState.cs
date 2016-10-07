@@ -13,8 +13,6 @@ namespace Filibusters
         [HideInInspector]
         public float mVelY = 0f;
         [HideInInspector]
-        public float mVelXMult = 0f;
-        [HideInInspector]
         public bool mGrounded = false;
         //[HideInInspector]
         public WeaponId mWeaponId = WeaponId.FISTS;
@@ -46,7 +44,6 @@ namespace Filibusters
         {
             if (stream.isWriting)
             {
-                stream.SendNext(mVelXMult);
                 stream.SendNext(mVelX);
                 stream.SendNext(mVelY);
                 stream.SendNext(mGrounded);
@@ -57,7 +54,6 @@ namespace Filibusters
             }
             else
             {
-                mVelXMult = (float)stream.ReceiveNext();
                 mVelX = (float)stream.ReceiveNext();
                 mVelY = (float)stream.ReceiveNext();
                 mGrounded = (bool)stream.ReceiveNext();
