@@ -42,7 +42,7 @@ namespace Filibusters
             {
                 mHasBeenCollected = true;
                 Debug.Log("Master Verified Coin Collected");
-                mPhotonView.RPC("OnCoinCollectionVerified", PhotonTargets.All, viewId);
+                mPhotonView.RPC("OnCoinCollectionVerified", PhotonTargets.AllBuffered, viewId);
             }
         }
 
