@@ -16,9 +16,9 @@ namespace Filibusters
             mPhotonView = GetComponent<PhotonView>();
         }
         
-        void Update() 
+        void FixedUpdate() 
         {
-            transform.Translate(mVel * Time.deltaTime, 0f, 0f);
+            transform.Translate(mVel * Time.fixedDeltaTime, 0f, 0f);
         }
 
         void OnTriggerEnter2D(Collider2D col)
