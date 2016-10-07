@@ -50,6 +50,11 @@ namespace Filibusters
             get { return mFirePressed; }
         }
 
+        public bool DropWeaponPressed
+        {
+            get { return mDropWeaponPressed; }
+        }
+
         void Start()
         {
             if (Instance == null)
@@ -65,6 +70,9 @@ namespace Filibusters
 
         void Update()
         {
+            /*
+             * Get Left "Stick" 
+             */
             mLeftXInput = Input.GetAxis(LeftXInputName);
             if (mLeftXInput > FullXInputThreshold)
             {
@@ -80,6 +88,9 @@ namespace Filibusters
             mJumpInput = (mLeftYInput > Mathf.Epsilon) || Input.GetButton(Xbox360AButtonName) ||
                 Input.GetAxis(Xbox360LeftTriggerName) > Mathf.Epsilon;
 
+            /*
+             * Get Right "Stick"
+             */
             bool joysticksConnected = false;
             foreach (var joystickName in Input.GetJoystickNames())
             {
@@ -106,8 +117,16 @@ namespace Filibusters
                 mRightYInput = mousePos.y;
             }
 
+            /*
+             * Get attack input
+             */
             mFirePressed = Input.GetAxis(FireAxis) > Mathf.Epsilon ||
                 Input.GetAxis(Xbox360FireAxis) > Mathf.Epsilon;
+
+            /*
+             * Get Weapon Drop input
+             */
+            mDropWeaponPressed = Input.GetAxis(DropAxis) > Mathf.Epsilon;
         }
 
         Vector2 GetMouseInput()
@@ -117,7 +136,6 @@ namespace Filibusters
         }
 
         // Private Fields
-        private static readonly string FireAxis = "Fire";
         private static readonly string LeftXInputName = "Left-X";
         private static readonly string LeftYInputName = "Left-Y";
         private static readonly string Xbox360AButtonName= "X360-A";
@@ -128,8 +146,11 @@ namespace Filibusters
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Right-X" : "X360-Win-Right-X";
         private static readonly string Xbox360RightYInputName =
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Right-Y" : "X360-Win-Right-Y";
+        private static readonly string FireAxis = "Fire";
         private static readonly string Xbox360FireAxis =
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Fire" : "X360-Win-Fire";
+        private static readonly string DropAxis = "Drop-Weapon";
+
         private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
 
         private float mLeftXInput = 0f;
@@ -141,6 +162,7 @@ namespace Filibusters
         private bool mJumpInput = false;
         private bool mFallInput = false;
         private bool mFirePressed = false;
+        private bool mDropWeaponPressed = false;
 
         private readonly Vector3 mPlayerPos = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
 

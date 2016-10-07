@@ -33,6 +33,8 @@ namespace Filibusters
         private AudioClip mUseAnarchy;
         [SerializeField]
         private AudioClip mUseLibelAndSlander;
+        [SerializeField]
+        private AudioClip mDropWeapon;
 
         // Use this for initialization
         void Start()
@@ -121,6 +123,14 @@ namespace Filibusters
                             break;
                     }
                     mSource.PlayOneShot(clip);
+                }
+            };
+
+            EventSystem.OnWeaponDropEvent += (int actorId) =>
+            {
+                if (actorId == PhotonNetwork.player.ID)
+                {
+                    mSource.PlayOneShot(mDropWeapon, 0.6f);
                 }
             };
         }
