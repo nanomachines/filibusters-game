@@ -7,6 +7,7 @@ namespace Filibusters
     public class WeaponInventory : MonoBehaviour
     {
         private PlayerState mPlayerState;
+        private PhotonView mPhotonView;
         public WeaponId mWeaponId
         {
             get { return mPlayerState.mWeaponId; }
@@ -22,10 +23,20 @@ namespace Filibusters
         void Start()
         {
             mPlayerState = GetComponent<PlayerState>();
+            mPhotonView = GetComponent<PhotonView>();
 
             // Set ammo to -1 for infinite ammo
             mAmmo = -1;
             mCoolingDown = false;
+        }
+
+        void Update()
+        {
+            if (mWeaponId != WeaponId.FISTS && InputWrapper.Instance.DropWeaponPressed)
+            {
+                EquipWeapon(WeaponId.FISTS);
+                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
+            }
         }
 
         public bool CanEquip()

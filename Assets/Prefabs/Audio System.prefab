@@ -138,3 +138,4 @@ MonoBehaviour:
   mUseMagicBullet: {fileID: 0}
   mUseAnarchy: {fileID: 0}
   mUseLibelAndSlander: {fileID: 0}
+  mDropWeapon: {fileID: 8300000, guid: 24e657f65383cb64da357147abb5ca01, type: 3}

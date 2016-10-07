@@ -83,5 +83,15 @@ namespace Filibusters
                 OnGameOverEvent(winningActorId);
             }
         }
+
+        public delegate void WeaponDropListener(int actorId);
+        public static event WeaponDropListener OnWeaponDropEvent;
+        public static void OnWeaponDrop(int actorId)
+        {
+            if (OnWeaponDropEvent!= null)
+            {
+                OnWeaponDropEvent(actorId);
+            }
+        }
     }
 }
