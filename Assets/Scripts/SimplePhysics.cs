@@ -101,8 +101,8 @@ namespace Filibusters
                 mVelX = UseAccel(xInput * mAerialSpeed, mVelX, xInput * mMaxSpeed);
             }
 
-            float deltaX = mVelX * Time.deltaTime;
-            float deltaY = mVelY * Time.deltaTime;
+            float deltaX = mVelX * Time.fixedDeltaTime;
+            float deltaY = mVelY * Time.fixedDeltaTime;
 
             float dirX = Mathf.Sign(deltaX);
             float dirY = Mathf.Sign(deltaY);
