@@ -8,9 +8,9 @@ namespace Filibusters
     {
         // TODO: Let PlayerAttack set mVel based on the bullet type
         [SerializeField]
-        private float mVel;
+        protected float mVel;
         private float mRaycastDistance;
-        private PhotonView mPhotonView;
+        protected PhotonView mPhotonView;
         private Vector3 mLocalColliderOffset;
         [SerializeField]
         private LayerMask mColLayers;
@@ -18,7 +18,7 @@ namespace Filibusters
         [SerializeField]
         private float mSkin = 0.005f;
 
-        void Start()
+        public virtual void Start()
         {
             mPhotonView = GetComponent<PhotonView>();
             CircleCollider2D mCollider = GetComponent<CircleCollider2D>();
@@ -34,10 +34,18 @@ namespace Filibusters
             }
 
             mLastHit = DetectCollisions();
-            if (mLastHit.collider == null)
+            if (mLastHit.collider == null || ShouldIgnoreHit(mLastHit))
             {
                 transform.Translate(mVel * Time.fixedDeltaTime, 0f, 0f);
+                mLastHit = new RaycastHit2D();
             }
+        }
+
+        bool ShouldIgnoreHit(RaycastHit2D hit)
+        {
+            var obj = hit.transform.gameObject;
+            return obj.tag.Equals(Tags.PLAYER) &&
+                obj.GetComponent<PhotonView>().owner.ID == mPhotonView.owner.ID;
         }
 
         RaycastHit2D DetectCollisions()
@@ -55,18 +63,15 @@ namespace Filibusters
             return Physics2D.Raycast(ray.origin, ray.direction, mRaycastDistance, mColLayers);
         }
 
-        void HandleCollisions(RaycastHit2D hit)
+        protected virtual void HandleCollisions(RaycastHit2D hit)
         {
             GameObject obj = hit.transform.gameObject;
             // Player
             if (obj.tag == "Player")
             {
-                if (obj.GetComponent<PhotonView>().owner.ID != mPhotonView.owner.ID)
-                {
-                    mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
-                    obj.GetComponent<LifeManager>().Die();
-                    Destroy(gameObject);
-                }
+                mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                obj.GetComponent<LifeManager>().Die();
+                Destroy(gameObject);
             }
             // Walls and floors
             if (obj.layer != LayerMask.NameToLayer("Player"))
