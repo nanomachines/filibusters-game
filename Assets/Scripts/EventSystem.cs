@@ -93,5 +93,25 @@ namespace Filibusters
                 OnWeaponDropEvent(actorId);
             }
         }
+
+        public delegate void AllPlayersReadyListener();
+        public static event AllPlayersReadyListener OnAllPlayersReadyEvent;
+        public static void OnAllPlayersReady()
+        {
+            if (OnAllPlayersReadyEvent != null)
+            {
+                OnAllPlayersReadyEvent();
+            }
+        }
+
+        public delegate void AllPlayersNotReadyListener();
+        public static event AllPlayersNotReadyListener OnAllPlayersNotReadyEvent;
+        public static void OnAllPlayersNotReady()
+        {
+            if (OnAllPlayersNotReadyEvent != null)
+            {
+                OnAllPlayersNotReadyEvent();
+            }
+        }
     }
 }

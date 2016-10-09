@@ -13,6 +13,8 @@ namespace Filibusters
         public static readonly string IS_NEW_KEY = "IsNew";
         public static readonly string PLAYER_CHARACTER_RESOURCE_NAME = "NetPlayer";
 
+        private bool mAllPlayersReady = false;
+
         public GameObject[] mReadyRooms;
 
         private int mPlayersReady;
@@ -53,27 +55,17 @@ namespace Filibusters
             }
         }
 
-        void OnGUI()
+        void Update()
         {
-            var labelBuilder = new System.Text.StringBuilder(90);
-            if (PhotonNetwork.isMasterClient)
+            if (!mAllPlayersReady && PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
             {
-                labelBuilder.AppendLine("Host/Master Client");
+                mAllPlayersReady = true;
+                EventSystem.OnAllPlayersReady();
             }
-            labelBuilder.AppendLine("PlayersReady: " + mPlayersReady);
-            foreach (var player in PhotonNetwork.playerList)
+            else if (mAllPlayersReady && PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length != mPlayersReady)
             {
-                var isReady = player.customProperties.ContainsKey(IS_READY_KEY) ? player.customProperties[IS_READY_KEY] : false;
-                labelBuilder.AppendLine(player.ID + ": " + isReady);
-            }
-            GUILayout.Label(labelBuilder.ToString());
-
-            if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList.Length == mPlayersReady)
-            {
-                if (GUILayout.Button("Start Game"))
-                {
-                    OnStartGame();
-                }
+                mAllPlayersReady = false;
+                EventSystem.OnAllPlayersNotReady();
             }
         }
 

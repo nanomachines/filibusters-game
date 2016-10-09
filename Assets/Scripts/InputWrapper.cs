@@ -14,46 +14,27 @@ namespace Filibusters
             Update();
         }
 
+        public bool AnyJoysticksConnected()
+        {
+            foreach (var joystickName in Input.GetJoystickNames())
+            {
+                if (joystickName.Length != 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         // Public Properties
-        public float LeftXInput
-        {
-            get { return mLeftXInput; }
-        }
-
-        public float LeftYInput
-        {
-            get { return mLeftYInput; }
-        }
-
-        public float RightXInput
-        {
-            get { return mRightXInput;  }
-        }
-
-        public float RightYInput
-        {
-            get { return mRightYInput;  }
-        }
-
-        public bool JumpPressed
-        {
-            get { return mJumpInput; }
-        }
-
-        public bool FallPressed
-        {
-            get { return mFallInput; }
-        }
-
-        public bool FirePressed
-        {
-            get { return mFirePressed; }
-        }
-
-        public bool DropWeaponPressed
-        {
-            get { return mDropWeaponPressed; }
-        }
+        public float LeftXInput { get { return mLeftXInput; } }
+        public float LeftYInput { get { return mLeftYInput; } }
+        public float RightXInput { get { return mRightXInput; } }
+        public float RightYInput { get { return mRightYInput; } }
+        public bool JumpPressed { get { return mJumpInput; } }
+        public bool FallPressed { get { return mFallInput; } }
+        public bool FirePressed { get { return mFirePressed; } }
+        public bool DropWeaponPressed { get { return mDropWeaponPressed; } }
 
         void Start()
         {
@@ -91,16 +72,7 @@ namespace Filibusters
             /*
              * Get Right "Stick"
              */
-            bool joysticksConnected = false;
-            foreach (var joystickName in Input.GetJoystickNames())
-            {
-                if (joystickName.Length != 0)
-                {
-                    joysticksConnected = true;
-                    break;
-                }
-            }
-            if (joysticksConnected)
+            if (AnyJoysticksConnected())
             {
                 var x = Input.GetAxis(Xbox360RightXInputName);
                 var y = Input.GetAxis(Xbox360RightYInputName);
@@ -155,9 +127,7 @@ namespace Filibusters
 
         private float mLeftXInput = 0f;
         private float mLeftYInput = 0f;
-        [SerializeField]
         private float mRightXInput = 0f;
-        [SerializeField]
         private float mRightYInput = 0f;
         private bool mJumpInput = false;
         private bool mFallInput = false;
