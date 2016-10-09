@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Filibusters
 {
     public class InputWrapper : MonoBehaviour
     {
-
         public static InputWrapper Instance = null;
 
         // Public Methods
@@ -61,11 +61,21 @@ namespace Filibusters
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
+                SetMouseInputHandlerFromScene(SceneManager.GetActiveScene());
+                SceneManager.sceneLoaded += SetMouseInputHandlerFromScene;
             }
             else
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void SetMouseInputHandlerFromScene(Scene scene, LoadSceneMode sceneMode = LoadSceneMode.Single)
+        {
+
+            GetMouseInput = scene.name == Scenes.READY_MENU ?
+                GetMouseInput = new GetMouseInputDelegate(GetMouseInputInReadyRoom) :
+                GetMouseInput = new GetMouseInputDelegate(GetMouseInputInGame);
         }
 
         void Update()
@@ -129,10 +139,23 @@ namespace Filibusters
             mDropWeaponPressed = Input.GetAxis(DropAxis) > Mathf.Epsilon;
         }
 
-        Vector2 GetMouseInput()
+        private delegate Vector2 GetMouseInputDelegate();
+        private GetMouseInputDelegate GetMouseInput;
+        private Vector2 GetMouseInputInGame()
         {
-            Vector3 worldMousePos = Input.mousePosition;
-            return new Vector2(worldMousePos.x - mPlayerPos.x, worldMousePos.y - mPlayerPos.y);
+            Vector3 mousePos = Input.mousePosition;
+            return new Vector2(mousePos.x - Screen.width / 2f, mousePos.y - Screen.height / 2f);
+        }
+
+        public GameObject mLocalReadyRoomCharacter { private get; set; }
+        private Vector2 GetMouseInputInReadyRoom()
+        {
+            if (mLocalReadyRoomCharacter != null)
+            {
+                var playerPosInScreenSpace = Camera.current.WorldToScreenPoint(mLocalReadyRoomCharacter.transform.position);
+                return Input.mousePosition - playerPosInScreenSpace;
+            }
+            return Vector2.zero;
         }
 
         // Private Fields
@@ -164,7 +187,6 @@ namespace Filibusters
         private bool mFirePressed = false;
         private bool mDropWeaponPressed = false;
 
-        private readonly Vector3 mPlayerPos = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
 
     }
 }

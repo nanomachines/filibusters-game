@@ -23,7 +23,7 @@ namespace Filibusters
         public void ShowGameOverScreen(int winningActorId)
         {
             GameGlobals.LocalPlayerWonGame = winningActorId == PhotonNetwork.player.ID;
-            PhotonNetwork.LoadLevel(Scenes.SCENE_DIR + Scenes.GAME_OVER);
+            PhotonNetwork.LoadLevel(Scenes.GAME_OVER);
         } 
 	}
 }
