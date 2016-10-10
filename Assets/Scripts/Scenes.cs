@@ -5,10 +5,9 @@ namespace Filibusters
 {
     public class Scenes
     {
-        public static readonly string SCENE_DIR = "Scenes/";
-        public static readonly string START_MENU = "StartMenu";
-        public static readonly string READY_MENU = "ReadyMenu";
-        public static readonly string MAIN = "Main";
-        public static readonly string GAME_OVER = "GameOver";
+        public static readonly string START_MENU = "Scenes/StartMenu";
+        public static readonly string READY_MENU = "Scenes/ReadyMenu";
+        public static readonly string MAIN = "Scenes/Main";
+        public static readonly string GAME_OVER = "Scenes/GameOver";
     }
 }

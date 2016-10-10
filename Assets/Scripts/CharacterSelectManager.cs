@@ -186,6 +186,7 @@ namespace Filibusters
                 localPlayer.GetComponent<AimingController>().enabled = true;
                 var mLocalDepositManager = Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.DEPOSIT).GetComponent<DepositManager>();
                 mLocalDepositManager.LocalDepositEvent += () => { MarkLocalPlayerReadyState(true);  };
+                InputWrapper.Instance.mLocalReadyRoomCharacter = localPlayer;
             }
         }
     

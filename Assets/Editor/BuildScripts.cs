@@ -9,10 +9,10 @@ namespace Filibusters
 
         public static string[] levels = new string[]
         {
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.START_MENU + SceneSuffix),
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.READY_MENU + SceneSuffix),
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.MAIN + SceneSuffix),
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.GAME_OVER + SceneSuffix),
+            Scenes.START_MENU + SceneSuffix,
+            Scenes.READY_MENU + SceneSuffix,
+            Scenes.MAIN + SceneSuffix,
+            Scenes.GAME_OVER + SceneSuffix
         };
 
         [MenuItem("Builds/Build Both")]
