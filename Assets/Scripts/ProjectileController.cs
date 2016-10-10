@@ -50,7 +50,7 @@ namespace Filibusters
 
         RaycastHit2D DetectCollisions()
         {
-            Vector2 worldSpaceColliderPos = transform.localPosition + mLocalColliderOffset;
+            Vector2 worldSpaceColliderPos = transform.TransformPoint(mLocalColliderOffset);
             Vector2 direction = transform.TransformDirection(Vector2.right);
 
             Ray2D ray = new Ray2D(worldSpaceColliderPos, direction);
