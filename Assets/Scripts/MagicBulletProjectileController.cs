@@ -5,13 +5,8 @@ namespace Filibusters
 {
 	public class MagicBulletProjectileController : ProjectileController
 	{
+        [SerializeField]
         private int mRicochetCounter;
-
-        public override void Start()
-        {
-            base.Start();
-            mRicochetCounter = 5;
-        }
 
         protected override void HandleCollisions(RaycastHit2D hit)
         {
