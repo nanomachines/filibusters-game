@@ -7,6 +7,7 @@ namespace Filibusters
     public class CoinInventory : MonoBehaviour
     {
         private int mCoinCount;
+        private PhotonView mPhotonView;
         public int CoinCount
         {
         	get
@@ -26,9 +27,10 @@ namespace Filibusters
 
         void Start()
         {
-            EventSystem.OnDeathEvent += ResetCoins;
             mCoinCount = 0;
 			mDepositCount = 0;
+            mPhotonView = GetComponent<PhotonView>();
+            EventSystem.OnDeathEvent += ResetCoins;
         }
 
         public void AddCoin()
@@ -53,7 +55,10 @@ namespace Filibusters
 
         public void ResetCoins(int playerViewId)
         {
-            mCoinCount = 0;
+            if (playerViewId == mPhotonView.viewID)
+            {
+                mCoinCount = 0;
+            }
         }
     }
 }
