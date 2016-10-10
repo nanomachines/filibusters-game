@@ -67,14 +67,14 @@ namespace Filibusters
         {
             GameObject obj = hit.transform.gameObject;
             // Player
-            if (obj.tag == "Player")
+            if (obj.tag == Tags.PLAYER)
             {
                 mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
                 obj.GetComponent<LifeManager>().Die();
                 Destroy(gameObject);
             }
             // Walls and floors
-            if (obj.layer != LayerMask.NameToLayer("Player"))
+            if (obj.layer != LayerMask.NameToLayer(Layers.PLAYER))
             {
                 Debug.Log("Hit wall");
                 Destroy(gameObject);

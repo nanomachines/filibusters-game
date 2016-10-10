@@ -3,13 +3,13 @@ namespace Filibusters
 {
     public class GameConstants
     {
-        public static int VERSION_MAJOR = 0;
-        public static int VERSION_MINOR = 1;
-        public static string VERSION_STRING = VERSION_MAJOR.ToString() + "." +
+        public static readonly int VERSION_MAJOR = 0;
+        public static readonly int VERSION_MINOR = 1;
+        public static readonly string VERSION_STRING = VERSION_MAJOR.ToString() + "." +
                 VERSION_MINOR.ToString();
 
-        public static int AMOUNT_OF_COINS_TO_WIN = 3;
-        public static int MAX_ONLINE_PLAYERS_IN_GAME = 4;
+        public static readonly int AMOUNT_OF_COINS_TO_WIN = 3;
+        public static readonly int MAX_ONLINE_PLAYERS_IN_GAME = 4;
 
         public enum WeaponId
         {
@@ -31,5 +31,18 @@ namespace Filibusters
         LEFT_DOWN = 5,
         DOWN = 6,
         RIGHT_DOWN = 7        
+    }
+
+    public class Layers
+    {
+        public readonly static string PLAYER = "Player";  
+    }
+
+    public static class Tags
+    {
+        public static readonly string PLAYER = "Player";
+        public static readonly string RESPAWN = "Respawn";
+        public static readonly string DEPOSIT = "Deposit";
+        public static readonly string INACTIVE_OVERLAY = "InactiveIndicator";
     }
 }
