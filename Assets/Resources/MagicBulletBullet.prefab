@@ -21,12 +21,12 @@ GameObject:
   - 4: {fileID: 4000010876488196}
   - 212: {fileID: 212000010142299164}
   - 114: {fileID: 114000012919635902}
-  - 114: {fileID: 114000011362751524}
   - 114: {fileID: 114000013606253864}
   - 50: {fileID: 50000010613109072}
   - 58: {fileID: 58000012231135390}
+  - 114: {fileID: 114000012444146904}
   m_Layer: 0
-  m_Name: VetoBullet
+  m_Name: MagicBulletBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &114000011362751524
+--- !u!114 &114000012444146904
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013038138592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a7b0a55f7067f48a13bc761f851087, type: 3}
+  m_Script: {fileID: 11500000, guid: f4461685c26ca424ca56c8b804bd6de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mVel: 15
@@ -92,6 +92,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1792
   mSkin: 0.005
+  mRicochetCounter: 5
 --- !u!114 &114000012919635902
 MonoBehaviour:
   m_ObjectHideFlags: 1

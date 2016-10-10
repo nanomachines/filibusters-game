@@ -48,13 +48,14 @@ namespace Filibusters
         {
             // TODO: replace with mWeaponId indexed array
             // Return string resource name to instantiate networked projectile
-            if (weaponId == WeaponId.VETO)
+            switch (weaponId)
             {
-                return "VetoBullet";
-            }
-            else
-            {
-                return "";
+                case WeaponId.VETO:
+                    return "VetoBullet";
+                case WeaponId.MAGIC_BULLET:
+                    return "MagicBulletBullet";
+                default:
+                    return "";
             }
         }
 

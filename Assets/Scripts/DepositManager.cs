@@ -38,7 +38,7 @@ namespace Filibusters
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
-			if (other.tag == "Player")
+			if (other.tag == Tags.PLAYER)
 			{
 				// add the player to the zone
 				mPlayersInZone.Add(other.gameObject.GetComponent<PhotonView>().viewID);
@@ -54,7 +54,7 @@ namespace Filibusters
 		void OnTriggerExit2D(Collider2D other)
 		{
 			// Put this inside OnExitZone
-			if (other.tag == "Player")
+			if (other.tag == Tags.PLAYER)
 			{
 				OnZoneExit(other.gameObject.GetComponent<PhotonView>().viewID);
 			}
