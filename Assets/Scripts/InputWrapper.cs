@@ -73,9 +73,9 @@ namespace Filibusters
         private void SetMouseInputHandlerFromScene(Scene scene, LoadSceneMode sceneMode = LoadSceneMode.Single)
         {
 
-            GetMouseInput = scene.name == Scenes.READY_MENU ?
-                GetMouseInput = new GetMouseInputDelegate(GetMouseInputInReadyRoom) :
-                GetMouseInput = new GetMouseInputDelegate(GetMouseInputInGame);
+            GetMouseInput = (scene.name == Scenes.READY_MENU || Scenes.READY_MENU.EndsWith(scene.name)) ?
+                new GetMouseInputDelegate(GetMouseInputInReadyRoom) :
+                new GetMouseInputDelegate(GetMouseInputInGame);
         }
 
         void Update()
@@ -152,7 +152,7 @@ namespace Filibusters
         {
             if (mLocalReadyRoomCharacter != null)
             {
-                var playerPosInScreenSpace = Camera.current.WorldToScreenPoint(mLocalReadyRoomCharacter.transform.position);
+                var playerPosInScreenSpace = GameObject.FindObjectOfType<Camera>().WorldToScreenPoint(mLocalReadyRoomCharacter.transform.position);
                 return Input.mousePosition - playerPosInScreenSpace;
             }
             return Vector2.zero;

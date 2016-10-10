@@ -85,7 +85,7 @@ namespace Filibusters
         [PunRPC]
         public void LaunchGame()
         {
-            PhotonNetwork.LoadLevel("Scenes/Main");
+            PhotonNetwork.LoadLevel(Scenes.MAIN);
         }
     
         // TODO: delete this method if we never need toggling
