@@ -23,7 +23,7 @@ namespace Filibusters
             mPhotonView = GetComponent<PhotonView>();
             CircleCollider2D mCollider = GetComponent<CircleCollider2D>();
             mLocalColliderOffset = new Vector3(mCollider.offset.x, mCollider.offset.y);
-            mRaycastDistance = mVel * Time.fixedDeltaTime + 0.001f;
+            mRaycastDistance = mVel * Time.fixedDeltaTime + mSkin;
         }
         
         void FixedUpdate() 
