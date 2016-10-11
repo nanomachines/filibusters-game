@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace Filibusters
 {
@@ -24,6 +24,7 @@ namespace Filibusters
 		private float mTimeSinceDeposit;
 
 		private PhotonView mPhotonView;
+        private Slider mSlider;
 
 		void Start()
 		{
@@ -34,6 +35,7 @@ namespace Filibusters
 			mTimeSinceDeposit = 0f;
 			mDepositing = false;
 			mPhotonView = GetComponent<PhotonView>();
+            mSlider = GetComponentInChildren<Slider>();
 		}
 
 		void OnTriggerEnter2D(Collider2D other)
@@ -76,11 +78,13 @@ namespace Filibusters
 					mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
 					// reset the time
 					mTimeSinceDeposit = 0f;
-				}
-			}
-			else
+                }
+                mSlider.value = mTimeSinceDeposit / mDepositTime;
+            }
+            else
 			{
 				mDepositing = false;
+                mSlider.value = 0;
 			}
 		}
 
