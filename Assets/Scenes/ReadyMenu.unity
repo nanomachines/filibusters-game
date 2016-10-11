@@ -2683,7 +2683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &814111648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3522,8 +3522,6 @@ GameObject:
   - 114: {fileID: 1113514590}
   - 114: {fileID: 1113514592}
   - 114: {fileID: 1113514589}
-  - 114: {fileID: 1113514593}
-  - 114: {fileID: 1113514594}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -3587,46 +3585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2478cd1db8e753c42a13f3d54f8ab826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mKeyboardModule: {fileID: 1113514589}
-  mXbox360Windows: {fileID: 1113514593}
-  mXbox360OSX: {fileID: 1113514594}
-  mReadyMenuCanvas: {fileID: 814111647}
---- !u!114 &1113514593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1113514588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Left-X
-  m_VerticalAxis: Left-Y
-  m_SubmitButton: X360-Win-Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1113514594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1113514588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Left-X
-  m_VerticalAxis: Left-Y
-  m_SubmitButton: X360-OSX-Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  mStartButton: {fileID: 203103849}
 --- !u!1001 &1224225319
 Prefab:
   m_ObjectHideFlags: 0

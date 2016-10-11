@@ -108,22 +108,26 @@ namespace Filibusters
         }
 
         // Private Fields
-        private static readonly string LeftXInputName = "Left-X";
-        private static readonly string LeftYInputName = "Left-Y";
-        private static readonly string Xbox360AButtonName= "X360-A";
+        public static readonly string LeftXInputName = "Left-X";
+        public static readonly string LeftYInputName = "Left-Y";
+        public static readonly string Xbox360AButtonName= "X360-A";
         // The Xbox360 LT is mapped to different axises depending on your OS
-        private static readonly string Xbox360LeftTriggerName =
+        public static readonly string Xbox360LeftTriggerName =
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-LT" : "X360-Win-LT";
-        private static readonly string Xbox360RightXInputName =
+        public static readonly string Xbox360RightXInputName =
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Right-X" : "X360-Win-Right-X";
-        private static readonly string Xbox360RightYInputName =
+        public static readonly string Xbox360RightYInputName =
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Right-Y" : "X360-Win-Right-Y";
-        private static readonly string FireAxis = "Fire";
-        private static readonly string Xbox360FireAxis =
+        public static readonly string FireAxis = "Fire";
+        public static readonly string Xbox360FireAxis =
             Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Fire" : "X360-Win-Fire";
-        private static readonly string DropAxis = "Drop-Weapon";
+        public static readonly string DropAxis = "Drop-Weapon";
 
-        private static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
+        public static readonly string SubmitAxis = "Submit";
+        public static readonly string Xbox360SubmitAxis =
+            Application.platform == RuntimePlatform.OSXPlayer ? "X360-OSX-Submit" : "X360-Win-Submit";
+
+        public static readonly float FullXInputThreshold = Mathf.Sqrt(2) / 2f;
 
         private float mLeftXInput = 0f;
         private float mLeftYInput = 0f;

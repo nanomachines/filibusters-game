@@ -6,41 +6,31 @@ namespace Filibusters
 	public class UIController : MonoBehaviour
 	{
         [SerializeField]
-        private UnityEngine.EventSystems.StandaloneInputModule mKeyboardModule;
-        [SerializeField]
-        private UnityEngine.EventSystems.StandaloneInputModule mXbox360Windows;
-        [SerializeField]
-        private UnityEngine.EventSystems.StandaloneInputModule mXbox360OSX;
-        private UnityEngine.EventSystems.StandaloneInputModule mXbox360Module;
-        [SerializeField]
-        private GameObject mReadyMenuCanvas;
+        private UnityEngine.UI.Button mStartButton;
+        private UnityEngine.EventSystems.StandaloneInputModule mInputModule;
 
         public void Start()
         {
-            if (Application.platform == RuntimePlatform.OSXPlayer)
-            {
-                mXbox360Windows.enabled = false;
-                mXbox360Module = mXbox360OSX;
-            }
-            else
-            {
-                mXbox360OSX.enabled = false;
-                mXbox360Module = mXbox360Windows;
-            }
+            mInputModule = GetComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+            mStartButton.gameObject.SetActive(false);
+            mStartButton.interactable = false;
+            mInputModule.horizontalAxis = InputWrapper.LeftXInputName;
+            mInputModule.verticalAxis = InputWrapper.LeftYInputName;
             EventSystem.OnAllPlayersReadyEvent += () =>
             {
-                mReadyMenuCanvas.SetActive(true);
+                mStartButton.gameObject.SetActive(true);
+                mStartButton.interactable = true;
             };
             EventSystem.OnAllPlayersNotReadyEvent += () =>
             {
-                mReadyMenuCanvas.SetActive(false);
+                mStartButton.gameObject.SetActive(false);
+                mStartButton.interactable = false;
             };
         }
         public void Update()
         {
-            bool joysticksConnected = InputWrapper.Instance.AnyJoysticksConnected();
-            mXbox360Module.forceModuleActive = joysticksConnected;
-            mKeyboardModule.forceModuleActive = !joysticksConnected;
+            mInputModule.submitButton = InputWrapper.Instance.AnyJoysticksConnected() ?
+                InputWrapper.Xbox360SubmitAxis : InputWrapper.SubmitAxis;
         }
 	}
 
