@@ -15,8 +15,16 @@ namespace Filibusters
         }
 
         private int mAmmo;
+        [SerializeField]
+        private int mVetoAmmo;
+        [SerializeField]
+        private int mMagicBulletAmmo;
 
         [SerializeField]
+        private float mDefaultCoolDown;
+        [SerializeField]
+        private float mMagicBulletCoolDown;
+
         private float mCoolDownSeconds;
         private bool mCoolingDown;
 
@@ -53,8 +61,16 @@ namespace Filibusters
             // Set ammo to infinite for now
             switch (weaponId)
             {
+                case WeaponId.VETO:
+                    mAmmo = mVetoAmmo;
+                    break;
+                case WeaponId.MAGIC_BULLET:
+                    mAmmo = mMagicBulletAmmo;
+                    mCoolDownSeconds = mMagicBulletCoolDown;
+                    break;
                 default:
                     mAmmo = -1;
+                    mCoolDownSeconds = mDefaultCoolDown;
                     break;
             }
         }
@@ -68,6 +84,8 @@ namespace Filibusters
             }
             else if (mAmmo == 0)
             {
+                EquipWeapon(WeaponId.FISTS);
+                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
                 return false;
             }
             else

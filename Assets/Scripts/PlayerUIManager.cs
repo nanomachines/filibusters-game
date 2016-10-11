@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 using System.Collections;
 
 namespace Filibusters
@@ -9,6 +10,15 @@ namespace Filibusters
 		public CoinInventory mInventoryScript;
 		private Text mCoinText;
 	    private Text mVotesText;
+
+        private Slider mHealthBarControl;
+        private Image mHealthBar;
+        [SerializeField]
+        private Color mHighHealthColor;
+        [SerializeField]
+        private Color mMedHealthColor;
+        [SerializeField]
+        private Color mLowHealthColor;
 
 	    void Start()
 	    {
@@ -32,30 +42,47 @@ namespace Filibusters
 	            {
 	                mVotesText = child.GetComponent<Text>();
 	            }
-	        }
-
-	        // Check for null elements
-			if (!mCoinText)
-            {
-                Debug.LogError("No text display for coins found! Tag a text object with a CoinText tag.");
+                else if (child.tag == "HealthBar")
+                {
+                    mHealthBarControl = child.GetComponent<Slider>();
+                }
             }
+            mHealthBar = mHealthBarControl.fillRect.gameObject.GetComponentInChildren<Image>();
 
-			if (!mVotesText)
-            {
-                Debug.LogError("No text display for votes found! Tag a text object with a VoteText tag.");
-            }
+            // Check for null elements
+            Assert.IsNotNull(mCoinText, "No text display for coins found! Tag a text object with a CoinText tag.");
+            Assert.IsNotNull(mVotesText, "No text display for votes found! Tag a text object with a VoteText tag.");
+            Assert.IsNotNull(mInventoryScript, "No inventory script found! This should have been set in the SpawnManager.");
+            Assert.IsNotNull(mHealthBarControl, "No health bar slider attached to the player ui! Tag a slider object with a HealthBar tag.");
+            Assert.IsNotNull(mHealthBar, "No health bar image attached to the player ui! Tag a Image object parented under the Slider RectTransform with a HealthBar tag.");
 
-			if (!mInventoryScript)
-			{
-                Debug.LogError("No inventory script found! This should have been set in the SpawnManager.");
-            }
+            EventSystem.OnUpdateHealthBarEvent += UpdateHealthBar;
 	    }
 		
+        // TODO: Attach coin updates and deposit updates to event system.
+        // Remove player inventory script assignment in SpawnManager
 		void Update () 
 		{
 			mCoinText.text = "Coins: " + mInventoryScript.CoinCount;
 			mVotesText.text = "Votes: " + mInventoryScript.DepositCount;
 		}
+
+        void UpdateHealthBar(int health)
+        {
+            mHealthBarControl.value = health;
+            if (health > 60)
+            {
+                mHealthBar.color = mHighHealthColor;
+            }
+            else if (health <= 20)
+            {
+                mHealthBar.color = mLowHealthColor;
+            }
+            else
+            {
+                mHealthBar.color = mMedHealthColor;
+            }
+        }
 	}
 
 }
