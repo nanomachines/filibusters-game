@@ -15,8 +15,6 @@ namespace Filibusters
         }
 
         private int mAmmo;
-
-        [SerializeField]
         private float mCoolDownSeconds;
         private bool mCoolingDown;
 
@@ -47,16 +45,11 @@ namespace Filibusters
         public void EquipWeapon(WeaponId weaponId) 
         {
             mWeaponId = weaponId;
-            int actorId = GetComponent<PhotonView>().owner.ID;
+            int actorId = mPhotonView.owner.ID;
             EventSystem.OnEquipWeapon(actorId, weaponId);
-            // TODO: add ammo counts and cooldown seconds for each weapon as a serialized private field
-            // Set ammo to infinite for now
-            switch (weaponId)
-            {
-                default:
-                    mAmmo = -1;
-                    break;
-            }
+            WeaponAttributes attributes = GameConstants.WeaponProperties[(int)weaponId];
+            mAmmo = attributes.mMaxAmmo;
+            mCoolDownSeconds = attributes.mCoolDown;
         }
 
         public bool GetRound()
@@ -68,6 +61,8 @@ namespace Filibusters
             }
             else if (mAmmo == 0)
             {
+                EquipWeapon(WeaponId.FISTS);
+                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
                 return false;
             }
             else

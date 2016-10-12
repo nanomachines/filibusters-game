@@ -47,4 +47,6 @@ MonoBehaviour:
   - InstantiateBullet
   - DestroyBullet
   - ShowGameOverScreen
+  - UpdateHealthBar
+  - UpdateLocalHealthBar
   DisableAutoOpenWizard: 1

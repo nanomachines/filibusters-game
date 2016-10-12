@@ -93,5 +93,15 @@ namespace Filibusters
                 OnWeaponDropEvent(actorId);
             }
         }
+
+        public delegate void UpdateHealthBarListener(int playerHealth);
+        public static event UpdateHealthBarListener OnUpdateHealthBarEvent;
+        public static void OnUpdateHealthBar(int playerHealth)
+        {
+            if (OnUpdateHealthBarEvent != null)
+            {
+                OnUpdateHealthBarEvent(playerHealth);
+            }
+        }
     }
 }

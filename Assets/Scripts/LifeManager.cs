@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using System.Collections;
 
 namespace Filibusters
@@ -16,8 +17,16 @@ namespace Filibusters
         private WeaponInventory mWeaponInventory;
 		private bool mIsLocalPlayer;
 
-		// Use this for initialization
-		void Start()
+        private PlayerState mPlayerState;
+        private int mMaxHealth;
+        private int mCurHealth
+        {
+            get { return mPlayerState.mCurHealth; }
+            set { mPlayerState.mCurHealth = value; }
+        }
+
+        // Use this for initialization
+        void Start()
 		{
 			mIsDead = false;
 			mPhotonView = GetComponent<PhotonView>();
@@ -27,6 +36,10 @@ namespace Filibusters
             mAttackScript = GetComponent<PlayerAttack>();
             mWeaponInventory = GetComponent<WeaponInventory>();
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
+
+            mPlayerState = GetComponent<PlayerState>();
+            mMaxHealth = GameConstants.MAX_PLAYER_HEALTH;
+            mCurHealth = mMaxHealth;
 		}
 		
 		public void Die()
@@ -34,6 +47,25 @@ namespace Filibusters
             Despawn();
 			mPhotonView.RPC("OnDeath", PhotonTargets.MasterClient);
 		}
+
+        public void InflictDamage(int damageAmount)
+        {
+            Assert.IsTrue(damageAmount >= 0);
+            mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
+
+            mPhotonView.RPC("UpdateLocalHealthBar", mPhotonView.owner, mCurHealth);
+
+            if (mCurHealth == 0)
+            {
+                Die();
+            }
+        }
+
+        [PunRPC]
+        public void UpdateLocalHealthBar(int health)
+        {
+            EventSystem.OnUpdateHealthBar(health);
+        }
 
 		[PunRPC]
 		public void OnDeath()
@@ -85,6 +117,12 @@ namespace Filibusters
             mAttackScript.enabled = true;
             mCollider.enabled = true;
             mWeaponInventory.EquipWeapon(GameConstants.WeaponId.FISTS);
+
+            if (mIsLocalPlayer)
+            {
+                mCurHealth = mMaxHealth;
+                EventSystem.OnUpdateHealthBar(mCurHealth);
+            }
         }
-	}
+    }
 }
