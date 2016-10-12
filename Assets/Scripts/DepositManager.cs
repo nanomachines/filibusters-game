@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace Filibusters
 {
@@ -24,6 +24,7 @@ namespace Filibusters
 		private float mTimeSinceDeposit;
 
 		private PhotonView mPhotonView;
+        private Slider mSlider;
 
 		void Start()
 		{
@@ -34,6 +35,7 @@ namespace Filibusters
 			mTimeSinceDeposit = 0f;
 			mDepositing = false;
 			mPhotonView = GetComponent<PhotonView>();
+            mSlider = GetComponentInChildren<Slider>();
 		}
 
 		void OnTriggerEnter2D(Collider2D other)
@@ -63,31 +65,49 @@ namespace Filibusters
 
 		void Update()
 		{
-			if (PhotonNetwork.isMasterClient && mNumPlayersInZone == 1)
-			{
-				mDepositing = true;
-				mTimeSinceDeposit += Time.deltaTime;
-				if (mTimeSinceDeposit >= mDepositTime)
-				{
-					// deposit player coin
-					var itr = mPlayersInZone.GetEnumerator();
-					itr.MoveNext();
-					int viewId = itr.Current;
-					mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
-					// reset the time
-					mTimeSinceDeposit = 0f;
-				}
-			}
-			else
+			if (mNumPlayersInZone == 1)
+            {
+                // get player viewID
+                var itr = mPlayersInZone.GetEnumerator();
+                itr.MoveNext();
+                int viewId = itr.Current;
+
+                // check if player has coins
+                if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().CoinCount > 0)
+                {
+                    mDepositing = true;
+                    mTimeSinceDeposit += Time.deltaTime;
+
+                    if (PhotonNetwork.isMasterClient && mTimeSinceDeposit >= mDepositTime)
+                    {
+                        // deposit player coin	
+                        mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
+                    }
+
+                    
+                }
+                else
+                {
+                    mDepositing = false;
+                    mTimeSinceDeposit = 0f;
+                }           
+            }
+            else
 			{
 				mDepositing = false;
-			}
-		}
+                mTimeSinceDeposit = 0f;
+            }
+
+            mSlider.value = mTimeSinceDeposit / mDepositTime;
+        }
 
 		[PunRPC]
 		public void DepositCoin(int viewId)
-		{
-			if (!mPlayerDepositCounts.ContainsKey(viewId))
+        {
+            // reset the time
+            mTimeSinceDeposit = 0f;
+
+            if (!mPlayerDepositCounts.ContainsKey(viewId))
 			{
 				mPlayerDepositCounts.Add(viewId, 0);
 			}
