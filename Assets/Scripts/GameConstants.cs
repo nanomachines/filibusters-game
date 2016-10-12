@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 namespace Filibusters
 {
     public class GameConstants
@@ -20,6 +21,13 @@ namespace Filibusters
             ANARCHY = 3,
             LIBEL_AND_SLANDER = 4
         }
+
+        public static Dictionary<WeaponId, WeaponAttributes> WeaponPropertiesDict = new Dictionary<WeaponId, WeaponAttributes>
+        {
+            { WeaponId.FISTS, new WeaponAttributes(-1, 0.8f) },
+            { WeaponId.VETO, new WeaponAttributes(1, 0.8f) },
+            { WeaponId.MAGIC_BULLET, new WeaponAttributes(7, 1.4f) }
+        };
     }
 
     public enum Aim
@@ -45,6 +53,10 @@ namespace Filibusters
         public static readonly string RESPAWN = "Respawn";
         public static readonly string DEPOSIT = "Deposit";
         public static readonly string INACTIVE_OVERLAY = "InactiveIndicator";
+        public static readonly string HEALTH_BAR = "HealthBar";
+        public static readonly string VOTE_TEXT = "VoteText";
+        public static readonly string COIN_TEXT = "CoinText";
+        public static readonly string MAIN_CAMERA = "MainCamera";
     }
 
     public class Scenes
@@ -53,5 +65,17 @@ namespace Filibusters
         public static readonly string READY_MENU = "Scenes/ReadyMenu";
         public static readonly string MAIN = "Scenes/Main";
         public static readonly string GAME_OVER = "Scenes/GameOver";
+    }
+
+    public struct WeaponAttributes
+    {
+        public int mMaxAmmo;
+        public float mCoolDown;
+
+        public WeaponAttributes(int ammo, float coolDown)
+        {
+            mMaxAmmo = ammo;
+            mCoolDown = coolDown;
+        }
     }
 }

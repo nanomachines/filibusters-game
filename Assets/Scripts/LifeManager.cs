@@ -53,7 +53,7 @@ namespace Filibusters
             Assert.IsTrue(damageAmount >= 0);
             mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
 
-            mPhotonView.RPC("UpdateLocalHealthBar", PhotonTargets.All, mCurHealth);
+            mPhotonView.RPC("UpdateLocalHealthBar", mPhotonView.owner, mCurHealth);
 
             if (mCurHealth == 0)
             {
@@ -64,10 +64,7 @@ namespace Filibusters
         [PunRPC]
         public void UpdateLocalHealthBar(int health)
         {
-            if (mIsLocalPlayer)
-            {
-                EventSystem.OnUpdateHealthBar(health);
-            }
+            EventSystem.OnUpdateHealthBar(health);
         }
 
 		[PunRPC]

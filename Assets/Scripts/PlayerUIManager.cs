@@ -23,26 +23,26 @@ namespace Filibusters
 	    void Start()
 	    {
 	    	// Enable the Canvas and assign the main camera to it
-			Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+			Camera mainCamera = GameObject.FindGameObjectWithTag(Tags.MAIN_CAMERA).GetComponent<Camera>();
 			var canvas = GetComponent<Canvas>();
 			canvas.enabled = true;
 			canvas.worldCamera = mainCamera;
-            canvas.sortingLayerName = "Player";
+            canvas.sortingLayerName = Layers.PLAYER;
 
 			// Assign Coin and Votes Text elements
 	        foreach (Transform t in transform)
 	        {
 	            GameObject child = t.gameObject;
 
-	            if (child.tag == "CoinText")
+	            if (child.tag == Tags.COIN_TEXT)
 	            {
 	                mCoinText = child.GetComponent<Text>();
 	            }
-	            else if (child.tag == "VoteText")
+	            else if (child.tag == Tags.VOTE_TEXT)
 	            {
 	                mVotesText = child.GetComponent<Text>();
 	            }
-                else if (child.tag == "HealthBar")
+                else if (child.tag == Tags.HEALTH_BAR)
                 {
                     mHealthBarControl = child.GetComponent<Slider>();
                 }
