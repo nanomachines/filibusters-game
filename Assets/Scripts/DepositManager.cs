@@ -65,33 +65,49 @@ namespace Filibusters
 
 		void Update()
 		{
-			if (PhotonNetwork.isMasterClient && mNumPlayersInZone == 1)
-			{
-				mDepositing = true;
-				mTimeSinceDeposit += Time.deltaTime;
-				if (mTimeSinceDeposit >= mDepositTime)
-				{
-					// deposit player coin
-					var itr = mPlayersInZone.GetEnumerator();
-					itr.MoveNext();
-					int viewId = itr.Current;
-					mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
-					// reset the time
-					mTimeSinceDeposit = 0f;
+			if (mNumPlayersInZone == 1)
+            {
+                // get player viewID
+                var itr = mPlayersInZone.GetEnumerator();
+                itr.MoveNext();
+                int viewId = itr.Current;
+
+                // check if player has coins
+                if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().CoinCount > 0)
+                {
+                    mDepositing = true;
+                    mTimeSinceDeposit += Time.deltaTime;
+
+                    if (PhotonNetwork.isMasterClient && mTimeSinceDeposit >= mDepositTime)
+                    {
+                        // deposit player coin	
+                        mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
+                    }
+
+                    
                 }
-                mSlider.value = mTimeSinceDeposit / mDepositTime;
+                else
+                {
+                    mDepositing = false;
+                    mTimeSinceDeposit = 0f;
+                }           
             }
             else
 			{
 				mDepositing = false;
-                mSlider.value = 0;
-			}
-		}
+                mTimeSinceDeposit = 0f;
+            }
+
+            mSlider.value = mTimeSinceDeposit / mDepositTime;
+        }
 
 		[PunRPC]
 		public void DepositCoin(int viewId)
-		{
-			if (!mPlayerDepositCounts.ContainsKey(viewId))
+        {
+            // reset the time
+            mTimeSinceDeposit = 0f;
+
+            if (!mPlayerDepositCounts.ContainsKey(viewId))
 			{
 				mPlayerDepositCounts.Add(viewId, 0);
 			}
