@@ -47,7 +47,7 @@ namespace Filibusters
             mWeaponId = weaponId;
             int actorId = mPhotonView.owner.ID;
             EventSystem.OnEquipWeapon(actorId, weaponId);
-            WeaponAttributes attributes = GameConstants.WeaponPropertiesDict[weaponId];
+            WeaponAttributes attributes = GameConstants.WeaponProperties[(int)weaponId];
             mAmmo = attributes.mMaxAmmo;
             mCoolDownSeconds = attributes.mCoolDown;
         }

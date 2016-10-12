@@ -22,11 +22,11 @@ namespace Filibusters
             LIBEL_AND_SLANDER = 4
         }
 
-        public static Dictionary<WeaponId, WeaponAttributes> WeaponPropertiesDict = new Dictionary<WeaponId, WeaponAttributes>
+        public static WeaponAttributes[] WeaponProperties =
         {
-            { WeaponId.FISTS, new WeaponAttributes(-1, 0.8f) },
-            { WeaponId.VETO, new WeaponAttributes(1, 0.8f) },
-            { WeaponId.MAGIC_BULLET, new WeaponAttributes(7, 1.4f) }
+            new WeaponAttributes(-1, 0.8f),
+            new WeaponAttributes(1, 0.8f),
+            new WeaponAttributes(7, 1.4f)
         };
     }
 
