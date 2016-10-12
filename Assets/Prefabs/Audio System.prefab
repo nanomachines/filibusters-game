@@ -135,7 +135,7 @@ MonoBehaviour:
   mEquipAnarchy: {fileID: 0}
   mEquipLibelAndSlander: {fileID: 0}
   mUseVeto: {fileID: 8300000, guid: faba5a42e72b77747ac30a259a8522da, type: 3}
-  mUseMagicBullet: {fileID: 8300000, guid: f190f8d83bc750a4690b9e8cb9baf254, type: 3}
+  mUseMagicBullet: {fileID: 8300000, guid: 61f25106ad88549ce8cabc53498344ef, type: 3}
   mUseAnarchy: {fileID: 0}
   mUseLibelAndSlander: {fileID: 0}
   mDropWeapon: {fileID: 8300000, guid: 24e657f65383cb64da357147abb5ca01, type: 3}
