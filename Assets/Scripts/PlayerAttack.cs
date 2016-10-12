@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
+    public struct ProjectileFXPair
+    {
+        public ProjectileFXPair(string w, string f)
+        {
+            weapon = w;
+            fx = f;
+        }
+        public string weapon;
+        public string fx;
+    }
+
     public class PlayerAttack : MonoBehaviour
     {
         private WeaponInventory mWeaponInventory;
@@ -27,11 +38,16 @@ namespace Filibusters
                     // Has ammo
                     if (mWeaponInventory.GetRound())
                     {
-                        string projectileName = GetProjectileName(weaponId);
-                        if (projectileName.Length != 0)
+                        ProjectileFXPair projectile = GetProjectilePair(weaponId);
+                        Transform xform = GetComponent<AimingController>().GetWeaponPointTransform();
+                        if (projectile.weapon != null)
                         {
-                            Transform xform = GetComponent<AimingController>().GetWeaponPointTransform();
-                            InstantiateProjectile(projectileName, xform.position, xform.rotation);
+                            PhotonNetwork.Instantiate(projectile.weapon, xform.position, xform.rotation, 0);
+                        }
+                        if (projectile.fx != null)
+                        {
+                            GameObject go = PhotonNetwork.Instantiate(projectile.fx, xform.position, Quaternion.identity, 0);
+                            go.transform.parent = gameObject.transform;
                         }
                         EventSystem.OnWeaponFired(mActorId, weaponId);
                     }
@@ -44,24 +60,19 @@ namespace Filibusters
             }
         }
 
-        string GetProjectileName(WeaponId weaponId)
+        ProjectileFXPair GetProjectilePair(WeaponId weaponId)
         {
             // TODO: replace with mWeaponId indexed array
             // Return string resource name to instantiate networked projectile
             switch (weaponId)
             {
                 case WeaponId.VETO:
-                    return "VetoBullet";
+                    return new ProjectileFXPair("VetoBullet", "VetoFireFX");
                 case WeaponId.MAGIC_BULLET:
-                    return "MagicBulletBullet";
+                    return new ProjectileFXPair("MagicBulletBullet", null);
                 default:
-                    return "";
+                    return new ProjectileFXPair(null, null);
             }
-        }
-
-        void InstantiateProjectile(string projectileName, Vector3 origin, Quaternion rotation)
-        {
-            GameObject projectile = PhotonNetwork.Instantiate(projectileName, origin, rotation, 0);
         }
     }
 }

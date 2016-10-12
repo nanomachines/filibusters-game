@@ -545,6 +545,11 @@ Prefab:
       propertyPath: m_Name
       value: Deposit Box
       objectReference: {fileID: 0}
+    - target: {fileID: 224000011761770650, guid: f07ef64905c918f4291126bd5cedd24b,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f07ef64905c918f4291126bd5cedd24b, type: 2}
   m_IsPrefabParent: 0
@@ -4537,6 +4542,11 @@ Prefab:
       propertyPath: m_Name
       value: Deposit Box
       objectReference: {fileID: 0}
+    - target: {fileID: 224000011761770650, guid: f07ef64905c918f4291126bd5cedd24b,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f07ef64905c918f4291126bd5cedd24b, type: 2}
   m_IsPrefabParent: 0
@@ -6631,6 +6641,11 @@ Prefab:
     - target: {fileID: 1000012941250398, guid: f07ef64905c918f4291126bd5cedd24b, type: 2}
       propertyPath: m_Name
       value: Deposit Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011761770650, guid: f07ef64905c918f4291126bd5cedd24b,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f07ef64905c918f4291126bd5cedd24b, type: 2}
@@ -10620,6 +10635,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011761770650, guid: f07ef64905c918f4291126bd5cedd24b,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f07ef64905c918f4291126bd5cedd24b, type: 2}
