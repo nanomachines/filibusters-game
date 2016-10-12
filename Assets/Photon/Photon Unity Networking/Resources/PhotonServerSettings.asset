@@ -49,4 +49,5 @@ MonoBehaviour:
   - ShowGameOverScreen
   - UpdateHealthBar
   - UpdateLocalHealthBar
+  - InflictDamageRPC
   DisableAutoOpenWizard: 1

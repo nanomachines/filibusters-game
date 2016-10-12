@@ -17,7 +17,6 @@ namespace Filibusters
         //[HideInInspector]
         public WeaponId mWeaponId = WeaponId.FISTS;
         public Aim mAimingDir = Aim.RIGHT;
-        public int mCurHealth;
 
         /*
          * Fields used to linearly interpolate
@@ -52,7 +51,6 @@ namespace Filibusters
                 stream.SendNext(mAimingDir);
                 stream.SendNext(mFacingRight);
                 stream.SendNext(transform.position);
-                stream.SendNext(mCurHealth);
             }
             else
             {
@@ -64,7 +62,6 @@ namespace Filibusters
                 mFacingRight = (bool)stream.ReceiveNext();
                 mPreviousPosition = mAccuratePosition;
                 mAccuratePosition = (Vector3)stream.ReceiveNext();
-                mCurHealth = (int)stream.ReceiveNext();
 
                 mPositionLerpTime = 0;
                 ++mNumUpdates;

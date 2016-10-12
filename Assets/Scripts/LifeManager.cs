@@ -19,11 +19,7 @@ namespace Filibusters
 
         private PlayerState mPlayerState;
         private int mMaxHealth;
-        private int mCurHealth
-        {
-            get { return mPlayerState.mCurHealth; }
-            set { mPlayerState.mCurHealth = value; }
-        }
+        private int mCurHealth;
 
         // Use this for initialization
         void Start()
@@ -51,10 +47,7 @@ namespace Filibusters
         public void InflictDamage(int damageAmount)
         {
             Assert.IsTrue(damageAmount >= 0);
-            mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
-
-            mPhotonView.RPC("UpdateLocalHealthBar", mPhotonView.owner, mCurHealth);
-
+            mPhotonView.RPC("InflictDamageRPC", PhotonTargets.All, damageAmount);
             if (mCurHealth == 0)
             {
                 Die();
@@ -62,9 +55,13 @@ namespace Filibusters
         }
 
         [PunRPC]
-        public void UpdateLocalHealthBar(int health)
+        public void InflictDamageRPC(int damageAmount)
         {
-            EventSystem.OnUpdateHealthBar(health);
+            mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
+            if (mPhotonView.isMine)
+            {
+                EventSystem.OnUpdateHealthBar(mCurHealth);
+            }
         }
 
 		[PunRPC]
@@ -117,10 +114,10 @@ namespace Filibusters
             mAttackScript.enabled = true;
             mCollider.enabled = true;
             mWeaponInventory.EquipWeapon(GameConstants.WeaponId.FISTS);
+            mCurHealth = mMaxHealth;
 
             if (mIsLocalPlayer)
             {
-                mCurHealth = mMaxHealth;
                 EventSystem.OnUpdateHealthBar(mCurHealth);
             }
         }
