@@ -7,7 +7,7 @@ namespace Filibusters
     {
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "Player")
+            if (other.tag == Tags.PLAYER)
             {
                 other.gameObject.GetComponent<LifeManager>().Die();
             }

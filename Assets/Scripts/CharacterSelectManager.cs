@@ -77,7 +77,7 @@ namespace Filibusters
         [PunRPC]
         public void LaunchGame()
         {
-            PhotonNetwork.LoadLevel("Scenes/Main");
+            PhotonNetwork.LoadLevel(Scenes.MAIN);
         }
     
         // TODO: delete this method if we never need toggling
@@ -178,6 +178,7 @@ namespace Filibusters
                 localPlayer.GetComponent<AimingController>().enabled = true;
                 var mLocalDepositManager = Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.DEPOSIT).GetComponent<DepositManager>();
                 mLocalDepositManager.LocalDepositEvent += () => { MarkLocalPlayerReadyState(true);  };
+                InputWrapper.Instance.mLocalReadyRoomCharacter = localPlayer;
             }
         }
     

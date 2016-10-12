@@ -8,35 +8,73 @@ namespace Filibusters
     {
         // TODO: Let PlayerAttack set mVel based on the bullet type
         [SerializeField]
-        private float mVel;
-        private PhotonView mPhotonView;
+        protected float mVel;
+        private float mRaycastDistance;
+        protected PhotonView mPhotonView;
+        private Vector3 mLocalColliderOffset;
+        [SerializeField]
+        private LayerMask mColLayers;
+        private RaycastHit2D mLastHit;
+        [SerializeField]
+        private float mSkin = 0.005f;
 
-        void Start()
+        public virtual void Start()
         {
             mPhotonView = GetComponent<PhotonView>();
+            CircleCollider2D mCollider = GetComponent<CircleCollider2D>();
+            mLocalColliderOffset = new Vector3(mCollider.offset.x, mCollider.offset.y);
+            mRaycastDistance = mVel * Time.fixedDeltaTime + mSkin;
         }
         
         void FixedUpdate() 
         {
-            transform.Translate(mVel * Time.fixedDeltaTime, 0f, 0f);
+            if (mLastHit.collider != null)
+            {
+                HandleCollisions(mLastHit);
+            }
+
+            mLastHit = DetectCollisions();
+            if (mLastHit.collider == null || ShouldIgnoreHit(mLastHit))
+            {
+                transform.Translate(mVel * Time.fixedDeltaTime, 0f, 0f);
+                mLastHit = new RaycastHit2D();
+            }
         }
 
-        void OnTriggerEnter2D(Collider2D col)
+        bool ShouldIgnoreHit(RaycastHit2D hit)
         {
-            GameObject obj = col.transform.gameObject;
+            var obj = hit.transform.gameObject;
+            return obj.tag.Equals(Tags.PLAYER) &&
+                obj.GetComponent<PhotonView>().owner.ID == mPhotonView.owner.ID;
+        }
 
+        RaycastHit2D DetectCollisions()
+        {
+            Vector2 worldSpaceColliderPos = transform.TransformPoint(mLocalColliderOffset);
+            Vector2 direction = transform.TransformDirection(Vector2.right);
+
+            Ray2D ray = new Ray2D(worldSpaceColliderPos, direction);
+
+            var raydir = ray.direction;
+            raydir.Normalize();
+            raydir *= mRaycastDistance;
+            Debug.DrawRay(ray.origin, raydir, Color.cyan);
+
+            return Physics2D.Raycast(ray.origin, ray.direction, mRaycastDistance, mColLayers);
+        }
+
+        protected virtual void HandleCollisions(RaycastHit2D hit)
+        {
+            GameObject obj = hit.transform.gameObject;
             // Player
             if (obj.tag == Tags.PLAYER)
             {
-                if (obj.GetComponent<PhotonView>().owner.ID != mPhotonView.owner.ID)
-                {
-                    mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
-                    obj.GetComponent<LifeManager>().Die();
-                    Destroy(gameObject);
-                }
+                mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                obj.GetComponent<LifeManager>().Die();
+                Destroy(gameObject);
             }
             // Walls and floors
-            else if (obj.layer == LayerMask.NameToLayer("Barrier") || obj.layer == LayerMask.NameToLayer("Ground"))
+            if (obj.layer != LayerMask.NameToLayer(Layers.PLAYER))
             {
                 Debug.Log("Hit wall");
                 Destroy(gameObject);

@@ -29,17 +29,9 @@ namespace Filibusters
 			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
 		}
 		
-		// Update is called once per frame
-		void Update()
-		{
-			if (Input.GetKeyDown(KeyCode.P) && GetComponent<PhotonView>().owner.ID == PhotonNetwork.player.ID)
-			{
-				Die();
-			}
-		}
-
 		public void Die()
 		{
+            Despawn();
 			mPhotonView.RPC("OnDeath", PhotonTargets.MasterClient);
 		}
 
@@ -59,6 +51,7 @@ namespace Filibusters
 		public void OnPlayerDeathVerified()
 		{
 			Debug.Log("Death Verified");
+            mIsDead = true;
             EventSystem.OnDeath(GetComponent<PhotonView>().viewID);
 			Despawn();
 			if (PhotonNetwork.isMasterClient)
@@ -73,7 +66,6 @@ namespace Filibusters
             mCollider.enabled = false;
             mPhysics.enabled = false;
             mAttackScript.enabled = false;
-            mIsDead = true;
         }
 
         private IEnumerator RespawnTimer()

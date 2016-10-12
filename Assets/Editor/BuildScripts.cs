@@ -4,15 +4,15 @@ namespace Filibusters
 {
     class BuildScripts
     {
-        static readonly string ScenesDirRoot = System.IO.Path.Combine("Assets", "Scenes");
-        static readonly string SceneSuffix = ".unity";
+        private static readonly string ScenesRoot = "Assets/"; 
+        private static readonly string SceneSuffix = ".unity";
 
         public static string[] levels = new string[]
         {
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.START_MENU + SceneSuffix),
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.READY_MENU + SceneSuffix),
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.MAIN + SceneSuffix),
-            System.IO.Path.Combine(ScenesDirRoot, Scenes.GAME_OVER + SceneSuffix),
+            ScenesRoot + Scenes.START_MENU + SceneSuffix,
+            ScenesRoot + Scenes.READY_MENU + SceneSuffix,
+            ScenesRoot + Scenes.MAIN + SceneSuffix,
+            ScenesRoot + Scenes.GAME_OVER + SceneSuffix
         };
 
         [MenuItem("Builds/Build Both")]
