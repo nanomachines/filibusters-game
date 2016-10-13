@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace Filibusters
 {
-	public class MagicBulletProjectileController : ProjectileController
-	{
+    public class MagicBulletProjectileController : ProjectileController
+    {
         [SerializeField]
         private int mRicochetCounter;
 
@@ -39,5 +39,5 @@ namespace Filibusters
                 }
             }
         }
-	}
+    }
 }

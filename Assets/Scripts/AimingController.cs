@@ -4,8 +4,8 @@ using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
-	public class AimingController : MonoBehaviour
-	{
+    public class AimingController : MonoBehaviour
+    {
         [SerializeField]
         private GameObject[] mVetoBarrelReferences;
         [SerializeField]
@@ -32,14 +32,14 @@ namespace Filibusters
             get { return mPlayerState.mWeaponId;  }
         }
 
-		// Use this for initialization
-		void Start()
-		{
+        // Use this for initialization
+        void Start()
+        {
             mPlayerState = GetComponent<PlayerState>();
             mBarrelReferences = new GameObject[][] { null, mVetoBarrelReferences, mMagicBulletBarrelReferences };
-		}
-		
-		// Update is called once per frame
+        }
+        
+        // Update is called once per frame
         public void Update()
         {
             UpdateAimFromInput();
@@ -51,8 +51,8 @@ namespace Filibusters
             return mBarrelReferences[(int)mWeaponId][(int)mAimingDir].transform;
         }
 
-		void UpdateAimFromInput()
-		{
+        void UpdateAimFromInput()
+        {
             var x = InputWrapper.Instance.RightXInput;
             var y = InputWrapper.Instance.RightYInput;
             if (x == 0 && y == 0)
@@ -131,7 +131,7 @@ namespace Filibusters
                 mAimingDir = Aim.LEFT_DOWN;
                 mFacingRight = false;
             }
-		}
+        }
 
         void DrawAimingRay()
         {
@@ -143,5 +143,5 @@ namespace Filibusters
             Vector2 bulletDir = mBarrelReferences[(int)mWeaponId][(int)mAimingDir].transform.TransformVector(Vector2.right);
             Debug.DrawRay(barrelOrigin, bulletDir, Color.magenta);
         }
-	}
+    }
 }

@@ -27,7 +27,7 @@ namespace Filibusters
                 NetworkInitialized = true;
             }
         }
-	
+    
         public static void CreateAndJoinGameSession(string sessionName)
         {
             if (!PhotonNetwork.insideLobby)

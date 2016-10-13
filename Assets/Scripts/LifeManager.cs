@@ -4,18 +4,18 @@ using System.Collections;
 
 namespace Filibusters
 {
-	public class LifeManager : MonoBehaviour {
+    public class LifeManager : MonoBehaviour {
 
-		[SerializeField]
-		private float SecondsToRespawn;
-		private bool mIsDead;
-		private PhotonView mPhotonView;
+        [SerializeField]
+        private float SecondsToRespawn;
+        private bool mIsDead;
+        private PhotonView mPhotonView;
         private NetPlayerAnimationController mAnimController;
-		private BoxCollider2D mCollider;
-		private SimplePhysics mPhysics;
+        private BoxCollider2D mCollider;
+        private SimplePhysics mPhysics;
         private PlayerAttack mAttackScript;
         private WeaponInventory mWeaponInventory;
-		private bool mIsLocalPlayer;
+        private bool mIsLocalPlayer;
 
         private PlayerState mPlayerState;
         private int mMaxHealth;
@@ -23,26 +23,26 @@ namespace Filibusters
 
         // Use this for initialization
         void Start()
-		{
-			mIsDead = false;
-			mPhotonView = GetComponent<PhotonView>();
-			mAnimController = GetComponent<NetPlayerAnimationController>();
-			mCollider = GetComponent<BoxCollider2D>();
-			mPhysics = GetComponent<SimplePhysics>();
+        {
+            mIsDead = false;
+            mPhotonView = GetComponent<PhotonView>();
+            mAnimController = GetComponent<NetPlayerAnimationController>();
+            mCollider = GetComponent<BoxCollider2D>();
+            mPhysics = GetComponent<SimplePhysics>();
             mAttackScript = GetComponent<PlayerAttack>();
             mWeaponInventory = GetComponent<WeaponInventory>();
-			mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
+            mIsLocalPlayer = GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID;
 
             mPlayerState = GetComponent<PlayerState>();
             mMaxHealth = GameConstants.MAX_PLAYER_HEALTH;
             mCurHealth = mMaxHealth;
-		}
-		
-		public void Die()
-		{
+        }
+        
+        public void Die()
+        {
             Despawn();
-			mPhotonView.RPC("OnDeath", PhotonTargets.MasterClient);
-		}
+            mPhotonView.RPC("OnDeath", PhotonTargets.MasterClient);
+        }
 
         public void InflictDamage(int damageAmount)
         {
@@ -64,30 +64,30 @@ namespace Filibusters
             }
         }
 
-		[PunRPC]
-		public void OnDeath()
-		{
-			if (!mIsDead)
-			{
-				mIsDead = true;
-				Debug.Log("Master confirmed Player dead");
-				mPhotonView.RPC("OnPlayerDeathVerified", PhotonTargets.All);
-			}
-		}
+        [PunRPC]
+        public void OnDeath()
+        {
+            if (!mIsDead)
+            {
+                mIsDead = true;
+                Debug.Log("Master confirmed Player dead");
+                mPhotonView.RPC("OnPlayerDeathVerified", PhotonTargets.All);
+            }
+        }
 
 
-		[PunRPC]
-		public void OnPlayerDeathVerified()
-		{
-			Debug.Log("Death Verified");
+        [PunRPC]
+        public void OnPlayerDeathVerified()
+        {
+            Debug.Log("Death Verified");
             mIsDead = true;
             EventSystem.OnDeath(GetComponent<PhotonView>().viewID);
-			Despawn();
-			if (PhotonNetwork.isMasterClient)
-			{
-				StartCoroutine(RespawnTimer());
-			}
-		}
+            Despawn();
+            if (PhotonNetwork.isMasterClient)
+            {
+                StartCoroutine(RespawnTimer());
+            }
+        }
 
         private void Despawn()
         {
@@ -109,7 +109,7 @@ namespace Filibusters
         {
             mIsDead = false;
             mPhysics.enabled = mIsLocalPlayer;
-			mPhysics.ResetPhysicsState(respawnPos);
+            mPhysics.ResetPhysicsState(respawnPos);
             mAnimController.SetRenderersEnabled(true);
             mAttackScript.enabled = true;
             mCollider.enabled = true;

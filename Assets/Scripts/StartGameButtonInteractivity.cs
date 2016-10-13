@@ -3,12 +3,12 @@ using System.Collections;
 
 namespace Filibusters
 {
-	public class StartGameButtonInteractivity : MonoBehaviour
-	{
+    public class StartGameButtonInteractivity : MonoBehaviour
+    {
         private UnityEngine.UI.Button mStartButton;
         private UnityEngine.UI.Image mStartButtonImg;
-		void Start()
-		{
+        void Start()
+        {
             mStartButton = GetComponent<UnityEngine.UI.Button>();
             mStartButton.interactable = false;
 
@@ -25,6 +25,6 @@ namespace Filibusters
                 mStartButtonImg.enabled = false;
                 mStartButton.interactable = false;
             };
-		}
-	}
+        }
+    }
 }
