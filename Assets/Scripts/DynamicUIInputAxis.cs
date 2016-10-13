@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace Filibusters
 {
-	public class DynamicUIInputAxis : MonoBehaviour
-	{
+    public class DynamicUIInputAxis : MonoBehaviour
+    {
         private UnityEngine.EventSystems.StandaloneInputModule mInputModule;
 
         public void Start()
@@ -19,6 +19,6 @@ namespace Filibusters
             mInputModule.submitButton = InputWrapper.Instance.AnyJoysticksConnected() ?
                 InputWrapper.Xbox360SubmitAxis : InputWrapper.SubmitAxis;
         }
-	}
+    }
 
 }

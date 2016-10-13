@@ -279,10 +279,10 @@ namespace Filibusters
             transform.position = pos;
             mPlayerState.ResetPosition();
             mGrounded = false;
-	        mVelX = 0f;
-	        mVelY = 0f;
-        	mPressedDown = false;
-        	mPrevY = 0f;
+            mVelX = 0f;
+            mVelY = 0f;
+            mPressedDown = false;
+            mPrevY = 0f;
         }
     }
 }
