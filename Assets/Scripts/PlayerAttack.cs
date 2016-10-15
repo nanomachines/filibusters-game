@@ -6,13 +6,17 @@ namespace Filibusters
 {
     public struct ProjectileFXPair
     {
-        public ProjectileFXPair(string w, string f)
+        public ProjectileFXPair(string b, string f)
         {
-            weapon = w;
+            bullet = b;
             fx = f;
         }
-        public string weapon;
+        public string bullet;
         public string fx;
+
+        public static ProjectileFXPair FISTS = new ProjectileFXPair(null, null);
+        public static ProjectileFXPair VETO = new ProjectileFXPair("VetoBullet", "VetoFireFX");
+        public static ProjectileFXPair MAGIC_BULLET = new ProjectileFXPair("MagicBulletBullet", null);
     }
 
     public class PlayerAttack : MonoBehaviour
@@ -40,9 +44,9 @@ namespace Filibusters
                     {
                         ProjectileFXPair projectile = GetProjectilePair(weaponId);
                         Transform xform = GetComponent<AimingController>().GetWeaponPointTransform();
-                        if (projectile.weapon != null)
+                        if (projectile.bullet != null && ProjectileSpawnIsntClipping(transform.position, xform.position))
                         {
-                            PhotonNetwork.Instantiate(projectile.weapon, xform.position, xform.rotation, 0);
+                            PhotonNetwork.Instantiate(projectile.bullet, xform.position, xform.rotation, 0);
                         }
                         if (projectile.fx != null)
                         {
@@ -62,17 +66,20 @@ namespace Filibusters
 
         ProjectileFXPair GetProjectilePair(WeaponId weaponId)
         {
-            // TODO: replace with mWeaponId indexed array
-            // Return string resource name to instantiate networked projectile
             switch (weaponId)
             {
                 case WeaponId.VETO:
-                    return new ProjectileFXPair("VetoBullet", "VetoFireFX");
+                    return ProjectileFXPair.VETO;
                 case WeaponId.MAGIC_BULLET:
-                    return new ProjectileFXPair("MagicBulletBullet", null);
+                    return ProjectileFXPair.MAGIC_BULLET;
                 default:
-                    return new ProjectileFXPair(null, null);
+                    return ProjectileFXPair.FISTS;
             }
+        }
+
+        static bool ProjectileSpawnIsntClipping(Vector3 weaponOrigin, Vector3 weaponEmissionPoint)
+        {
+            return true;
         }
     }
 }
