@@ -79,8 +79,13 @@ namespace Filibusters
             if (SecondsToRespawn >= 0)
             {
                 yield return new WaitForSeconds(SecondsToRespawn);
-                mPhotonView.RPC("Respawn", PhotonTargets.All);
+                RespawnOverNetwork();
             }
+        }
+
+        public void RespawnOverNetwork()
+        {
+            mPhotonView.RPC("Respawn", PhotonTargets.All);
         }
 
         [PunRPC]
