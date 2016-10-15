@@ -44,7 +44,14 @@ namespace Filibusters
 
     public class Layers
     {
-        public readonly static string PLAYER = "Player";  
+        public static readonly int BARRIER = LayerMask.NameToLayer("Barrier");
+        public static readonly int GROUND = LayerMask.NameToLayer("Ground");
+        public static readonly int PLAYER = LayerMask.NameToLayer("Player");
+    }
+
+    public class SortingLayers
+    {
+        public static readonly string PLAYER = "Player";
     }
 
     public static class Tags

@@ -21,6 +21,9 @@ namespace Filibusters
 
     public class PlayerAttack : MonoBehaviour
     {
+        [SerializeField]
+        private LayerMask mWeaponClippingCheck;
+
         private WeaponInventory mWeaponInventory;
         private int mActorId;
 
@@ -77,9 +80,12 @@ namespace Filibusters
             }
         }
 
-        static bool ProjectileSpawnIsntClipping(Vector3 weaponOrigin, Vector3 weaponEmissionPoint)
+        bool ProjectileSpawnIsntClipping(Vector3 weaponOrigin, Vector3 weaponEmissionPoint)
         {
-            return true;
+            Vector2 emissionVector = weaponEmissionPoint - weaponOrigin;
+            float barrelDistance = emissionVector.magnitude;
+            var hit = Physics2D.Raycast(weaponOrigin, emissionVector, barrelDistance, mWeaponClippingCheck);
+            return hit.collider == null;
         }
     }
 }
