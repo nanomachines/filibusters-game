@@ -22,7 +22,6 @@ GameObject:
   - 212: {fileID: 212000010142299164}
   - 114: {fileID: 114000012919635902}
   - 114: {fileID: 114000011362751524}
-  - 114: {fileID: 114000013606253864}
   - 50: {fileID: 50000010613109072}
   - 58: {fileID: 58000012231135390}
   m_Layer: 0
@@ -108,27 +107,16 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 0}
-  synchronization: 3
+  synchronization: 0
   onSerializeTransformOption: 0
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 114000013606253864}
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
---- !u!114 &114000013606253864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013038138592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e94d7dcc53bf84388beb119987ad70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212000010142299164
 SpriteRenderer:
   m_ObjectHideFlags: 1

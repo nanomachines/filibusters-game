@@ -21,7 +21,6 @@ GameObject:
   - 4: {fileID: 4000010876488196}
   - 212: {fileID: 212000010142299164}
   - 114: {fileID: 114000012919635902}
-  - 114: {fileID: 114000013606253864}
   - 50: {fileID: 50000010613109072}
   - 58: {fileID: 58000012231135390}
   - 114: {fileID: 114000012444146904}
@@ -119,17 +118,6 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
---- !u!114 &114000013606253864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013038138592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e94d7dcc53bf84388beb119987ad70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212000010142299164
 SpriteRenderer:
   m_ObjectHideFlags: 1
