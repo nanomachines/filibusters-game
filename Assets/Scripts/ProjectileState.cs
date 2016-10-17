@@ -31,11 +31,13 @@ namespace Filibusters
             if (stream.isWriting)
             {
                 stream.SendNext(transform.position);
+                stream.SendNext(transform.rotation);
             }
             else
             {
                 mPreviousPosition = mAccuratePosition;
                 mAccuratePosition = (Vector3)stream.ReceiveNext();
+                transform.rotation = (Quaternion)stream.ReceiveNext();
 
                 mPositionLerpTime = 0;
                 ++mNumUpdates;
