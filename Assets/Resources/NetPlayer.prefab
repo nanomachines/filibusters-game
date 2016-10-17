@@ -903,7 +903,6 @@ MonoBehaviour:
   mGrounded: 0
   mWeaponId: 0
   mAimingDir: 2
-  mCurHealth: 0
 --- !u!114 &114000011866097066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -957,10 +956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3bd7a601e711164ea16d3d47c6c3c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mVetoAmmo: 1
-  mMagicBulletAmmo: 7
-  mDefaultCoolDown: 0.8
-  mMagicBulletCoolDown: 1.4
 --- !u!114 &114000012729707964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -972,6 +967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f65276da713bab4c9a50ccb5b2ba985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mWeaponClippingCheck:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!114 &114000013725662570
 MonoBehaviour:
   m_ObjectHideFlags: 1

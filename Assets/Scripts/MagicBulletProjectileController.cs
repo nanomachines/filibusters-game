@@ -19,7 +19,7 @@ namespace Filibusters
                 Destroy(gameObject);
             }
             // Walls and floors
-            if (obj.layer != LayerMask.NameToLayer(Layers.PLAYER))
+            if (obj.layer != Layers.PLAYER)
             {
                 if (mRicochetCounter-- > 0)
                 {
