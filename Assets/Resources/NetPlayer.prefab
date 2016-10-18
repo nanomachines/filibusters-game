@@ -321,6 +321,7 @@ GameObject:
   - 114: {fileID: 114000012461576260}
   - 114: {fileID: 114000011866097066}
   - 114: {fileID: 114000012729707964}
+  - 114: {fileID: 114000011174884418}
   m_Layer: 8
   m_Name: NetPlayer
   m_TagString: Player
@@ -886,6 +887,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000011174884418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013579360384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb22052f574f05a47806425a25eed2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011304187516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1017,6 +1029,7 @@ MonoBehaviour:
   mColLayersY:
     serializedVersion: 2
     m_Bits: 3584
+  mKnockBackTime: 1
 --- !u!114 &114000014114386324
 MonoBehaviour:
   m_ObjectHideFlags: 1

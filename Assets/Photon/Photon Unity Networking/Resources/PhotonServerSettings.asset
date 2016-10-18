@@ -50,4 +50,5 @@ MonoBehaviour:
   - UpdateHealthBar
   - UpdateLocalHealthBar
   - InflictDamageRPC
+  - TriggerRPC
   DisableAutoOpenWizard: 1

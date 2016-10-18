@@ -55,6 +55,12 @@ namespace Filibusters
         public LayerMask mColLayersY;
         private int mTwoWay;
 
+        [SerializeField]
+        private float mKnockBackTime;
+        private bool mKnockedBack = false;
+        [SerializeField]
+        private float mKnockBackSpeed;
+
         void Awake()
         {
             mTwoWay = LayerMask.NameToLayer("TwoWayPlatform");
@@ -71,6 +77,8 @@ namespace Filibusters
 
         void FixedUpdate()
         {
+            if (mKnockedBack) { return; }
+
             // Keep track of the previous position to account for two-way platforms
             mPrevY = transform.position.y + mOffset.y - mSize.y / 2f;
             mPrevWasGrounded = mGrounded;
@@ -101,8 +109,19 @@ namespace Filibusters
                 mVelX = UseAccel(xInput * mAerialSpeed, mVelX, xInput * mMaxSpeed);
             }
 
-            float deltaX = mVelX * Time.fixedDeltaTime;
-            float deltaY = mVelY * Time.fixedDeltaTime;
+            SimulateFixedInterval(mVelX, mVelY);
+
+            if (mPressedDown)
+            {
+                mVelY += mGravity * .5f;
+            }
+            mVelY += mGravity;
+        }
+
+        private void SimulateFixedInterval(float xVel, float yVel)
+        {
+            float deltaX = xVel * Time.fixedDeltaTime;
+            float deltaY = yVel * Time.fixedDeltaTime;
 
             float dirX = Mathf.Sign(deltaX);
             float dirY = Mathf.Sign(deltaY);
@@ -119,11 +138,25 @@ namespace Filibusters
             }
 
             transform.Translate(deltaX, deltaY, 0f);
-            if (mPressedDown)
+        }
+
+        public void RunKnockback()
+        {
+            StartCoroutine(Knockback());
+        }
+
+        private IEnumerator Knockback()
+        {
+            mKnockedBack = true;
+            float timer = mKnockBackTime;
+            while (timer > 0)
             {
-                mVelY += mGravity * .5f;
+                timer -= Time.fixedDeltaTime;
+                SimulateFixedInterval((mFacingRight ? -mKnockBackSpeed : mKnockBackSpeed) * timer / mKnockBackTime, mVelY);
+                mVelY += mGravity;
+                yield return new WaitForFixedUpdate();
             }
-            mVelY += mGravity;
+            mKnockedBack = false;
         }
 
         private void HandleInput(ref float xInput, ref float yInput, ref bool jumpPressed)
