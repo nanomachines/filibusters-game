@@ -177,7 +177,7 @@ namespace Filibusters
                     Quaternion.identity, 0);
                 localPlayer.GetComponent<SimplePhysics>().enabled = true;
                 localPlayer.GetComponent<AimingController>().enabled = true;
-                var mLocalDepositManager = Utility.GetChildWithTag(mReadyRooms[mLocalPlayerNum], Tags.DEPOSIT).GetComponent<DepositManager>();
+                var mLocalDepositManager = mReadyRooms[mLocalPlayerNum].GetComponentInChildren<DepositManager>();
                 mLocalDepositManager.LocalDepositEvent += () => { MarkLocalPlayerReadyState(true);  };
                 InputWrapper.Instance.mLocalReadyRoomCharacter = localPlayer;
             }
