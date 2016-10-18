@@ -132,6 +132,7 @@ namespace Filibusters
                 int playerNumberToFree = (int)otherPlayer.customProperties[PLAYER_NUMBER_KEY];
                 PhotonNetwork.room.SetCustomProperties(
                     new PhotonHashtable { { PLAYER_NUMBER_KEY + playerNumberToFree, false} });
+                mReadyRooms[playerNumberToFree].GetComponentInChildren<CoinSpawner>().RespawnOverNetwork();
             }
         }
 
