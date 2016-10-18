@@ -11,6 +11,7 @@ TagManager:
   - InactiveIndicator
   - Gun
   - HealthBar
+  - DepositLocation
   layers:
   - Default
   - TransparentFX

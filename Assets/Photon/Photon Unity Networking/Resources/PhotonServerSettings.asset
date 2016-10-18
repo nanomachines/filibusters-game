@@ -50,4 +50,5 @@ MonoBehaviour:
   - UpdateHealthBar
   - UpdateLocalHealthBar
   - InflictDamageRPC
+  - MoveDeposit
   DisableAutoOpenWizard: 1

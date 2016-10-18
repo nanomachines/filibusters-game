@@ -56,14 +56,15 @@ namespace Filibusters
 
     public static class Tags
     {
+        public static readonly string COIN_TEXT = "CoinText";
+        public static readonly string DEPOSIT = "Deposit";
+        public static readonly string DEPOSIT_LOCATION = "DepositLocation";
+        public static readonly string HEALTH_BAR = "HealthBar";
+        public static readonly string INACTIVE_OVERLAY = "InactiveIndicator";
+        public static readonly string MAIN_CAMERA = "MainCamera";
         public static readonly string PLAYER = "Player";
         public static readonly string RESPAWN = "Respawn";
-        public static readonly string DEPOSIT = "Deposit";
-        public static readonly string INACTIVE_OVERLAY = "InactiveIndicator";
-        public static readonly string HEALTH_BAR = "HealthBar";
         public static readonly string VOTE_TEXT = "VoteText";
-        public static readonly string COIN_TEXT = "CoinText";
-        public static readonly string MAIN_CAMERA = "MainCamera";
     }
 
     public class Scenes
