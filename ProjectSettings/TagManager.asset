@@ -10,6 +10,9 @@ TagManager:
   - Deposit
   - InactiveIndicator
   - Gun
+  - HealthBar
+  - Coin
+  - PlayerUI
   layers:
   - Default
   - TransparentFX

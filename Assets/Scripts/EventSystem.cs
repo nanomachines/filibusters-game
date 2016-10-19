@@ -34,13 +34,23 @@ namespace Filibusters
             }
         }
 
-        public delegate void CoinDepositListener(Vector3 depositBoxPos);
+        public delegate void CoinCountUpdatedListener(int actorId, int newCoinCount);
+        public static event CoinCountUpdatedListener OnCoinCountUpdatedEvent;
+        public static void OnCoinCountUpdated(int actorId, int newCoinCount)
+        {
+            if (OnCoinCountUpdatedEvent != null)
+            {
+                OnCoinCountUpdatedEvent(actorId, newCoinCount);
+            }
+        }
+
+        public delegate void CoinDepositListener(int ownerId, int newDepositBalance);
         public static event CoinDepositListener OnCoinDepositedEvent;
-        public static void OnCoinDeposited(Vector3 depositBoxPos)
+        public static void OnCoinDeposited(int ownerId, int newDepositBalance)
         {
             if (OnCoinDepositedEvent != null)
             {
-                OnCoinDepositedEvent(depositBoxPos);
+                OnCoinDepositedEvent(ownerId, newDepositBalance);
             }
         }
 
@@ -91,6 +101,36 @@ namespace Filibusters
             if (OnWeaponDropEvent!= null)
             {
                 OnWeaponDropEvent(actorId);
+            }
+        }
+
+        public delegate void UpdateHealthBarListener(int playerHealth);
+        public static event UpdateHealthBarListener OnUpdateHealthBarEvent;
+        public static void OnUpdateHealthBar(int playerHealth)
+        {
+            if (OnUpdateHealthBarEvent != null)
+            {
+                OnUpdateHealthBarEvent(playerHealth);
+            }
+        }
+
+        public delegate void AllPlayersReadyListener();
+        public static event AllPlayersReadyListener OnAllPlayersReadyEvent;
+        public static void OnAllPlayersReady()
+        {
+            if (OnAllPlayersReadyEvent != null)
+            {
+                OnAllPlayersReadyEvent();
+            }
+        }
+
+        public delegate void AllPlayersNotReadyListener();
+        public static event AllPlayersNotReadyListener OnAllPlayersNotReadyEvent;
+        public static void OnAllPlayersNotReady()
+        {
+            if (OnAllPlayersNotReadyEvent != null)
+            {
+                OnAllPlayersNotReadyEvent();
             }
         }
     }

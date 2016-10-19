@@ -1,11 +1,29 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
+    public struct ProjectileFXPair
+    {
+        public ProjectileFXPair(string b, string f)
+        {
+            bullet = b;
+            fx = f;
+        }
+        public string bullet;
+        public string fx;
+
+        public static ProjectileFXPair FISTS = new ProjectileFXPair(null, null);
+        public static ProjectileFXPair VETO = new ProjectileFXPair("VetoBullet", "VetoFireFX");
+        public static ProjectileFXPair MAGIC_BULLET = new ProjectileFXPair("MagicBulletBullet", null);
+    }
+
     public class PlayerAttack : MonoBehaviour
     {
+        [SerializeField]
+        private LayerMask mWeaponClippingCheck;
+
         private WeaponInventory mWeaponInventory;
         private int mActorId;
 
@@ -27,11 +45,16 @@ namespace Filibusters
                     // Has ammo
                     if (mWeaponInventory.GetRound())
                     {
-                        string projectileName = GetProjectileName(weaponId);
-                        if (projectileName.Length != 0)
+                        ProjectileFXPair projectile = GetProjectilePair(weaponId);
+                        Transform xform = GetComponent<AimingController>().GetWeaponPointTransform();
+                        if (projectile.bullet != null && ProjectileSpawnIsntClipping(transform.position, xform.position))
                         {
-                            Transform xform = GetComponent<AimingController>().GetWeaponPointTransform();
-                            InstantiateProjectile(projectileName, xform.position, xform.rotation);
+                            PhotonNetwork.Instantiate(projectile.bullet, xform.position, xform.rotation, 0);
+                        }
+                        if (projectile.fx != null)
+                        {
+                            GameObject go = PhotonNetwork.Instantiate(projectile.fx, xform.position, Quaternion.identity, 0);
+                            go.transform.parent = gameObject.transform;
                         }
                         EventSystem.OnWeaponFired(mActorId, weaponId);
                     }
@@ -44,24 +67,25 @@ namespace Filibusters
             }
         }
 
-        string GetProjectileName(WeaponId weaponId)
+        ProjectileFXPair GetProjectilePair(WeaponId weaponId)
         {
-            // TODO: replace with mWeaponId indexed array
-            // Return string resource name to instantiate networked projectile
             switch (weaponId)
             {
                 case WeaponId.VETO:
-                    return "VetoBullet";
+                    return ProjectileFXPair.VETO;
                 case WeaponId.MAGIC_BULLET:
-                    return "MagicBulletBullet";
+                    return ProjectileFXPair.MAGIC_BULLET;
                 default:
-                    return "";
+                    return ProjectileFXPair.FISTS;
             }
         }
 
-        void InstantiateProjectile(string projectileName, Vector3 origin, Quaternion rotation)
+        bool ProjectileSpawnIsntClipping(Vector3 weaponOrigin, Vector3 weaponEmissionPoint)
         {
-            GameObject projectile = PhotonNetwork.Instantiate(projectileName, origin, rotation, 0);
+            Vector2 emissionVector = weaponEmissionPoint - weaponOrigin;
+            float barrelDistance = emissionVector.magnitude;
+            var hit = Physics2D.Raycast(weaponOrigin, emissionVector, barrelDistance, mWeaponClippingCheck);
+            return hit.collider == null;
         }
     }
 }

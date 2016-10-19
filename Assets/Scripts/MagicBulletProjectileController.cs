@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace Filibusters
 {
-	public class MagicBulletProjectileController : ProjectileController
-	{
+    public class MagicBulletProjectileController : ProjectileController
+    {
         [SerializeField]
         private int mRicochetCounter;
 
@@ -15,11 +15,11 @@ namespace Filibusters
             if (obj.tag == Tags.PLAYER)
             {
                 mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
-                obj.GetComponent<LifeManager>().Die();
+                obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
                 Destroy(gameObject);
             }
             // Walls and floors
-            if (obj.layer != LayerMask.NameToLayer(Layers.PLAYER))
+            if (obj.layer != Layers.PLAYER)
             {
                 if (mRicochetCounter-- > 0)
                 {
@@ -39,5 +39,5 @@ namespace Filibusters
                 }
             }
         }
-	}
+    }
 }

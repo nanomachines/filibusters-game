@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 namespace Filibusters
 {
     public class GameConstants
@@ -8,7 +9,8 @@ namespace Filibusters
         public static readonly string VERSION_STRING = VERSION_MAJOR.ToString() + "." +
                 VERSION_MINOR.ToString();
 
-        public static readonly int AMOUNT_OF_COINS_TO_WIN = 3;
+        public static readonly int MAX_PLAYER_HEALTH = 100;
+        public static readonly int AMOUNT_OF_COINS_TO_WIN = 10;
         public static readonly int MAX_ONLINE_PLAYERS_IN_GAME = 4;
 
         public enum WeaponId
@@ -19,6 +21,13 @@ namespace Filibusters
             ANARCHY = 3,
             LIBEL_AND_SLANDER = 4
         }
+
+        public static WeaponAttributes[] WeaponProperties =
+        {
+            new WeaponAttributes(-1, 0.8f),
+            new WeaponAttributes(1, 0.1f),
+            new WeaponAttributes(7, 0.5f)
+        };
     }
 
     public enum Aim
@@ -35,7 +44,14 @@ namespace Filibusters
 
     public class Layers
     {
-        public readonly static string PLAYER = "Player";  
+        public static readonly int BARRIER = LayerMask.NameToLayer("Barrier");
+        public static readonly int GROUND = LayerMask.NameToLayer("Ground");
+        public static readonly int PLAYER = LayerMask.NameToLayer("Player");
+    }
+
+    public class SortingLayers
+    {
+        public static readonly string PLAYER = "Player";
     }
 
     public static class Tags
@@ -44,6 +60,12 @@ namespace Filibusters
         public static readonly string RESPAWN = "Respawn";
         public static readonly string DEPOSIT = "Deposit";
         public static readonly string INACTIVE_OVERLAY = "InactiveIndicator";
+        public static readonly string HEALTH_BAR = "HealthBar";
+        public static readonly string VOTE_TEXT = "VoteText";
+        public static readonly string COIN_TEXT = "CoinText";
+        public static readonly string MAIN_CAMERA = "MainCamera";
+        public static readonly string COIN = "Coin";
+        public static readonly string PLAYER_UI = "PlayerUI";
     }
 
     public class Scenes
@@ -52,5 +74,17 @@ namespace Filibusters
         public static readonly string READY_MENU = "Scenes/ReadyMenu";
         public static readonly string MAIN = "Scenes/Main";
         public static readonly string GAME_OVER = "Scenes/GameOver";
+    }
+
+    public struct WeaponAttributes
+    {
+        public int mMaxAmmo;
+        public float mCoolDown;
+
+        public WeaponAttributes(int ammo, float coolDown)
+        {
+            mMaxAmmo = ammo;
+            mCoolDown = coolDown;
+        }
     }
 }

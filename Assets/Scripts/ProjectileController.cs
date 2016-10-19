@@ -18,6 +18,9 @@ namespace Filibusters
         [SerializeField]
         private float mSkin = 0.005f;
 
+        [SerializeField]
+        protected int mProjectileDamage;
+
         public virtual void Start()
         {
             mPhotonView = GetComponent<PhotonView>();
@@ -70,11 +73,11 @@ namespace Filibusters
             if (obj.tag == Tags.PLAYER)
             {
                 mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
-                obj.GetComponent<LifeManager>().Die();
+                obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
                 Destroy(gameObject);
             }
             // Walls and floors
-            if (obj.layer != LayerMask.NameToLayer(Layers.PLAYER))
+            if (obj.layer != Layers.PLAYER)
             {
                 Debug.Log("Hit wall");
                 Destroy(gameObject);

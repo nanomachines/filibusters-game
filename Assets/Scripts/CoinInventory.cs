@@ -10,25 +10,25 @@ namespace Filibusters
         private PhotonView mPhotonView;
         public int CoinCount
         {
-        	get
-        	{
-        		return mCoinCount;
-        	}
+            get
+            {
+                return mCoinCount;
+            }
         }
 
         private int mDepositCount;
         public int DepositCount
         {
-        	get
-        	{
-        		return mDepositCount;
-        	}
+            get
+            {
+                return mDepositCount;
+            }
         }
 
         void Start()
         {
             mCoinCount = 0;
-			mDepositCount = 0;
+            mDepositCount = 0;
             mPhotonView = GetComponent<PhotonView>();
             EventSystem.OnDeathEvent += ResetCoins;
         }
@@ -36,21 +36,24 @@ namespace Filibusters
         public void AddCoin()
         {
             ++mCoinCount;
-            EventSystem.OnCoinCollected(GetComponent<PhotonView>().owner.ID);
+            var id = mPhotonView.owner.ID;
+            EventSystem.OnCoinCollected(id);
+            EventSystem.OnCoinCountUpdated(id, mCoinCount);
         }
 
         public bool DepositCoin()
         {
-        	if (mCoinCount > 0)
-        	{
-				--mCoinCount;
-				++mDepositCount;
+            if (mCoinCount > 0)
+            {
+                --mCoinCount;
+                ++mDepositCount;
+                EventSystem.OnCoinCountUpdated(mPhotonView.owner.ID, mCoinCount);
                 return true;
-        	}
-        	else
-        	{
-        		return false;
-        	}
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ResetCoins(int playerViewId)
@@ -58,6 +61,7 @@ namespace Filibusters
             if (playerViewId == mPhotonView.viewID)
             {
                 mCoinCount = 0;
+                EventSystem.OnCoinCountUpdated(mPhotonView.owner.ID, mCoinCount);
             }
         }
     }

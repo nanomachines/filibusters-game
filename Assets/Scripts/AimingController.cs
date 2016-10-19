@@ -4,9 +4,14 @@ using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
-	public class AimingController : MonoBehaviour
-	{
-        public GameObject[] mBarrelReferences;
+    public class AimingController : MonoBehaviour
+    {
+        [SerializeField]
+        private GameObject[] mVetoBarrelReferences;
+        [SerializeField]
+        private GameObject[] mMagicBulletBarrelReferences;
+        private GameObject[][] mBarrelReferences;
+
         private PlayerState mPlayerState;
         public float mAngle;
 
@@ -27,13 +32,14 @@ namespace Filibusters
             get { return mPlayerState.mWeaponId;  }
         }
 
-		// Use this for initialization
-		void Start()
-		{
+        // Use this for initialization
+        void Start()
+        {
             mPlayerState = GetComponent<PlayerState>();
-		}
-		
-		// Update is called once per frame
+            mBarrelReferences = new GameObject[][] { null, mVetoBarrelReferences, mMagicBulletBarrelReferences };
+        }
+        
+        // Update is called once per frame
         public void Update()
         {
             UpdateAimFromInput();
@@ -42,11 +48,11 @@ namespace Filibusters
 
         public Transform GetWeaponPointTransform()
         {
-            return mBarrelReferences[(int)mAimingDir].transform;
+            return mBarrelReferences[(int)mWeaponId][(int)mAimingDir].transform;
         }
 
-		void UpdateAimFromInput()
-		{
+        void UpdateAimFromInput()
+        {
             var x = InputWrapper.Instance.RightXInput;
             var y = InputWrapper.Instance.RightYInput;
             if (x == 0 && y == 0)
@@ -125,13 +131,17 @@ namespace Filibusters
                 mAimingDir = Aim.LEFT_DOWN;
                 mFacingRight = false;
             }
-		}
+        }
 
         void DrawAimingRay()
         {
-            Vector2 barrelOrigin = mBarrelReferences[(int)mAimingDir].transform.TransformPoint(Vector2.zero);
-            Vector2 bulletDir = mBarrelReferences[(int)mAimingDir].transform.TransformVector(Vector2.right);
+            if (mWeaponId == WeaponId.FISTS)
+            {
+                return;
+            }
+            Vector2 barrelOrigin = mBarrelReferences[(int)mWeaponId][(int)mAimingDir].transform.TransformPoint(Vector2.zero);
+            Vector2 bulletDir = mBarrelReferences[(int)mWeaponId][(int)mAimingDir].transform.TransformVector(Vector2.right);
             Debug.DrawRay(barrelOrigin, bulletDir, Color.magenta);
         }
-	}
+    }
 }
