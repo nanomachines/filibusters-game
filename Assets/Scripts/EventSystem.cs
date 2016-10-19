@@ -34,6 +34,16 @@ namespace Filibusters
             }
         }
 
+        public delegate void CoinCountUpdatedListener(int actorId, int newCoinCount);
+        public static event CoinCountUpdatedListener OnCoinCountUpdatedEvent;
+        public static void OnCoinCountUpdated(int actorId, int newCoinCount)
+        {
+            if (OnCoinCountUpdatedEvent != null)
+            {
+                OnCoinCountUpdatedEvent(actorId, newCoinCount);
+            }
+        }
+
         public delegate void CoinDepositListener(int ownerId, int newDepositBalance);
         public static event CoinDepositListener OnCoinDepositedEvent;
         public static void OnCoinDeposited(int ownerId, int newDepositBalance)

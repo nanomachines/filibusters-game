@@ -36,7 +36,9 @@ namespace Filibusters
         public void AddCoin()
         {
             ++mCoinCount;
-            EventSystem.OnCoinCollected(GetComponent<PhotonView>().owner.ID);
+            var id = mPhotonView.owner.ID;
+            EventSystem.OnCoinCollected(id);
+            EventSystem.OnCoinCountUpdated(id, mCoinCount);
         }
 
         public bool DepositCoin()
@@ -45,6 +47,7 @@ namespace Filibusters
             {
                 --mCoinCount;
                 ++mDepositCount;
+                EventSystem.OnCoinCountUpdated(mPhotonView.owner.ID, mCoinCount);
                 return true;
             }
             else
@@ -58,6 +61,7 @@ namespace Filibusters
             if (playerViewId == mPhotonView.viewID)
             {
                 mCoinCount = 0;
+                EventSystem.OnCoinCountUpdated(mPhotonView.owner.ID, mCoinCount);
             }
         }
     }
