@@ -11,6 +11,7 @@ namespace Filibusters
                 GameObject.Find("CharacterSelectManager").GetComponent<CharacterSelectManager>();
         }
 
+        /*
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -18,5 +19,6 @@ namespace Filibusters
                 mCharacterSelectManager.ToggleLocalPlayerReady();
             }
         }
+        */
     }
 }
