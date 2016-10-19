@@ -65,6 +65,7 @@ namespace Filibusters
         public static readonly string COIN_TEXT = "CoinText";
         public static readonly string MAIN_CAMERA = "MainCamera";
         public static readonly string COIN = "Coin";
+        public static readonly string PLAYER_UI = "PlayerUI";
     }
 
     public class Scenes

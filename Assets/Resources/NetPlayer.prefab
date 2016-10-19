@@ -1158,10 +1158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48b736b945bd432384f7b68d7f40d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mInventoryScript: {fileID: 0}
-  mHighHealthColor: {r: 0.20000002, g: 0.6666667, b: 0, a: 1}
-  mMedHealthColor: {r: 1, g: 1, b: 0, a: 1}
-  mLowHealthColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114000012994452286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1232,8 +1228,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114000011304187516}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114000013807059370
 MonoBehaviour:
@@ -1305,8 +1301,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 5
-  instantiationId: 5
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!212 &212000010496220552
 SpriteRenderer:
