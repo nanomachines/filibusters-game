@@ -12,6 +12,7 @@ TagManager:
   - Gun
   - HealthBar
   - Coin
+  - PlayerUI
   layers:
   - Default
   - TransparentFX

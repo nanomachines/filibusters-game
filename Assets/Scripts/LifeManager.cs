@@ -16,6 +16,7 @@ namespace Filibusters
         private PlayerAttack mAttackScript;
         private WeaponInventory mWeaponInventory;
         private bool mIsLocalPlayer;
+        private GameObject mPlayerUI;
 
         private PlayerState mPlayerState;
         private int mMaxHealth;
@@ -36,6 +37,7 @@ namespace Filibusters
             mPlayerState = GetComponent<PlayerState>();
             mMaxHealth = GameConstants.MAX_PLAYER_HEALTH;
             mCurHealth = mMaxHealth;
+            mPlayerUI = Utility.GetChildWithTag(gameObject, Tags.PLAYER_UI);
         }
         
         public void Die()
@@ -95,6 +97,7 @@ namespace Filibusters
             mCollider.enabled = false;
             mPhysics.enabled = false;
             mAttackScript.enabled = false;
+            mPlayerUI.SetActive(false);
         }
 
         private IEnumerator RespawnTimer()
@@ -118,6 +121,7 @@ namespace Filibusters
 
             if (mIsLocalPlayer)
             {
+                mPlayerUI.SetActive(true);
                 EventSystem.OnUpdateHealthBar(mCurHealth);
             }
         }

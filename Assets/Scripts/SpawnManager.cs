@@ -26,11 +26,8 @@ namespace Filibusters
                 FollowPlayer followScript = mainCamera.GetComponent<FollowPlayer>();
                 followScript.mPlayer = LocalPlayer;
 
-                // Create the player's UI and associate the player's inventory script with its ui script
-                PlayerUI = PhotonNetwork.Instantiate("PlayerUI", new Vector3(0, 0, 0), Quaternion.identity, 0);
-                var uiScript = PlayerUI.GetComponent<PlayerUIManager>();
-                uiScript.enabled = true;
-                uiScript.mInventoryScript = LocalPlayer.GetComponent<CoinInventory>();
+                PlayerUI = Utility.GetChildWithTag(LocalPlayer, Tags.PLAYER_UI);
+                PlayerUI.SetActive(true);
 
                 LocalPlayer.GetComponent<PlayerAttack>().enabled = true;
             }
