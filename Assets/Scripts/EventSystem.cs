@@ -34,13 +34,13 @@ namespace Filibusters
             }
         }
 
-        public delegate void CoinDepositListener(Vector3 depositBoxPos);
+        public delegate void CoinDepositListener(int ownerId, int newDepositBalance);
         public static event CoinDepositListener OnCoinDepositedEvent;
-        public static void OnCoinDeposited(Vector3 depositBoxPos)
+        public static void OnCoinDeposited(int ownerId, int newDepositBalance)
         {
             if (OnCoinDepositedEvent != null)
             {
-                OnCoinDepositedEvent(depositBoxPos);
+                OnCoinDepositedEvent(ownerId, newDepositBalance);
             }
         }
 

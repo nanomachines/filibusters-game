@@ -72,9 +72,8 @@ namespace Filibusters
                 }
             };
 
-            EventSystem.OnCoinDepositedEvent += (Vector3 depositBoxPos) =>
+            EventSystem.OnCoinDepositedEvent += (int ownerId, int newDepositBalance) =>
             {
-                // TODO: Play as 3D sound
                 mSource.PlayOneShot(mCoinDeposited);
             };
 

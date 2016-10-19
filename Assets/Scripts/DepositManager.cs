@@ -112,10 +112,11 @@ namespace Filibusters
                 mPlayerDepositCounts.Add(viewId, 0);
             }
 
-            if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().DepositCoin())
+            var photonView = PhotonView.Find(viewId);
+            if (photonView.gameObject.GetComponent<CoinInventory>().DepositCoin())
             {
-                EventSystem.OnCoinDeposited(transform.position);
                 int newDepositBalance = ++mPlayerDepositCounts[viewId];
+                EventSystem.OnCoinDeposited(photonView.owner.ID, newDepositBalance);
                 if (LocalDepositEvent != null)
                 {
                     LocalDepositEvent();
@@ -123,8 +124,8 @@ namespace Filibusters
                 if (PhotonNetwork.isMasterClient &&
                     newDepositBalance >= GameConstants.AMOUNT_OF_COINS_TO_WIN)
                 {
-                    Debug.Log("GAME OVER: " + PhotonView.Find(viewId).owner);
-                    EventSystem.OnGameOver(PhotonView.Find(viewId).owner.ID);
+                    Debug.Log("GAME OVER: " + photonView.owner);
+                    EventSystem.OnGameOver(photonView.owner.ID);
                 }
             }
         }
