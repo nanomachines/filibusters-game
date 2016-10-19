@@ -52,7 +52,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4066ba55f2832b049b4a2f1f43e1c1cd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -134,8 +134,8 @@ MonoBehaviour:
   mEquipMagicBullet: {fileID: 8300000, guid: 0d6391e9f5e659941a3120184bf8196f, type: 3}
   mEquipAnarchy: {fileID: 0}
   mEquipLibelAndSlander: {fileID: 0}
-  mUseVeto: {fileID: 8300000, guid: faba5a42e72b77747ac30a259a8522da, type: 3}
-  mUseMagicBullet: {fileID: 8300000, guid: 61f25106ad88549ce8cabc53498344ef, type: 3}
+  mUseVeto: {fileID: 8300000, guid: f0e524a3f473e3c49b0729f71b90afa6, type: 3}
+  mUseMagicBullet: {fileID: 8300000, guid: 6ed7d1c5ff1646247a8a091d8fe04c44, type: 3}
   mUseAnarchy: {fileID: 0}
   mUseLibelAndSlander: {fileID: 0}
   mDropWeapon: {fileID: 8300000, guid: 24e657f65383cb64da357147abb5ca01, type: 3}
