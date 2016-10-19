@@ -13,7 +13,7 @@ namespace Filibusters
             get { return mPlayerState.mWeaponId; }
             private set { mPlayerState.mWeaponId = value; }
         }
-
+        
         private int mAmmo;
         private float mCoolDownSeconds;
         private bool mCoolingDown;
@@ -32,8 +32,7 @@ namespace Filibusters
         {
             if (mWeaponId != WeaponId.FISTS && InputWrapper.Instance.DropWeaponPressed)
             {
-                EquipWeapon(WeaponId.FISTS);
-                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
+                DropWeapon();
             }
         }
 
@@ -61,8 +60,7 @@ namespace Filibusters
             }
             else if (mAmmo == 0)
             {
-                EquipWeapon(WeaponId.FISTS);
-                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
+                DropWeapon();
                 return false;
             }
             else
@@ -79,6 +77,12 @@ namespace Filibusters
                 return true;
             }
             return false;
+        }
+
+        private void DropWeapon()
+        {
+            EquipWeapon(WeaponId.FISTS);
+            EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
         }
 
         private IEnumerator CoolDownTimer()
