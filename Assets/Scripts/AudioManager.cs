@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using WeaponId = Filibusters.GameConstants.WeaponId;
 
@@ -45,6 +46,14 @@ namespace Filibusters
                 RegisterEvents();
                 mSource = GetComponent<AudioSource>();
                 DontDestroyOnLoad(this);
+
+                SceneManager.sceneLoaded += (Scene s, LoadSceneMode lsm) =>
+                {
+                    if (s.name == Scenes.MAIN)
+                    {
+                        mSource.Play();
+                    }
+                };
             }
             else
             {
