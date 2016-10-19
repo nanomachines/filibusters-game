@@ -31,6 +31,10 @@ namespace Filibusters
                 {
                     PhotonNetwork.offlineMode = true;
                     PhotonNetwork.CreateRoom("OfflineRoom");
+                    if (SceneManager.GetSceneByName("Main").isLoaded)
+                    {
+                        OnPhotonPlayerConnected(PhotonNetwork.player);
+                    }
                 }
                 else
                 {
