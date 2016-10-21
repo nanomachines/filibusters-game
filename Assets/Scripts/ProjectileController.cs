@@ -18,6 +18,8 @@ namespace Filibusters
         [SerializeField]
         private float mSkin = 0.005f;
 
+        protected bool mHitRegistered = false;
+
         [SerializeField]
         protected int mProjectileDamage;
 
@@ -68,11 +70,17 @@ namespace Filibusters
 
         protected virtual void HandleCollisions(RaycastHit2D hit)
         {
+            if (mHitRegistered)
+            {
+                return;
+            }
+
             GameObject obj = hit.transform.gameObject;
             // Player
             if (obj.tag == Tags.PLAYER)
             {
-                mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                mHitRegistered = true;
+                mPhotonView.RPC("HandleInconsistentPlayerHits", PhotonTargets.Others, obj.GetComponent<PhotonView>().viewID);
                 obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
                 Destroy(gameObject);
             }
@@ -80,8 +88,8 @@ namespace Filibusters
             if (obj.layer != Layers.PLAYER)
             {
                 Debug.Log("Hit wall");
-                Destroy(gameObject);
                 mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                Destroy(gameObject);
             }
         }
 
@@ -90,6 +98,23 @@ namespace Filibusters
         {
             Debug.Log("Hit player");
             Destroy(PhotonView.Find(viewId).gameObject);
+        }
+
+        [PunRPC]
+        public void HandleInconsistentPlayerHits(int playerViewId)
+        {
+            StartCoroutine(WaitToCorrectHit(playerViewId));
+        }
+
+        private IEnumerator WaitToCorrectHit(int playerViewId)
+        {
+            yield return new WaitForSeconds(0.1f);
+            if (!mHitRegistered)
+            {
+                mHitRegistered = true;
+                PhotonView.Find(playerViewId).gameObject.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
+                Destroy(gameObject);
+            }
         }
     }
 }

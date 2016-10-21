@@ -39,7 +39,7 @@ namespace Filibusters
             mCurHealth = mMaxHealth;
             mPlayerUI = Utility.GetChildWithTag(gameObject, Tags.PLAYER_UI);
         }
-        
+
         public void Die()
         {
             Despawn();
@@ -49,22 +49,17 @@ namespace Filibusters
         public void InflictDamage(int damageAmount)
         {
             Assert.IsTrue(damageAmount >= 0);
-            mPhotonView.RPC("InflictDamageRPC", PhotonTargets.All, damageAmount);
+            mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
+            if (mPhotonView.isMine)
+            {
+                EventSystem.OnUpdateHealthBar(mCurHealth);
+            }
             if (mCurHealth == 0)
             {
                 Die();
             }
         }
 
-        [PunRPC]
-        public void InflictDamageRPC(int damageAmount)
-        {
-            mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
-            if (mPhotonView.isMine)
-            {
-                EventSystem.OnUpdateHealthBar(mCurHealth);
-            }
-        }
 
         [PunRPC]
         public void OnDeath()
@@ -83,8 +78,6 @@ namespace Filibusters
         {
             Debug.Log("Death Verified");
             mIsDead = true;
-            EventSystem.OnDeath(GetComponent<PhotonView>().viewID);
-            Despawn();
             if (PhotonNetwork.isMasterClient)
             {
                 StartCoroutine(RespawnTimer());
@@ -93,6 +86,7 @@ namespace Filibusters
 
         private void Despawn()
         {
+            EventSystem.OnDeath(GetComponent<PhotonView>().viewID);
             mAnimController.SetRenderersEnabled(false);
             mCollider.enabled = false;
             mPhysics.enabled = false;

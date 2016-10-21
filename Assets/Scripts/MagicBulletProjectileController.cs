@@ -14,7 +14,8 @@ namespace Filibusters
             // Player
             if (obj.tag == Tags.PLAYER)
             {
-                mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                mHitRegistered = true;
+                mPhotonView.RPC("HandleInconsistentPlayerHits", PhotonTargets.Others, obj.GetComponent<PhotonView>().viewID);
                 obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
                 Destroy(gameObject);
             }
