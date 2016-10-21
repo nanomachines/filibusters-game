@@ -14,8 +14,11 @@ namespace Filibusters
             // Player
             if (obj.tag == Tags.PLAYER)
             {
-                mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
-                obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
+                if (mPhotonView.isMine)
+                {
+                    mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
+                    obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
+                }
                 Destroy(gameObject);
             }
             // Walls and floors
