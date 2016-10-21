@@ -50,4 +50,5 @@ MonoBehaviour:
   - UpdateHealthBar
   - UpdateLocalHealthBar
   - InflictDamageRPC
+  - HandleInconsistentPlayerHits
   DisableAutoOpenWizard: 1
