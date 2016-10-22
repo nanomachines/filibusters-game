@@ -71,6 +71,7 @@ namespace Filibusters
     public class Scenes
     {
         public static readonly string START_MENU = "Scenes/StartMenu";
+        public static readonly string HOW_TO_PLAY = "Scenes/HowToPlay";
         public static readonly string READY_MENU = "Scenes/ReadyMenu";
         public static readonly string MAIN = "Scenes/Main";
         public static readonly string GAME_OVER = "Scenes/GameOver";
