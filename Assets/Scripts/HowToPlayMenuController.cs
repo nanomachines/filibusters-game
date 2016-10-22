@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 namespace Filibusters
@@ -18,6 +19,9 @@ namespace Filibusters
 
         [SerializeField]
         Button mNextButton;
+
+        [SerializeField]
+        UnityEngine.EventSystems.EventSystem mUiEventSystem;
 
         void Start()
         {
@@ -49,13 +53,17 @@ namespace Filibusters
 
         void ExitHowToPlay()
         {
-            PhotonNetwork.LoadLevel(Scenes.START_MENU);
+            SceneManager.LoadScene(Scenes.START_MENU);
         }
 
         void UpdateButtonInteractivity()
         {
             mBackButton.interactable = mCurrentSlide != 0;
             mNextButton.interactable = mCurrentSlide != (mTutorialSlides.Length - 1);
+            if (mCurrentSlide == 0 || mCurrentSlide == mTutorialSlides.Length - 1)
+            {
+                mUiEventSystem.SetSelectedGameObject(mUiEventSystem.firstSelectedGameObject);
+            }
         }
     }
 }
