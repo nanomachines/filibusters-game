@@ -39,8 +39,6 @@ namespace Filibusters
             mTutorialSlides[mCurrentSlide].SetActive(false);
             mTutorialSlides[--mCurrentSlide].SetActive(true);
 
-            mBackButton.interactable = mCurrentSlide != 0;
-            mNextButton.interactable = mCurrentSlide != (mTutorialSlides.Length - 1);
             UpdateButtonInteractivity();
         }
 
