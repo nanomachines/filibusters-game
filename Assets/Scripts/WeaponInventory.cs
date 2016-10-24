@@ -28,15 +28,6 @@ namespace Filibusters
             mCoolingDown = false;
         }
 
-        void Update()
-        {
-            if (mWeaponId != WeaponId.FISTS && InputWrapper.Instance.DropWeaponPressed)
-            {
-                EquipWeapon(WeaponId.FISTS);
-                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
-            }
-        }
-
         public bool CanEquip()
         {
             return mWeaponId == WeaponId.FISTS;
@@ -61,8 +52,6 @@ namespace Filibusters
             }
             else if (mAmmo == 0)
             {
-                EquipWeapon(WeaponId.FISTS);
-                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
                 return false;
             }
             else
