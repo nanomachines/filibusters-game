@@ -58,12 +58,12 @@ namespace Filibusters
             {
                 Debug.Log("weapon");
                 // this is an id that maps 1-to-1 with the player who collected the weapon
-                int viewId = player.gameObject.GetComponent<PhotonView>().viewID;
-                mPhotonView.RPC("OnWeaponTriggered", PhotonTargets.MasterClient, viewId);
-                
+                int playerViewId = player.gameObject.GetComponent<PhotonView>().viewID;
+                mPhotonView.RPC("OnWeaponTriggered", PhotonTargets.MasterClient, playerViewId);
+                // disable swap prompt for each player currently in the weapon's bounding box
                 for (int i = 0; i < playersInBoundingBox.Length; i++)
                 {
-                    viewId = playersInBoundingBox[i].gameObject.GetPhotonView().viewID;
+                    int viewId = playersInBoundingBox[i].gameObject.GetPhotonView().viewID;
                     mPhotonView.RPC("DisableSwapPrompt", PhotonTargets.All, viewId);
                 }
             }
@@ -84,7 +84,8 @@ namespace Filibusters
         [PunRPC]
         public void DisableSwapPrompt(int viewId)
         {
-            PhotonView.Find(viewId).gameObject.GetComponent<SwapButtonToggle>().DisableOnOtherPlayerEquip(viewId);
+            var swapToggleScript = PhotonView.Find(viewId).gameObject.GetComponent<SwapButtonToggle>();
+            swapToggleScript.DisableOnOtherPlayerEquip(viewId);
         }
 
         [PunRPC]
