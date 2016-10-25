@@ -14,7 +14,7 @@ namespace Filibusters
             Update();
         }
 
-        public bool AnyJoysticksConnected()
+        public static bool AnyJoysticksConnected()
         {
             foreach (var joystickName in Input.GetJoystickNames())
             {
