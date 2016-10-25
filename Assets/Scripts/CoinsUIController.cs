@@ -46,7 +46,10 @@ namespace Filibusters
             var activePlayers = NetworkManager.GetActivePlayerNumbers();
             for (int i = 0; i < GameConstants.MAX_ONLINE_PLAYERS_IN_GAME; ++i)
             {
-                mVoteUIElements[i].SetActive(activePlayers[i]);
+                if (!activePlayers[i])
+                {
+                    DisableUI(i);
+                }
             }
 
             StartCoroutine(HideInstructions());
@@ -79,7 +82,39 @@ namespace Filibusters
         public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
         {
             int playerNumberToFree = NetworkManager.GetPlayerNumber(otherPlayer);
-            mVoteUIElements[playerNumberToFree].SetActive(false);
+            DisableUI(playerNumberToFree);
+        }
+
+        private void EnableUI(int playerNum)
+        {
+            foreach (Image img in mVoteUIElements[playerNum].GetComponentsInChildren<Image>())
+            {
+                Color c = img.color;
+                c.a = 1F;
+                img.color = c;
+            }
+            foreach (Text text in mVoteUIElements[playerNum].GetComponentsInChildren<Text>())
+            {
+                Color c = text.color;
+                c.a = 1F;
+                text.color = c;
+            }
+        }
+
+        private void DisableUI(int playerNum)
+        {
+            foreach (Image img in mVoteUIElements[playerNum].GetComponentsInChildren<Image>())
+            {
+                Color c = img.color;
+                c.a = 0.2F;
+                img.color = c;
+            }
+            foreach (Text text in mVoteUIElements[playerNum].GetComponentsInChildren<Text>())
+            {
+                Color c = text.color;
+                c.a = 0.2F;
+                text.color = c;
+            }
         }
 	}
 }
