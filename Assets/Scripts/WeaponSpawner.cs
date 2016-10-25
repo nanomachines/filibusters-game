@@ -44,7 +44,7 @@ namespace Filibusters
 
         void Update()
         {
-            if (InputWrapper.Instance.DropWeaponPressed)
+            if (InputWrapper.Instance.EquipWeaponPressed)
             {
                 CheckForPlayerCollisions();
             }

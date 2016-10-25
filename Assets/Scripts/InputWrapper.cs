@@ -34,7 +34,7 @@ namespace Filibusters
         public bool JumpPressed { get { return mJumpInput; } }
         public bool FallPressed { get { return mFallInput; } }
         public bool FirePressed { get { return mFirePressed; } }
-        public bool DropWeaponPressed { get { return mDropWeaponPressed; } }
+        public bool EquipWeaponPressed { get { return mEquipWeaponPressed; } }
 
         void Start()
         {
@@ -108,7 +108,7 @@ namespace Filibusters
             /*
              * Get Weapon Drop input
              */
-            mDropWeaponPressed = Input.GetAxis(DropAxis) > Mathf.Epsilon;
+            mEquipWeaponPressed = Input.GetAxis(EquipAxis) > Mathf.Epsilon;
         }
 
         private delegate Vector2 GetMouseInputDelegate();
@@ -148,7 +148,7 @@ namespace Filibusters
         public static readonly string Xbox360FireAxis =
             Application.platform == RuntimePlatform.OSXPlayer ||
             Application.platform == RuntimePlatform.OSXEditor ? "X360-OSX-Fire" : "X360-Win-Fire";
-        public static readonly string DropAxis = "Drop-Weapon";
+        public static readonly string EquipAxis = "Equip-Weapon";
 
         public static readonly string SubmitAxis = "Submit";
         public static readonly string Xbox360SubmitAxis =
@@ -164,7 +164,7 @@ namespace Filibusters
         private bool mJumpInput = false;
         private bool mFallInput = false;
         private bool mFirePressed = false;
-        private bool mDropWeaponPressed = false;
+        private bool mEquipWeaponPressed = false;
 
 
     }
