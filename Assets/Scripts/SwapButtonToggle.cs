@@ -49,5 +49,13 @@ namespace Filibusters
                 mSwapPrompt.SetActive(false);
             }
         }
+
+        public void DisableOnOtherPlayerEquip(int viewId)
+        {
+            if (PhotonView.Find(viewId).isMine)
+            {
+                mSwapPrompt.SetActive(false);
+            }
+        }
     }
 }

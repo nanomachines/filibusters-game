@@ -46,21 +46,46 @@ namespace Filibusters
         {
             if (InputWrapper.Instance.DropWeaponPressed)
             {
-                CheckForPlayerCollision();
+                CheckForPlayerCollisions();
             }
         }
 
-        void CheckForPlayerCollision()
+        void CheckForPlayerCollisions()
         {
-            Collider2D other;
-            if (other = Physics2D.OverlapArea(mTLCorner, mBRCorner, mPlayerLayer))
+            Collider2D[] playersInBoundingBox = Physics2D.OverlapAreaAll(mTLCorner, mBRCorner, mPlayerLayer);
+            Collider2D player = FindPlayerWhoPressedEquip(playersInBoundingBox);
+            if (player != null)
             {
                 Debug.Log("weapon");
                 // this is an id that maps 1-to-1 with the player who collected the weapon
-                int viewId = other.gameObject.GetComponent<PhotonView>().viewID;
+                int viewId = player.gameObject.GetComponent<PhotonView>().viewID;
                 mPhotonView.RPC("OnWeaponTriggered", PhotonTargets.MasterClient, viewId);
+                
+                for (int i = 0; i < playersInBoundingBox.Length; i++)
+                {
+                    viewId = playersInBoundingBox[i].gameObject.GetPhotonView().viewID;
+                    mPhotonView.RPC("DisableSwapPrompt", PhotonTargets.All, viewId);
+                }
             }
-        }     
+        }  
+        
+        Collider2D FindPlayerWhoPressedEquip(Collider2D[] playersInBoundingBox)
+        {
+            for (int i = 0; i < playersInBoundingBox.Length; i++)
+            {
+                if (playersInBoundingBox[i].gameObject.GetPhotonView().isMine)
+                {
+                    return playersInBoundingBox[i];
+                }
+            }
+            return null;
+        }
+
+        [PunRPC]
+        public void DisableSwapPrompt(int viewId)
+        {
+            PhotonView.Find(viewId).gameObject.GetComponent<SwapButtonToggle>().DisableOnOtherPlayerEquip(viewId);
+        }
 
         [PunRPC]
         public void OnWeaponTriggered(int viewId)
