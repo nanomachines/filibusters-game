@@ -28,11 +28,6 @@ namespace Filibusters
             mCoolingDown = false;
         }
 
-        public bool CanEquip()
-        {
-            return mWeaponId == WeaponId.FISTS;
-        }
-
         public void EquipWeapon(WeaponId weaponId) 
         {
             mWeaponId = weaponId;
