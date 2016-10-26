@@ -53,7 +53,7 @@ namespace Filibusters
         void CheckForPlayerCollisions()
         {
             Collider2D[] playersInBoundingBox = Physics2D.OverlapAreaAll(mTLCorner, mBRCorner, mPlayerLayer);
-            Collider2D player = FindPlayerWhoPressedEquip(playersInBoundingBox);
+            Collider2D player = FindLocalPlayer(playersInBoundingBox);
             if (player != null)
             {
                 Debug.Log("weapon");
@@ -69,7 +69,7 @@ namespace Filibusters
             }
         }  
         
-        Collider2D FindPlayerWhoPressedEquip(Collider2D[] playersInBoundingBox)
+        Collider2D FindLocalPlayer(Collider2D[] playersInBoundingBox)
         {
             for (int i = 0; i < playersInBoundingBox.Length; i++)
             {
