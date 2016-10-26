@@ -14,7 +14,7 @@ namespace Filibusters
         public string bullet;
         public string fx;
 
-        public static ProjectileFXPair FISTS = new ProjectileFXPair(null, null);
+        public static ProjectileFXPair DARK_HORSE = new ProjectileFXPair("DarkHorseBullet", null);
         public static ProjectileFXPair VETO = new ProjectileFXPair("VetoBullet", "VetoFireFX");
         public static ProjectileFXPair MAGIC_BULLET = new ProjectileFXPair("MagicBulletBullet", null);
     }
@@ -71,12 +71,14 @@ namespace Filibusters
         {
             switch (weaponId)
             {
+                case WeaponId.FISTS:
+                    return ProjectileFXPair.DARK_HORSE;
                 case WeaponId.VETO:
                     return ProjectileFXPair.VETO;
                 case WeaponId.MAGIC_BULLET:
                     return ProjectileFXPair.MAGIC_BULLET;
                 default:
-                    return ProjectileFXPair.FISTS;
+                    return ProjectileFXPair.DARK_HORSE;
             }
         }
 

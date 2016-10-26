@@ -24,8 +24,8 @@ namespace Filibusters
 
         public static WeaponAttributes[] WeaponProperties =
         {
-            new WeaponAttributes(-1, 0.8f),
-            new WeaponAttributes(1, 0.1f),
+            new WeaponAttributes(15, 0.2f),
+            new WeaponAttributes(1, 0.7f),
             new WeaponAttributes(7, 0.5f)
         };
     }
@@ -66,6 +66,7 @@ namespace Filibusters
         public static readonly string MAIN_CAMERA = "MainCamera";
         public static readonly string COIN = "Coin";
         public static readonly string PLAYER_UI = "PlayerUI";
+        public static readonly string WEAPON = "Gun";
     }
 
     public class Scenes

@@ -24,22 +24,7 @@ namespace Filibusters
             mPhotonView = GetComponent<PhotonView>();
 
             // Set ammo to -1 for infinite ammo
-            mAmmo = -1;
-            mCoolingDown = false;
-        }
-
-        void Update()
-        {
-            if (mWeaponId != WeaponId.FISTS && InputWrapper.Instance.DropWeaponPressed)
-            {
-                EquipWeapon(WeaponId.FISTS);
-                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
-            }
-        }
-
-        public bool CanEquip()
-        {
-            return mWeaponId == WeaponId.FISTS;
+            EquipWeapon(WeaponId.FISTS);
         }
 
         public void EquipWeapon(WeaponId weaponId) 
@@ -61,8 +46,6 @@ namespace Filibusters
             }
             else if (mAmmo == 0)
             {
-                EquipWeapon(WeaponId.FISTS);
-                EventSystem.OnWeaponDrop(mPhotonView.owner.ID);
                 return false;
             }
             else

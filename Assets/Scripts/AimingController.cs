@@ -7,6 +7,8 @@ namespace Filibusters
     public class AimingController : MonoBehaviour
     {
         [SerializeField]
+        private GameObject[] mDarkHorseBarrelReferences;
+        [SerializeField]
         private GameObject[] mVetoBarrelReferences;
         [SerializeField]
         private GameObject[] mMagicBulletBarrelReferences;
@@ -36,7 +38,7 @@ namespace Filibusters
         void Start()
         {
             mPlayerState = GetComponent<PlayerState>();
-            mBarrelReferences = new GameObject[][] { null, mVetoBarrelReferences, mMagicBulletBarrelReferences };
+            mBarrelReferences = new GameObject[][] { mDarkHorseBarrelReferences, mVetoBarrelReferences, mMagicBulletBarrelReferences };
         }
         
         // Update is called once per frame
