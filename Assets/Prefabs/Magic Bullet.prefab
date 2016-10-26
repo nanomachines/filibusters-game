@@ -110,18 +110,18 @@ MonoBehaviour:
   mAnimationCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
-      value: -1
+    - time: 0.008222712
+      value: -0.3651644
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 0.9983113
-      value: 0.7215879
+    - time: 1.006534
+      value: 0.3449905
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1.9734509
-      value: -0.97522044
+    - time: 2.0145645
+      value: -0.3296249
       inSlope: 0
       outSlope: 0
       tangentMode: 0
