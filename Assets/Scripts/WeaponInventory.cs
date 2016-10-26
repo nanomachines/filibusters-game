@@ -24,8 +24,7 @@ namespace Filibusters
             mPhotonView = GetComponent<PhotonView>();
 
             // Set ammo to -1 for infinite ammo
-            mAmmo = -1;
-            mCoolingDown = false;
+            EquipWeapon(WeaponId.FISTS);
         }
 
         public void EquipWeapon(WeaponId weaponId) 
