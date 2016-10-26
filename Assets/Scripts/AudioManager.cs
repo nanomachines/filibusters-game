@@ -19,6 +19,8 @@ namespace Filibusters
         [SerializeField]
         private AudioClip mCoinDeposited;
         [SerializeField]
+        private AudioClip mEquipDarkhorse;
+        [SerializeField]
         private AudioClip mEquipVeto;
         [SerializeField]
         private AudioClip mEquipMagicBullet;
@@ -26,6 +28,8 @@ namespace Filibusters
         private AudioClip mEquipAnarchy;
         [SerializeField]
         private AudioClip mEquipLibelAndSlander;
+        [SerializeField]
+        private AudioClip mUseDarkhorse;
         [SerializeField]
         private AudioClip mUseVeto;
         [SerializeField]
@@ -35,7 +39,15 @@ namespace Filibusters
         [SerializeField]
         private AudioClip mUseLibelAndSlander;
         [SerializeField]
-        private AudioClip mDropWeapon;
+        private AudioClip mMisfireDarkhorse;
+        [SerializeField]
+        private AudioClip mMisfireVeto;
+        [SerializeField]
+        private AudioClip mMisfireMagicBullet;
+        [SerializeField]
+        private AudioClip mMisfireAnarchy;
+        [SerializeField]
+        private AudioClip mMisfireLibelAndSlander;
 
         // Use this for initialization
         void Start()
@@ -93,6 +105,9 @@ namespace Filibusters
                     AudioClip pickup = null;
                     switch (weaponId)
                     {
+                        case WeaponId.FISTS:
+                            pickup = mEquipDarkhorse;
+                            break;
                         case WeaponId.VETO:
                             pickup = mEquipVeto;
                             break;
@@ -115,10 +130,15 @@ namespace Filibusters
                 if (actorId == PhotonNetwork.player.ID)
                 {
                     AudioClip clip = null;
+                    float volume = 1.0f;
                     switch (weaponId)
                     {
+                        case WeaponId.FISTS:
+                            clip = mUseDarkhorse;
+                            break;
                         case WeaponId.VETO:
                             clip = mUseVeto;
+                            volume = 0.5f;
                             break;
                         case WeaponId.MAGIC_BULLET:
                             clip = mUseMagicBullet;
@@ -130,15 +150,34 @@ namespace Filibusters
                             clip = mUseLibelAndSlander;
                             break;
                     }
-                    mSource.PlayOneShot(clip);
+                    mSource.PlayOneShot(clip, volume);
                 }
             };
 
-            EventSystem.OnWeaponDropEvent += (int actorId) =>
+            EventSystem.OnWeaponMisfiredEvent += (int actorId, GameConstants.WeaponId weaponId) =>
             {
                 if (actorId == PhotonNetwork.player.ID)
                 {
-                    mSource.PlayOneShot(mDropWeapon, 0.6f);
+                    AudioClip misfire = null;
+                    switch (weaponId)
+                    {
+                        case WeaponId.FISTS:
+                            misfire = mMisfireDarkhorse;
+                            break;
+                        case WeaponId.VETO:
+                            misfire = mMisfireVeto;
+                            break;
+                        case WeaponId.MAGIC_BULLET:
+                            misfire = mMisfireMagicBullet;
+                            break;
+                        case WeaponId.ANARCHY:
+                            misfire = mMisfireAnarchy;
+                            break;
+                        case WeaponId.LIBEL_AND_SLANDER:
+                            misfire = mMisfireLibelAndSlander;
+                            break;
+                    }
+                    mSource.PlayOneShot(misfire);
                 }
             };
         }
