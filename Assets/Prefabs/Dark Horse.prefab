@@ -23,6 +23,7 @@ GameObject:
   - 114: {fileID: 114000011954990616}
   - 61: {fileID: 61000010206930898}
   - 114: {fileID: 114000011005158812}
+  - 114: {fileID: 114000013813473584}
   m_Layer: 0
   m_Name: Dark Horse
   m_TagString: Gun
@@ -98,6 +99,38 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114000013813473584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010179887970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e0be623bba92a4ba516b20bc9fc6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0.023741215
+      value: -0.4265902
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.9867672
+      value: 0.41823572
+      inSlope: 0.00000009051426
+      outSlope: 0.00000009051426
+      tangentMode: 0
+    - time: 1.9781901
+      value: -0.4137846
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 0
+    m_PostInfinity: 0
+    m_RotationOrder: 0
 --- !u!212 &212000013668611940
 SpriteRenderer:
   m_ObjectHideFlags: 1
