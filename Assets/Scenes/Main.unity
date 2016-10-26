@@ -11821,7 +11821,7 @@ Prefab:
     - target: {fileID: 224000011761770650, guid: f07ef64905c918f4291126bd5cedd24b,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000013155072848, guid: f07ef64905c918f4291126bd5cedd24b,
         type: 2}
@@ -24260,6 +24260,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 810992758}
   m_RootOrder: 0
+--- !u!1 &1763530044 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013574911052, guid: f07ef64905c918f4291126bd5cedd24b,
+    type: 2}
+  m_PrefabInternal: {fileID: 914427609}
+--- !u!114 &1763530047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763530044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0899410c60d004a45876496b1c6e2280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mJumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0.0060587535
+      value: -0.019527435
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.27196038
+      value: 0.5035969
+      inSlope: 0.009405194
+      outSlope: 0.009405194
+      tangentMode: 0
+    - time: 0.5046361
+      value: -0.01642103
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 0
+    m_PostInfinity: 0
+    m_RotationOrder: 0
+  mRotateCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: -0.25023553
+      value: -0.5157902
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.004733488
+      value: 0.50324774
+      inSlope: -0.019217841
+      outSlope: -0.019217841
+      tangentMode: 0
+    - time: 0.26043442
+      value: -0.47118756
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 0
+    m_PostInfinity: 0
+    m_RotationOrder: 0
 --- !u!4 &1765615113
 Transform:
   m_ObjectHideFlags: 0
