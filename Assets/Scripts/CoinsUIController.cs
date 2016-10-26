@@ -12,14 +12,6 @@ namespace Filibusters
         Text[] mVoteTextElements;
         Text[] mCoinTextElements;
 
-        [SerializeField]
-        GameObject mInstructionElement;
-        [SerializeField]
-        float mVisibleTime;
-        [SerializeField]
-        float mInvisibleTime;
-
-		// Use this for initialization
 		void Start()
         {
             EventSystem.OnCoinDepositedEvent += UpdateDepositCounts;
@@ -50,19 +42,6 @@ namespace Filibusters
                 {
                     DisableUI(i);
                 }
-            }
-
-            StartCoroutine(HideInstructions());
-        }
-
-        private IEnumerator HideInstructions()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                mInstructionElement.SetActive(true);
-                yield return new WaitForSeconds(mVisibleTime);
-                mInstructionElement.SetActive(false);
-                yield return new WaitForSeconds(mInvisibleTime);
             }
 
         }
