@@ -8848,6 +8848,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012724654780, guid: fb202c0e4daa57e47a02a85da90ea96e,
+        type: 2}
+      propertyPath: mCoinCollection
+      value: 
+      objectReference: {fileID: 8300000, guid: fa90d44073c167c4baa187ab32f5fc69, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb202c0e4daa57e47a02a85da90ea96e, type: 2}
   m_IsPrefabParent: 0
