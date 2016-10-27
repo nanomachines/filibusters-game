@@ -71,7 +71,7 @@ namespace Filibusters
         {
             switch (weaponId)
             {
-                case WeaponId.FISTS:
+                case WeaponId.DARK_HORSE:
                     return ProjectileFXPair.DARK_HORSE;
                 case WeaponId.VETO:
                     return ProjectileFXPair.VETO;

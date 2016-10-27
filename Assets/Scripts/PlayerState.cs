@@ -15,7 +15,7 @@ namespace Filibusters
         [HideInInspector]
         public bool mGrounded = false;
         //[HideInInspector]
-        public WeaponId mWeaponId = WeaponId.FISTS;
+        public WeaponId mWeaponId = WeaponId.DARK_HORSE;
         public Aim mAimingDir = Aim.RIGHT;
 
         /*

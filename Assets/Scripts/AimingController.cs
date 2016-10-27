@@ -45,7 +45,7 @@ namespace Filibusters
         public void Update()
         {
             UpdateAimFromInput();
-            DrawAimingRay();
+            //DrawAimingRay();
         }
 
         public Transform GetWeaponPointTransform()
@@ -137,10 +137,6 @@ namespace Filibusters
 
         void DrawAimingRay()
         {
-            if (mWeaponId == WeaponId.FISTS)
-            {
-                return;
-            }
             Vector2 barrelOrigin = mBarrelReferences[(int)mWeaponId][(int)mAimingDir].transform.TransformPoint(Vector2.zero);
             Vector2 bulletDir = mBarrelReferences[(int)mWeaponId][(int)mAimingDir].transform.TransformVector(Vector2.right);
             Debug.DrawRay(barrelOrigin, bulletDir, Color.magenta);

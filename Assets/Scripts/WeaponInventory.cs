@@ -22,11 +22,7 @@ namespace Filibusters
         {
             mPlayerState = GetComponent<PlayerState>();
             mPhotonView = GetComponent<PhotonView>();
-
-            mWeaponId = WeaponId.FISTS;
-            var attributes = GameConstants.WeaponProperties[(int)mWeaponId];
-            mAmmo = attributes.mMaxAmmo;
-            mCoolDownSeconds = attributes.mCoolDown; 
+            ResetWeapon();
         }
 
         public void EquipWeapon(WeaponId weaponId) 
@@ -37,6 +33,14 @@ namespace Filibusters
             WeaponAttributes attributes = GameConstants.WeaponProperties[(int)weaponId];
             mAmmo = attributes.mMaxAmmo;
             mCoolDownSeconds = attributes.mCoolDown;
+        }
+
+        public void ResetWeapon()
+        {
+            mWeaponId = WeaponId.DARK_HORSE;
+            var attributes = GameConstants.WeaponProperties[(int)mWeaponId];
+            mAmmo = attributes.mMaxAmmo;
+            mCoolDownSeconds = attributes.mCoolDown; 
         }
 
         public bool GetRound()

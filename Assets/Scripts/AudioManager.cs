@@ -115,7 +115,7 @@ namespace Filibusters
                     AudioClip pickup = null;
                     switch (weaponId)
                     {
-                        case WeaponId.FISTS:
+                        case WeaponId.DARK_HORSE:
                             pickup = mEquipDarkhorse;
                             break;
                         case WeaponId.VETO:
@@ -143,7 +143,7 @@ namespace Filibusters
                     float volume = 1.0f;
                     switch (weaponId)
                     {
-                        case WeaponId.FISTS:
+                        case WeaponId.DARK_HORSE:
                             clip = mUseDarkhorse;
                             break;
                         case WeaponId.VETO:
@@ -171,7 +171,7 @@ namespace Filibusters
                     AudioClip misfire = null;
                     switch (weaponId)
                     {
-                        case WeaponId.FISTS:
+                        case WeaponId.DARK_HORSE:
                             misfire = mMisfireDarkhorse;
                             break;
                         case WeaponId.VETO:
