@@ -8845,21 +8845,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000012724654780, guid: fb202c0e4daa57e47a02a85da90ea96e,
-        type: 2}
-      propertyPath: mCoinCollection
-      value: 
-      objectReference: {fileID: 8300000, guid: fa90d44073c167c4baa187ab32f5fc69, type: 3}
-    - target: {fileID: 114000012724654780, guid: fb202c0e4daa57e47a02a85da90ea96e,
-        type: 2}
-      propertyPath: mEquipDarkhorse
-      value: 
-      objectReference: {fileID: 8300000, guid: 4ba634c16e30ba342a555e63a9299a86, type: 3}
-    - target: {fileID: 82000014103785314, guid: fb202c0e4daa57e47a02a85da90ea96e,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: c17a29a440aae4745bf24ebb0713563f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb202c0e4daa57e47a02a85da90ea96e, type: 2}
   m_IsPrefabParent: 0
@@ -11821,7 +11806,7 @@ Prefab:
     - target: {fileID: 224000011761770650, guid: f07ef64905c918f4291126bd5cedd24b,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013155072848, guid: f07ef64905c918f4291126bd5cedd24b,
         type: 2}

@@ -11,6 +11,9 @@ namespace Filibusters
         private AudioSource mSource;
 
         [SerializeField]
+        private AudioClip mMainGameBackgroundMusic;
+
+        [SerializeField]
         private AudioClip mPlayerDeath;
         [SerializeField]
         private AudioClip mPlayerJump;
@@ -57,19 +60,26 @@ namespace Filibusters
                 Instance = this;
                 RegisterEvents();
                 mSource = GetComponent<AudioSource>();
+                mSource.loop = true;
                 DontDestroyOnLoad(this);
 
-                SceneManager.sceneLoaded += (Scene s, LoadSceneMode lsm) =>
-                {
-                    if (s.name == Scenes.MAIN)
-                    {
-                        mSource.Play();
-                    }
-                };
+                // initialize scene background music
+                PlayBackgroundMusicForScene(SceneManager.GetActiveScene());
+                // when scene changes, update background music
+                SceneManager.sceneLoaded += (Scene s, LoadSceneMode lsm) => { PlayBackgroundMusicForScene(s); };
             }
             else
             {
                 Destroy(gameObject);
+            }
+        }
+
+        private void PlayBackgroundMusicForScene(Scene s)
+        {
+            if (Utility.AreSceneNamesEqual(s.name, Scenes.MAIN))
+            {
+                mSource.clip = mMainGameBackgroundMusic;
+                mSource.Play();
             }
         }
 

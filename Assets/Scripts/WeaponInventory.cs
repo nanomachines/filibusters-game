@@ -23,8 +23,10 @@ namespace Filibusters
             mPlayerState = GetComponent<PlayerState>();
             mPhotonView = GetComponent<PhotonView>();
 
-            // Set ammo to -1 for infinite ammo
-            EquipWeapon(WeaponId.FISTS);
+            mWeaponId = WeaponId.FISTS;
+            var attributes = GameConstants.WeaponProperties[(int)mWeaponId];
+            mAmmo = attributes.mMaxAmmo;
+            mCoolDownSeconds = attributes.mCoolDown; 
         }
 
         public void EquipWeapon(WeaponId weaponId) 
