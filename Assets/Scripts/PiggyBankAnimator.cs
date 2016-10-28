@@ -32,6 +32,12 @@ namespace Filibusters
             EventSystem.OnDepositEndEvent += StopDancing;
         }
 
+        void OnDestroy()
+        {
+            EventSystem.OnDepositBeginEvent -= StartDancing;
+            EventSystem.OnDepositEndEvent -= StopDancing;
+        }
+
         void Update()
         {
             if (mDancing)
