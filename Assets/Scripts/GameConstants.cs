@@ -15,7 +15,7 @@ namespace Filibusters
 
         public enum WeaponId
         {
-            FISTS = 0,
+            DARK_HORSE = 0,
             VETO = 1,
             MAGIC_BULLET = 2,
             ANARCHY = 3,

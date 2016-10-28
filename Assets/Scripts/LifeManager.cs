@@ -110,7 +110,7 @@ namespace Filibusters
             mAnimController.SetRenderersEnabled(true);
             mAttackScript.enabled = true;
             mCollider.enabled = true;
-            mWeaponInventory.EquipWeapon(GameConstants.WeaponId.FISTS);
+            mWeaponInventory.ResetWeapon();
             mCurHealth = mMaxHealth;
 
             if (mIsLocalPlayer)
