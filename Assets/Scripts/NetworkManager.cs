@@ -28,12 +28,12 @@ namespace Filibusters
                 Object.DontDestroyOnLoad(gameObject);
                 PhotonNetwork.automaticallySyncScene = true;
                 var activeSceneName = SceneManager.GetActiveScene().name;
-                if (Utility.AreSceneNamesEqual(Scenes.READY_MENU, activeSceneName) &&
+                if (Utility.AreSceneNamesEqual(Scenes.READY_MENU, activeSceneName) ||
                     Utility.AreSceneNamesEqual(Scenes.MAIN, activeSceneName))
                 {
                     PhotonNetwork.offlineMode = true;
                     PhotonNetwork.CreateRoom("OfflineRoom");
-                    if (SceneManager.GetSceneByName("Main").isLoaded)
+                    if (Utility.AreSceneNamesEqual(SceneManager.GetActiveScene().name, Scenes.MAIN))
                     {
                         OnPhotonPlayerConnected(PhotonNetwork.player);
                     }
