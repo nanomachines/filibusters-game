@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e0540e36af6504621ab5344fde644468
-timeCreated: 1475652099
+timeCreated: 1477628401
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -520,13 +520,13 @@ TextureImporter:
       name: man_running_matrix_01_v01_30
       rect:
         serializedVersion: 2
-        x: 1310
-        y: 1188
+        x: 1312
+        y: 1192
         width: 142
         height: 107
       alignment: 9
-      pivot: {x: 0.5, y: 0.9736191}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5081177, y: 0.94460404}
+      border: {x: 0, y: 0, z: 0, w: 1}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
@@ -538,7 +538,7 @@ TextureImporter:
         width: 148
         height: 101
       alignment: 9
-      pivot: {x: 0.5207528, y: 0.9561417}
+      pivot: {x: 0.5527987, y: 0.968831}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

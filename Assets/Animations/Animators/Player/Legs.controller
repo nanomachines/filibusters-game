@@ -12,7 +12,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   - m_Name: BackPeddle
     m_Type: 4
@@ -30,7 +30,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
@@ -242,7 +242,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BackPeddle
-  m_Speed: -1.2
+  m_Speed: -1.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101000010338593048}
@@ -266,7 +266,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Run
-  m_Speed: 1.2
+  m_Speed: 1.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101000013189443140}
@@ -303,7 +303,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2fd04f3fee9c53b4fbc33d1026707f88, type: 2}
+  m_Motion: {fileID: 7400000, guid: f9d814dd7b7799546ba65758c2c35460, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
