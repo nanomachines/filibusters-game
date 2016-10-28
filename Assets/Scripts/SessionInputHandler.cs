@@ -1,7 +1,7 @@
 ﻿using Photon;
-using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+
+using System.Collections.Generic;
 
 namespace Filibusters
 {
@@ -9,6 +9,14 @@ namespace Filibusters
     {
         InputField mSessionNameField;
         ErrorToast mErrorToaster;
+
+        private static readonly Dictionary<int, string> ErrorCodeMap = new Dictionary<int, string>()
+        {
+            { ErrorCode.GameIdAlreadyExists, "Game id already exists" },
+            { ErrorCode.GameFull , "Game is full" },
+            { ErrorCode.GameClosed, "Game is closed" },
+            { ErrorCode.GameDoesNotExist, "Game does not exist" }
+        };
 
         void Start()
         {
@@ -40,12 +48,28 @@ namespace Filibusters
 
         public override void OnPhotonCreateRoomFailed(object[] codeAndMsg)
         {
-            mErrorToaster.ToastError((string)codeAndMsg[1]);
+            short errorCode = (short)codeAndMsg[0];
+            if (ErrorCodeMap.ContainsKey(errorCode))
+            {
+                mErrorToaster.ToastError(ErrorCodeMap[errorCode]);
+            }
+            else
+            {
+                mErrorToaster.ToastError("Unabled to create room. Error code: " + errorCode);
+            }
         }
 
         public override void OnPhotonJoinRoomFailed(object[] codeAndMsg)
         {
-            mErrorToaster.ToastError((string)codeAndMsg[1]);
+            short errorCode = (short)codeAndMsg[0];
+            if (ErrorCodeMap.ContainsKey(errorCode))
+            {
+                mErrorToaster.ToastError(ErrorCodeMap[errorCode]);
+            }
+            else
+            {
+                mErrorToaster.ToastError("Unabled to join room. Error code: " + errorCode);
+            }
         }
     }
 }
