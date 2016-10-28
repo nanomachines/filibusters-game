@@ -506,6 +506,7 @@ GameObject:
   - 222: {fileID: 1676219409}
   - 114: {fileID: 1676219408}
   - 114: {fileID: 1676219407}
+  - 114: {fileID: 1676219411}
   - 114: {fileID: 1676219410}
   m_Layer: 5
   m_Name: Session Name Input
@@ -639,11 +640,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1676219405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feca55645946d76408142dd4ff877c90, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b0246b2ea2760344801fee8fed28b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1676219411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676219405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2958cb5c51bd24bb18728ddeff9d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mError: {fileID: 1354891143}
-  mToastTime: 4
 --- !u!1 &1699382729
 GameObject:
   m_ObjectHideFlags: 0

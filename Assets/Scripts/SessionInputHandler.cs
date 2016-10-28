@@ -5,40 +5,33 @@ using System.Collections;
 
 namespace Filibusters
 {
-    public class HostSession : PunBehaviour
+    public abstract class SessionInputHandler : PunBehaviour
     {
         InputField mSessionNameField;
-
-        [SerializeField]
-        GameObject mError;
-        Text mErrorText;
-
-        [SerializeField]
-        float mToastTime;
+        ErrorToast mErrorToaster;
 
         void Start()
         {
-            mErrorText = mError.GetComponent<Text>();
-
             mSessionNameField = GetComponent<InputField>();
             mSessionNameField.onEndEdit.AddListener(delegate { OnHostGameNameEntered(); });
+            mErrorToaster = GetComponent<ErrorToast>();
         }
 
         public void OnHostGameNameEntered()
         {
-            mError.SetActive(false);
             var sessionName = mSessionNameField.text;
             sessionName = sessionName.Trim().ToLower();
             if (sessionName == "")
             {
-                mErrorText.text = "Invalid session name: session name cannot be empty";
-                StartCoroutine(ToastErrorText()); 
+                mErrorToaster.ToastError("Invalid session name: session name cannot be empty");
             }
             else
             {
-                NetworkManager.CreateAndJoinGameSession(sessionName);
+                OnValidSanitizedInput(sessionName); 
             }
         }
+
+        protected abstract void OnValidSanitizedInput(string input);
 
         public override void OnJoinedRoom()
         {
@@ -47,15 +40,12 @@ namespace Filibusters
 
         public override void OnPhotonCreateRoomFailed(object[] codeAndMsg)
         {
-            mErrorText.text = (string)codeAndMsg[1];
-            StartCoroutine(ToastErrorText());
+            mErrorToaster.ToastError((string)codeAndMsg[1]);
         }
 
-        private IEnumerator ToastErrorText()
+        public override void OnPhotonJoinRoomFailed(object[] codeAndMsg)
         {
-            mError.SetActive(true);
-            yield return new WaitForSeconds(mToastTime);
-            mError.SetActive(false);
+            mErrorToaster.ToastError((string)codeAndMsg[1]);
         }
     }
 }
