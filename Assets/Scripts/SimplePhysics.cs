@@ -160,10 +160,13 @@ namespace Filibusters
         private float GetYChange(float delta, float dir, bool facingRight)
         {
             mGrounded = false;
-            // TODO: Set a begin end and increment to avoid having identical for loops
-            for (int i = 0; i < 5; i++)
+            // Character width is 2 units and offset removes from each end
+            // Therefore, strideLength = (2 - 2 * offset) / (rays cast - 1)
+            float offset = 0.5f;
+            float strideLength = 0.25f;
+            for (int stride = 0; stride < 5; stride++)
             {
-                float width = 0.2f + i * 0.4f;
+                float width = offset + stride * strideLength;
                 // raycast in our moving direction to update our y delta
                 RaycastY(ref delta, dir, width);
                 // raycast to the floor always to check if we are grounded
