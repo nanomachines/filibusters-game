@@ -10,20 +10,33 @@ namespace Filibusters
         InputField mSessionNameField;
 
         [SerializeField]
-        GameObject mErrorText;
+        GameObject mError;
+        Text mErrorText;
 
         [SerializeField]
         float mToastTime;
 
         void Start()
         {
+            mErrorText = mError.GetComponent<Text>();
             mSessionNameField = GetComponent<InputField>();
             mSessionNameField.onEndEdit.AddListener(delegate { OnHostGameNameEntered(); });
         }
 
         public void OnHostGameNameEntered()
         {
-            NetworkManager.JoinGameSession(mSessionNameField.text.ToLower());
+            mError.SetActive(false);
+            var sessionName = mSessionNameField.text;
+            sessionName = sessionName.Trim().ToLower();
+            if (sessionName == "")
+            {
+                mErrorText.text = "Invalid session name: session name cannot be empty";
+                StartCoroutine(ToastErrorText()); 
+            }
+            else
+            {
+                NetworkManager.JoinGameSession(sessionName);
+            }
         }
 
         public override void OnJoinedRoom()
@@ -33,15 +46,15 @@ namespace Filibusters
 
         public override void OnPhotonJoinRoomFailed(object[] codeAndMsg)
         {
-            mErrorText.GetComponent<Text>().text = (string)codeAndMsg[1];
+            mErrorText.text = (string)codeAndMsg[1];
             StartCoroutine(ToastErrorText());
         }
 
         private IEnumerator ToastErrorText()
         {
-            mErrorText.SetActive(true);
+            mError.SetActive(true);
             yield return new WaitForSeconds(mToastTime);
-            mErrorText.SetActive(false);
+            mError.SetActive(false);
         }
     }
 }

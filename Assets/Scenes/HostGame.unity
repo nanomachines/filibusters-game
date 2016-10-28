@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feca55645946d76408142dd4ff877c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mErrorText: {fileID: 1354891143}
+  mError: {fileID: 1354891143}
   mToastTime: 4
 --- !u!1 &1699382729
 GameObject:
