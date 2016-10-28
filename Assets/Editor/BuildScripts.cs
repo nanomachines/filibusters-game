@@ -10,6 +10,8 @@ namespace Filibusters
         public static string[] levels = new string[]
         {
             ScenesRoot + Scenes.START_MENU + SceneSuffix,
+            ScenesRoot + Scenes.HOST_GAME + SceneSuffix,
+            ScenesRoot + Scenes.JOIN_GAME + SceneSuffix,
             ScenesRoot + Scenes.HOW_TO_PLAY + SceneSuffix,
             ScenesRoot + Scenes.READY_MENU + SceneSuffix,
             ScenesRoot + Scenes.MAIN + SceneSuffix,

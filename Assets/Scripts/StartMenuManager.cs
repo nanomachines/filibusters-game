@@ -7,8 +7,6 @@ namespace Filibusters
 {
     public class StartMenuManager : Photon.PunBehaviour 
     {
-        public static readonly string SESSION_NAME = "Default Session Scott";
-
         [SerializeField]
         private Button HostButton;
 
@@ -32,22 +30,17 @@ namespace Filibusters
 
         public void HostGame()
         {
-            NetworkManager.CreateAndJoinGameSession(SESSION_NAME);
+            SceneManager.LoadScene(Scenes.HOST_GAME);
         }
 
         public void JoinGame()
         {
-            NetworkManager.JoinGameSession(SESSION_NAME);
+            SceneManager.LoadScene(Scenes.JOIN_GAME);
         }
 
         public void DisplayHowToPlay()
         {
             SceneManager.LoadScene(Scenes.HOW_TO_PLAY);
-        }
-    
-        public override void OnJoinedRoom()
-        {
-            PhotonNetwork.LoadLevel(Scenes.READY_MENU);
         }
     }
 }
