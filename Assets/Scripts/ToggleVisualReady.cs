@@ -8,6 +8,7 @@ namespace Filibusters
     {
         private GameObject mJoinText;
         private GameObject mUIButtonPrompt;
+        private GameObject mPlayer;
 
         private RectTransform mRectTransform;
         private float mFullHeight;
@@ -20,6 +21,7 @@ namespace Filibusters
         {
             mJoinText = Utility.GetChildWithTag(gameObject, Tags.JOIN_TEXT);
             mUIButtonPrompt = Utility.GetChildWithTag(gameObject, Tags.BUTTON);
+            mPlayer = Utility.GetChildWithTag(gameObject, Tags.PLAYER);
 
             mRectTransform = GetComponent<RectTransform>();
             mFullHeight = mRectTransform.rect.height;
@@ -61,6 +63,7 @@ namespace Filibusters
             mRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, panelHeight);
             mJoinText.SetActive(!isReady);
             mUIButtonPrompt.SetActive(!isReady);
+            mPlayer.SetActive(isReady);
         }
     }
 }

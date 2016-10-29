@@ -265,6 +265,26 @@ Prefab:
       propertyPath: m_Name
       value: Ready Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011365322944, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011160719936, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.063133836
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011160719936, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011160719936, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.038602933
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21159ef722ffafb488386a162cd193d7, type: 2}
   m_IsPrefabParent: 0
@@ -767,6 +787,16 @@ Prefab:
       propertyPath: m_Name
       value: Ready Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011365322944, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011160719936, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.8482758
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21159ef722ffafb488386a162cd193d7, type: 2}
   m_IsPrefabParent: 0
@@ -775,27 +805,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224000011891590700, guid: 21159ef722ffafb488386a162cd193d7,
     type: 2}
   m_PrefabInternal: {fileID: 1034056629}
---- !u!1 &1060825764 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011256255254, guid: 21159ef722ffafb488386a162cd193d7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1090412108}
 --- !u!224 &1060825765 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000011891590700, guid: 21159ef722ffafb488386a162cd193d7,
     type: 2}
   m_PrefabInternal: {fileID: 1090412108}
---- !u!114 &1060825766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1060825764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565c3a76ce2110441bfa6c73a8593e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1090412108
 Prefab:
   m_ObjectHideFlags: 0
@@ -1136,6 +1150,21 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011365322944, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011160719936, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.19999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011160719936, guid: 21159ef722ffafb488386a162cd193d7,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21159ef722ffafb488386a162cd193d7, type: 2}
