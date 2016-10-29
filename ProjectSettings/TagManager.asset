@@ -13,6 +13,8 @@ TagManager:
   - HealthBar
   - Coin
   - PlayerUI
+  - Button
+  - JoinText
   layers:
   - Default
   - TransparentFX
@@ -29,8 +31,8 @@ TagManager:
   - Background
   - Trigger
   - Deposit
-  - 
-  - 
+  - JoinText
+  - Button
   - 
   - 
   - 

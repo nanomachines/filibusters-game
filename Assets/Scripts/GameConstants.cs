@@ -67,6 +67,8 @@ namespace Filibusters
         public static readonly string COIN = "Coin";
         public static readonly string PLAYER_UI = "PlayerUI";
         public static readonly string WEAPON = "Gun";
+        public static readonly string BUTTON = "Button";
+        public static readonly string JOIN_TEXT = "JoinText";
     }
 
     public class Scenes

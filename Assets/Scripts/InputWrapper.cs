@@ -35,6 +35,7 @@ namespace Filibusters
         public bool FallPressed { get { return mFallInput; } }
         public bool FirePressed { get { return mFirePressed; } }
         public bool EquipWeaponPressed { get { return mEquipWeaponPressed; } }
+        public bool CancelPressed { get { return mCancelPressed; } }
 
         void Start()
         {
@@ -106,9 +107,14 @@ namespace Filibusters
                 Input.GetAxis(Xbox360FireAxis) > Mathf.Epsilon;
 
             /*
-             * Get Weapon Drop input
+             * Get Weapon Equip input
              */
             mEquipWeaponPressed = Input.GetAxis(EquipAxis) > Mathf.Epsilon;
+
+            /*
+             * Get Cancel input
+             */
+            mCancelPressed = Input.GetAxis(CancelAxis) > Mathf.Epsilon;
         }
 
         private delegate Vector2 GetMouseInputDelegate();
@@ -149,6 +155,7 @@ namespace Filibusters
             Application.platform == RuntimePlatform.OSXPlayer ||
             Application.platform == RuntimePlatform.OSXEditor ? "X360-OSX-Fire" : "X360-Win-Fire";
         public static readonly string EquipAxis = "Equip-Weapon";
+        public static readonly string CancelAxis = "Cancel";
 
         public static readonly string SubmitAxis = "Submit";
         public static readonly string Xbox360SubmitAxis =
@@ -165,7 +172,6 @@ namespace Filibusters
         private bool mFallInput = false;
         private bool mFirePressed = false;
         private bool mEquipWeaponPressed = false;
-
-
+        private bool mCancelPressed = false;
     }
 }
