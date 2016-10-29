@@ -6,18 +6,18 @@ namespace Filibusters
     public class PiggyBankAnimator : MonoBehaviour
     {
         [SerializeField]
-        AnimationCurve mJumpCurve;
+        protected AnimationCurve mJumpCurve;
         [SerializeField]
-        AnimationCurve mRotateCurve;
+        protected AnimationCurve mRotateCurve;
 
-        float mTime;
-        Vector3 mOrigin;
-        Vector3 mYDisplacement;
+        protected float mTime;
+        protected Vector3 mOrigin;
+        protected Vector3 mYDisplacement;
 
-        Quaternion mOriginRot;
-        Vector3 mBaseRotation;
+        protected Quaternion mOriginRot;
+        protected Vector3 mBaseRotation;
 
-        bool mDancing;
+        protected bool mDancing;
 
         void Start()
         {
