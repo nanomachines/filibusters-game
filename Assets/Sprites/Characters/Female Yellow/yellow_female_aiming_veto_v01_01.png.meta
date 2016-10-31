@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 587e4b678be584fff86e1f2bb066e8fe
+timeCreated: 1477943282
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: aiming_with_gun_0
+    21300002: aiming_with_gun_1
+    21300004: aiming_with_gun_2
+    21300006: aiming_with_gun_7
+    21300008: aiming_with_gun_9
+    21300010: aiming_with_gun_11
+    21300012: aiming_with_gun_12
+    21300014: aiming_with_gun_13
+    21300016: aiming_with_gun_14
+    21300018: red_female_aiming_dark_horse_v01_01_0
+    21300020: red_female_aiming_dark_horse_v01_01_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: aiming_with_gun_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 324
+        width: 132
+        height: 83
+      alignment: 9
+      pivot: {x: 0.23687278, y: 0.13228545}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_with_gun_1
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 305
+        width: 133
+        height: 118
+      alignment: 9
+      pivot: {x: 0.27276924, y: -0.09802076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_with_gun_2
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 287
+        width: 135
+        height: 125
+      alignment: 9
+      pivot: {x: 0.31172252, y: 0.4769608}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_with_gun_7
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 298
+        width: 75
+        height: 171
+      alignment: 9
+      pivot: {x: 0.46017098, y: -0.06860924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_with_gun_9
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 30
+        width: 88
+        height: 146
+      alignment: 9
+      pivot: {x: 0.79, y: 0.6156321}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_with_gun_12
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 59
+        width: 95
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_with_gun_13
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 60
+        width: 108
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_with_gun_14
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 59
+        width: 110
+        height: 101
+      alignment: 9
+      pivot: {x: 0.5309215, y: 0.9883142}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: red_female_aiming_dark_horse_v01_01_0
+      rect:
+        serializedVersion: 2
+        x: 1822
+        y: 60
+        width: 94
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: red_female_aiming_dark_horse_v01_01_1
+      rect:
+        serializedVersion: 2
+        x: 2077
+        y: 64
+        width: 102
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
