@@ -75,8 +75,7 @@ namespace Filibusters
                     mDepositing = true;
                     mTimeSinceDeposit += Time.deltaTime;
 
-                    int playerViewId = GetViewIdFromZone();
-                    EventSystem.OnDepositBegin(playerViewId);
+                    EventSystem.OnDepositBegin(viewId);
 
                     if (PhotonNetwork.isMasterClient && mTimeSinceDeposit >= mDepositTime)
                     {
