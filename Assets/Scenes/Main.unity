@@ -5497,7 +5497,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNewSize: 60
+  mNewSize: 80
+  mSizeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  mAnimationTime: 1
   mPlayerNum: 3
 --- !u!4 &310616774 stripped
 Transform:
@@ -7449,7 +7471,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNewSize: 60
+  mNewSize: 80
+  mSizeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  mAnimationTime: 1
   mPlayerNum: 2
 --- !u!1 &483357275
 GameObject:
@@ -7619,7 +7663,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNewSize: 60
+  mNewSize: 80
+  mSizeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  mAnimationTime: 1
   mPlayerNum: 1
 --- !u!1 &503460925
 GameObject:
@@ -25909,7 +25975,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNewSize: 60
+  mNewSize: 80
+  mSizeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  mAnimationTime: 1
   mPlayerNum: 0
 --- !u!1 &1843772735
 GameObject:

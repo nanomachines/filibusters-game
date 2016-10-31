@@ -13,6 +13,11 @@ namespace Filibusters
         private int mSizeDiff;
 
         [SerializeField]
+        private AnimationCurve mSizeCurve;
+        [SerializeField]
+        private float mAnimationTime;
+
+        [SerializeField]
         private int mPlayerNum;
 
         void Start() 
@@ -31,13 +36,14 @@ namespace Filibusters
         
         IEnumerator AnimateText()
         {
-            for (int i = 1; i <= 5; i++)
+            float time = 0f;
+            while (time < mAnimationTime)
             {
-                // I originally meant to divide by 5 here, however, this provides a better effect
-                mDepositText.fontSize = mOriginalSize + mSizeDiff * (i / 2);
-                yield return new WaitForSeconds(0.05f);
+                var sizePercent = mSizeCurve.Evaluate(time);
+                mDepositText.fontSize = mOriginalSize + Mathf.FloorToInt(mSizeDiff * sizePercent);
+                yield return new WaitForSeconds(Time.fixedDeltaTime);
+                time += Time.fixedDeltaTime;
             }
-            mDepositText.fontSize = mOriginalSize;
         }
     }
 }
