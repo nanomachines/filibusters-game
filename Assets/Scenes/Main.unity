@@ -5403,6 +5403,7 @@ GameObject:
   - 222: {fileID: 308182464}
   - 114: {fileID: 308182463}
   - 114: {fileID: 308182462}
+  - 114: {fileID: 308182465}
   m_Layer: 5
   m_Name: Coin Text
   m_TagString: VoteText
@@ -5485,6 +5486,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 308182460}
+--- !u!114 &308182465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 308182460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mNewSize: 60
+  mPlayerNum: 3
 --- !u!4 &310616774 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000014175920762, guid: 1ad780f8f3540482d90c6ab326436453,
@@ -7341,6 +7355,7 @@ GameObject:
   - 222: {fileID: 482601940}
   - 114: {fileID: 482601939}
   - 114: {fileID: 482601938}
+  - 114: {fileID: 482601941}
   m_Layer: 5
   m_Name: Coin Text
   m_TagString: VoteText
@@ -7423,6 +7438,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 482601936}
+--- !u!114 &482601941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 482601936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mNewSize: 60
+  mPlayerNum: 2
 --- !u!1 &483357275
 GameObject:
   m_ObjectHideFlags: 0
@@ -7497,6 +7525,7 @@ GameObject:
   - 222: {fileID: 496576788}
   - 114: {fileID: 496576787}
   - 114: {fileID: 496576786}
+  - 114: {fileID: 496576789}
   m_Layer: 5
   m_Name: Coin Text
   m_TagString: VoteText
@@ -7579,6 +7608,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 496576784}
+--- !u!114 &496576789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496576784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mNewSize: 60
+  mPlayerNum: 1
 --- !u!1 &503460925
 GameObject:
   m_ObjectHideFlags: 0
@@ -25773,6 +25815,7 @@ GameObject:
   - 222: {fileID: 1841405327}
   - 114: {fileID: 1841405326}
   - 114: {fileID: 1841405325}
+  - 114: {fileID: 1841405328}
   m_Layer: 5
   m_Name: Coin Text
   m_TagString: VoteText
@@ -25839,8 +25882,8 @@ MonoBehaviour:
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 45
+    m_MinSize: 0
+    m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -25855,6 +25898,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1841405323}
+--- !u!114 &1841405328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1841405323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129ec2d0fe5dc894d8f51864d331f0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mNewSize: 60
+  mPlayerNum: 0
 --- !u!1 &1843772735
 GameObject:
   m_ObjectHideFlags: 0
