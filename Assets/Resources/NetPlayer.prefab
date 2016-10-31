@@ -1187,9 +1187,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.026698112, y: 0.07655859}
   serializedVersion: 2
-  m_Size: {x: 1.57, y: 2}
+  m_Size: {x: 0.91142726, y: 1.8468833}
 --- !u!82 &82000013552817744
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2090,7 +2090,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 186491909
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300062, guid: d599683c3661f4474b4988b22d90d4d2, type: 3}
+  m_Sprite: {fileID: 21300028, guid: 0b8de1b391da44c4fb5b9e704b6d27af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
