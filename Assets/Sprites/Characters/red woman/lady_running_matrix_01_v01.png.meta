@@ -1,0 +1,1071 @@
+fileFormatVersion: 2
+guid: a77d42d19a41544d6a3dc2d8ab893333
+timeCreated: 1477875651
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: man_running_matrix_01_v01_24
+    21300002: man_running_matrix_01_v01_25
+    21300004: man_running_matrix_01_v01_26
+    21300006: man_running_matrix_01_v01_27
+    21300008: man_running_matrix_01_v01_28
+    21300010: man_running_matrix_01_v01_29
+    21300012: man_running_matrix_01_v01_30
+    21300014: man_running_matrix_01_v01_31
+    21300016: man_running_matrix_01_v01_32
+    21300018: man_running_matrix_01_v01_33
+    21300020: man_running_matrix_01_v01_34
+    21300022: man_running_matrix_01_v01_35
+    21300024: man_running_matrix_01_v01_36
+    21300026: man_running_matrix_01_v01_37
+    21300028: man_running_matrix_01_v01_38
+    21300030: man_running_matrix_01_v01_39
+    21300032: man_running_matrix_01_v01_40
+    21300034: man_running_matrix_01_v01_41
+    21300036: man_running_matrix_01_v01_42
+    21300038: man_running_matrix_01_v01_43
+    21300040: man_running_matrix_01_v01_44
+    21300042: man_running_matrix_01_v01_45
+    21300044: man_running_matrix_01_v01_46
+    21300046: man_running_matrix_01_v01_47
+    21300048: man_running_matrix_01_v01_48
+    21300050: man_running_matrix_01_v01_49
+    21300052: man_running_matrix_01_v01_50
+    21300054: man_running_matrix_01_v01_51
+    21300056: man_running_matrix_01_v01_52
+    21300058: man_running_matrix_01_v01_53
+    21300060: man_running_matrix_01_v01_54
+    21300062: man_running_matrix_01_v01_55
+    21300064: man_running_matrix_01_v01_56
+    21300066: man_running_matrix_01_v01_57
+    21300068: man_running_matrix_01_v01_58
+    21300070: man_running_matrix_01_v01_59
+    21300072: man_running_matrix_01_v01_60
+    21300074: man_running_matrix_01_v01_61
+    21300076: man_running_matrix_01_v01_62
+    21300078: man_running_matrix_01_v01_63
+    21300080: man_running_matrix_01_v01_64
+    21300082: man_running_matrix_01_v01_65
+    21300084: man_running_matrix_01_v01_66
+    21300086: man_running_matrix_01_v01_67
+    21300088: man_running_matrix_01_v01_68
+    21300090: man_running_matrix_01_v01_69
+    21300092: man_running_matrix_01_v01_70
+    21300094: man_running_matrix_01_v01_71
+    21300096: man_running_matrix_01_v01_72
+    21300098: man_running_matrix_01_v01_73
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_0
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 1849
+        width: 89
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_1
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1833
+        width: 83
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_2
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1839
+        width: 87
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_3
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1839
+        width: 81
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_4
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 1855
+        width: 85
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_5
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 1842
+        width: 85
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_6
+      rect:
+        serializedVersion: 2
+        x: 1594
+        y: 1848
+        width: 87
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_7
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 1826
+        width: 86
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_8
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 1838
+        width: 85
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_9
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 1839
+        width: 86
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_10
+      rect:
+        serializedVersion: 2
+        x: 2576
+        y: 1852
+        width: 85
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_11
+      rect:
+        serializedVersion: 2
+        x: 2827
+        y: 1848
+        width: 85
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_12
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 1572
+        width: 85
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_13
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 1537
+        width: 63
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_14
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1534
+        width: 49
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_15
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 1547
+        width: 80
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_16
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 1565
+        width: 97
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_17
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 1569
+        width: 101
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_18
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 1574
+        width: 102
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_19
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 1555
+        width: 100
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_20
+      rect:
+        serializedVersion: 2
+        x: 2084
+        y: 1537
+        width: 71
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_21
+      rect:
+        serializedVersion: 2
+        x: 2330
+        y: 1540
+        width: 47
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_22
+      rect:
+        serializedVersion: 2
+        x: 2556
+        y: 1583
+        width: 67
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_23
+      rect:
+        serializedVersion: 2
+        x: 2799
+        y: 1571
+        width: 66
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_24
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1190
+        width: 141
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_25
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1215
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_26
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 1190
+        width: 105
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_27
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1191
+        width: 58
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_28
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 1188
+        width: 94
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_29
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 1187
+        width: 127
+        height: 105
+      alignment: 9
+      pivot: {x: 0.5120917, y: 0.96801525}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_30
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 1192
+        width: 142
+        height: 107
+      alignment: 9
+      pivot: {x: 0.5081177, y: 0.94460404}
+      border: {x: 0, y: 0, z: 0, w: 1}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_31
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 1191
+        width: 148
+        height: 101
+      alignment: 9
+      pivot: {x: 0.5527987, y: 0.968831}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_32
+      rect:
+        serializedVersion: 2
+        x: 1804
+        y: 1191
+        width: 118
+        height: 83
+      alignment: 9
+      pivot: {x: 0.527201, y: 0.9709267}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_33
+      rect:
+        serializedVersion: 2
+        x: 2084
+        y: 1191
+        width: 61
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_34
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1190
+        width: 93
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_35
+      rect:
+        serializedVersion: 2
+        x: 2542
+        y: 1188
+        width: 125
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_36
+      rect:
+        serializedVersion: 2
+        x: 2787
+        y: 1194
+        width: 139
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_37
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 977
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_38
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 955
+        width: 98
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_39
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 938
+        width: 73
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_40
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 932
+        width: 47
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_41
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 973
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_42
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 962
+        width: 69
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_43
+      rect:
+        serializedVersion: 2
+        x: 1597
+        y: 967
+        width: 85
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_44
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 924
+        width: 64
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_45
+      rect:
+        serializedVersion: 2
+        x: 2114
+        y: 929
+        width: 50
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_46
+      rect:
+        serializedVersion: 2
+        x: 2368
+        y: 939
+        width: 66
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_47
+      rect:
+        serializedVersion: 2
+        x: 2617
+        y: 961
+        width: 82
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_48
+      rect:
+        serializedVersion: 2
+        x: 2881
+        y: 976
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_49
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 674
+        width: 88
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_50
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 638
+        width: 64
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_51
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 637
+        width: 51
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_52
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 652
+        width: 82
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_53
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 672
+        width: 99
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_54
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 671
+        width: 103
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_55
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 678
+        width: 102
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_56
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 656
+        width: 101
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_57
+      rect:
+        serializedVersion: 2
+        x: 2082
+        y: 637
+        width: 75
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_58
+      rect:
+        serializedVersion: 2
+        x: 2333
+        y: 646
+        width: 47
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_59
+      rect:
+        serializedVersion: 2
+        x: 2559
+        y: 687
+        width: 70
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_60
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 672
+        width: 69
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_61
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 397
+        width: 20
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_62
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 385
+        width: 75
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_63
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 364
+        width: 96
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_64
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 347
+        width: 74
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_65
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 345
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_66
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 386
+        width: 67
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_67
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 380
+        width: 72
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_68
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 386
+        width: 87
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_69
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 332
+        width: 65
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_70
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 334
+        width: 51
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_71
+      rect:
+        serializedVersion: 2
+        x: 2371
+        y: 353
+        width: 67
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_72
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 370
+        width: 77
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: man_running_matrix_01_v01_73
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 383
+        width: 86
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
