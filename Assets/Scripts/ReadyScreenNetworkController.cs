@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 using Photon;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -12,6 +13,7 @@ namespace Filibusters
         private ToggleVisualReady[] mReadyToggles;
         private ToggleVisualReady mLocalToggle;
 
+        private bool mPlayerReady;
         /*
         int mNumReadyPlayers = 0;
         bool mCountdownStarted = false;
@@ -20,6 +22,7 @@ namespace Filibusters
 
         void Start()
         {
+            mLocalToggle = null;
             if (PhotonNetwork.isMasterClient)
             {
                 NetworkManager.Instance.OnPhotonPlayerConnected(PhotonNetwork.player);
@@ -32,12 +35,31 @@ namespace Filibusters
             if (NetworkManager.HasPlayerNumberPropertyChangedForPlayer(properties))
             {
                 mLocalToggle = mReadyToggles[NetworkManager.LocalPlayerNumber];
-                mLocalToggle.TakeOwnership();
             }
         }
 
         void Update()
         {
+            if (mLocalToggle != null)
+            {
+                if (InputWrapper.Instance.SubmitPressed && !mPlayerReady)
+                {
+                    mLocalToggle.ToggleReadyPlayer(true);
+                }
+                if (InputWrapper.Instance.CancelPressed)
+                {
+                    if (mPlayerReady)
+                    {
+                        mLocalToggle.ToggleReadyPlayer(false);
+                    }
+
+                    else
+                    {
+                        PhotonNetwork.LeaveRoom();
+                        SceneManager.LoadScene(Scenes.START_MENU);
+                    }
+                }
+            }
             /*
             if (mNumReadyPlayers == PhotonNetwork.playerList.Length)
             {

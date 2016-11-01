@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using Photon;
 
 namespace Filibusters
@@ -18,8 +17,6 @@ namespace Filibusters
         private float mFullHeight;
         private float mHalfHeight;
 
-        private bool mPlayerReady;
-        private float mTimeSinceUnReady;
 
         void Start() 
         {
@@ -33,49 +30,9 @@ namespace Filibusters
             mRectTransform = GetComponent<RectTransform>();
             mFullHeight = mRectTransform.rect.height;
             mHalfHeight = mFullHeight / 2;
-
-            mPlayerReady = false;
-            mTimeSinceUnReady = 0f;
         }
 
-        public void TakeOwnership()
-        {
-            mIsMine = true;
-        }
-        
-        void Update() 
-        {
-            if (!mIsMine)
-            {
-                return;
-            }
-
-            mTimeSinceUnReady += Time.deltaTime;
-            if (InputWrapper.Instance.JumpPressed && !mPlayerReady)
-            {
-                ToggleReadyPlayer(true);
-            }
-            if (InputWrapper.Instance.CancelPressed)
-            {
-                if (mPlayerReady)
-                {
-                    ToggleReadyPlayer(false);
-                    mTimeSinceUnReady = 0f;
-                }
-                /*
-                 * This time check is needed, otherwise the player will be immediately returned
-                 * to the main menu
-                */
-                else if (mTimeSinceUnReady > 0.3f)
-                {
-                    // TODO: Trigger an event to leave the room
-                    PhotonNetwork.LeaveRoom();
-                    SceneManager.LoadScene(Scenes.START_MENU);
-                }
-            }
-        }
-
-        void ToggleReadyPlayer(bool isReady)
+        public void ToggleReadyPlayer(bool isReady)
         {
             var panelHeight = isReady ? mHalfHeight : mFullHeight;
             mPhotonView.RPC("ToggleReadyPlayerRPC", PhotonTargets.AllBuffered, isReady, panelHeight);
