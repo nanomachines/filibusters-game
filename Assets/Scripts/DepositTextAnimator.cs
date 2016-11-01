@@ -41,7 +41,7 @@ namespace Filibusters
             {
                 var sizePercent = mSizeCurve.Evaluate(time);
                 mDepositText.fontSize = mOriginalSize + Mathf.FloorToInt(mSizeDiff * sizePercent);
-                yield return new WaitForSeconds(Time.fixedDeltaTime);
+                yield return new WaitForFixedUpdate();
                 time += Time.fixedDeltaTime;
             }
         }
