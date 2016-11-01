@@ -54,4 +54,5 @@ MonoBehaviour:
   - DisableSwapButton
   - OnDisableSwapButton
   - DisableSwapPrompt
+  - ToggleReadyPlayerRPC
   DisableAutoOpenWizard: 1

@@ -13,7 +13,7 @@ namespace Filibusters
             ScenesRoot + Scenes.HOST_GAME + SceneSuffix,
             ScenesRoot + Scenes.JOIN_GAME + SceneSuffix,
             ScenesRoot + Scenes.HOW_TO_PLAY + SceneSuffix,
-            ScenesRoot + Scenes.READY_MENU + SceneSuffix,
+            ScenesRoot + Scenes.READY_SCREEN + SceneSuffix,
             ScenesRoot + Scenes.MAIN + SceneSuffix,
             ScenesRoot + Scenes.GAME_OVER + SceneSuffix
         };

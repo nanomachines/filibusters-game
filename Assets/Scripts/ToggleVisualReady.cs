@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Photon;
 
 namespace Filibusters
 {
-    public class ToggleVisualReady : MonoBehaviour 
+    public class ToggleVisualReady : UnityEngine.MonoBehaviour 
     {
+        private PhotonView mPhotonView;
+        private bool mIsMine;
+
         private GameObject mJoinText;
         private GameObject mUIButtonPrompt;
         private GameObject mPlayer;
@@ -19,6 +23,9 @@ namespace Filibusters
 
         void Start() 
         {
+            mPhotonView = GetComponent<PhotonView>();
+            mIsMine = false;
+
             mJoinText = Utility.GetChildWithTag(gameObject, Tags.JOIN_TEXT);
             mUIButtonPrompt = Utility.GetChildWithTag(gameObject, Tags.BUTTON);
             mPlayer = Utility.GetChildWithTag(gameObject, Tags.PLAYER);
@@ -30,19 +37,29 @@ namespace Filibusters
             mPlayerReady = false;
             mTimeSinceUnReady = 0f;
         }
+
+        public void TakeOwnership()
+        {
+            mIsMine = true;
+        }
         
         void Update() 
         {
+            if (!mIsMine)
+            {
+                return;
+            }
+
             mTimeSinceUnReady += Time.deltaTime;
             if (InputWrapper.Instance.JumpPressed && !mPlayerReady)
             {
-                ToggleReadyPlayer(true, mHalfHeight);
+                ToggleReadyPlayer(true);
             }
             if (InputWrapper.Instance.CancelPressed)
             {
                 if (mPlayerReady)
                 {
-                    ToggleReadyPlayer(false, mFullHeight);
+                    ToggleReadyPlayer(false);
                     mTimeSinceUnReady = 0f;
                 }
                 /*
@@ -52,12 +69,20 @@ namespace Filibusters
                 else if (mTimeSinceUnReady > 0.3f)
                 {
                     // TODO: Trigger an event to leave the room
+                    PhotonNetwork.LeaveRoom();
                     SceneManager.LoadScene(Scenes.START_MENU);
                 }
             }
         }
 
-        void ToggleReadyPlayer(bool isReady, float panelHeight)
+        void ToggleReadyPlayer(bool isReady)
+        {
+            var panelHeight = isReady ? mHalfHeight : mFullHeight;
+            mPhotonView.RPC("ToggleReadyPlayerRPC", PhotonTargets.AllBuffered, isReady, panelHeight);
+        }
+
+        [PunRPC]
+        void ToggleReadyPlayerRPC(bool isReady, float panelHeight)
         {
             mPlayerReady = isReady;
             mRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, panelHeight);

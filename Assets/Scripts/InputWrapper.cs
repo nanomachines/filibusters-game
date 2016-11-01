@@ -55,7 +55,7 @@ namespace Filibusters
         private void SetMouseInputHandlerFromScene(Scene scene, LoadSceneMode sceneMode = LoadSceneMode.Single)
         {
 
-            GetMouseInput = (scene.name == Scenes.READY_MENU || Scenes.READY_MENU.EndsWith(scene.name)) ?
+            GetMouseInput = (scene.name == Scenes.READY_SCREEN || Scenes.READY_SCREEN.EndsWith(scene.name)) ?
                 new GetMouseInputDelegate(GetMouseInputInReadyRoom) :
                 new GetMouseInputDelegate(GetMouseInputInGame);
         }

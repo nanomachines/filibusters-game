@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JoinGame.unity
   - enabled: 1
-    path: Assets/Scenes/ReadyMenu.unity
+    path: Assets/Scenes/ReadyScreen.unity
   - enabled: 1
     path: Assets/Scenes/Main.unity
   - enabled: 1
