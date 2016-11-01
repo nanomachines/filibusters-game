@@ -133,5 +133,25 @@ namespace Filibusters
                 OnAllPlayersNotReadyEvent();
             }
         }
+
+        public delegate void DepositBeginListener(int viewId);
+        public static event DepositBeginListener OnDepositBeginEvent;
+        public static void OnDepositBegin(int viewId)
+        {
+            if (OnDepositBeginEvent != null)
+            {
+                OnDepositBeginEvent(viewId);
+            }
+        }
+
+        public delegate void DepositEndListener();
+        public static event DepositEndListener OnDepositEndEvent;
+        public static void OnDepositEnd()
+        {
+            if (OnDepositEndEvent != null)
+            {
+                OnDepositEndEvent();
+            }
+        }
     }
 }
