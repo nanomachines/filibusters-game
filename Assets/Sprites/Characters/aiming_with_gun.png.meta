@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0b8de1b391da44c4fb5b9e704b6d27af
-timeCreated: 1477628098
+timeCreated: 1477871101
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -253,12 +253,12 @@ TextureImporter:
       name: aiming_with_gun_14
       rect:
         serializedVersion: 2
-        x: 1563
+        x: 1565
         y: 67
         width: 105
         height: 117
       alignment: 9
-      pivot: {x: 0.6151786, y: 0.9109432}
+      pivot: {x: 0.52046365, y: 0.7613994}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

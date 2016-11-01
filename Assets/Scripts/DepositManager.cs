@@ -43,7 +43,8 @@ namespace Filibusters
             if (other.tag == Tags.PLAYER)
             {
                 // add the player to the zone
-                mPlayersInZone.Add(other.gameObject.GetComponent<PhotonView>().viewID);
+                int playerViewId = other.gameObject.GetComponent<PhotonView>().viewID;
+                mPlayersInZone.Add(playerViewId);
                 ++mNumPlayersInZone;
 
                 if (mNumPlayersInZone != 1)
@@ -55,7 +56,6 @@ namespace Filibusters
 
         void OnTriggerExit2D(Collider2D other)
         {
-            // Put this inside OnExitZone
             if (other.tag == Tags.PLAYER)
             {
                 OnZoneExit(other.gameObject.GetComponent<PhotonView>().viewID);
@@ -67,10 +67,7 @@ namespace Filibusters
         {
             if (mNumPlayersInZone == 1)
             {
-                // get player viewID
-                var itr = mPlayersInZone.GetEnumerator();
-                itr.MoveNext();
-                int viewId = itr.Current;
+                int viewId = GetViewIdFromZone();
 
                 // check if player has coins
                 if (PhotonView.Find(viewId).gameObject.GetComponent<CoinInventory>().CoinCount > 0)
@@ -78,24 +75,26 @@ namespace Filibusters
                     mDepositing = true;
                     mTimeSinceDeposit += Time.deltaTime;
 
+                    EventSystem.OnDepositBegin(viewId);
+
                     if (PhotonNetwork.isMasterClient && mTimeSinceDeposit >= mDepositTime)
                     {
                         // deposit player coin	
                         mPhotonView.RPC("DepositCoin", PhotonTargets.All, viewId);
                     }
-
-                    
                 }
                 else
                 {
                     mDepositing = false;
                     mTimeSinceDeposit = 0f;
+                    EventSystem.OnDepositEnd();
                 }           
             }
             else
             {
                 mDepositing = false;
                 mTimeSinceDeposit = 0f;
+                EventSystem.OnDepositEnd();
             }
 
             mSlider.value = mTimeSinceDeposit / mDepositTime;
@@ -144,7 +143,7 @@ namespace Filibusters
             mPlayersInZone.Remove(viewId);
             --mNumPlayersInZone;
 
-            // eset deposit timer if more or less than one player in zone
+            // reset deposit timer if more or less than one player in zone
             if (mNumPlayersInZone != 1)
             {
                 mTimeSinceDeposit = 0f;
@@ -163,6 +162,13 @@ namespace Filibusters
             }
         }
 
+        int GetViewIdFromZone()
+        {
+            // get player viewID
+            var itr = mPlayersInZone.GetEnumerator();
+            itr.MoveNext();
+            return itr.Current;
+        }
     }
 }
 

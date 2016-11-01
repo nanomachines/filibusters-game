@@ -6,16 +6,18 @@ namespace Filibusters
     public class PiggyBankAnimator : MonoBehaviour
     {
         [SerializeField]
-        AnimationCurve mJumpCurve;
+        protected AnimationCurve mJumpCurve;
         [SerializeField]
-        AnimationCurve mRotateCurve;
+        protected AnimationCurve mRotateCurve;
 
-        float mTime;
-        Vector3 mOrigin;
-        Vector3 mYDisplacement;
+        protected float mTime;
+        protected Vector3 mOrigin;
+        protected Vector3 mYDisplacement;
 
-        Quaternion mOriginRot;
-        Vector3 mBaseRotation;
+        protected Quaternion mOriginRot;
+        protected Vector3 mBaseRotation;
+
+        protected bool mDancing;
 
         void Start()
         {
@@ -24,16 +26,42 @@ namespace Filibusters
             mYDisplacement = new Vector3(0, 0.5f, 0);
             mOriginRot = transform.rotation;
             mBaseRotation = new Vector3(0, 0, 30);
+
+            mDancing = false;
+            EventSystem.OnDepositBeginEvent += StartDancing;
+            EventSystem.OnDepositEndEvent += StopDancing;
+        }
+
+        void OnDestroy()
+        {
+            EventSystem.OnDepositBeginEvent -= StartDancing;
+            EventSystem.OnDepositEndEvent -= StopDancing;
         }
 
         void Update()
         {
-            var jumpRatio = mJumpCurve.Evaluate(mTime);
-            transform.position = mYDisplacement * jumpRatio + mOrigin;
-            var rotateRatio = mRotateCurve.Evaluate(mTime);
+            if (mDancing)
+            {
+                var jumpRatio = mJumpCurve.Evaluate(mTime);
+                transform.position = mYDisplacement * jumpRatio + mOrigin;
+                var rotateRatio = mRotateCurve.Evaluate(mTime);
+                transform.rotation = mOriginRot;
+                transform.Rotate(rotateRatio * mBaseRotation);
+                mTime += Time.deltaTime;
+            }
+        }
+
+        void StartDancing(int viewId)
+        {
+            mDancing = true;
+        }
+
+        void StopDancing()
+        {
+            mDancing = false;
+            mTime = 0f;
+            transform.position = mOrigin;
             transform.rotation = mOriginRot;
-            transform.Rotate(rotateRatio * mBaseRotation);
-            mTime += Time.deltaTime;
         }
     }
 }
