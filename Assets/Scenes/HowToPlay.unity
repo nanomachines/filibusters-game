@@ -853,6 +853,11 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 52
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010900165988, guid: ac7133d64d71fbe43a6a10151a311a27,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
   m_IsPrefabParent: 0
@@ -1048,7 +1053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &658348628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1064,8 +1069,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1.4339652, y: -0.00011968613}
+  m_SizeDelta: {x: -185.2, y: -73.837}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &658348630
 MonoBehaviour:
@@ -1086,7 +1091,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2ec7d938170f7a04fb9b25c459365f04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d37d4546d8c747948bd7d3dd718709f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1114,7 +1119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &721589562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1270,8 +1275,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.62, y: 6.9}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 67, y: 0.0000019073}
+  m_SizeDelta: {x: 69, y: 71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &786757826
 MonoBehaviour:
@@ -1292,7 +1297,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9373aab8a14e33a4189282c28961410b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9689c5568bc2b124b87de74f272c29ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1753,7 +1758,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a90415f4c9c3a734cb1e0c86bea7de8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84c05610ad1914948b97e25ce4138b61, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2456,7 +2461,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Deposit your coins in the Piggy Bank to gain votes
+  m_Text: Deposit coins in the Piggy Bank to gain votes
 --- !u!222 &1327653091
 CanvasRenderer:
   m_ObjectHideFlags: 0
