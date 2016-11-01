@@ -8,7 +8,6 @@ namespace Filibusters
     {
         public static readonly string IS_READY_KEY = "IsReady";
         public static readonly string IS_NEW_KEY = "IsNew";
-        public static readonly string PLAYER_CHARACTER_RESOURCE_NAME = "NetPlayer";
 
         private bool mAllPlayersReady = false;
 
@@ -127,7 +126,7 @@ namespace Filibusters
             if (player.isLocal && NetworkManager.HasPlayerNumberPropertyChangedForPlayer(properties))
             {
                 var localPlayerNum = NetworkManager.LocalPlayerNumber;
-                var localPlayer = PhotonNetwork.Instantiate(PLAYER_CHARACTER_RESOURCE_NAME,
+                var localPlayer = PhotonNetwork.Instantiate(Utility.PlayerNumberToPrefab(localPlayerNum),
                     Utility.GetChildWithTag(mReadyRooms[localPlayerNum], Tags.RESPAWN).transform.position,
                     Quaternion.identity, 0);
                 localPlayer.GetComponent<SimplePhysics>().enabled = true;

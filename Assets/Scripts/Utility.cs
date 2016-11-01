@@ -42,5 +42,22 @@ namespace Filibusters
             }
             return str.Substring(final_path_delimiter_pos + 1);
         }
+
+        public static string PlayerNumberToPrefab(int num)
+        {
+            switch (num)
+            {
+                case 0:
+                    return "FemaleRedPlayer";
+                case 1:
+                    return "MaleBluePlayer";
+                case 2:
+                    return "FemaleYellowPlayer";
+                case 3:
+                    return "MaleBluePlayer"; // will be "MaleGreenPlayer";
+            }
+
+            return null;
+        }
     }
 }
