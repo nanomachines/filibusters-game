@@ -48,6 +48,10 @@ namespace Filibusters
 
         void Update()
         {
+            /*
+             * If we have been assigned our local toggle,
+             * update it based on user input
+             */
             if (mLocalToggle != null)
             {
                 if (InputWrapper.Instance.SubmitPressed && !mPlayerReady)
@@ -77,7 +81,9 @@ namespace Filibusters
                 }
             }
 
-            //mUICountdown.GetComponent<UnityEngine.UI.Text>().text = mNumReadyPlayers.ToString();
+            /*
+             * Manage the countdown timer based on the number of players that have readied up
+             */
             if (mNumReadyPlayers == PhotonNetwork.playerList.Length)
             {
                 mUICountdown.SetActive(true);
