@@ -7,21 +7,25 @@ namespace Filibusters
 {
     public class ReadyScreenNetworkController : PunBehaviour
     {
+        private static readonly string IS_READY_KEY = "IsReady";
+
         [SerializeField]
         GameObject mUICountdown; //UICountdown
         [SerializeField]
         private ToggleVisualReady[] mReadyToggles;
         private ToggleVisualReady mLocalToggle;
+        private PhotonView mPhotonView;
 
         private bool mPlayerReady;
-        /*
         int mNumReadyPlayers = 0;
+        /*
         bool mCountdownStarted = false;
         float mTimer = 0f;
         */
 
         void Start()
         {
+            mPhotonView = GetComponent<PhotonView>();
             mLocalToggle = null;
             if (PhotonNetwork.isMasterClient)
             {
@@ -45,12 +49,20 @@ namespace Filibusters
                 if (InputWrapper.Instance.SubmitPressed && !mPlayerReady)
                 {
                     mLocalToggle.ToggleReadyPlayer(true);
+                    mPhotonView.RPC("IncrementReadyCount", PhotonTargets.AllBuffered);
+                    PhotonNetwork.SetPlayerCustomProperties(
+                        new PhotonHashtable { { IS_READY_KEY, true } });
+                    mPlayerReady = true;
                 }
                 if (InputWrapper.Instance.CancelPressed)
                 {
                     if (mPlayerReady)
                     {
                         mLocalToggle.ToggleReadyPlayer(false);
+                        mPhotonView.RPC("DecrementReadyCount", PhotonTargets.AllBuffered);
+                        PhotonNetwork.SetPlayerCustomProperties(
+                            new PhotonHashtable { { IS_READY_KEY, true } });
+                        mPlayerReady = false;
                     }
 
                     else
@@ -70,6 +82,32 @@ namespace Filibusters
                 mTimer = 0f;
             }
             */
+        }
+
+        public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+        {
+            if (PhotonNetwork.isMasterClient)
+            {
+                if (otherPlayer.customProperties.ContainsKey(IS_READY_KEY)
+                    && (bool)otherPlayer.customProperties[IS_READY_KEY])
+                {
+                    mPhotonView.RPC("DecrementReadyCount", PhotonTargets.AllBuffered);
+                    mReadyToggles[NetworkManager.GetPlayerNumber(otherPlayer)].ToggleReadyPlayer(false);
+                }
+            }
+        }
+
+
+        [PunRPC]
+        void IncrementReadyCount()
+        {
+            ++mNumReadyPlayers;
+        }
+
+        [PunRPC]
+        void DecrementReadyCount()
+        {
+            --mNumReadyPlayers;
         }
 
         /*

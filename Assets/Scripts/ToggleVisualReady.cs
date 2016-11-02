@@ -7,7 +7,6 @@ namespace Filibusters
     public class ToggleVisualReady : UnityEngine.MonoBehaviour 
     {
         private PhotonView mPhotonView;
-        private bool mIsMine;
 
         private GameObject mJoinText;
         private GameObject mUIButtonPrompt;
@@ -21,7 +20,6 @@ namespace Filibusters
         void Start() 
         {
             mPhotonView = GetComponent<PhotonView>();
-            mIsMine = false;
 
             mJoinText = Utility.GetChildWithTag(gameObject, Tags.JOIN_TEXT);
             mUIButtonPrompt = Utility.GetChildWithTag(gameObject, Tags.BUTTON);
@@ -41,7 +39,6 @@ namespace Filibusters
         [PunRPC]
         void ToggleReadyPlayerRPC(bool isReady, float panelHeight)
         {
-            mPlayerReady = isReady;
             mRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, panelHeight);
             mJoinText.SetActive(!isReady);
             mUIButtonPrompt.SetActive(!isReady);

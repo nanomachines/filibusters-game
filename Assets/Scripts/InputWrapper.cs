@@ -36,7 +36,7 @@ namespace Filibusters
         public bool FirePressed { get { return mFirePressed; } }
         public bool EquipWeaponPressed { get { return mEquipWeaponPressed; } }
         public bool SubmitPressed { get { return Input.GetButtonDown(SubmitAxis); } }
-        public bool CancelPressed { get { return mCancelPressed; } }
+        public bool CancelPressed { get { return Input.GetButtonDown(CancelAxis); } }
 
         void Start()
         {
@@ -111,11 +111,6 @@ namespace Filibusters
              * Get Weapon Equip input
              */
             mEquipWeaponPressed = Input.GetAxis(EquipAxis) > Mathf.Epsilon;
-
-            /*
-             * Get Cancel input
-             */
-            mCancelPressed = Input.GetAxis(CancelAxis) > Mathf.Epsilon;
         }
 
         private delegate Vector2 GetMouseInputDelegate();
@@ -173,6 +168,5 @@ namespace Filibusters
         private bool mFallInput = false;
         private bool mFirePressed = false;
         private bool mEquipWeaponPressed = false;
-        private bool mCancelPressed = false;
     }
 }
