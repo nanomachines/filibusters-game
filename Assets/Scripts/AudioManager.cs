@@ -81,6 +81,10 @@ namespace Filibusters
                 mSource.clip = mMainGameBackgroundMusic;
                 mSource.Play();
             }
+            else
+            {
+                mSource.clip = null;
+            }
         }
 
         private void RegisterEvents()
