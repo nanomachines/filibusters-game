@@ -61,7 +61,7 @@ namespace Filibusters
                         mLocalToggle.ToggleReadyPlayer(false);
                         mPhotonView.RPC("DecrementReadyCount", PhotonTargets.AllBuffered);
                         PhotonNetwork.SetPlayerCustomProperties(
-                            new PhotonHashtable { { IS_READY_KEY, true } });
+                            new PhotonHashtable { { IS_READY_KEY, false } });
                         mPlayerReady = false;
                     }
 
@@ -72,6 +72,8 @@ namespace Filibusters
                     }
                 }
             }
+
+            mUICountdown.GetComponent<UnityEngine.UI.Text>().text = mNumReadyPlayers.ToString();
             /*
             if (mNumReadyPlayers == PhotonNetwork.playerList.Length)
             {
@@ -91,7 +93,9 @@ namespace Filibusters
                 if (otherPlayer.customProperties.ContainsKey(IS_READY_KEY)
                     && (bool)otherPlayer.customProperties[IS_READY_KEY])
                 {
-                    mPhotonView.RPC("DecrementReadyCount", PhotonTargets.AllBuffered);
+                    // this call should not be buffered because if the player quits unexpectedly
+                    // then their buffered IncrementReadyCount call will fall through
+                    mPhotonView.RPC("DecrementReadyCount", PhotonTargets.All);
                     mReadyToggles[NetworkManager.GetPlayerNumber(otherPlayer)].ToggleReadyPlayer(false);
                 }
             }
