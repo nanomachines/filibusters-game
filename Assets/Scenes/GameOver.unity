@@ -338,7 +338,7 @@ GameObject:
   - 222: {fileID: 340122635}
   - 114: {fileID: 340122634}
   m_Layer: 5
-  m_Name: Exit Text
+  m_Name: Back To Start Menu Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,53 +394,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit Game
+  m_Text: Back to Start Menu
 --- !u!222 &340122635
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 340122632}
---- !u!1 &1021854397
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1021854398}
-  - 114: {fileID: 1021854399}
-  m_Layer: 0
-  m_Name: ButtonHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1021854398
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1021854397}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.91342, y: 58.970123, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1422591681}
-  m_RootOrder: 1
---- !u!114 &1021854399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1021854397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c213e7605641624a9b88048c624460d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1422591680
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,8 +412,9 @@ GameObject:
   - 222: {fileID: 1422591684}
   - 114: {fileID: 1422591683}
   - 114: {fileID: 1422591682}
+  - 114: {fileID: 1422591685}
   m_Layer: 5
-  m_Name: Exit Button
+  m_Name: Back To Start Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -471,7 +432,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 340122633}
-  - {fileID: 1021854398}
   m_Father: {fileID: 1886201671}
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -518,7 +478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021854399}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -564,6 +524,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1422591680}
+--- !u!114 &1422591685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422591680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c213e7605641624a9b88048c624460d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1820079044
 GameObject:
   m_ObjectHideFlags: 0

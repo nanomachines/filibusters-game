@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class GameOverButtonHandler : MonoBehaviour
+namespace Filibusters
 {
-    public void OnClicked()
+    public class GameOverButtonHandler : MonoBehaviour
     {
-        Application.Quit();
+        void Start()
+        {
+            GetComponent<UnityEngine.UI.Button>().onClick.AddListener(OnClicked);
+        }
+
+        public void OnClicked()
+        {
+            PhotonNetwork.LeaveRoom();
+            SceneManager.LoadScene(Scenes.START_MENU);
+        }
     }
 }
