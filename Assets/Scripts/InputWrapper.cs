@@ -35,8 +35,15 @@ namespace Filibusters
         public bool FallPressed { get { return mFallInput; } }
         public bool FirePressed { get { return mFirePressed; } }
         public bool EquipWeaponPressed { get { return mEquipWeaponPressed; } }
-        public bool SubmitPressed { get { return Input.GetButtonDown(SubmitAxis); } }
         public bool CancelPressed { get { return Input.GetButtonDown(CancelAxis); } }
+        public bool SubmitPressed
+        {
+            get
+            {
+                return Input.GetButtonDown(SubmitAxis) ||
+                    (AnyJoysticksConnected() && Input.GetButtonDown(Xbox360SubmitAxis));
+            }
+        }
 
         void Start()
         {
