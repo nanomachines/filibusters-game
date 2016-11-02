@@ -1287,6 +1287,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011693667158, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012453995574, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
   m_IsPrefabParent: 0
@@ -2192,7 +2200,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Coins take time to deposit.
+  m_Text: 'Coins take time to deposit
 
     One coin is deposited each time the bar fills up'
 --- !u!222 &936633587
@@ -2713,6 +2721,14 @@ Prefab:
         type: 2}
       propertyPath: m_PreserveAspect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011693667158, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012453995574, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
@@ -3336,6 +3352,14 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011693667158, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012453995574, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
   m_IsPrefabParent: 0
@@ -3674,6 +3698,14 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.y
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011693667158, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012453995574, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
@@ -4204,6 +4236,14 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.y
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011693667158, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012453995574, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7133d64d71fbe43a6a10151a311a27, type: 2}
