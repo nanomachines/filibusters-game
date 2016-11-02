@@ -54,7 +54,7 @@ namespace Filibusters
                 case 2:
                     return "FemaleYellowPlayer";
                 case 3:
-                    return "MaleBluePlayer"; // will be "MaleGreenPlayer";
+                    return "MaleGreenPlayer";
             }
 
             return null;
