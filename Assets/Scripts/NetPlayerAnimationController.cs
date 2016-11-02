@@ -12,8 +12,6 @@ namespace Filibusters
         private Animator mLegsAnim;
         [SerializeField]
         private Animator mFrontArmAnim;
-        [SerializeField]
-        private Animator mBackArmAnim;
 
         private PlayerState mPlayerState;
 
@@ -64,10 +62,6 @@ namespace Filibusters
             mLegsAnim.SetBool("BackPeddle", backpeddling);
             mLegsAnim.SetFloat("JumpBlend", -mVelY);
             mLegsAnim.SetBool("Grounded", mGrounded);
-
-            mBackArmAnim.SetBool("FacingRight", mFacingRight);
-            mBackArmAnim.SetInteger("Aim", mAimingDir);
-            mBackArmAnim.SetInteger("WeaponId", mWeaponId);
 
             mFrontArmAnim.SetBool("FacingRight", mFacingRight);
             mFrontArmAnim.SetInteger("Aim", mAimingDir);

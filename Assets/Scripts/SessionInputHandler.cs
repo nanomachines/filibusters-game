@@ -43,7 +43,7 @@ namespace Filibusters
 
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel(Scenes.READY_MENU);
+            PhotonNetwork.LoadLevel(Scenes.READY_SCREEN);
         }
 
         public override void OnPhotonCreateRoomFailed(object[] codeAndMsg)
