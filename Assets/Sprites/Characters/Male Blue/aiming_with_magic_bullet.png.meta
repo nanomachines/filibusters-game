@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 0b0d1cd2c47144f359534ff7472d57c3
+timeCreated: 1477966267
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: aiming_with_magic_bullet_0
+    21300002: aiming_with_magic_bullet_1
+    21300004: aiming_with_magic_bullet_2
+    21300006: aiming_with_magic_bullet_3
+    21300008: aiming_with_magic_bullet_4
+    21300010: aiming_with_magic_bullet_5
+    21300012: aiming_with_magic_bullet_6
+    21300014: aiming_with_magic_bullet_7
+    21300016: aiming_with_magic_bullet_8
+    21300018: aiming_with_magic_bullet_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 325
+        width: 165
+        height: 82
+      alignment: 9
+      pivot: {x: 0.22770464, y: 0.27986926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_1
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 300
+        width: 131
+        height: 139
+      alignment: 9
+      pivot: {x: 0.29586443, y: 0.04345813}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_2
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 275
+        width: 143
+        height: 137
+      alignment: 9
+      pivot: {x: 0.3223002, y: 0.60946256}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_3
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 320
+        width: 178
+        height: 80
+      alignment: 9
+      pivot: {x: 0.2267504, y: 0.30837744}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_4
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 314
+        width: 129
+        height: 144
+      alignment: 9
+      pivot: {x: 0.3228408, y: -0.01383326}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_5
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 280
+        width: 136
+        height: 129
+      alignment: 9
+      pivot: {x: 0.3532257, y: 0.57906276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_6
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 315
+        width: 70
+        height: 180
+      alignment: 9
+      pivot: {x: 0.4068551, y: -0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_7
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 309
+        width: 68
+        height: 186
+      alignment: 9
+      pivot: {x: 0.460171, y: -0.06860924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_8
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 35
+        width: 71
+        height: 154
+      alignment: 9
+      pivot: {x: 0.6475783, y: 0.67568254}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aiming_with_magic_bullet_9
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 26
+        width: 75
+        height: 152
+      alignment: 9
+      pivot: {x: 0.70932007, y: 0.6554411}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

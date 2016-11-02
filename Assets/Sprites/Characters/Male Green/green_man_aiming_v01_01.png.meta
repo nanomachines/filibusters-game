@@ -1,0 +1,353 @@
+fileFormatVersion: 2
+guid: e20318a4fa35b604c892c72ddc5d234a
+timeCreated: 1478050662
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: aiming_man_01_v01_8
+    21300002: aiming_man_01_v01_9
+    21300004: aiming_man_01_v01_10
+    21300006: aiming_man_01_v01_23
+    21300008: aiming_man_01_v01_24
+    21300010: aiming_man_01_v01_25
+    21300012: aiming_man_01_v01_26
+    21300014: aiming_man_01_v01_27
+    21300016: aiming_man_01_v01_28
+    21300018: aiming_man_01_v01_29
+    21300020: aiming_man_01_v01_30
+    21300022: aiming_man_01_v01_31
+    21300024: aiming_man_01_v01_32
+    21300026: aiming_man_01_v01_33
+    21300028: aiming_man_01_v01_34
+    21300030: aiming_man_01_v01_35
+    21300032: aiming_man_01_v01_36
+    21300034: aiming_man_01_v01_37
+    21300036: aiming_man_01_v01_38
+    21300038: aiming_man_01_v01_39
+    21300040: aiming_man_01_v01_40
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: aiming_man_01_v01_8
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1005
+        width: 44
+        height: 41
+      alignment: 9
+      pivot: {x: -0.45857203, y: 0.335936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_9
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 1030
+        width: 56
+        height: 43
+      alignment: 9
+      pivot: {x: -0.34185156, y: -0.445237}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_10
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 980
+        width: 45
+        height: 59
+      alignment: 9
+      pivot: {x: -0.028414639, y: 0.6688879}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_23
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 367
+        width: 91
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_24
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 365
+        width: 86
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_25
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 365
+        width: 97
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_26
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 370
+        width: 90
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_27
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 363
+        width: 87
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_28
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 363
+        width: 95
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_29
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 101
+        width: 142
+        height: 108
+      alignment: 9
+      pivot: {x: 0.5296301, y: 0.9123261}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_30
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 102
+        width: 108
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5010085, y: 0.9408679}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_31
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 107
+        width: 59
+        height: 102
+      alignment: 9
+      pivot: {x: 0.51541084, y: 0.90037584}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_32
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 102
+        width: 97
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5026585, y: 0.92909503}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_33
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 103
+        width: 130
+        height: 114
+      alignment: 9
+      pivot: {x: 0.5591816, y: 0.8888475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_34
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 104
+        width: 145
+        height: 113
+      alignment: 9
+      pivot: {x: 0.5373678, y: 0.84383845}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_35
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 107
+        width: 153
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5472723, y: 0.86960655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_36
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 104
+        width: 122
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5461246, y: 1.005802}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_37
+      rect:
+        serializedVersion: 2
+        x: 2065
+        y: 102
+        width: 63
+        height: 94
+      alignment: 9
+      pivot: {x: 0.42514184, y: 0.92361385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_38
+      rect:
+        serializedVersion: 2
+        x: 2297
+        y: 106
+        width: 98
+        height: 101
+      alignment: 9
+      pivot: {x: 0.4917532, y: 0.9482011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_39
+      rect:
+        serializedVersion: 2
+        x: 2529
+        y: 104
+        width: 127
+        height: 115
+      alignment: 9
+      pivot: {x: 0.49645323, y: 0.8743363}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: aiming_man_01_v01_40
+      rect:
+        serializedVersion: 2
+        x: 2769
+        y: 106
+        width: 140
+        height: 113
+      alignment: 9
+      pivot: {x: 0.5202155, y: 0.88927627}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
