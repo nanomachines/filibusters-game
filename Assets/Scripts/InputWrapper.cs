@@ -51,21 +51,11 @@ namespace Filibusters
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
-                SetMouseInputHandlerFromScene(SceneManager.GetActiveScene());
-                SceneManager.sceneLoaded += SetMouseInputHandlerFromScene;
             }
             else
             {
                 Destroy(gameObject);
             }
-        }
-
-        private void SetMouseInputHandlerFromScene(Scene scene, LoadSceneMode sceneMode = LoadSceneMode.Single)
-        {
-
-            GetMouseInput = (scene.name == Scenes.READY_SCREEN || Scenes.READY_SCREEN.EndsWith(scene.name)) ?
-                new GetMouseInputDelegate(GetMouseInputInReadyRoom) :
-                new GetMouseInputDelegate(GetMouseInputInGame);
         }
 
         void Update()
@@ -120,24 +110,13 @@ namespace Filibusters
             mEquipWeaponPressed = Input.GetAxis(EquipAxis) > Mathf.Epsilon;
         }
 
-        private delegate Vector2 GetMouseInputDelegate();
-        private GetMouseInputDelegate GetMouseInput;
-        private Vector2 GetMouseInputInGame()
+        private Vector2 GetMouseInput()
         {
             Vector3 mousePos = Input.mousePosition;
             return new Vector2(mousePos.x - Screen.width / 2f, mousePos.y - Screen.height / 2f);
         }
 
         public GameObject mLocalReadyRoomCharacter { private get; set; }
-        private Vector2 GetMouseInputInReadyRoom()
-        {
-            if (mLocalReadyRoomCharacter != null)
-            {
-                var playerPosInScreenSpace = GameObject.FindObjectOfType<Camera>().WorldToScreenPoint(mLocalReadyRoomCharacter.transform.position);
-                return Input.mousePosition - playerPosInScreenSpace;
-            }
-            return Vector2.zero;
-        }
 
         // Private Fields
         public static readonly string LeftXInputName = "Left-X";
