@@ -1,5 +1,6 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -8,9 +9,14 @@ namespace Filibusters
     public class ReadyScreenNetworkController : PunBehaviour
     {
         private static readonly string IS_READY_KEY = "IsReady";
+        private static readonly float COUNTDOWN_TIME = 5f;
 
         [SerializeField]
         GameObject mUICountdown; //UICountdown
+        Text mCountdownText;
+        bool mCountdownStarted = false;
+        float mTimer = COUNTDOWN_TIME;
+
         [SerializeField]
         private ToggleVisualReady[] mReadyToggles;
         private ToggleVisualReady mLocalToggle;
@@ -18,14 +24,12 @@ namespace Filibusters
 
         private bool mPlayerReady;
         int mNumReadyPlayers = 0;
-        /*
-        bool mCountdownStarted = false;
-        float mTimer = 0f;
-        */
 
         void Start()
         {
             mPhotonView = GetComponent<PhotonView>();
+            mCountdownText = mUICountdown.GetComponent<Text>();
+
             mLocalToggle = null;
             if (PhotonNetwork.isMasterClient)
             {
@@ -73,17 +77,24 @@ namespace Filibusters
                 }
             }
 
-            mUICountdown.GetComponent<UnityEngine.UI.Text>().text = mNumReadyPlayers.ToString();
-            /*
+            //mUICountdown.GetComponent<UnityEngine.UI.Text>().text = mNumReadyPlayers.ToString();
             if (mNumReadyPlayers == PhotonNetwork.playerList.Length)
             {
+                mUICountdown.SetActive(true);
+                if (mTimer <= 0)
+                {
+                    StartGame();
+                    return;
+                }
+                mCountdownText.text = "Game starting in... " + ((int)Mathf.Ceil(mTimer)).ToString();
+                mTimer -= Time.deltaTime;
             }
             else
             {
+                mUICountdown.SetActive(false);
                 mCountdownStarted = false;
-                mTimer = 0f;
+                mTimer = COUNTDOWN_TIME;
             }
-            */
         }
 
         public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
@@ -112,6 +123,17 @@ namespace Filibusters
         void DecrementReadyCount()
         {
             --mNumReadyPlayers;
+        }
+
+        public void StartGame()
+        {
+            GetComponent<PhotonView>().RPC("LaunchGame", PhotonTargets.All);
+        }
+
+        [PunRPC]
+        public void LaunchGame()
+        {
+            PhotonNetwork.LoadLevel(Scenes.MAIN);
         }
 
         /*
