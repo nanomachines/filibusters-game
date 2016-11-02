@@ -18,7 +18,8 @@ namespace Filibusters
             {
                 Instance = this;
                 SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-                LocalPlayer = PhotonNetwork.Instantiate("NetPlayer", GetRandomSpawnPoint(), Quaternion.identity, 0);
+                LocalPlayer = PhotonNetwork.Instantiate(Utility.PlayerNumberToPrefab(NetworkManager.LocalPlayerNumber),
+                    GetRandomSpawnPoint(), Quaternion.identity, 0);
                 LocalPlayer.GetComponent<SimplePhysics>().enabled = true;
                 LocalPlayer.GetComponent<AimingController>().enabled = true;
                 LocalPlayer.GetComponent<SwapButtonToggle>().enabled = true;

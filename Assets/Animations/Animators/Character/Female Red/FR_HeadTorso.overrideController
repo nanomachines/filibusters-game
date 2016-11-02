@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FR_HeadTorso
+  m_Controller: {fileID: 9100000, guid: 66d2cb050a12b7447aa8b5a77dae48fe, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 181739c2b9b37fc40a5163992f0fec7d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 573a98cba184a9840be7abd38d673f8e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3b724e1cdf58a0d42b4e5775ff4fb93e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c70bf20347401d443b0769e273157270, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2c534f935690bbb4ab7e738217a20ee1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 39663e6dbff3f9342ab514a9844d5d0d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7535c031c2c65bf4490c0d7a51030258, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dcf21908c4368cb4eb352d860d9614c7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 09eb9a4c0581a7748b1b155c577906d5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3df5ad6e1ceda9840bf2a4717953b4cf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 65b889328274cb64f89af49c0c2e7b14, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7cbfdf351a52f6240a7543555864cb6f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d2495a3cc3691444f8ffcec9f69e86a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0650581d4924ff845a65fb856de1f55f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e6d94d6ad276afb498ddddb6793593e6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 435acd20760af07489fb9e5f727c2649, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ccb140694111b1449869bcbd5411ead3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7219b394e70cf244b9e22910b7a409a5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 457aaa456b7474c4fa26a2dbb8df1322, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2986e26175d306841a7875f94fd777f4, type: 2}
