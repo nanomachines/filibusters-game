@@ -75,8 +75,7 @@ namespace Filibusters
 
                     else
                     {
-                        PhotonNetwork.LeaveRoom();
-                        SceneManager.LoadScene(Scenes.START_MENU);
+                        Utility.BackToStartMenu();
                     }
                 }
             }
