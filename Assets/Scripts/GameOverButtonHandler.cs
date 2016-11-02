@@ -8,13 +8,7 @@ namespace Filibusters
     {
         void Start()
         {
-            GetComponent<UnityEngine.UI.Button>().onClick.AddListener(OnClicked);
-        }
-
-        public void OnClicked()
-        {
-            PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene(Scenes.START_MENU);
+            GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => { Utility.BackToStartMenu(); });
         }
     }
 }

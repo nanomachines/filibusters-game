@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Filibusters
 {
@@ -58,6 +59,12 @@ namespace Filibusters
             }
 
             return null;
+        }
+
+        public static void BackToStartMenu()
+        {
+            PhotonNetwork.LeaveRoom();
+            SceneManager.LoadScene(Scenes.START_MENU);
         }
     }
 }
