@@ -35,6 +35,15 @@ namespace Filibusters
         public bool FallPressed { get { return mFallInput; } }
         public bool FirePressed { get { return mFirePressed; } }
         public bool EquipWeaponPressed { get { return mEquipWeaponPressed; } }
+        public bool CancelPressed { get { return Input.GetButtonDown(CancelAxis); } }
+        public bool SubmitPressed
+        {
+            get
+            {
+                return Input.GetButtonDown(SubmitAxis) ||
+                    (AnyJoysticksConnected() && Input.GetButtonDown(Xbox360SubmitAxis));
+            }
+        }
 
         void Start()
         {
@@ -42,21 +51,11 @@ namespace Filibusters
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
-                SetMouseInputHandlerFromScene(SceneManager.GetActiveScene());
-                SceneManager.sceneLoaded += SetMouseInputHandlerFromScene;
             }
             else
             {
                 Destroy(gameObject);
             }
-        }
-
-        private void SetMouseInputHandlerFromScene(Scene scene, LoadSceneMode sceneMode = LoadSceneMode.Single)
-        {
-
-            GetMouseInput = (scene.name == Scenes.READY_MENU || Scenes.READY_MENU.EndsWith(scene.name)) ?
-                new GetMouseInputDelegate(GetMouseInputInReadyRoom) :
-                new GetMouseInputDelegate(GetMouseInputInGame);
         }
 
         void Update()
@@ -106,29 +105,18 @@ namespace Filibusters
                 Input.GetAxis(Xbox360FireAxis) > Mathf.Epsilon;
 
             /*
-             * Get Weapon Drop input
+             * Get Weapon Equip input
              */
             mEquipWeaponPressed = Input.GetAxis(EquipAxis) > Mathf.Epsilon;
         }
 
-        private delegate Vector2 GetMouseInputDelegate();
-        private GetMouseInputDelegate GetMouseInput;
-        private Vector2 GetMouseInputInGame()
+        private Vector2 GetMouseInput()
         {
             Vector3 mousePos = Input.mousePosition;
             return new Vector2(mousePos.x - Screen.width / 2f, mousePos.y - Screen.height / 2f);
         }
 
         public GameObject mLocalReadyRoomCharacter { private get; set; }
-        private Vector2 GetMouseInputInReadyRoom()
-        {
-            if (mLocalReadyRoomCharacter != null)
-            {
-                var playerPosInScreenSpace = GameObject.FindObjectOfType<Camera>().WorldToScreenPoint(mLocalReadyRoomCharacter.transform.position);
-                return Input.mousePosition - playerPosInScreenSpace;
-            }
-            return Vector2.zero;
-        }
 
         // Private Fields
         public static readonly string LeftXInputName = "Left-X";
@@ -149,6 +137,7 @@ namespace Filibusters
             Application.platform == RuntimePlatform.OSXPlayer ||
             Application.platform == RuntimePlatform.OSXEditor ? "X360-OSX-Fire" : "X360-Win-Fire";
         public static readonly string EquipAxis = "Equip-Weapon";
+        public static readonly string CancelAxis = "Cancel";
 
         public static readonly string SubmitAxis = "Submit";
         public static readonly string Xbox360SubmitAxis =
@@ -165,7 +154,5 @@ namespace Filibusters
         private bool mFallInput = false;
         private bool mFirePressed = false;
         private bool mEquipWeaponPressed = false;
-
-
     }
 }
