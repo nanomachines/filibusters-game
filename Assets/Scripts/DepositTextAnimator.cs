@@ -25,13 +25,20 @@ namespace Filibusters
             mDepositText = GetComponent<Text>();
             mOriginalSize = mDepositText.fontSize;
             mSizeDiff = mNewSize - mOriginalSize;
-            EventSystem.OnCoinDepositedEvent += (int ownerId, int newDepositBalance) => 
+            EventSystem.OnCoinDepositedEvent += StartAnimation;
+        }
+
+        void OnDestroy()
+        {
+            EventSystem.OnCoinDepositedEvent -= StartAnimation;
+        }
+
+        void StartAnimation(int ownerId, int newDepositBalance)
+        {
+            if (NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId)) == mPlayerNum)
             {
-                if (NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId)) == mPlayerNum)
-                {
-                    StartCoroutine(AnimateText());
-                }
-            };
+                StartCoroutine(AnimateText());
+            }
         }
         
         IEnumerator AnimateText()

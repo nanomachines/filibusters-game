@@ -38,6 +38,11 @@ namespace Filibusters
             mSlider = GetComponentInChildren<Slider>();
         }
 
+        void OnDestroy()
+        {
+            EventSystem.OnDeathEvent -= ClearDeadPlayer;
+        }
+
         void OnTriggerEnter2D(Collider2D other)
         {
             if (other.tag == Tags.PLAYER)

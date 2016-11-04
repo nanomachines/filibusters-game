@@ -43,7 +43,12 @@ namespace Filibusters
                     DisableUI(i);
                 }
             }
+        }
 
+        void OnDestroy()
+        {
+            EventSystem.OnCoinDepositedEvent -= UpdateDepositCounts;
+            EventSystem.OnCoinCountUpdatedEvent -= UpdateCoinCounts;
         }
 
         public void UpdateDepositCounts(int ownerId, int newDepositBalance)

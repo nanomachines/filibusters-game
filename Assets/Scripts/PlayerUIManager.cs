@@ -24,6 +24,11 @@ namespace Filibusters
             EventSystem.OnUpdateHealthBarEvent += UpdateHealthBar;
         }
 
+        void OnDestroy()
+        {
+            EventSystem.OnUpdateHealthBarEvent -= UpdateHealthBar;
+        }
+
         void UpdateHealthBar(int health)
         {
             mHealthBarControl.value = health;
