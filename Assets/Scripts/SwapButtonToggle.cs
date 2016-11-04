@@ -17,6 +17,11 @@ namespace Filibusters
             mIsLocalPlayer = gameObject.GetPhotonView().isMine;
         }
 
+        void OnDestroy()
+        {
+            EventSystem.OnDeathEvent -= DisableOnDeath;
+        }
+
         void OnTriggerEnter2D(Collider2D other)
         {
             if (other.tag == Tags.WEAPON && mIsLocalPlayer)

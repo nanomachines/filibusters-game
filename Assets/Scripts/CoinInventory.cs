@@ -33,6 +33,11 @@ namespace Filibusters
             EventSystem.OnDeathEvent += ResetCoins;
         }
 
+        void OnDestroy()
+        {
+            EventSystem.OnDeathEvent -= ResetCoins;
+        }
+
         public void AddCoin()
         {
             ++mCoinCount;

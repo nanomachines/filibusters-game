@@ -13,6 +13,11 @@ namespace Filibusters
             mPhotonView = GetComponent<PhotonView>();
             EventSystem.OnGameOverEvent += OnGameOver;
         }
+
+        void OnDestroy()
+        {
+            EventSystem.OnGameOverEvent -= OnGameOver;
+        }
         
         void OnGameOver(int winningActorId)
         {
