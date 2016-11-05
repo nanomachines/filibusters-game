@@ -43,7 +43,16 @@ namespace Filibusters
         // Use this for initialization
         void Start()
         {
-            mRenderers = GetComponentsInChildren<SpriteRenderer>();
+            var renderers = GetComponentsInChildren<SpriteRenderer>();
+            mRenderers = new SpriteRenderer[renderers.Length - 1];
+            int i = 0;
+            foreach (SpriteRenderer sr in renderers)
+            {
+                if (sr.gameObject.tag != Tags.DEATH_EXPLOSION)
+                {
+                    mRenderers[i++] = sr;
+                }
+            }
             mPlayerState = GetComponent<PlayerState>();
         }
 

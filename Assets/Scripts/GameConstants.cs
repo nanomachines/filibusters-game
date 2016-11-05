@@ -69,6 +69,7 @@ namespace Filibusters
         public static readonly string WEAPON = "Gun";
         public static readonly string BUTTON = "Button";
         public static readonly string JOIN_TEXT = "JoinText";
+        public static readonly string DEATH_EXPLOSION = "DeathExplosion";
     }
 
     public class Scenes
