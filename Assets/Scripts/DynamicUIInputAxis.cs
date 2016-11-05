@@ -1,14 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 namespace Filibusters
 {
     public class DynamicUIInputAxis : MonoBehaviour
     {
-        private UnityEngine.EventSystems.StandaloneInputModule mInputModule;
+        private UnityEngine.EventSystems.EventSystem mUIEventSystem;
+        private StandaloneInputModule mInputModule;
+        private bool joystickWasConnected;
 
         public void Start()
         {
+            mUIEventSystem = GetComponent<UnityEngine.EventSystems.EventSystem>();
+
+            if (InputWrapper.AnyJoysticksConnected())
+            {
+                joystickWasConnected = true;
+                mUIEventSystem.SetSelectedGameObject(mUIEventSystem.firstSelectedGameObject);
+            }
+            else
+            {
+                joystickWasConnected = false;
+                mUIEventSystem.SetSelectedGameObject(null);
+            }
+
             mInputModule = GetComponent<UnityEngine.EventSystems.StandaloneInputModule>();
             mInputModule.horizontalAxis = InputWrapper.LeftXInputName;
             mInputModule.verticalAxis = InputWrapper.LeftYInputName;
@@ -16,8 +32,20 @@ namespace Filibusters
 
         public void Update()
         {
-            mInputModule.submitButton = InputWrapper.AnyJoysticksConnected() ?
+            bool anyJoysticksConnected = InputWrapper.AnyJoysticksConnected();
+            mInputModule.submitButton = anyJoysticksConnected ?
                 InputWrapper.Xbox360SubmitAxis : InputWrapper.SubmitAxis;
+
+            if (!anyJoysticksConnected)
+            {
+                mUIEventSystem.SetSelectedGameObject(null);
+                joystickWasConnected = false;
+            }
+            else if (anyJoysticksConnected && !joystickWasConnected )
+            {
+                mUIEventSystem.SetSelectedGameObject(mUIEventSystem.firstSelectedGameObject);
+                joystickWasConnected = true;
+            }
         }
     }
 
