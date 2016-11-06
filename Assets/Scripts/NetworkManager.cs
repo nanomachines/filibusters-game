@@ -24,6 +24,8 @@ namespace Filibusters
         {
             if (Instance == null)
             {
+                PhotonNetwork.sendRate = 60;
+                PhotonNetwork.sendRateOnSerialize = 60;
                 Instance = this;
                 Object.DontDestroyOnLoad(gameObject);
                 PhotonNetwork.automaticallySyncScene = true;
