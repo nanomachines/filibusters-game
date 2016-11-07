@@ -9,15 +9,18 @@ namespace Filibusters
         [SerializeField]
         AnimationCurve mMotionCurve;
         Vector3 mOrigin;
-        Vector3 mYDisplacement; 
+        Vector3 mYDisplacement;
+        int mOwnerId;
 
         void Start()
         {
             mDepositCoinAnimator = GetComponent<Animator>();
             EventSystem.OnCoinDepositedEvent += StartAnimation;
 
-            mOrigin = transform.position;
+            mOrigin = transform.localPosition;
             mYDisplacement = new Vector3(0, 1f, 0);
+
+            mOwnerId = transform.parent.gameObject.GetComponent<PhotonView>().owner.ID;
         }
 
         void OnDestroy()
@@ -27,7 +30,10 @@ namespace Filibusters
 
         void StartAnimation(int ownerId, int newDepositBalance)
         {
-            StartCoroutine(RunAnimation());
+            if (mOwnerId == ownerId)
+            {
+                StartCoroutine(RunAnimation());
+            }
         }
 
         IEnumerator RunAnimation()
@@ -38,7 +44,7 @@ namespace Filibusters
             while (time < 1f)
             {
                 var displacementRatio = mMotionCurve.Evaluate(time);
-                transform.position = mYDisplacement * displacementRatio + mOrigin;
+                transform.localPosition = mYDisplacement * displacementRatio + mOrigin;
                 time += Time.deltaTime;
                 yield return new WaitForFixedUpdate();
             }
