@@ -15,6 +15,7 @@ TagManager:
   - PlayerUI
   - Button
   - JoinText
+  - DeathExplosion
   layers:
   - Default
   - TransparentFX
