@@ -21,21 +21,34 @@ namespace Filibusters
         void Start()
         {
             mSessionNameField = GetComponent<InputField>();
+            mSessionNameField.onValidateInput += delegate(string input, int charIndex, char addedChar) { return ValidateChar(addedChar); };
             mSessionNameField.onEndEdit.AddListener(delegate { OnHostGameNameEntered(); });
             mErrorToaster = GetComponent<ErrorToast>();
+        }
+
+        char ValidateChar(char newChar)
+        {
+            if (char.IsWhiteSpace(newChar))
+            {
+                return '\0';
+            }
+            return newChar;
         }
 
         public void OnHostGameNameEntered()
         {
             var sessionName = mSessionNameField.text;
-            sessionName = sessionName.Trim().ToLower();
+            sessionName = sessionName.ToLower();
             if (sessionName == "")
             {
-                mErrorToaster.ToastError("Invalid session name: session name cannot be empty");
+                if (!mSessionNameField.wasCanceled)
+                {
+                    mErrorToaster.ToastError("Invalid session name: session name cannot be empty");
+                }
             }
             else
             {
-                OnValidSanitizedInput(sessionName); 
+                OnValidSanitizedInput(sessionName);
             }
         }
 

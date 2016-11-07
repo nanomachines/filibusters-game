@@ -10,8 +10,11 @@ namespace Filibusters
         private StandaloneInputModule mInputModule;
         private bool joystickWasConnected;
 
+        private bool mFirstFrame;
+
         public void Start()
         {
+            mFirstFrame = true;
             mUIEventSystem = GetComponent<UnityEngine.EventSystems.EventSystem>();
 
             if (InputWrapper.AnyJoysticksConnected())
@@ -36,7 +39,7 @@ namespace Filibusters
             mInputModule.submitButton = anyJoysticksConnected ?
                 InputWrapper.Xbox360SubmitAxis : InputWrapper.SubmitAxis;
 
-            if (!anyJoysticksConnected)
+            if (!anyJoysticksConnected && (joystickWasConnected || mFirstFrame))
             {
                 mUIEventSystem.SetSelectedGameObject(null);
                 joystickWasConnected = false;
@@ -46,6 +49,7 @@ namespace Filibusters
                 mUIEventSystem.SetSelectedGameObject(mUIEventSystem.firstSelectedGameObject);
                 joystickWasConnected = true;
             }
+            mFirstFrame = false;
         }
     }
 
