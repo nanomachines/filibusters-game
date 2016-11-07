@@ -43,6 +43,7 @@ namespace Filibusters
             if (NetworkManager.HasPlayerNumberPropertyChangedForPlayer(properties))
             {
                 mLocalToggle = mReadyToggles[NetworkManager.LocalPlayerNumber];
+                mLocalToggle.active = true;
             }
         }
 
@@ -106,13 +107,15 @@ namespace Filibusters
         {
             if (PhotonNetwork.isMasterClient)
             {
+                var deadToggle = mReadyToggles[NetworkManager.GetPlayerNumber(otherPlayer)];
+                deadToggle.active = false;
                 if (otherPlayer.customProperties.ContainsKey(IS_READY_KEY)
                     && (bool)otherPlayer.customProperties[IS_READY_KEY])
                 {
+                    deadToggle.ToggleReadyPlayer(false);
                     // this call should not be buffered because if the player quits unexpectedly
                     // then their buffered IncrementReadyCount call will fall through
                     mPhotonView.RPC("DecrementReadyCount", PhotonTargets.All);
-                    mReadyToggles[NetworkManager.GetPlayerNumber(otherPlayer)].ToggleReadyPlayer(false);
                 }
             }
         }
