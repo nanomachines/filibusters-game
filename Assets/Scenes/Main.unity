@@ -4691,19 +4691,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010179887970, guid: d5b437befa8fe7745ab3a5bbed75e674, type: 2}
-      propertyPath: m_Name
-      value: Coin
-      objectReference: {fileID: 0}
     - target: {fileID: 114000011954990616, guid: d5b437befa8fe7745ab3a5bbed75e674,
         type: 2}
       propertyPath: viewIdField
-      value: 16
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114000011954990616, guid: d5b437befa8fe7745ab3a5bbed75e674,
         type: 2}
       propertyPath: instantiationId
-      value: 16
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5b437befa8fe7745ab3a5bbed75e674, type: 2}
@@ -29520,19 +29516,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 26
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010179887970, guid: d5b437befa8fe7745ab3a5bbed75e674, type: 2}
-      propertyPath: m_Name
-      value: Coin
-      objectReference: {fileID: 0}
     - target: {fileID: 114000011954990616, guid: d5b437befa8fe7745ab3a5bbed75e674,
         type: 2}
       propertyPath: viewIdField
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114000011954990616, guid: d5b437befa8fe7745ab3a5bbed75e674,
         type: 2}
       propertyPath: instantiationId
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5b437befa8fe7745ab3a5bbed75e674, type: 2}
