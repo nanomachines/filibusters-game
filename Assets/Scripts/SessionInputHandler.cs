@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Filibusters
 {
@@ -9,8 +10,6 @@ namespace Filibusters
     {
         InputField mSessionNameField;
         ErrorToast mErrorToaster;
-
-        bool mInputChangeTrigger = false;
 
         private static readonly Dictionary<int, string> ErrorCodeMap = new Dictionary<int, string>()
         {
@@ -26,12 +25,6 @@ namespace Filibusters
             mSessionNameField.onValidateInput += delegate(string input, int charIndex, char addedChar) { return ValidateChar(addedChar); };
             mSessionNameField.onEndEdit.AddListener(delegate { OnHostGameNameEntered(); });
             mErrorToaster = GetComponent<ErrorToast>();
-            EventSystem.OnInputSourceUpdatedEvent += IgnoreInputChangeSignal;
-        }
-
-        void IgnoreInputChangeSignal()
-        {
-            mInputChangeTrigger = true;
         }
 
         char ValidateChar(char newChar)
@@ -45,10 +38,8 @@ namespace Filibusters
 
         public void OnHostGameNameEntered()
         {
-            // Ignore the false EndEdit signal triggered when a input source changes
-            if (mInputChangeTrigger)
+            if (!InputWrapper.Instance.SubmitPressed)
             {
-                mInputChangeTrigger = false;
                 return;
             }
 
