@@ -16612,7 +16612,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013372713804, guid: b71dd54cbeca32142a74e1a0b4ede339, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1000010179887970, guid: b71dd54cbeca32142a74e1a0b4ede339, type: 2}
       propertyPath: m_Name
@@ -19499,10 +19499,6 @@ Prefab:
     - target: {fileID: 4000013372713804, guid: 334ab92d05df61549b71a224e47f96fe, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010179887970, guid: 334ab92d05df61549b71a224e47f96fe, type: 2}
-      propertyPath: m_Name
-      value: Magic Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 114000011954990616, guid: 334ab92d05df61549b71a224e47f96fe,
         type: 2}
@@ -27876,11 +27872,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013372713804, guid: b71dd54cbeca32142a74e1a0b4ede339, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010179887970, guid: b71dd54cbeca32142a74e1a0b4ede339, type: 2}
-      propertyPath: m_Name
-      value: Veto
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000011954990616, guid: b71dd54cbeca32142a74e1a0b4ede339,
         type: 2}
