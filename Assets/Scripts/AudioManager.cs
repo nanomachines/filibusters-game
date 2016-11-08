@@ -52,6 +52,9 @@ namespace Filibusters
         [SerializeField]
         private AudioClip mMisfireLibelAndSlander;
 
+        public AudioClip[] mMaleGrunts;
+        public AudioClip[] mFemaleGrunts;
+
         // Use this for initialization
         void Start()
         {
@@ -193,6 +196,24 @@ namespace Filibusters
                     }
                     mSource.PlayOneShot(misfire);
                 }
+            };
+
+            EventSystem.OnPlayerHitEvent += (int playerViewId) =>
+            {
+                int playerNumber = NetworkManager.GetPlayerNumber(PhotonView.Find(playerViewId).owner);
+                AudioClip grunt = null;
+                switch (playerNumber)
+                {
+                    case 0:
+                    case 2:
+                        grunt = mFemaleGrunts[Random.Range(0, mFemaleGrunts.Length)];
+                        break;
+                    case 1:
+                    case 3:
+                        grunt = mMaleGrunts[Random.Range(0, mMaleGrunts.Length)];
+                        break;
+                }
+                mSource.PlayOneShot(grunt);
             };
         }
     }

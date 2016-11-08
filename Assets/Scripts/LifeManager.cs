@@ -50,14 +50,15 @@ namespace Filibusters
         {
             Assert.IsTrue(damageAmount >= 0);
             mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
-            if (mPhotonView.isMine)
-            {
-                EventSystem.OnUpdateHealthBar(mCurHealth);
-                mPhotonView.RPC("OnDamaged", PhotonTargets.All);
-            }
+            
             if (mCurHealth == 0)
             {
                 Die();
+            }
+            else if (mPhotonView.isMine)
+            {
+                EventSystem.OnUpdateHealthBar(mCurHealth);
+                mPhotonView.RPC("OnDamaged", PhotonTargets.All);
             }
         }
 
