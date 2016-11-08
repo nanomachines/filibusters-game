@@ -153,5 +153,15 @@ namespace Filibusters
                 OnDepositEndEvent();
             }
         }
+
+        public delegate void InputSourceUpdatedListener();
+        public static event InputSourceUpdatedListener OnInputSourceUpdatedEvent;
+        public static void OnInputSourceUpdated()
+        {
+            if (OnInputSourceUpdatedEvent != null)
+            {
+                OnInputSourceUpdatedEvent();
+            }
+        }
     }
 }
