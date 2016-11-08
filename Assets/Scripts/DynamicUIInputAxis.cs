@@ -41,13 +41,11 @@ namespace Filibusters
 
             if (!anyJoysticksConnected && (joystickWasConnected || mFirstFrame))
             {
-                EventSystem.OnInputSourceUpdated();
                 mUIEventSystem.SetSelectedGameObject(null);
                 joystickWasConnected = false;
             }
             else if (anyJoysticksConnected && !joystickWasConnected )
             {
-                EventSystem.OnInputSourceUpdated();
                 mUIEventSystem.SetSelectedGameObject(mUIEventSystem.firstSelectedGameObject);
                 joystickWasConnected = true;
             }
