@@ -53,6 +53,7 @@ namespace Filibusters
             if (mPhotonView.isMine)
             {
                 EventSystem.OnUpdateHealthBar(mCurHealth);
+                mPhotonView.RPC("OnDamaged", PhotonTargets.All);
             }
             if (mCurHealth == 0)
             {
@@ -60,6 +61,12 @@ namespace Filibusters
             }
         }
 
+
+        [PunRPC]
+        public void OnDamaged()
+        {
+            EventSystem.OnPlayerHit(GetComponent<PhotonView>().viewID);
+        }
 
         [PunRPC]
         public void OnDeath()
