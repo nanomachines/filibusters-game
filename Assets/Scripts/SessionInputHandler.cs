@@ -74,7 +74,7 @@ namespace Filibusters
             }
             else
             {
-                mErrorToaster.ToastError("Unabled to create room. Error code: " + errorCode);
+                mErrorToaster.ToastError("Unable to create room. Error code: " + errorCode);
             }
         }
 
@@ -87,7 +87,7 @@ namespace Filibusters
             }
             else
             {
-                mErrorToaster.ToastError("Unabled to join room. Error code: " + errorCode);
+                mErrorToaster.ToastError("Unable to join room. Error code: " + errorCode);
             }
         }
     }
