@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMainGameBackgroundMusic: {fileID: 8300000, guid: c17a29a440aae4745bf24ebb0713563f,
     type: 3}
-  mPlayerDeath: {fileID: 8300000, guid: 4dc1014af5094ac4a8646bca83bd547d, type: 3}
+  mPlayerDeath: {fileID: 8300000, guid: 99c1c39cd50068845abdc9b912b3511f, type: 3}
   mPlayerJump: {fileID: 8300000, guid: 030a7fe3d432a854a80ff4d6e2680c93, type: 3}
   mCoinCollection: {fileID: 8300000, guid: fa90d44073c167c4baa187ab32f5fc69, type: 3}
   mCoinDeposited: {fileID: 8300000, guid: b70aab8e52cc76a41bc18204e0d348ab, type: 3}
@@ -138,7 +138,7 @@ MonoBehaviour:
   mEquipAnarchy: {fileID: 0}
   mEquipLibelAndSlander: {fileID: 0}
   mUseDarkhorse: {fileID: 8300000, guid: e6af81b0670cc0a4cafe6d6544d23717, type: 3}
-  mUseVeto: {fileID: 8300000, guid: 63f316708cb99724daf5917d89e316b5, type: 3}
+  mUseVeto: {fileID: 8300000, guid: 914d294182627a24c808b4cf593734bf, type: 3}
   mUseMagicBullet: {fileID: 8300000, guid: 61f25106ad88549ce8cabc53498344ef, type: 3}
   mUseAnarchy: {fileID: 0}
   mUseLibelAndSlander: {fileID: 0}
