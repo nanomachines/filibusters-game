@@ -23223,7 +23223,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114911542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.624621, y: -10.52, z: 0}
+  m_LocalPosition: {x: -8.624621, y: -10.522951, z: 0}
   m_LocalScale: {x: 2.065408, y: 0.1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -23465,25 +23465,6 @@ Prefab:
     - target: {fileID: 1000012592712726, guid: e60e72c8eb1ae41659cdd4c19fe67ff7, type: 2}
       propertyPath: m_Name
       value: Small Desk Right
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000012500276966, guid: e60e72c8eb1ae41659cdd4c19fe67ff7,
-        type: 2}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000012500276966, guid: e60e72c8eb1ae41659cdd4c19fe67ff7,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 1661287921
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000012746755102, guid: e60e72c8eb1ae41659cdd4c19fe67ff7,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012592712726, guid: e60e72c8eb1ae41659cdd4c19fe67ff7, type: 2}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e60e72c8eb1ae41659cdd4c19fe67ff7, type: 2}
