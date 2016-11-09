@@ -15,6 +15,13 @@ namespace Filibusters
 
         private PlayerState mPlayerState;
 
+        private int mPlayerViewId;
+        [SerializeField]
+        private float mFlashTime;
+        [SerializeField]
+        private Color mFlashCol;
+        private Color mOriginalCol;
+
         private bool mGrounded
         {
             get { return mPlayerState.mGrounded; }
@@ -54,6 +61,15 @@ namespace Filibusters
                 }
             }
             mPlayerState = GetComponent<PlayerState>();
+
+            mPlayerViewId = GetComponentInParent<PhotonView>().viewID;
+            mOriginalCol = new Color(1f, 1f, 1f);
+            EventSystem.OnPlayerHitEvent += StartPlayerHitEffect;
+        }
+
+        void OnDestroy()
+        {
+            EventSystem.OnPlayerHitEvent -= StartPlayerHitEffect;
         }
 
         // Update is called once per frame
@@ -87,6 +103,29 @@ namespace Filibusters
             foreach (var renderer in mRenderers)
             {
                 renderer.enabled = enabled;
+            }
+        }
+
+        void StartPlayerHitEffect(int playerViewId)
+        {
+            StartCoroutine(PlayerHitEffect(playerViewId));
+        }
+
+        IEnumerator PlayerHitEffect(int playerViewId)
+        {
+            if (playerViewId == mPlayerViewId)
+            {
+                foreach (var renderer in mRenderers)
+                {
+                    renderer.color = mFlashCol;
+                }
+
+                yield return new WaitForSeconds(mFlashTime);
+
+                foreach (var renderer in mRenderers)
+                {
+                    renderer.color = mOriginalCol;
+                }
             }
         }
     }

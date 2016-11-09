@@ -147,3 +147,15 @@ MonoBehaviour:
   mMisfireMagicBullet: {fileID: 8300000, guid: 262c5e9badac5104a9846b13ea9cb4eb, type: 3}
   mMisfireAnarchy: {fileID: 0}
   mMisfireLibelAndSlander: {fileID: 0}
+  mMaleGrunts:
+  - {fileID: 8300000, guid: acc619e436f905845852d62ac8a24f00, type: 3}
+  - {fileID: 8300000, guid: 18ecad441821a5c45a9b0d820b578e7b, type: 3}
+  - {fileID: 8300000, guid: f1d950976279f8f49bc11e3a672fa7ac, type: 3}
+  - {fileID: 8300000, guid: 815323082e0e1294ab20ade5ba1dd8b5, type: 3}
+  - {fileID: 8300000, guid: d67475dfe43d4eb40ad648a1596f9895, type: 3}
+  mFemaleGrunts:
+  - {fileID: 8300000, guid: d424fd5336868c44182668943028748c, type: 3}
+  - {fileID: 8300000, guid: 3e9808528cdbfe245971a8f585972f99, type: 3}
+  - {fileID: 8300000, guid: 4163e6ea7a3293349b2f7e63475a30ba, type: 3}
+  - {fileID: 8300000, guid: 45bff1508b24ae54288a146dec827de1, type: 3}
+  - {fileID: 8300000, guid: f1d950976279f8f49bc11e3a672fa7ac, type: 3}

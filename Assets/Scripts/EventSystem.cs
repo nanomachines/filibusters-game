@@ -14,6 +14,16 @@ namespace Filibusters
             }
         }
 
+        public delegate void PlayerHitListener(int playerViewId);
+        public static event PlayerHitListener OnPlayerHitEvent;
+        public static void OnPlayerHit(int playerViewId)
+        {
+            if (OnPlayerHitEvent != null)
+            {
+                OnPlayerHitEvent(playerViewId);
+            }
+        }
+
         public delegate void JumpListener();
         public static event JumpListener OnJumpEvent;
         public static void OnJump()
