@@ -31,12 +31,22 @@ namespace Filibusters
 
         void Update()
         {
+            bool usingController = InputWrapper.AnyJoysticksConnected();
             if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == mSessionNameField.gameObject &&
-                InputWrapper.Instance.SubmitPressed &&
-                InputWrapper.AnyJoysticksConnected())
+                usingController &&
+                (InputWrapper.Instance.SubmitPressed || InputWrapper.Instance.LeftYInput < -Mathf.Epsilon))
             {
-                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(mSessionLaunchButton);
+                var currentEvtSys = UnityEngine.EventSystems.EventSystem.current;
+                currentEvtSys.SetSelectedGameObject(mSessionLaunchButton);
+                StartCoroutine(TemporarilyDisableDownInput(currentEvtSys));
             }
+        }
+
+        IEnumerator TemporarilyDisableDownInput(UnityEngine.EventSystems.EventSystem es)
+        {
+            es.sendNavigationEvents = false;
+            yield return new WaitForSeconds(0.3f);
+            es.sendNavigationEvents = true;
         }
 
         char ValidateChar(char newChar)
