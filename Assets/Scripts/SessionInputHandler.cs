@@ -1,5 +1,6 @@
 ﻿using Photon;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using System.Collections.Generic;
 using System.Collections;
@@ -62,7 +63,7 @@ namespace Filibusters
 
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel(Scenes.READY_SCREEN);
+            SceneManager.LoadScene(Scenes.READY_SCREEN);
         }
 
         public override void OnPhotonCreateRoomFailed(object[] codeAndMsg)
