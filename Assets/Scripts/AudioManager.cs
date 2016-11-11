@@ -7,6 +7,8 @@ namespace Filibusters
 {
     public class AudioManager : MonoBehaviour
     {
+        enum PhotonEvents { FIRE_EVT = 0 };
+
         public static AudioManager Instance = null;
         private AudioSource mSource;
 
@@ -142,59 +144,42 @@ namespace Filibusters
                 }
             };
 
-            EventSystem.OnWeaponFiredEvent += (int actorId, WeaponId weaponId) =>
+            EventSystem.OnWeaponFiredEvent += (WeaponId weaponId) =>
             {
-                if (actorId == PhotonNetwork.player.ID)
-                {
-                    AudioClip clip = null;
-                    float volume = 1.0f;
-                    switch (weaponId)
-                    {
-                        case WeaponId.DARK_HORSE:
-                            clip = mUseDarkhorse;
-                            break;
-                        case WeaponId.VETO:
-                            clip = mUseVeto;
-                            volume = 0.5f;
-                            break;
-                        case WeaponId.MAGIC_BULLET:
-                            clip = mUseMagicBullet;
-                            break;
-                        case WeaponId.ANARCHY:
-                            clip = mUseAnarchy;
-                            break;
-                        case WeaponId.LIBEL_AND_SLANDER:
-                            clip = mUseLibelAndSlander;
-                            break;
-                    }
-                    mSource.PlayOneShot(clip, volume);
-                }
+                PhotonNetwork.RaiseEvent((byte)PhotonEvents.FIRE_EVT, weaponId, false, null);
+                WeaponFireCallback(weaponId);
             };
 
-            EventSystem.OnWeaponMisfiredEvent += (int actorId, GameConstants.WeaponId weaponId) =>
+            EventSystem.OnWeaponMisfiredEvent += (WeaponId weaponId) =>
             {
-                if (actorId == PhotonNetwork.player.ID)
+                AudioClip misfire = null;
+                switch (weaponId)
                 {
-                    AudioClip misfire = null;
-                    switch (weaponId)
-                    {
-                        case WeaponId.DARK_HORSE:
-                            misfire = mMisfireDarkhorse;
-                            break;
-                        case WeaponId.VETO:
-                            misfire = mMisfireVeto;
-                            break;
-                        case WeaponId.MAGIC_BULLET:
-                            misfire = mMisfireMagicBullet;
-                            break;
-                        case WeaponId.ANARCHY:
-                            misfire = mMisfireAnarchy;
-                            break;
-                        case WeaponId.LIBEL_AND_SLANDER:
-                            misfire = mMisfireLibelAndSlander;
-                            break;
-                    }
-                    mSource.PlayOneShot(misfire);
+                    case WeaponId.DARK_HORSE:
+                        misfire = mMisfireDarkhorse;
+                        break;
+                    case WeaponId.VETO:
+                        misfire = mMisfireVeto;
+                        break;
+                    case WeaponId.MAGIC_BULLET:
+                        misfire = mMisfireMagicBullet;
+                        break;
+                    case WeaponId.ANARCHY:
+                        misfire = mMisfireAnarchy;
+                        break;
+                    case WeaponId.LIBEL_AND_SLANDER:
+                        misfire = mMisfireLibelAndSlander;
+                        break;
+                }
+                mSource.PlayOneShot(misfire);
+            };
+
+            PhotonNetwork.OnEventCall += (byte evtCode, object contents, int senderId) =>
+            {
+                var weaponId = (WeaponId)contents;
+                if ((PhotonEvents)evtCode == PhotonEvents.FIRE_EVT)
+                {
+                    WeaponFireCallback(weaponId);
                 }
             };
 
@@ -215,6 +200,32 @@ namespace Filibusters
                 }
                 mSource.PlayOneShot(grunt);
             };
+        }
+
+        void WeaponFireCallback(WeaponId weaponId)
+        {
+            AudioClip clip = null;
+            float volume = 1.0f;
+            switch (weaponId)
+            {
+                case WeaponId.DARK_HORSE:
+                    clip = mUseDarkhorse;
+                    break;
+                case WeaponId.VETO:
+                    clip = mUseVeto;
+                    volume = 0.5f;
+                    break;
+                case WeaponId.MAGIC_BULLET:
+                    clip = mUseMagicBullet;
+                    break;
+                case WeaponId.ANARCHY:
+                    clip = mUseAnarchy;
+                    break;
+                case WeaponId.LIBEL_AND_SLANDER:
+                    clip = mUseLibelAndSlander;
+                    break;
+            }
+            mSource.PlayOneShot(clip, volume);
         }
     }
 }

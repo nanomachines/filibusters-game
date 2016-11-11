@@ -74,23 +74,23 @@ namespace Filibusters
             }
         }
 
-        public delegate void WeaponFireListener(int actorId, GameConstants.WeaponId weaponId);
+        public delegate void WeaponFireListener(GameConstants.WeaponId weaponId);
         public static event WeaponFireListener OnWeaponFiredEvent;
-        public static void OnWeaponFired(int actorId, GameConstants.WeaponId weaponId)
+        public static void OnWeaponFired(GameConstants.WeaponId weaponId)
         {
             if (OnWeaponFiredEvent != null)
             {
-                OnWeaponFiredEvent(actorId, weaponId);
+                OnWeaponFiredEvent(weaponId);
             }
         }
 
-        public delegate void WeaponMisfireListener(int actorId, GameConstants.WeaponId weaponId);
+        public delegate void WeaponMisfireListener(GameConstants.WeaponId weaponId);
         public static event WeaponMisfireListener OnWeaponMisfiredEvent;
-        public static void OnWeaponMisfired(int actorId, GameConstants.WeaponId weaponId)
+        public static void OnWeaponMisfired(GameConstants.WeaponId weaponId)
         {
             if (OnWeaponMisfiredEvent != null)
             {
-                OnWeaponMisfiredEvent(actorId, weaponId);
+                OnWeaponMisfiredEvent(weaponId);
             }
         }
 
