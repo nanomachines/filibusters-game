@@ -14,6 +14,16 @@ namespace Filibusters
             }
         }
 
+        public delegate void KillListener(int killerOwnerId);
+        public static event KillListener OnKilledEvent;
+        public static void OnPlayerKilled(int killerOwnerId)
+        {
+            if (OnKilledEvent != null)
+            {
+                OnKilledEvent(killerOwnerId);
+            }
+        }
+
         public delegate void PlayerHitListener(int playerViewId);
         public static event PlayerHitListener OnPlayerHitEvent;
         public static void OnPlayerHit(int playerViewId)
