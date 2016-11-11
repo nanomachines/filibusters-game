@@ -23,7 +23,6 @@ namespace Filibusters
         {
             mSessionNameField = GetComponent<InputField>();
             mSessionNameField.onValidateInput += delegate(string input, int charIndex, char addedChar) { return ValidateChar(addedChar); };
-            mSessionNameField.onEndEdit.AddListener(delegate { OnHostGameNameEntered(); });
             mErrorToaster = GetComponent<ErrorToast>();
         }
 
@@ -38,11 +37,6 @@ namespace Filibusters
 
         public void OnHostGameNameEntered()
         {
-            if (!InputWrapper.Instance.SubmitPressed)
-            {
-                return;
-            }
-
             var sessionName = mSessionNameField.text;
             sessionName = sessionName.ToLower();
             if (sessionName == "")
