@@ -59,4 +59,6 @@ MonoBehaviour:
   - IncrementReadyCount
   - ToggleActive
   - OnDamaged
+  - FireRPC
+  - MisfireRPC
   DisableAutoOpenWizard: 1
