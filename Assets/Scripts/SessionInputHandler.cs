@@ -1,5 +1,6 @@
 ﻿using Photon;
 using UnityEngine.UI;
+using UnityEngine;
 
 using System.Collections.Generic;
 using System.Collections;
@@ -8,6 +9,8 @@ namespace Filibusters
 {
     public abstract class SessionInputHandler : PunBehaviour
     {
+        [SerializeField]
+        GameObject mSessionLaunchButton;
         InputField mSessionNameField;
         ErrorToast mErrorToaster;
 
@@ -24,6 +27,16 @@ namespace Filibusters
             mSessionNameField = GetComponent<InputField>();
             mSessionNameField.onValidateInput += delegate(string input, int charIndex, char addedChar) { return ValidateChar(addedChar); };
             mErrorToaster = GetComponent<ErrorToast>();
+        }
+
+        void Update()
+        {
+            if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == mSessionNameField.gameObject &&
+                InputWrapper.Instance.SubmitPressed &&
+                InputWrapper.AnyJoysticksConnected())
+            {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(mSessionLaunchButton);
+            }
         }
 
         char ValidateChar(char newChar)
