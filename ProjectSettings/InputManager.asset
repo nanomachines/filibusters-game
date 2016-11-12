@@ -54,7 +54,7 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Left-Y
+    m_Name: Left-Y-Joystick
     descriptiveName: The y axis for the left "stick" of movement
     descriptiveNegativeName: 
     negativeButton: 

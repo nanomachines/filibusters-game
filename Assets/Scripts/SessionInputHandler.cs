@@ -1,5 +1,6 @@
 ﻿using Photon;
 using UnityEngine.UI;
+using UnityEngine;
 
 using System.Collections.Generic;
 using System.Collections;
@@ -8,6 +9,8 @@ namespace Filibusters
 {
     public abstract class SessionInputHandler : PunBehaviour
     {
+        [SerializeField]
+        GameObject mSessionLaunchButton;
         InputField mSessionNameField;
         ErrorToast mErrorToaster;
 
@@ -23,8 +26,27 @@ namespace Filibusters
         {
             mSessionNameField = GetComponent<InputField>();
             mSessionNameField.onValidateInput += delegate(string input, int charIndex, char addedChar) { return ValidateChar(addedChar); };
-            mSessionNameField.onEndEdit.AddListener(delegate { OnHostGameNameEntered(); });
             mErrorToaster = GetComponent<ErrorToast>();
+        }
+
+        void Update()
+        {
+            bool usingController = InputWrapper.AnyJoysticksConnected();
+            if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == mSessionNameField.gameObject &&
+                usingController &&
+                (InputWrapper.Instance.SubmitPressed || InputWrapper.Instance.LeftYInput < -Mathf.Epsilon))
+            {
+                var currentEvtSys = UnityEngine.EventSystems.EventSystem.current;
+                currentEvtSys.SetSelectedGameObject(mSessionLaunchButton);
+                StartCoroutine(TemporarilyDisableDownInput(currentEvtSys));
+            }
+        }
+
+        IEnumerator TemporarilyDisableDownInput(UnityEngine.EventSystems.EventSystem es)
+        {
+            es.sendNavigationEvents = false;
+            yield return new WaitForSeconds(0.3f);
+            es.sendNavigationEvents = true;
         }
 
         char ValidateChar(char newChar)
@@ -38,11 +60,6 @@ namespace Filibusters
 
         public void OnHostGameNameEntered()
         {
-            if (!InputWrapper.Instance.SubmitPressed)
-            {
-                return;
-            }
-
             var sessionName = mSessionNameField.text;
             sessionName = sessionName.ToLower();
             if (sessionName == "")

@@ -73,7 +73,7 @@ namespace Filibusters
                 mLeftXInput = -1f;
             }
 
-            mLeftYInput = Input.GetAxis(LeftYInputName);
+            mLeftYInput = AnyJoysticksConnected() ? Input.GetAxis(LeftYJoystickInputName) : Input.GetAxis(LeftYInputName);
             mFallInput = Mathf.Sign(mLeftYInput) == -1f;
             mJumpInput = (mLeftYInput > Mathf.Epsilon) || Input.GetButton(Xbox360AButtonName) ||
                 Input.GetAxis(Xbox360LeftTriggerName) > Mathf.Epsilon;
@@ -121,6 +121,7 @@ namespace Filibusters
         // Private Fields
         public static readonly string LeftXInputName = "Left-X";
         public static readonly string LeftYInputName = "Left-Y";
+        public static readonly string LeftYJoystickInputName = "Left-Y-Joystick";
         public static readonly string Xbox360AButtonName= "X360-A";
         // The Xbox360 LT is mapped to different axises depending on your OS
         public static readonly string Xbox360LeftTriggerName =
