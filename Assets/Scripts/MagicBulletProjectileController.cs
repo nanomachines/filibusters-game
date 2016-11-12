@@ -16,7 +16,11 @@ namespace Filibusters
             {
                 mHitRegistered = true;
                 mPhotonView.RPC("HandleInconsistentPlayerHits", PhotonTargets.Others, obj.GetComponent<PhotonView>().viewID);
-                obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
+                bool playerKilled = obj.GetComponent<LifeManager>().InflictDamage(mProjectileDamage);
+                if (playerKilled)
+                {
+                    EventSystem.OnPlayerKilled(mPhotonView.ownerId);
+                }
                 Destroy(gameObject);
             }
             // Walls and floors

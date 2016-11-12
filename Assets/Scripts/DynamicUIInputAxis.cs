@@ -36,8 +36,16 @@ namespace Filibusters
         public void Update()
         {
             bool anyJoysticksConnected = InputWrapper.AnyJoysticksConnected();
-            mInputModule.submitButton = anyJoysticksConnected ?
-                InputWrapper.Xbox360SubmitAxis : InputWrapper.SubmitAxis;
+            if (anyJoysticksConnected)
+            {
+                mInputModule.verticalAxis = InputWrapper.LeftYJoystickInputName;
+                mInputModule.submitButton = InputWrapper.Xbox360SubmitAxis;
+            }
+            else
+            {
+                mInputModule.verticalAxis = InputWrapper.LeftYInputName;
+                mInputModule.submitButton = InputWrapper.SubmitAxis;
+            }
 
             if (!anyJoysticksConnected && (joystickWasConnected || mFirstFrame))
             {

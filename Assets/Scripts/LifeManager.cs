@@ -46,7 +46,7 @@ namespace Filibusters
             mPhotonView.RPC("OnDeath", PhotonTargets.MasterClient);
         }
 
-        public void InflictDamage(int damageAmount)
+        public bool InflictDamage(int damageAmount)
         {
             Assert.IsTrue(damageAmount >= 0);
             mCurHealth = Mathf.Max(0, mCurHealth - damageAmount);
@@ -55,14 +55,17 @@ namespace Filibusters
             {
                 EventSystem.OnUpdateHealthBar(mCurHealth);
             }
+
             if (mCurHealth == 0)
             {
                 Die();
+                return true;
             }
             else
             {
                 EventSystem.OnPlayerHit(GetComponent<PhotonView>().viewID);
             }
+            return false;
         }
 
         [PunRPC]
