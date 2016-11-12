@@ -23,11 +23,6 @@ namespace Filibusters
             HowToPlayButton.onClick.AddListener(DisplayHowToPlay);
         }
 
-        void OnGUI()
-        {
-            GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-        }
-
         public void HostGame()
         {
             SceneManager.LoadScene(Scenes.HOST_GAME);
