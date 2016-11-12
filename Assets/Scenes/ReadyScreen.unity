@@ -100,8 +100,9 @@ GameObject:
   - 224: {fileID: 128133142}
   - 222: {fileID: 128133144}
   - 114: {fileID: 128133143}
+  - 114: {fileID: 128133145}
   m_Layer: 5
-  m_Name: Main Text
+  m_Name: Lobby Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,8 +123,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 208}
-  m_SizeDelta: {x: 200, y: 92}
+  m_AnchoredPosition: {x: 2, y: 208}
+  m_SizeDelta: {x: 729, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128133143
 MonoBehaviour:
@@ -151,19 +152,30 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 300
-    m_Alignment: 7
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lobby
+  m_Text: 'Lobby - '
 --- !u!222 &128133144
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 128133141}
+--- !u!114 &128133145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128133141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b4d4d0b369bd14ba60e1b7864c4d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &130614419 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000011365322944, guid: 21159ef722ffafb488386a162cd193d7,
