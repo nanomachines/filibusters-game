@@ -174,13 +174,13 @@ namespace Filibusters
             }
         }
 
-        public delegate void LeadingPlayerUpdateListener(int leadingOwnerId);
+        public delegate void LeadingPlayerUpdateListener(int leadingPlayerNum);
         public static event LeadingPlayerUpdateListener OnLeadingPlayerUpdatedEvent;
-        public static void OnLeadingPlayerUpdated(int leadingOwnerId)
+        public static void OnLeadingPlayerUpdated(int leadingPlayerNum)
         {
             if (OnLeadingPlayerUpdatedEvent != null)
             {
-                OnLeadingPlayerUpdatedEvent(leadingOwnerId);
+                OnLeadingPlayerUpdatedEvent(leadingPlayerNum);
             }
         }
     }

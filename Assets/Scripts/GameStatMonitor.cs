@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
+using Photon;
 using System.Collections;
 
 namespace Filibusters
 {
-    public class GameStatMonitor : MonoBehaviour
+    public class GameStatMonitor : PunBehaviour
     {
         int[] mTotalCoins;
         int[] mDeposits;
         int[] mKills;
         int[] mDeaths;
+        bool[] mActivePlayers;
 
         bool mDisplayGUI;
         int mMostCoinsDeposited;
+        int mWinningPlayerNum;
 
         void Start()
         {
@@ -27,6 +30,7 @@ namespace Filibusters
 
             mDisplayGUI = false;
             mMostCoinsDeposited = 0;
+            mWinningPlayerNum = 0;
         }
 
         void Update()
@@ -103,7 +107,8 @@ namespace Filibusters
             if (newDepositBalance > mMostCoinsDeposited)
             {
                 mMostCoinsDeposited = newDepositBalance;
-                EventSystem.OnLeadingPlayerUpdated(depositingOwnerId);
+                mWinningPlayerNum = playerNum;
+                EventSystem.OnLeadingPlayerUpdated(mWinningPlayerNum);
             }
         }
 
@@ -119,6 +124,26 @@ namespace Filibusters
             int playerNum = NetworkManager.GetPlayerNumber(
                 PhotonView.Find(deadPlayerViewId).owner);
             ++mDeaths[playerNum];
+        }
+
+        public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+        {
+            mActivePlayers = NetworkManager.GetActivePlayerNumbers();
+
+            int leavingPlayerNum = NetworkManager.GetPlayerNumber(otherPlayer);
+            if (leavingPlayerNum == mWinningPlayerNum)
+            {
+                mMostCoinsDeposited = 0;
+                for (int i = 0; i < GameConstants.MAX_ONLINE_PLAYERS_IN_GAME; i++)
+                {
+                    if (mActivePlayers[i] && mDeposits[i] > mMostCoinsDeposited)
+                    {
+                        mWinningPlayerNum = i;
+                        mMostCoinsDeposited = mDeposits[i];
+                    }
+                }
+                EventSystem.OnLeadingPlayerUpdated(mWinningPlayerNum);
+            }
         }
     }
 }

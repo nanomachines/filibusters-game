@@ -130,9 +130,9 @@ namespace Filibusters
             }
         }
 
-        void CheckIfLeading(int leadingOwnerId)
+        void CheckIfLeading(int leadingPlayerNum)
         {
-            if (GetComponentInParent<PhotonView>().ownerId == leadingOwnerId)
+            if (NetworkManager.GetPlayerNumber(PhotonView.Find(mPlayerViewId).owner) == leadingPlayerNum)
             {
                 foreach (var renderer in mRenderers)
                 {
