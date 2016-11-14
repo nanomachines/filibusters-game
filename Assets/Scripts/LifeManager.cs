@@ -63,7 +63,7 @@ namespace Filibusters
             }
             else
             {
-                EventSystem.OnPlayerHit(GetComponent<PhotonView>().viewID);
+                EventSystem.OnPlayerHit(GetComponent<PhotonView>().viewID, transform.position);
             }
             return false;
         }
@@ -93,7 +93,7 @@ namespace Filibusters
 
         private void Despawn()
         {
-            EventSystem.OnDeath(GetComponent<PhotonView>().viewID);
+            EventSystem.OnDeath(GetComponent<PhotonView>().viewID, transform.position);
             mAnimController.SetRenderersEnabled(false);
             mCollider.enabled = false;
             mPhysics.enabled = false;

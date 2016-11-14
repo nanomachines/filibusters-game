@@ -129,7 +129,7 @@ namespace Filibusters
             }
         }
 
-        void StartPlayerHitEffect(int playerViewId)
+        void StartPlayerHitEffect(int playerViewId, Vector3 pos)
         {
             StartCoroutine(PlayerHitEffect(playerViewId));
         }
