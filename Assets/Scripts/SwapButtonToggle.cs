@@ -38,7 +38,7 @@ namespace Filibusters
             }
         }
 
-        void DisableOnDeath(int playerViewId)
+        void DisableOnDeath(int playerViewId, Vector3 pos)
         {
             if (playerViewId == mPhotonView.viewID)
             {

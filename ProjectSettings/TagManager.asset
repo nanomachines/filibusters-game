@@ -50,6 +50,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Skyplane
+    uniqueID: 958701345
+    locked: 0
   - name: Background
     uniqueID: 516343863
     locked: 0

@@ -54,7 +54,7 @@ namespace Filibusters
                             GameObject go = PhotonNetwork.Instantiate(projectile.fx, xform.position, Quaternion.identity, 0);
                             go.transform.parent = gameObject.transform;
                         }
-                        EventSystem.OnWeaponFired(weaponId);
+                        EventSystem.OnWeaponFired(weaponId, transform.position);
                     }
                     // Weapon is out of ammo
                     else

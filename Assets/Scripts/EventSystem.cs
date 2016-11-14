@@ -4,13 +4,13 @@ namespace Filibusters
 {
     public static class EventSystem
     {
-        public delegate void DeathListener(int playerViewId);
+        public delegate void DeathListener(int playerViewId, Vector3 pos);
         public static event DeathListener OnDeathEvent;
-        public static void OnDeath(int playerViewId)
+        public static void OnDeath(int playerViewId, Vector3 pos)
         {
             if (OnDeathEvent != null)
             {
-                OnDeathEvent(playerViewId);
+                OnDeathEvent(playerViewId, pos);
             }
         }
 
@@ -24,13 +24,13 @@ namespace Filibusters
             }
         }
 
-        public delegate void PlayerHitListener(int playerViewId);
+        public delegate void PlayerHitListener(int playerViewId, Vector3 pos);
         public static event PlayerHitListener OnPlayerHitEvent;
-        public static void OnPlayerHit(int playerViewId)
+        public static void OnPlayerHit(int playerViewId, Vector3 pos)
         {
             if (OnPlayerHitEvent != null)
             {
-                OnPlayerHitEvent(playerViewId);
+                OnPlayerHitEvent(playerViewId, pos);
             }
         }
 
@@ -84,13 +84,13 @@ namespace Filibusters
             }
         }
 
-        public delegate void WeaponFireListener(GameConstants.WeaponId weaponId);
+        public delegate void WeaponFireListener(GameConstants.WeaponId weaponId, Vector3 pos);
         public static event WeaponFireListener OnWeaponFiredEvent;
-        public static void OnWeaponFired(GameConstants.WeaponId weaponId)
+        public static void OnWeaponFired(GameConstants.WeaponId weaponId, Vector3 pos)
         {
             if (OnWeaponFiredEvent != null)
             {
-                OnWeaponFiredEvent(weaponId);
+                OnWeaponFiredEvent(weaponId, pos);
             }
         }
 
@@ -171,6 +171,16 @@ namespace Filibusters
             if (OnDepositEndEvent != null)
             {
                 OnDepositEndEvent();
+            }
+        }
+
+        public delegate void LeadingPlayerUpdateListener(int leadingPlayerNum);
+        public static event LeadingPlayerUpdateListener OnLeadingPlayerUpdatedEvent;
+        public static void OnLeadingPlayerUpdated(int leadingPlayerNum)
+        {
+            if (OnLeadingPlayerUpdatedEvent != null)
+            {
+                OnLeadingPlayerUpdatedEvent(leadingPlayerNum);
             }
         }
     }

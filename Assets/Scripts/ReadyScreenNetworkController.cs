@@ -135,13 +135,15 @@ namespace Filibusters
 
         public void StartGame()
         {
-            GetComponent<PhotonView>().RPC("LaunchGame", PhotonTargets.All);
+            GetComponent<PhotonView>().RPC("LaunchGame", PhotonTargets.MasterClient);
         }
 
         [PunRPC]
         public void LaunchGame()
         {
             PhotonNetwork.LoadLevel(Scenes.MAIN);
+            PhotonNetwork.room.visible = false;
+            PhotonNetwork.room.open = false;
         }
     }
 }

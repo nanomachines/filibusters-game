@@ -20,7 +20,7 @@ namespace Filibusters
             EventSystem.OnDeathEvent -= TriggerExplosion;
         }
 
-        void TriggerExplosion(int playerViewId)
+        void TriggerExplosion(int playerViewId, Vector3 pos)
         {
             if (playerViewId == mPlayerViewId)
             {

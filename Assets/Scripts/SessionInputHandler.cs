@@ -1,6 +1,7 @@
 ﻿using Photon;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using System.Collections.Generic;
 using System.Collections;
@@ -25,7 +26,7 @@ namespace Filibusters
         void Start()
         {
             mSessionNameField = GetComponent<InputField>();
-            mSessionNameField.onValidateInput += delegate(string input, int charIndex, char addedChar) { return ValidateChar(addedChar); };
+            mSessionNameField.onValidateInput += delegate(string input, int charIndex, char addedChar) { return ValidateChar(charIndex, addedChar); };
             mErrorToaster = GetComponent<ErrorToast>();
         }
 
@@ -49,9 +50,9 @@ namespace Filibusters
             es.sendNavigationEvents = true;
         }
 
-        char ValidateChar(char newChar)
+        char ValidateChar(int charIndex, char newChar)
         {
-            if (char.IsWhiteSpace(newChar))
+            if (charIndex >= 8 || !char.IsLetterOrDigit(newChar))
             {
                 return '\0';
             }
@@ -79,7 +80,7 @@ namespace Filibusters
 
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel(Scenes.READY_SCREEN);
+            SceneManager.LoadScene(Scenes.READY_SCREEN);
         }
 
         public override void OnPhotonCreateRoomFailed(object[] codeAndMsg)

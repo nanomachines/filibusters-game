@@ -134,7 +134,7 @@ namespace Filibusters
             }
         }
 
-        public void ClearDeadPlayer(int viewId)
+        public void ClearDeadPlayer(int viewId, Vector3 pos)
         {
             if (mPlayersInZone.Contains(viewId))
             {
