@@ -16,11 +16,17 @@ namespace Filibusters
         private PlayerState mPlayerState;
 
         private int mPlayerViewId;
+        private int mPlayerNum;
         [SerializeField]
         private float mFlashTime;
         [SerializeField]
         private Color mFlashCol;
         private Color mOriginalCol;
+
+        [SerializeField]
+        private AnimationCurve mGlowCurve;
+        private bool mGlowing;
+        private float mTime;
 
         private bool mGrounded
         {
@@ -63,14 +69,19 @@ namespace Filibusters
             mPlayerState = GetComponent<PlayerState>();
 
             mPlayerViewId = GetComponentInParent<PhotonView>().viewID;
+            mPlayerNum = NetworkManager.GetPlayerNumber(PhotonView.Find(mPlayerViewId).owner);
             mOriginalCol = new Color(1f, 1f, 1f);
             EventSystem.OnPlayerHitEvent += StartPlayerHitEffect;
             EventSystem.OnLeadingPlayerUpdatedEvent += CheckIfLeading;
+
+            mGlowing = false;
+            mTime = 0f;
         }
 
         void OnDestroy()
         {
             EventSystem.OnPlayerHitEvent -= StartPlayerHitEffect;
+            EventSystem.OnLeadingPlayerUpdatedEvent -= CheckIfLeading;
         }
 
         // Update is called once per frame
@@ -92,6 +103,17 @@ namespace Filibusters
             mFrontArmAnim.SetBool("FacingRight", mFacingRight);
             mFrontArmAnim.SetInteger("Aim", mAimingDir);
             mFrontArmAnim.SetInteger("WeaponId", mWeaponId);
+
+            if (mGlowing)
+            {
+                var thickness = mGlowCurve.Evaluate(mTime);
+                mTime += Time.deltaTime;
+
+                foreach (var renderer in mRenderers)
+                {
+                    renderer.material.SetFloat("_OutlineThickness", thickness);
+                }
+            }
 
             foreach (var renderer in mRenderers)
             {
@@ -132,8 +154,10 @@ namespace Filibusters
 
         void CheckIfLeading(int leadingPlayerNum)
         {
-            if (NetworkManager.GetPlayerNumber(PhotonView.Find(mPlayerViewId).owner) == leadingPlayerNum)
+            if (mPlayerNum == leadingPlayerNum)
             {
+                mGlowing = true;
+                mTime = 0f;
                 foreach (var renderer in mRenderers)
                 {
                     renderer.material.SetFloat("_OutlineThickness", 3);
@@ -145,6 +169,7 @@ namespace Filibusters
                 {
                     renderer.material.SetFloat("_OutlineThickness", 0);
                 }
+                mGlowing = false;
             }
         }
     }
