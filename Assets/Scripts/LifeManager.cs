@@ -63,7 +63,7 @@ namespace Filibusters
             }
             else
             {
-                EventSystem.OnPlayerHit(GetComponent<PhotonView>().viewID);
+                EventSystem.OnPlayerHit(GetComponent<PhotonView>().viewID, transform.position);
             }
             return false;
         }

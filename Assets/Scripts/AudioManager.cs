@@ -96,7 +96,6 @@ namespace Filibusters
         {
             EventSystem.OnDeathEvent += (int playerViewId, Vector3 pos) =>
             {
-                //mSource.PlayOneShot(mPlayerDeath);
                 AudioSource.PlayClipAtPoint(mPlayerDeath, pos);
             };
 
@@ -187,7 +186,7 @@ namespace Filibusters
                 }
             };
 
-            EventSystem.OnPlayerHitEvent += (int playerViewId) =>
+            EventSystem.OnPlayerHitEvent += (int playerViewId, Vector3 pos) =>
             {
                 int playerNumber = NetworkManager.GetPlayerNumber(PhotonView.Find(playerViewId).owner);
                 AudioClip grunt = null;
@@ -202,8 +201,7 @@ namespace Filibusters
                         grunt = mMaleGrunts[Random.Range(0, mMaleGrunts.Length)];
                         break;
                 }
-                //mSource.PlayOneShot(grunt);
-                AudioSource.PlayClipAtPoint(grunt, transform.position);
+                AudioSource.PlayClipAtPoint(grunt, pos);
             };
         }
 
@@ -230,7 +228,6 @@ namespace Filibusters
                     clip = mUseLibelAndSlander;
                     break;
             }
-            //mSource.PlayOneShot(clip, volume);
             AudioSource.PlayClipAtPoint(clip, pos, volume);
         }
     }

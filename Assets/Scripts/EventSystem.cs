@@ -24,13 +24,13 @@ namespace Filibusters
             }
         }
 
-        public delegate void PlayerHitListener(int playerViewId);
+        public delegate void PlayerHitListener(int playerViewId, Vector3 pos);
         public static event PlayerHitListener OnPlayerHitEvent;
-        public static void OnPlayerHit(int playerViewId)
+        public static void OnPlayerHit(int playerViewId, Vector3 pos)
         {
             if (OnPlayerHitEvent != null)
             {
-                OnPlayerHitEvent(playerViewId);
+                OnPlayerHitEvent(playerViewId, pos);
             }
         }
 
