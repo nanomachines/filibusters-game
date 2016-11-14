@@ -173,5 +173,15 @@ namespace Filibusters
                 OnDepositEndEvent();
             }
         }
+
+        public delegate void LeadingPlayerUpdateListener(int leadingOwnerId);
+        public static event LeadingPlayerUpdateListener OnLeadingPlayerUpdatedEvent;
+        public static void OnLeadingPlayerUpdated(int leadingOwnerId)
+        {
+            if (OnLeadingPlayerUpdatedEvent != null)
+            {
+                OnLeadingPlayerUpdatedEvent(leadingOwnerId);
+            }
+        }
     }
 }

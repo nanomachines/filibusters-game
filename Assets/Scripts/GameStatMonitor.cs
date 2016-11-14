@@ -11,6 +11,7 @@ namespace Filibusters
         int[] mDeaths;
 
         bool mDisplayGUI;
+        int mMostCoinsDeposited;
 
         void Start()
         {
@@ -25,6 +26,7 @@ namespace Filibusters
             EventSystem.OnDeathEvent += IncrementDeathCount;
 
             mDisplayGUI = false;
+            mMostCoinsDeposited = 0;
         }
 
         void Update()
@@ -97,6 +99,12 @@ namespace Filibusters
             int playerNum = NetworkManager.GetPlayerNumber(
                 PhotonPlayer.Find(depositingOwnerId));
             mDeposits[playerNum] = newDepositBalance;
+
+            if (newDepositBalance > mMostCoinsDeposited)
+            {
+                mMostCoinsDeposited = newDepositBalance;
+                EventSystem.OnLeadingPlayerUpdated(depositingOwnerId);
+            }
         }
 
         void IncrementKillCount(int killerOwnerId)

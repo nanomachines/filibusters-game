@@ -65,6 +65,7 @@ namespace Filibusters
             mPlayerViewId = GetComponentInParent<PhotonView>().viewID;
             mOriginalCol = new Color(1f, 1f, 1f);
             EventSystem.OnPlayerHitEvent += StartPlayerHitEffect;
+            EventSystem.OnLeadingPlayerUpdatedEvent += CheckIfLeading;
         }
 
         void OnDestroy()
@@ -125,6 +126,24 @@ namespace Filibusters
                 foreach (var renderer in mRenderers)
                 {
                     renderer.color = mOriginalCol;
+                }
+            }
+        }
+
+        void CheckIfLeading(int leadingOwnerId)
+        {
+            if (GetComponentInParent<PhotonView>().ownerId == leadingOwnerId)
+            {
+                foreach (var renderer in mRenderers)
+                {
+                    renderer.material.SetFloat("_OutlineThickness", 3);
+                }
+            }
+            else
+            {
+                foreach (var renderer in mRenderers)
+                {
+                    renderer.material.SetFloat("_OutlineThickness", 0);
                 }
             }
         }
