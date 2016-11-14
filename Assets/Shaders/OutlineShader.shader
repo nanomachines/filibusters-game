@@ -3,7 +3,7 @@
 	Properties
 	{
 		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
-	_Color("Tint", Color) = (1,1,1,1)
+		_Color("Tint", Color) = (1,1,1,1)
 		_OutlineColor("Outline Color", Color) = (1, 0, 0, 1)
 		_OutlineThickness("Outline Thickness", Float) = 3
 		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
@@ -50,9 +50,6 @@
 	};
 
 	fixed4 _Color;
-	fixed4 _OutlineColor;
-	float _OutlineThickness;
-	float alpha;
 
 	v2f vert(appdata_t IN)
 	{
