@@ -106,7 +106,7 @@ namespace Filibusters
             ++mKills[playerNum];
         }
 
-        void IncrementDeathCount(int deadPlayerViewId)
+        void IncrementDeathCount(int deadPlayerViewId, Vector3 pos)
         {
             int playerNum = NetworkManager.GetPlayerNumber(
                 PhotonView.Find(deadPlayerViewId).owner);

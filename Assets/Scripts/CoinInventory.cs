@@ -61,7 +61,7 @@ namespace Filibusters
             }
         }
 
-        public void ResetCoins(int playerViewId)
+        public void ResetCoins(int playerViewId, Vector3 pos)
         {
             if (playerViewId == mPhotonView.viewID)
             {

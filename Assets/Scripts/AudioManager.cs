@@ -94,9 +94,10 @@ namespace Filibusters
 
         private void RegisterEvents()
         {
-            EventSystem.OnDeathEvent += (int playerViewId) =>
+            EventSystem.OnDeathEvent += (int playerViewId, Vector3 pos) =>
             {
-                mSource.PlayOneShot(mPlayerDeath);
+                //mSource.PlayOneShot(mPlayerDeath);
+                AudioSource.PlayClipAtPoint(mPlayerDeath, pos);
             };
 
             EventSystem.OnJumpEvent += () =>
@@ -144,10 +145,11 @@ namespace Filibusters
                 }
             };
 
-            EventSystem.OnWeaponFiredEvent += (WeaponId weaponId) =>
+            EventSystem.OnWeaponFiredEvent += (WeaponId weaponId, Vector3 pos) =>
             {
-                PhotonNetwork.RaiseEvent((byte)PhotonEvents.FIRE_EVT, weaponId, false, null);
-                WeaponFireCallback(weaponId);
+                object[] content = new object[] { weaponId, pos };
+                PhotonNetwork.RaiseEvent((byte)PhotonEvents.FIRE_EVT, content, false, null);
+                WeaponFireCallback(weaponId, pos);
             };
 
             EventSystem.OnWeaponMisfiredEvent += (WeaponId weaponId) =>
@@ -176,10 +178,12 @@ namespace Filibusters
 
             PhotonNetwork.OnEventCall += (byte evtCode, object contents, int senderId) =>
             {
-                var weaponId = (WeaponId)contents;
+                object[] objects = (object[])contents;
+                var weaponId = (WeaponId)objects[0];
+                var pos = (Vector3)objects[1];
                 if ((PhotonEvents)evtCode == PhotonEvents.FIRE_EVT)
                 {
-                    WeaponFireCallback(weaponId);
+                    WeaponFireCallback(weaponId, pos);
                 }
             };
 
@@ -198,11 +202,12 @@ namespace Filibusters
                         grunt = mMaleGrunts[Random.Range(0, mMaleGrunts.Length)];
                         break;
                 }
-                mSource.PlayOneShot(grunt);
+                //mSource.PlayOneShot(grunt);
+                AudioSource.PlayClipAtPoint(grunt, transform.position);
             };
         }
 
-        void WeaponFireCallback(WeaponId weaponId)
+        void WeaponFireCallback(WeaponId weaponId, Vector3 pos)
         {
             AudioClip clip = null;
             float volume = 1.0f;
@@ -225,7 +230,8 @@ namespace Filibusters
                     clip = mUseLibelAndSlander;
                     break;
             }
-            mSource.PlayOneShot(clip, volume);
+            //mSource.PlayOneShot(clip, volume);
+            AudioSource.PlayClipAtPoint(clip, pos, volume);
         }
     }
 }
