@@ -35,7 +35,7 @@ namespace Filibusters
 
         void StartAnimation(int ownerId, int newDepositBalance)
         {
-            if (NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId)) == mPlayerNum)
+            if (mDepositText.IsActive() && NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId)) == mPlayerNum)
             {
                 StartCoroutine(AnimateText());
             }
