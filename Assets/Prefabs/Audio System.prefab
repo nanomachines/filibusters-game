@@ -129,7 +129,8 @@ MonoBehaviour:
   mMainGameBackgroundMusic: {fileID: 8300000, guid: c17a29a440aae4745bf24ebb0713563f,
     type: 3}
   mMenuMusic: {fileID: 8300000, guid: 77ac8045b5856eb4b8a7c52ed884616d, type: 3}
-  mTimeBetweenNextSong: 0.25
+  mYouLoseMusic: {fileID: 8300000, guid: 4ffd19b9e3c564141904672e1012af12, type: 3}
+  mYouWinMusic: {fileID: 8300000, guid: cb0981aa500588c4aa0362d495209584, type: 3}
   mPlayerDeath: {fileID: 8300000, guid: 99c1c39cd50068845abdc9b912b3511f, type: 3}
   mPlayerJump: {fileID: 8300000, guid: 030a7fe3d432a854a80ff4d6e2680c93, type: 3}
   mCoinCollection: {fileID: 8300000, guid: fa90d44073c167c4baa187ab32f5fc69, type: 3}
