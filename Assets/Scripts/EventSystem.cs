@@ -174,6 +174,16 @@ namespace Filibusters
             }
         }
 
+        public delegate void GameOverJiggleListener(bool isWinner);
+        public static event GameOverJiggleListener OnGameOverJiggleEvent;
+        public static void OnGameOverJiggle(bool isWinner)
+        {
+            if (OnGameOverJiggleEvent != null)
+            {
+                OnGameOverJiggleEvent(isWinner);
+            }
+        }
+
         public delegate void LeadingPlayerUpdateListener(int leadingPlayerNum);
         public static event LeadingPlayerUpdateListener OnLeadingPlayerUpdatedEvent;
         public static void OnLeadingPlayerUpdated(int leadingPlayerNum)
