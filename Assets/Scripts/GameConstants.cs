@@ -80,7 +80,6 @@ namespace Filibusters
         public static readonly string HOW_TO_PLAY = "Scenes/HowToPlay";
         public static readonly string READY_SCREEN = "Scenes/ReadyScreen";
         public static readonly string MAIN = "Scenes/Main";
-        public static readonly string GAME_OVER = "Scenes/GameOver";
     }
 
     public struct WeaponAttributes

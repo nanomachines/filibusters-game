@@ -14,8 +14,7 @@ namespace Filibusters
             ScenesRoot + Scenes.JOIN_GAME + SceneSuffix,
             ScenesRoot + Scenes.HOW_TO_PLAY + SceneSuffix,
             ScenesRoot + Scenes.READY_SCREEN + SceneSuffix,
-            ScenesRoot + Scenes.MAIN + SceneSuffix,
-            ScenesRoot + Scenes.GAME_OVER + SceneSuffix
+            ScenesRoot + Scenes.MAIN + SceneSuffix
         };
 
         [MenuItem("Builds/Build Both")]

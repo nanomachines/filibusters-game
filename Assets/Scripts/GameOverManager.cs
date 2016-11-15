@@ -1,15 +1,41 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 namespace Filibusters
 {
     public class GameOverManager : MonoBehaviour
     {
+        [SerializeField]
+        private float mGameOverSeconds;
+        [SerializeField]
+        private GameObject mResultsOverlay;
+        [SerializeField]
+        private GameObject[] mPotentialWinners;
+        [SerializeField]
+        private GameObject[] mInactivePanels;
+        [SerializeField]
+        private Text[] mDepositTexts;
+        [SerializeField]
+        private Text[] mCoinTexts;
+        [SerializeField]
+        private Text[] mKillTexts;
+        [SerializeField]
+        private Text[] mDeathTexts;
+
+        private bool[] mActivePlayers;
+        private GameObject mVotesCanvas;
+        private GameStatMonitor mStatMonitor;
+
+        private bool mGameEnded;
         private PhotonView mPhotonView;
 
-        // Use this for initialization
         void Start()
         {
+            mVotesCanvas = GameObject.Find("Votes Canvas");
+            mStatMonitor = GetComponent<GameStatMonitor>();
+
+            mGameEnded = false;
             mPhotonView = GetComponent<PhotonView>();
             EventSystem.OnGameOverEvent += OnGameOver;
         }
@@ -21,14 +47,41 @@ namespace Filibusters
         
         void OnGameOver(int winningActorId)
         {
-            mPhotonView.RPC("ShowGameOverScreen", PhotonTargets.All, winningActorId);
+            // Ensures that stats are not updated after the game ends
+            if (!mGameEnded)
+            {
+                mGameEnded = true;
+                mPhotonView.RPC("ShowGameOverScreen", PhotonTargets.All, winningActorId - 1);
+            }
         }
 
         [PunRPC]
         public void ShowGameOverScreen(int winningActorId)
         {
-            GameGlobals.LocalPlayerWonGame = winningActorId == PhotonNetwork.player.ID;
-            PhotonNetwork.LoadLevel(Scenes.GAME_OVER);
-        } 
+            mVotesCanvas.SetActive(false);
+            mResultsOverlay.SetActive(true);
+            mPotentialWinners[winningActorId].SetActive(true);
+
+            mActivePlayers = NetworkManager.GetActivePlayerNumbers();
+            for (int i = 0; i < GameConstants.MAX_ONLINE_PLAYERS_IN_GAME; i++)
+            {
+                if (mActivePlayers[i])
+                {
+                    mInactivePanels[i].SetActive(false);
+                    mDepositTexts[i].text = mStatMonitor.GetDepositCount(i).ToString();
+                    mCoinTexts[i].text = mStatMonitor.GetCollectionCount(i).ToString();
+                    mKillTexts[i].text = mStatMonitor.GetKillCount(i).ToString();
+                    mDeathTexts[i].text = mStatMonitor.GetDeathCount(i).ToString();
+                }
+            }
+            StartCoroutine(WaitAndLoad());
+            EventSystem.OnGameOverJiggle(winningActorId + 1 == PhotonNetwork.player.ID);
+        }
+
+        IEnumerator WaitAndLoad()
+        {
+            yield return new WaitForSeconds(mGameOverSeconds);
+            Utility.BackToStartMenu();
+        }
     }
 }

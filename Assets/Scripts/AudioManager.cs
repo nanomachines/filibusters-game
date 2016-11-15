@@ -17,8 +17,12 @@ namespace Filibusters
         [SerializeField]
         private AudioClip mMenuMusic;
         [SerializeField]
-        private float mTimeBetweenNextSong;
+        private AudioClip mYouLoseMusic;
+        [SerializeField]
+        private AudioClip mYouWinMusic;
+
         private float mTime = 0f;
+        private bool mGameOver = false;
 
         [SerializeField]
         private AudioClip mPlayerDeath;
@@ -86,6 +90,8 @@ namespace Filibusters
 
         private void PlayBackgroundMusicForScene(Scene s)
         {
+            mGameOver = false;
+            mSource.loop = true;
             if (Utility.AreSceneNamesEqual(s.name, Scenes.MAIN))
             {
                 StartCoroutine(FadeAndPlayMusic(mMainGameBackgroundMusic));
@@ -106,7 +112,6 @@ namespace Filibusters
                 float volume = Mathf.Lerp(1f, 0f, mTime);
                 mSource.volume = volume;
             }
-            yield return new WaitForSeconds(mTimeBetweenNextSong);
             mSource.volume = 1f;
             mSource.clip = clip;
             mSource.Play();
@@ -222,6 +227,21 @@ namespace Filibusters
                         break;
                 }
                 AudioSource.PlayClipAtPoint(grunt, pos);
+            };
+
+            EventSystem.OnGameOverJiggleEvent += (bool isWinner) =>
+            {
+                if (!mGameOver)
+                {
+                    mGameOver = true;
+                    mSource.loop = false;
+                    AudioClip clip = mYouLoseMusic;
+                    if (isWinner)
+                    {
+                        clip = mYouWinMusic;
+                    }
+                    StartCoroutine(FadeAndPlayMusic(clip));
+                }
             };
         }
 

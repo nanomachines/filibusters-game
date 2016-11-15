@@ -14,16 +14,21 @@ namespace Filibusters
         [SerializeField]
         private UnityEngine.UI.Button mNoButton;
 
+        private bool mGameOver;
+
         void Start() 
         {
             mOverlayEnabled = false;
             mYesButton.onClick.AddListener(() => { Utility.BackToStartMenu(); });
             mNoButton.onClick.AddListener(() => { ToggleOverlay(false); });
+
+            mGameOver = false;
+            EventSystem.OnGameOverEvent += (int winningActorId) => { mGameOver = true; };
         }
         
         void Update() 
         {
-            if (InputWrapper.Instance.CancelPressed)
+            if (InputWrapper.Instance.CancelPressed && !mGameOver)
             {
                 ToggleOverlay(!mOverlayEnabled);
             }

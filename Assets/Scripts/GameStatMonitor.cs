@@ -126,6 +126,26 @@ namespace Filibusters
             ++mDeaths[playerNum];
         }
 
+        public int GetDepositCount(int playerNum)
+        {
+            return mDeposits[playerNum];
+        }
+
+        public int GetCollectionCount(int playerNum)
+        {
+            return mTotalCoins[playerNum];
+        }
+
+        public int GetKillCount(int playerNum)
+        {
+            return mKills[playerNum];
+        }
+
+        public int GetDeathCount(int playerNum)
+        {
+            return mDeaths[playerNum];
+        }
+
         public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
         {
             mActivePlayers = NetworkManager.GetActivePlayerNumbers();
