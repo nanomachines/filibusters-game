@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014049288254}
   - 114: {fileID: 114000013358419750}
-  - 114: {fileID: 114000010587861500}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -41,17 +40,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010587861500
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010954415988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bbdf4222829b574eb5fcd68289f28eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000013358419750
 MonoBehaviour:
   m_ObjectHideFlags: 1
