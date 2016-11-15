@@ -14,6 +14,11 @@ namespace Filibusters
 
         [SerializeField]
         private AudioClip mMainGameBackgroundMusic;
+        [SerializeField]
+        private AudioClip mMenuMusic;
+        [SerializeField]
+        private float mTimeBetweenNextSong;
+        private float mTime = 0f;
 
         [SerializeField]
         private AudioClip mPlayerDeath;
@@ -83,13 +88,28 @@ namespace Filibusters
         {
             if (Utility.AreSceneNamesEqual(s.name, Scenes.MAIN))
             {
-                mSource.clip = mMainGameBackgroundMusic;
-                mSource.Play();
+                StartCoroutine(FadeAndPlayMusic(mMainGameBackgroundMusic));
             }
-            else
+            else if (mSource.clip != mMenuMusic)
             {
-                mSource.clip = null;
+                StartCoroutine(FadeAndPlayMusic(mMenuMusic));
             }
+        }
+
+        private IEnumerator FadeAndPlayMusic(AudioClip clip)
+        {
+            mTime = 0f;
+            while (mSource.volume > 0f)
+            {
+                yield return new WaitForFixedUpdate();
+                mTime += Time.fixedDeltaTime;
+                float volume = Mathf.Lerp(1f, 0f, mTime);
+                mSource.volume = volume;
+            }
+            yield return new WaitForSeconds(mTimeBetweenNextSong);
+            mSource.volume = 1f;
+            mSource.clip = clip;
+            mSource.Play();
         }
 
         private void RegisterEvents()
