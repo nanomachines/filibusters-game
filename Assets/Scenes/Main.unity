@@ -1662,6 +1662,7 @@ GameObject:
   - 222: {fileID: 80754906}
   - 114: {fileID: 80754905}
   - 114: {fileID: 80754904}
+  - 114: {fileID: 80754907}
   m_Layer: 5
   m_Name: No Button
   m_TagString: Untagged
@@ -1707,9 +1708,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7213996, g: 1, b: 0.6985294, a: 1}
-    m_PressedColor: {r: 0.12629758, g: 0.53676474, b: 0.33294654, a: 1}
+    m_NormalColor: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1748,8 +1749,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 053588d35ee9147e2be088c916c852f2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1762,6 +1763,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 80754902}
+--- !u!114 &80754907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80754902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee37a1c8db7a348a565daacad79c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPressedSprite: {fileID: 21300000, guid: 082fc678b05f243c0ac89a2795e6a51e, type: 3}
 --- !u!1 &83255483
 GameObject:
   m_ObjectHideFlags: 0
@@ -23016,6 +23029,7 @@ GameObject:
   - 224: {fileID: 1648925723}
   - 222: {fileID: 1648925725}
   - 114: {fileID: 1648925724}
+  - 114: {fileID: 1648925726}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -23062,7 +23076,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 154f63f23182d4290980637ff505b610, type: 3}
-    m_FontSize: 25
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -23080,6 +23094,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1648925722}
+--- !u!114 &1648925726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648925722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!4 &1653335213
 Transform:
   m_ObjectHideFlags: 0
@@ -28777,6 +28805,7 @@ GameObject:
   - 222: {fileID: 1973888332}
   - 114: {fileID: 1973888331}
   - 114: {fileID: 1973888330}
+  - 114: {fileID: 1973888333}
   m_Layer: 5
   m_Name: Yes Button
   m_TagString: Untagged
@@ -28822,9 +28851,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7213996, g: 1, b: 0.6985294, a: 1}
-    m_PressedColor: {r: 0.12629758, g: 0.53676474, b: 0.33294654, a: 1}
+    m_NormalColor: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -28863,8 +28892,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 053588d35ee9147e2be088c916c852f2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -28877,6 +28906,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1973888328}
+--- !u!114 &1973888333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1973888328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee37a1c8db7a348a565daacad79c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPressedSprite: {fileID: 21300000, guid: 082fc678b05f243c0ac89a2795e6a51e, type: 3}
 --- !u!1 &1977999654
 GameObject:
   m_ObjectHideFlags: 0
@@ -31903,6 +31944,7 @@ GameObject:
   - 224: {fileID: 2141014658}
   - 222: {fileID: 2141014660}
   - 114: {fileID: 2141014659}
+  - 114: {fileID: 2141014661}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -31949,7 +31991,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 154f63f23182d4290980637ff505b610, type: 3}
-    m_FontSize: 25
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -31967,6 +32009,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141014657}
+--- !u!114 &2141014661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2141014657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2143357266
 GameObject:
   m_ObjectHideFlags: 0
