@@ -109,10 +109,10 @@ namespace Filibusters
             {
                 yield return new WaitForFixedUpdate();
                 mTime += Time.fixedDeltaTime;
-                float volume = Mathf.Lerp(1f, 0f, mTime);
+                float volume = Mathf.Lerp(.3f, 0f, mTime);
                 mSource.volume = volume;
             }
-            mSource.volume = 1f;
+            mSource.volume = .3f;
             mSource.clip = clip;
             mSource.Play();
         }
@@ -197,7 +197,7 @@ namespace Filibusters
                         misfire = mMisfireLibelAndSlander;
                         break;
                 }
-                mSource.PlayOneShot(misfire);
+                mSource.PlayOneShot(misfire, 0.5f);
             };
 
             PhotonNetwork.OnEventCall += (byte evtCode, object contents, int senderId) =>
@@ -248,7 +248,6 @@ namespace Filibusters
         void WeaponFireCallback(WeaponId weaponId, Vector3 pos)
         {
             AudioClip clip = null;
-            float volume = 1.0f;
             switch (weaponId)
             {
                 case WeaponId.DARK_HORSE:
@@ -256,7 +255,6 @@ namespace Filibusters
                     break;
                 case WeaponId.VETO:
                     clip = mUseVeto;
-                    volume = 0.5f;
                     break;
                 case WeaponId.MAGIC_BULLET:
                     clip = mUseMagicBullet;
@@ -268,7 +266,7 @@ namespace Filibusters
                     clip = mUseLibelAndSlander;
                     break;
             }
-            AudioSource.PlayClipAtPoint(clip, pos, volume);
+            AudioSource.PlayClipAtPoint(clip, pos);
         }
     }
 }
