@@ -10497,6 +10497,11 @@ Prefab:
       propertyPath: mMaleGrunts.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 624b1a930b6b22b4f809bcb21cbe5456, type: 3}
+    - target: {fileID: 114000012724654780, guid: fb202c0e4daa57e47a02a85da90ea96e,
+        type: 2}
+      propertyPath: mMainGameBackgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 4baabcebc34b6d644a4a988f1c371bd6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb202c0e4daa57e47a02a85da90ea96e, type: 2}
   m_IsPrefabParent: 0
