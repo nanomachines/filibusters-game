@@ -77,30 +77,6 @@ namespace Filibusters
                 mAveragePlayerDistanceToSpawn[i].order = i;
             }
 
-            /*
-            int furthestSpawnIndex = 0;
-            float furthestSpawnAvgDistance = mAveragePlayerDistanceToSpawn[0];
-            for (int i = 1; i < mAveragePlayerDistanceToSpawn.Length; ++i)
-            {
-                float nextAverageDistance = mAveragePlayerDistanceToSpawn[i];
-                if (furthestSpawnAvgDistance < nextAverageDistance)
-                {
-                    furthestSpawnIndex = i;
-                    furthestSpawnAvgDistance = nextAverageDistance;
-                }
-
-                else if (Mathf.Abs(furthestSpawnAvgDistance - nextAverageDistance) < Mathf.Epsilon)
-                {
-                    if (Random.Range(0, 1f) < 0.5f)
-                    {
-                        furthestSpawnIndex = i;
-                        furthestSpawnAvgDistance = nextAverageDistance;
-                    }
-                }
-            }
-
-            return SpawnPoints[furthestSpawnIndex].transform.position;
-            */
             // sort in reverse order based on distance
             System.Array.Sort(mAveragePlayerDistanceToSpawn, (x, y) => y.distance.CompareTo(x.distance));
 
