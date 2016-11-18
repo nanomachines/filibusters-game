@@ -60,6 +60,7 @@ namespace Filibusters
                 return SpawnPoints[Random.Range(0, SpawnPoints.Length)].transform.position;
             }
 
+            // Get the average distance of each player to each spawn point (except for the player being respawned)
             for (int i = 0; i < SpawnPoints.Length; ++i)
             {
                 float avgDistance = 0;
@@ -80,6 +81,8 @@ namespace Filibusters
             // sort in reverse order based on distance
             System.Array.Sort(mAveragePlayerDistanceToSpawn, (x, y) => y.distance.CompareTo(x.distance));
 
+            // get one of the 3 furthest spawn points best on probability distribution
+            // 50% chance to be at the furthest, 30% chance for the second furthest, 20% chance for the third
             int roll = Random.Range(0, 10);
             int spawnIndex;
             if (roll < 5)
