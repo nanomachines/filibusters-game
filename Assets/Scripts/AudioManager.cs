@@ -23,6 +23,7 @@ namespace Filibusters
 
         private float mTime = 0f;
         private bool mGameOver = false;
+        private int mLeadingPlayer = -1;
 
         [SerializeField]
         private AudioClip mPlayerDeath;
@@ -65,6 +66,8 @@ namespace Filibusters
 
         public AudioClip[] mMaleGrunts;
         public AudioClip[] mFemaleGrunts;
+
+        public AudioClip[] mLeadChange;
 
         // Use this for initialization
         void Start()
@@ -241,6 +244,15 @@ namespace Filibusters
                         clip = mYouWinMusic;
                     }
                     StartCoroutine(FadeAndPlayMusic(clip));
+                }
+            };
+
+            EventSystem.OnLeadingPlayerUpdatedEvent += (int leadingPlayer) =>
+            {
+                if (leadingPlayer != mLeadingPlayer)
+                {
+                    mLeadingPlayer = leadingPlayer;
+                    mSource.PlayOneShot(mLeadChange[leadingPlayer]);
                 }
             };
         }
