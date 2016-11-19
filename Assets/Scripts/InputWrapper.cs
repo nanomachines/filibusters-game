@@ -75,8 +75,7 @@ namespace Filibusters
 
             mLeftYInput = AnyJoysticksConnected() ? Input.GetAxis(LeftYJoystickInputName) : Input.GetAxis(LeftYInputName);
             mFallInput = Mathf.Sign(mLeftYInput) == -1f;
-            mJumpInput = (mLeftYInput > Mathf.Epsilon) || Input.GetButton(Xbox360AButtonName) ||
-                Input.GetAxis(Xbox360LeftTriggerName) > Mathf.Epsilon;
+            mJumpInput = Input.GetAxis(JumpInputName) > Mathf.Epsilon;
 
             /*
              * Get Right "Stick"
@@ -119,6 +118,7 @@ namespace Filibusters
         public GameObject mLocalReadyRoomCharacter { private get; set; }
 
         // Private Fields
+        public static readonly string JumpInputName = "Jump";
         public static readonly string LeftXInputName = "Left-X";
         public static readonly string LeftYInputName = "Left-Y";
         public static readonly string LeftYJoystickInputName = "Left-Y-Joystick";
