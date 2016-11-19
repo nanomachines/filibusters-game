@@ -17,6 +17,12 @@ namespace Filibusters
         {
             mButtonImage = GetComponent<Image>();
             mOriginalSprite = mButtonImage.sprite;
+            EventSystem.OnHostOrJoinFailedEvent += OnCancel;
+        }
+
+        void OnDestroy()
+        {
+            EventSystem.OnHostOrJoinFailedEvent -= OnCancel;
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -32,6 +38,11 @@ namespace Filibusters
         public void OnSubmit(BaseEventData eventData)
         {
             mButtonImage.sprite = mPressedSprite;
+        }
+
+        public void OnCancel()
+        {
+            mButtonImage.sprite = mOriginalSprite;
         }
     }
 }

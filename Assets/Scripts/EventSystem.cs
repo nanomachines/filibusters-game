@@ -193,5 +193,15 @@ namespace Filibusters
                 OnLeadingPlayerUpdatedEvent(leadingPlayerNum);
             }
         }
+
+        public delegate void HostOrJoinFailedListener();
+        public static event HostOrJoinFailedListener OnHostOrJoinFailedEvent;
+        public static void OnHostOrJoinFailed()
+        {
+            if (OnHostOrJoinFailedEvent != null)
+            {
+                OnHostOrJoinFailedEvent();
+            }
+        }
     }
 }
