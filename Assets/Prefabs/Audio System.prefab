@@ -174,8 +174,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c587db923e25a2e4588a2bb27033d35e, type: 3}
   - {fileID: 8300000, guid: 5dc21139a6846fb448edd1c8460c27ca, type: 3}
   - {fileID: 8300000, guid: 12288148b7696c640ab72fbdee821b9f, type: 3}
-  mLeadChange:
+  mLeadChangeCalls:
   - {fileID: 8300000, guid: 84fe94c10cab8f444bd3d5edaead1dcc, type: 3}
   - {fileID: 8300000, guid: 075fbd83436136541a57dd5e5d6b80b7, type: 3}
   - {fileID: 8300000, guid: 0045c5edb3e8b15488170614750d4625, type: 3}
   - {fileID: 8300000, guid: f6f04e095b887e04698337941a919a2d, type: 3}
+  mTrumpingCalls:
+  - {fileID: 8300000, guid: 275d9870671071d48bc1b3ce72ba74e7, type: 3}
+  - {fileID: 8300000, guid: 4414b3ac720b3df41877bd40bb96df2c, type: 3}
+  - {fileID: 8300000, guid: fe8834889a6138d428fe32ed019a0ba0, type: 3}
+  - {fileID: 8300000, guid: d5cefde3c2dbee54084c7e97a6741610, type: 3}
+  mAboutToWinCalls:
+  - {fileID: 8300000, guid: cc7c31db00cdb114587c3c98511271bf, type: 3}
+  - {fileID: 8300000, guid: 5387ad2c761cb324f80738a620bf7934, type: 3}
+  - {fileID: 8300000, guid: 9e8ab86ff4e5e114b8dd1f56ebd1e08b, type: 3}
+  - {fileID: 8300000, guid: bcd0a28499cae7d40b06bcc8796c926f, type: 3}

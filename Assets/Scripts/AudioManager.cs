@@ -23,7 +23,6 @@ namespace Filibusters
 
         private float mTime = 0f;
         private bool mGameOver = false;
-        private int mLeadingPlayer = -1;
 
         [SerializeField]
         private AudioClip mPlayerDeath;
@@ -67,7 +66,11 @@ namespace Filibusters
         public AudioClip[] mMaleGrunts;
         public AudioClip[] mFemaleGrunts;
 
-        public AudioClip[] mLeadChange;
+        public AudioClip[] mLeadChangeCalls;
+        public AudioClip[] mTrumpingCalls;
+        public AudioClip[] mAboutToWinCalls;
+        private int mLeadingPlayer = -1;
+        private static readonly int ABOUT_TO_WIN_LIMIT = (int)(GameConstants.AMOUNT_OF_COINS_TO_WIN * .75f);
 
         // Use this for initialization
         void Start()
@@ -143,6 +146,15 @@ namespace Filibusters
             EventSystem.OnCoinDepositedEvent += (int ownerId, int newDepositBalance) =>
             {
                 mSource.PlayOneShot(mCoinDeposited);
+                int playerNumber = NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId));
+                if (newDepositBalance == GameConstants.AMOUNT_OF_COINS_TO_WIN - 1)
+                {
+                    mSource.PlayOneShot(mAboutToWinCalls[playerNumber]);
+                }
+                else if (newDepositBalance > ABOUT_TO_WIN_LIMIT)
+                {
+                    mSource.PlayOneShot(mTrumpingCalls[playerNumber]);
+                }
             };
 
             EventSystem.OnEquipWeaponEvent += (int actorId, WeaponId weaponId) =>
@@ -252,7 +264,7 @@ namespace Filibusters
                 if (leadingPlayer != mLeadingPlayer)
                 {
                     mLeadingPlayer = leadingPlayer;
-                    mSource.PlayOneShot(mLeadChange[leadingPlayer]);
+                    mSource.PlayOneShot(mLeadChangeCalls[leadingPlayer]);
                 }
             };
         }
