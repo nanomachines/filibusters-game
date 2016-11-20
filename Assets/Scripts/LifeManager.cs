@@ -104,7 +104,7 @@ namespace Filibusters
         private IEnumerator RespawnTimer()
         {
             yield return new WaitForSeconds(SecondsToRespawn);
-            Vector3 respawnPos = SpawnManager.Instance.GetRandomSpawnPoint();
+            Vector3 respawnPos = SpawnManager.Instance.GetFurthestAverageSpawnPoint(gameObject);
             mPhotonView.RPC("Respawn", PhotonTargets.All, respawnPos);
         }
 
