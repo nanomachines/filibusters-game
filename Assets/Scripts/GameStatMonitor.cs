@@ -98,7 +98,7 @@ namespace Filibusters
             ++mTotalCoins[playerNum];
         }
 
-        void UpdateDepositCount(int depositingOwnerId, int newDepositBalance)
+        void UpdateDepositCount(int depositingOwnerId, int newDepositBalance, Vector3 pos)
         {
             int playerNum = NetworkManager.GetPlayerNumber(
                 PhotonPlayer.Find(depositingOwnerId));

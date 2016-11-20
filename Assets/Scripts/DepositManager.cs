@@ -120,7 +120,7 @@ namespace Filibusters
             if (photonView.gameObject.GetComponent<CoinInventory>().DepositCoin())
             {
                 int newDepositBalance = ++mPlayerDepositCounts[viewId];
-                EventSystem.OnCoinDeposited(photonView.owner.ID, newDepositBalance);
+                EventSystem.OnCoinDeposited(photonView.owner.ID, newDepositBalance, transform.position);
                 if (LocalDepositEvent != null)
                 {
                     LocalDepositEvent();
