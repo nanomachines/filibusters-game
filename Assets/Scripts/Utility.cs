@@ -64,7 +64,9 @@ namespace Filibusters
         public static void BackToStartMenu()
         {
             PhotonNetwork.LeaveRoom();
+            Debug.LogWarning("Scene changing");
             SceneManager.LoadScene(Scenes.START_MENU);
+            Debug.LogWarning("Scene changed");
         }
     }
 }
