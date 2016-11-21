@@ -70,7 +70,7 @@ namespace Filibusters
         public AudioClip[] mTrumpingCalls;
         public AudioClip[] mAboutToWinCalls;
         private int mLeadingPlayer = -1;
-        private static readonly int ABOUT_TO_WIN_LIMIT = (int)(GameConstants.AMOUNT_OF_COINS_TO_WIN * .75f);
+        private static readonly int TRUMPING_CALL_LIMIT = (int)(GameConstants.AMOUNT_OF_COINS_TO_WIN * .75f);
 
         // Use this for initialization
         void Start()
@@ -151,7 +151,7 @@ namespace Filibusters
                 {
                     mSource.PlayOneShot(mAboutToWinCalls[playerNumber]);
                 }
-                else if (newDepositBalance > ABOUT_TO_WIN_LIMIT)
+                else if (newDepositBalance == TRUMPING_CALL_LIMIT)
                 {
                     mSource.PlayOneShot(mTrumpingCalls[playerNumber]);
                 }
