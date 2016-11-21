@@ -10,7 +10,7 @@ namespace Filibusters
                 VERSION_MINOR.ToString();
 
         public static readonly int MAX_PLAYER_HEALTH = 100;
-        public static readonly int AMOUNT_OF_COINS_TO_WIN = 1;
+        public static readonly int AMOUNT_OF_COINS_TO_WIN = 10;
         public static readonly int MAX_ONLINE_PLAYERS_IN_GAME = 4;
 
         public enum WeaponId
