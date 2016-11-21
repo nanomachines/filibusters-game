@@ -30,6 +30,7 @@ namespace Filibusters
                 LocalPlayer.GetComponent<SimplePhysics>().enabled = true;
                 LocalPlayer.GetComponent<AimingController>().enabled = true;
                 LocalPlayer.GetComponent<SwapButtonToggle>().enabled = true;
+                LocalPlayer.GetComponent<PlayerAttack>().enabled = true;
 
                 GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
                 FollowPlayer followScript = mainCamera.GetComponent<FollowPlayer>();

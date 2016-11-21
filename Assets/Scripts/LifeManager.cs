@@ -115,13 +115,13 @@ namespace Filibusters
             mPhysics.enabled = mIsLocalPlayer;
             mPhysics.ResetPhysicsState(respawnPos);
             mAnimController.SetRenderersEnabled(true);
-            mAttackScript.enabled = true;
             mCollider.enabled = true;
             mWeaponInventory.ResetWeapon();
             mCurHealth = mMaxHealth;
 
             if (mIsLocalPlayer)
             {
+                mAttackScript.enabled = true;
                 mPlayerUI.SetActive(true);
                 EventSystem.OnUpdateHealthBar(mCurHealth);
             }
