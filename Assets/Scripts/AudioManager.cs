@@ -151,10 +151,6 @@ namespace Filibusters
                 {
                     mSource.PlayOneShot(mAboutToWinCalls[playerNumber]);
                 }
-                else if (newDepositBalance == TRUMPING_CALL_LIMIT)
-                {
-                    mSource.PlayOneShot(mTrumpingCalls[playerNumber]);
-                }
             };
 
             EventSystem.OnEquipWeaponEvent += (int actorId, WeaponId weaponId) =>
@@ -264,7 +260,14 @@ namespace Filibusters
                 if (leadingPlayer != mLeadingPlayer)
                 {
                     mLeadingPlayer = leadingPlayer;
-                    mSource.PlayOneShot(mLeadChangeCalls[leadingPlayer]);
+                    if (Random.Range(0f, 1f) < .5f)
+                    {
+                        mSource.PlayOneShot(mLeadChangeCalls[leadingPlayer]);
+                    }
+                    else
+                    {
+                        mSource.PlayOneShot(mTrumpingCalls[leadingPlayer]);
+                    }
                 }
             };
         }
