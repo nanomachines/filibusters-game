@@ -137,9 +137,9 @@ namespace Filibusters
                 }
             };
 
-            EventSystem.OnCoinDepositedEvent += (int ownerId, int newDepositBalance) =>
+            EventSystem.OnCoinDepositedEvent += (int ownerId, int newDepositBalance, Vector3 pos) =>
             {
-                mSource.PlayOneShot(mCoinDeposited);
+                AudioSource.PlayClipAtPoint(mCoinDeposited, pos);
             };
 
             EventSystem.OnEquipWeaponEvent += (int actorId, WeaponId weaponId) =>
