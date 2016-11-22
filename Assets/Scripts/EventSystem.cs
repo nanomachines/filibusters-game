@@ -64,13 +64,13 @@ namespace Filibusters
             }
         }
 
-        public delegate void CoinDepositListener(int ownerId, int newDepositBalance);
+        public delegate void CoinDepositListener(int ownerId, int newDepositBalance, Vector3 pos);
         public static event CoinDepositListener OnCoinDepositedEvent;
-        public static void OnCoinDeposited(int ownerId, int newDepositBalance)
+        public static void OnCoinDeposited(int ownerId, int newDepositBalance, Vector3 pos)
         {
             if (OnCoinDepositedEvent != null)
             {
-                OnCoinDepositedEvent(ownerId, newDepositBalance);
+                OnCoinDepositedEvent(ownerId, newDepositBalance, pos);
             }
         }
 
@@ -191,6 +191,16 @@ namespace Filibusters
             if (OnLeadingPlayerUpdatedEvent != null)
             {
                 OnLeadingPlayerUpdatedEvent(leadingPlayerNum);
+            }
+        }
+
+        public delegate void HostOrJoinFailedListener();
+        public static event HostOrJoinFailedListener OnHostOrJoinFailedEvent;
+        public static void OnHostOrJoinFailed()
+        {
+            if (OnHostOrJoinFailedEvent != null)
+            {
+                OnHostOrJoinFailedEvent();
             }
         }
     }

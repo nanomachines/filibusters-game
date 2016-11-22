@@ -33,13 +33,18 @@ namespace Filibusters
         void Update()
         {
             bool usingController = InputWrapper.AnyJoysticksConnected();
-            if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == mSessionNameField.gameObject &&
-                usingController &&
-                (InputWrapper.Instance.SubmitPressed || InputWrapper.Instance.LeftYInput < -Mathf.Epsilon))
+            if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == mSessionNameField.gameObject)
             {
-                var currentEvtSys = UnityEngine.EventSystems.EventSystem.current;
-                currentEvtSys.SetSelectedGameObject(mSessionLaunchButton);
-                StartCoroutine(TemporarilyDisableDownInput(currentEvtSys));
+                if (InputWrapper.Instance.SubmitPressed)
+                {
+                    OnHostGameNameEntered();
+                }
+                else if (usingController && InputWrapper.Instance.LeftYInput < -Mathf.Epsilon)
+                {
+                    var currentEvtSys = UnityEngine.EventSystems.EventSystem.current;
+                    currentEvtSys.SetSelectedGameObject(mSessionLaunchButton);
+                    StartCoroutine(TemporarilyDisableDownInput(currentEvtSys));
+                }
             }
         }
 
@@ -68,6 +73,7 @@ namespace Filibusters
                 if (!mSessionNameField.wasCanceled)
                 {
                     mErrorToaster.ToastError("Invalid session name: session name cannot be empty");
+                    EventSystem.OnHostOrJoinFailed();
                 }
             }
             else
@@ -89,10 +95,12 @@ namespace Filibusters
             if (ErrorCodeMap.ContainsKey(errorCode))
             {
                 mErrorToaster.ToastError(ErrorCodeMap[errorCode]);
+                EventSystem.OnHostOrJoinFailed();
             }
             else
             {
                 mErrorToaster.ToastError("Unable to create room. Error code: " + errorCode);
+                EventSystem.OnHostOrJoinFailed();
             }
         }
 
@@ -102,10 +110,12 @@ namespace Filibusters
             if (ErrorCodeMap.ContainsKey(errorCode))
             {
                 mErrorToaster.ToastError(ErrorCodeMap[errorCode]);
+                EventSystem.OnHostOrJoinFailed();
             }
             else
             {
                 mErrorToaster.ToastError("Unable to join room. Error code: " + errorCode);
+                EventSystem.OnHostOrJoinFailed();
             }
         }
     }

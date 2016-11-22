@@ -143,9 +143,9 @@ namespace Filibusters
                 }
             };
 
-            EventSystem.OnCoinDepositedEvent += (int ownerId, int newDepositBalance) =>
+            EventSystem.OnCoinDepositedEvent += (int ownerId, int newDepositBalance, Vector3 pos) =>
             {
-                mSource.PlayOneShot(mCoinDeposited);
+                AudioSource.PlayClipAtPoint(mCoinDeposited, pos);
                 int playerNumber = NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId));
                 if (newDepositBalance == GameConstants.AMOUNT_OF_COINS_TO_WIN - 1)
                 {

@@ -104,7 +104,7 @@ namespace Filibusters
         private IEnumerator RespawnTimer()
         {
             yield return new WaitForSeconds(SecondsToRespawn);
-            Vector3 respawnPos = SpawnManager.Instance.GetRandomSpawnPoint();
+            Vector3 respawnPos = SpawnManager.Instance.GetFurthestAverageSpawnPoint(gameObject);
             mPhotonView.RPC("Respawn", PhotonTargets.All, respawnPos);
         }
 
@@ -115,13 +115,13 @@ namespace Filibusters
             mPhysics.enabled = mIsLocalPlayer;
             mPhysics.ResetPhysicsState(respawnPos);
             mAnimController.SetRenderersEnabled(true);
-            mAttackScript.enabled = true;
             mCollider.enabled = true;
             mWeaponInventory.ResetWeapon();
             mCurHealth = mMaxHealth;
 
             if (mIsLocalPlayer)
             {
+                mAttackScript.enabled = true;
                 mPlayerUI.SetActive(true);
                 EventSystem.OnUpdateHealthBar(mCurHealth);
             }

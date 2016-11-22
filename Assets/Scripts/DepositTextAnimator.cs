@@ -33,7 +33,7 @@ namespace Filibusters
             EventSystem.OnCoinDepositedEvent -= StartAnimation;
         }
 
-        void StartAnimation(int ownerId, int newDepositBalance)
+        void StartAnimation(int ownerId, int newDepositBalance, Vector3 pos)
         {
             if (mDepositText.IsActive() && NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId)) == mPlayerNum)
             {

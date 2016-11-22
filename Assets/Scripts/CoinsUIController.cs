@@ -51,7 +51,7 @@ namespace Filibusters
             EventSystem.OnCoinCountUpdatedEvent -= UpdateCoinCounts;
         }
 
-        public void UpdateDepositCounts(int ownerId, int newDepositBalance)
+        public void UpdateDepositCounts(int ownerId, int newDepositBalance, Vector3 pos)
         {
             var playerNum = NetworkManager.GetPlayerNumber(PhotonPlayer.Find(ownerId));
             mVoteTextElements[playerNum].text = newDepositBalance.ToString();

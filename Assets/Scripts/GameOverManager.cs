@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Filibusters
 {
-    public class GameOverManager : MonoBehaviour
+    public class GameOverManager : Photon.PunBehaviour
     {
         [SerializeField]
         private float mGameOverSeconds;
@@ -81,7 +81,12 @@ namespace Filibusters
         IEnumerator WaitAndLoad()
         {
             yield return new WaitForSeconds(mGameOverSeconds);
-            Utility.BackToStartMenu();
+            PhotonNetwork.LeaveRoom();
+        }
+
+        public override void OnLeftRoom()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(Scenes.START_MENU);
         }
     }
 }
