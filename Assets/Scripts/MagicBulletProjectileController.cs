@@ -6,7 +6,12 @@ namespace Filibusters
     public class MagicBulletProjectileController : ProjectileController
     {
         [SerializeField]
-        private int mRicochetCounter;
+        private float mRicochetTime;
+
+        public void Update()
+        {
+            mRicochetTime -= Time.deltaTime;
+        }
 
         protected override void HandleCollisions(RaycastHit2D hit)
         {
@@ -26,7 +31,7 @@ namespace Filibusters
             // Walls and floors
             if (obj.layer != Layers.PLAYER)
             {
-                if (mRicochetCounter-- > 0)
+                if (mRicochetTime > 0)
                 {
                     // RICOCHET
                     var localMoveDir = transform.TransformDirection(Vector2.right);
