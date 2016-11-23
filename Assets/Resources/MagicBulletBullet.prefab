@@ -92,7 +92,7 @@ MonoBehaviour:
     m_Bits: 1792
   mSkin: 0.005
   mProjectileDamage: 20
-  mRicochetCounter: 5
+  mRicochetTime: 2
 --- !u!114 &114000012919635902
 MonoBehaviour:
   m_ObjectHideFlags: 1
