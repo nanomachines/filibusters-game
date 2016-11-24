@@ -40,8 +40,6 @@ namespace Filibusters
                 PlayerUI.SetActive(true);
 
                 LocalPlayer.GetComponent<PlayerAttack>().enabled = true;
-
-                EventSystem.OnGameStart();
             }
             else
             {

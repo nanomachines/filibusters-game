@@ -52,7 +52,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -131,55 +131,55 @@ MonoBehaviour:
   mMenuMusic: {fileID: 8300000, guid: 77ac8045b5856eb4b8a7c52ed884616d, type: 3}
   mYouLoseMusic: {fileID: 8300000, guid: 4ffd19b9e3c564141904672e1012af12, type: 3}
   mYouWinMusic: {fileID: 8300000, guid: cb0981aa500588c4aa0362d495209584, type: 3}
-  mGameStartClip: {fileID: 8300000, guid: 275d9870671071d48bc1b3ce72ba74e7, type: 3}
-  mPlayerDeath: {fileID: 8300000, guid: 76735b71d7237f044a2fbe4dd11db68e, type: 3}
+  mGameStartClip: {fileID: 8300000, guid: 733d76b26bd205149b2bc8ac3b233822, type: 3}
+  mPlayerDeath: {fileID: 8300000, guid: 00a86b22322b872499e74853bc026eca, type: 3}
   mSuicideCalls:
-  - {fileID: 8300000, guid: 275d9870671071d48bc1b3ce72ba74e7, type: 3}
-  - {fileID: 8300000, guid: 4414b3ac720b3df41877bd40bb96df2c, type: 3}
-  - {fileID: 8300000, guid: fe8834889a6138d428fe32ed019a0ba0, type: 3}
-  - {fileID: 8300000, guid: d5cefde3c2dbee54084c7e97a6741610, type: 3}
-  mPlayerJump: {fileID: 8300000, guid: f40547bdf4594ca469c5b257a44760bf, type: 3}
-  mCoinCollection: {fileID: 8300000, guid: bdbc3e7ad3b54454c99b17a82de7294a, type: 3}
-  mCoinDeposited: {fileID: 8300000, guid: b2664c7a3186dac4b8e7c53f6314964c, type: 3}
-  mEquipDarkhorse: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
-  mEquipVeto: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
-  mEquipMagicBullet: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
+  - {fileID: 8300000, guid: ec88fbbc10af74242a439b710ca1f5de, type: 3}
+  - {fileID: 8300000, guid: cef4189467fda594ea59501aec9d572f, type: 3}
+  - {fileID: 8300000, guid: 6c83071e4108b0c49bf73451bddb5c9b, type: 3}
+  - {fileID: 8300000, guid: 33267e9c916016d449dd98bfabe21e25, type: 3}
+  mPlayerJump: {fileID: 8300000, guid: 28dc7d783a615774e9f8aab1aaeb35d1, type: 3}
+  mCoinCollection: {fileID: 8300000, guid: b38aa72e86a5dae4785900764826a87a, type: 3}
+  mCoinDeposited: {fileID: 8300000, guid: 977f6e255dce83245b9c6bc18a1e53f7, type: 3}
+  mEquipDarkhorse: {fileID: 8300000, guid: ca173420f43157e41a535e9717292285, type: 3}
+  mEquipVeto: {fileID: 8300000, guid: ca173420f43157e41a535e9717292285, type: 3}
+  mEquipMagicBullet: {fileID: 8300000, guid: ca173420f43157e41a535e9717292285, type: 3}
   mEquipAnarchy: {fileID: 0}
   mEquipLibelAndSlander: {fileID: 0}
-  mUseDarkhorse: {fileID: 8300000, guid: 54a1a54ea70629846817f7e97a0221a8, type: 3}
-  mUseVeto: {fileID: 8300000, guid: 22d7f40d619fe54448da9d7e231b3b1e, type: 3}
-  mUseMagicBullet: {fileID: 8300000, guid: b6e2c5109d4bab540a5bb59e6968e768, type: 3}
+  mUseDarkhorse: {fileID: 8300000, guid: 010f7ac43445e4540bb4d0e2a4ab8153, type: 3}
+  mUseVeto: {fileID: 8300000, guid: f1ac8d4c7d206ec4d916ae926c9b5553, type: 3}
+  mUseMagicBullet: {fileID: 8300000, guid: f887bf247fc68bb4a901f8e4c6b37315, type: 3}
   mUseAnarchy: {fileID: 0}
   mUseLibelAndSlander: {fileID: 0}
-  mMisfireDarkhorse: {fileID: 8300000, guid: 2ddc1c6465d86984db0e894cfdcaaeb0, type: 3}
+  mMisfireDarkhorse: {fileID: 8300000, guid: 5bbf0fecb49ccb745bc37a288d289325, type: 3}
   mMisfireVeto: {fileID: 8300000, guid: fc861cec08680be4490e852268c1ea12, type: 3}
-  mMisfireMagicBullet: {fileID: 8300000, guid: 6b3c5f6d6f322a6458290797f66fcce8, type: 3}
+  mMisfireMagicBullet: {fileID: 8300000, guid: 1c39c1f181bbd4e40ba7c7f29507a823, type: 3}
   mMisfireAnarchy: {fileID: 0}
   mMisfireLibelAndSlander: {fileID: 0}
   mMaleGrunts:
-  - {fileID: 8300000, guid: a80a5b9227f775c4aa1599fbd6c13505, type: 3}
-  - {fileID: 8300000, guid: 9753604b2a2dbb346b04ba098eca09cb, type: 3}
-  - {fileID: 8300000, guid: 740bd02bd848f1143a5579e8f09a5003, type: 3}
-  - {fileID: 8300000, guid: bc6523e86a5059f4abaf9821134c5a3a, type: 3}
-  - {fileID: 8300000, guid: 624b1a930b6b22b4f809bcb21cbe5456, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mFemaleGrunts:
-  - {fileID: 8300000, guid: 38a19f9b8c8a7684fa5a86d30ede65f9, type: 3}
-  - {fileID: 8300000, guid: 2d007e0d8aec82443bd38f925e3c5e67, type: 3}
-  - {fileID: 8300000, guid: 88b2647574c514542b49a27667e0e40b, type: 3}
-  - {fileID: 8300000, guid: 4e193ceaa7ed57f469ef7e88276996ab, type: 3}
-  - {fileID: 8300000, guid: 46f92ae59dea8d34cb68476a33a3f1e8, type: 3}
-  - {fileID: 8300000, guid: efd74380273ae184389a0e59b729b134, type: 3}
-  - {fileID: 8300000, guid: 13846a1d952bf8c4c84462af1923a645, type: 3}
-  - {fileID: 8300000, guid: 135c2deaf148d1149be0a9d4fdac611b, type: 3}
-  - {fileID: 8300000, guid: 13846a1d952bf8c4c84462af1923a645, type: 3}
-  - {fileID: 8300000, guid: 5dc21139a6846fb448edd1c8460c27ca, type: 3}
-  - {fileID: 8300000, guid: 9f4dd9728667c5243b81e872fc2c1ccf, type: 3}
-  - {fileID: 8300000, guid: 954dc6536e04da840bdac9fcd1a28f9e, type: 3}
-  - {fileID: 8300000, guid: 135c2deaf148d1149be0a9d4fdac611b, type: 3}
-  - {fileID: 8300000, guid: 12288148b7696c640ab72fbdee821b9f, type: 3}
-  - {fileID: 8300000, guid: c587db923e25a2e4588a2bb27033d35e, type: 3}
-  - {fileID: 8300000, guid: 5dc21139a6846fb448edd1c8460c27ca, type: 3}
-  - {fileID: 8300000, guid: 12288148b7696c640ab72fbdee821b9f, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mLeadChangeCalls:
   - {fileID: 8300000, guid: 84fe94c10cab8f444bd3d5edaead1dcc, type: 3}
   - {fileID: 8300000, guid: 075fbd83436136541a57dd5e5d6b80b7, type: 3}
