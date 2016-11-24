@@ -203,5 +203,25 @@ namespace Filibusters
                 OnHostOrJoinFailedEvent();
             }
         }
+
+        public delegate void GameStartListener();
+        public static event GameStartListener OnGameStartEvent;
+        public static void OnGameStart()
+        {
+            if (OnGameStartEvent != null)
+            {
+                OnGameStartEvent();
+            }
+        }
+
+        public delegate void SuicideListener(int playerNum);
+        public static event SuicideListener OnSuicideEvent;
+        public static void OnSuicide(int playerNum)
+        {
+            if (OnSuicideEvent != null)
+            {
+                OnSuicideEvent(playerNum);
+            }
+        }
     }
 }

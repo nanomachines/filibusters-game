@@ -25,7 +25,11 @@ namespace Filibusters
         private bool mGameOver = false;
 
         [SerializeField]
+        private AudioClip mGameStartClip;
+        [SerializeField]
         private AudioClip mPlayerDeath;
+        [SerializeField]
+        private AudioClip[] mSuicideCalls;
         [SerializeField]
         private AudioClip mPlayerJump;
         [SerializeField]
@@ -269,6 +273,16 @@ namespace Filibusters
                         mSource.PlayOneShot(mTrumpingCalls[leadingPlayer]);
                     }
                 }
+            };
+
+            EventSystem.OnGameStartEvent += () =>
+            {
+                mSource.PlayOneShot(mGameStartClip);
+            };
+
+            EventSystem.OnSuicideEvent += (int playerNum) =>
+            {
+                mSource.PlayOneShot(mSuicideCalls[playerNum]);
             };
         }
 
