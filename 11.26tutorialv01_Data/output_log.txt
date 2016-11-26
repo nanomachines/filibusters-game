@@ -1,0 +1,84 @@
+Initialize engine version: 5.4.0f3 (a6d8d714de6f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.1]
+    Renderer: Intel(R) HD Graphics 3000 (ID=0x116)
+    Vendor:   Intel
+    VRAM:     880 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.452 seconds
+Platform assembly: C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Connor\Desktop\school\UT work\Fall 2016\Filibusters\filibusters-game\11.26tutorialv01_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.107937 ms
+SwitchToProtocol: Udp PhotonNetwork.connected: False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 7.501319 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 418.
+Total: 0.546737 ms (FindLiveObjects: 0.029855 ms CreateObjectMapping: 0.024724 ms MarkObjects: 0.479561 ms  DeleteObjects: 0.012128 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.184443 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 641.
+Total: 0.739402 ms (FindLiveObjects: 0.090967 ms CreateObjectMapping: 0.036386 ms MarkObjects: 0.595253 ms  DeleteObjects: 0.015394 ms)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.942039 ms
+
+Unloading 79 unused Assets to reduce memory usage. Loaded Objects now: 2652.
+Total: 1.389703 ms (FindLiveObjects: 0.186599 ms CreateObjectMapping: 0.062510 ms MarkObjects: 1.044026 ms  DeleteObjects: 0.095632 ms)
+
+Player list
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+1 :: True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+coin
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Master Verified Coin Collected
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Coin Collection Verified
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Scene changing
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Scene changed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.549483 ms
+
+Unloading 95 unused Assets to reduce memory usage. Loaded Objects now: 815.
+Total: 1.014637 ms (FindLiveObjects: 0.053180 ms CreateObjectMapping: 0.046649 ms MarkObjects: 0.757129 ms  DeleteObjects: 0.156743 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 3b40 -> priority: 1 
