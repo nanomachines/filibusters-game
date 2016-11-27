@@ -115,10 +115,10 @@ namespace Filibusters
             {
                 yield return new WaitForFixedUpdate();
                 mTime += Time.fixedDeltaTime;
-                float volume = Mathf.Lerp(.3f, 0f, mTime);
+                float volume = Mathf.Lerp(1f, 0f, mTime);
                 mSource.volume = volume;
             }
-            mSource.volume = .3f;
+            mSource.volume = 1f;
             mSource.clip = clip;
             mSource.Play();
         }
