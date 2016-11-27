@@ -64,7 +64,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
@@ -132,12 +132,12 @@ MonoBehaviour:
   mYouLoseMusic: {fileID: 8300000, guid: 4ffd19b9e3c564141904672e1012af12, type: 3}
   mYouWinMusic: {fileID: 8300000, guid: cb0981aa500588c4aa0362d495209584, type: 3}
   mPlayerDeath: {fileID: 8300000, guid: 00a86b22322b872499e74853bc026eca, type: 3}
-  mPlayerJump: {fileID: 8300000, guid: 28dc7d783a615774e9f8aab1aaeb35d1, type: 3}
-  mCoinCollection: {fileID: 8300000, guid: b38aa72e86a5dae4785900764826a87a, type: 3}
+  mPlayerJump: {fileID: 8300000, guid: 030a7fe3d432a854a80ff4d6e2680c93, type: 3}
+  mCoinCollection: {fileID: 8300000, guid: 0459dd7a0f3aed64e92d90207791e010, type: 3}
   mCoinDeposited: {fileID: 8300000, guid: 977f6e255dce83245b9c6bc18a1e53f7, type: 3}
-  mEquipDarkhorse: {fileID: 8300000, guid: ca173420f43157e41a535e9717292285, type: 3}
-  mEquipVeto: {fileID: 8300000, guid: ca173420f43157e41a535e9717292285, type: 3}
-  mEquipMagicBullet: {fileID: 8300000, guid: ca173420f43157e41a535e9717292285, type: 3}
+  mEquipDarkhorse: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
+  mEquipVeto: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
+  mEquipMagicBullet: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
   mEquipAnarchy: {fileID: 0}
   mEquipLibelAndSlander: {fileID: 0}
   mUseDarkhorse: {fileID: 8300000, guid: 010f7ac43445e4540bb4d0e2a4ab8153, type: 3}
