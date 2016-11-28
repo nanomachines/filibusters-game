@@ -63,7 +63,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -134,7 +134,7 @@ MonoBehaviour:
   mPlayerDeath: {fileID: 8300000, guid: 00a86b22322b872499e74853bc026eca, type: 3}
   mPlayerJump: {fileID: 8300000, guid: 030a7fe3d432a854a80ff4d6e2680c93, type: 3}
   mCoinCollection: {fileID: 8300000, guid: 22b7ed1a4339b284eb37e44781197250, type: 3}
-  mCoinDeposited: {fileID: 8300000, guid: b2664c7a3186dac4b8e7c53f6314964c, type: 3}
+  mCoinDeposited: {fileID: 8300000, guid: 977f6e255dce83245b9c6bc18a1e53f7, type: 3}
   mEquipDarkhorse: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
   mEquipVeto: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
   mEquipMagicBullet: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
