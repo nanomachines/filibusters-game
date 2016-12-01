@@ -125,10 +125,10 @@ namespace Filibusters
             {
                 yield return new WaitForFixedUpdate();
                 mTime += Time.fixedDeltaTime;
-                float volume = Mathf.Lerp(.6f, 0f, mTime);
+                float volume = Mathf.Lerp(1f, 0f, mTime);
                 mSource.volume = volume;
             }
-            mSource.volume = .6f;
+            mSource.volume = 1f;
             mSource.clip = clip;
             mSource.Play();
         }
@@ -140,7 +140,7 @@ namespace Filibusters
                 AudioSource.PlayClipAtPoint(mPlayerDeath, pos);
             };
 
-            EventSystem.OnJumpEvent += () =>
+            EventSystem.OnJumpEvent += (Vector3 pos) =>
             {
                 mSource.PlayOneShot(mPlayerJump);
             };

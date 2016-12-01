@@ -34,13 +34,13 @@ namespace Filibusters
             }
         }
 
-        public delegate void JumpListener();
+        public delegate void JumpListener(Vector3 pos);
         public static event JumpListener OnJumpEvent;
-        public static void OnJump()
+        public static void OnJump(Vector3 pos)
         {
             if (OnJumpEvent != null)
             {
-                OnJumpEvent();
+                OnJumpEvent(pos);
             }
         }
 

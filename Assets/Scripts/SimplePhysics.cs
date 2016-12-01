@@ -85,7 +85,12 @@ namespace Filibusters
                 if (jumpPressed)
                 {
                     mVelY = mJumpVel;
-                    EventSystem.OnJump();
+                    Vector3 takeOffPoint = new Vector3(
+                        transform.position.x,
+                        transform.position.y + mOffset.y + mSize.y / -2f,
+                        0
+                    );
+                    EventSystem.OnJump(takeOffPoint);
                 }
                 else
                 {
