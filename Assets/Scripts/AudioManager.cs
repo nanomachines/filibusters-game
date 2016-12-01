@@ -25,7 +25,11 @@ namespace Filibusters
         private bool mGameOver = false;
 
         [SerializeField]
+        private AudioClip mGameStartClip;
+        [SerializeField]
         private AudioClip mPlayerDeath;
+        [SerializeField]
+        private AudioClip[] mSuicideCalls;
         [SerializeField]
         private AudioClip mPlayerJump;
         [SerializeField]
@@ -100,12 +104,18 @@ namespace Filibusters
             mSource.loop = true;
             if (Utility.AreSceneNamesEqual(s.name, Scenes.MAIN))
             {
-                StartCoroutine(FadeAndPlayMusic(mMainGameBackgroundMusic));
+                StartCoroutine(PlayMainGameIntro());
             }
             else if (mSource.clip != mMenuMusic)
             {
                 StartCoroutine(FadeAndPlayMusic(mMenuMusic));
             }
+        }
+
+        private IEnumerator PlayMainGameIntro()
+        {
+            yield return StartCoroutine(FadeAndPlayMusic(mMainGameBackgroundMusic));
+            mSource.PlayOneShot(mGameStartClip);
         }
 
         private IEnumerator FadeAndPlayMusic(AudioClip clip)
@@ -246,11 +256,7 @@ namespace Filibusters
                 {
                     mGameOver = true;
                     mSource.loop = false;
-                    AudioClip clip = mYouLoseMusic;
-                    if (isWinner)
-                    {
-                        clip = mYouWinMusic;
-                    }
+                    AudioClip clip = isWinner ? mYouWinMusic : mYouLoseMusic;
                     StartCoroutine(FadeAndPlayMusic(clip));
                 }
             };
@@ -269,6 +275,11 @@ namespace Filibusters
                         mSource.PlayOneShot(mTrumpingCalls[leadingPlayer]);
                     }
                 }
+            };
+
+            EventSystem.OnSuicideEvent += (int playerNum) =>
+            {
+                mSource.PlayOneShot(mSuicideCalls[playerNum]);
             };
         }
 
