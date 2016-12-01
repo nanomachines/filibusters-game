@@ -130,7 +130,7 @@ namespace Filibusters
                 AudioSource.PlayClipAtPoint(mPlayerDeath, pos);
             };
 
-            EventSystem.OnJumpEvent += () =>
+            EventSystem.OnJumpEvent += (Vector3 pos) =>
             {
                 mSource.PlayOneShot(mPlayerJump);
             };

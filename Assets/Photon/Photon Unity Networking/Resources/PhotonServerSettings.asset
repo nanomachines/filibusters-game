@@ -61,4 +61,5 @@ MonoBehaviour:
   - OnDamaged
   - FireRPC
   - MisfireRPC
+  - RunDustEffect
   DisableAutoOpenWizard: 1
