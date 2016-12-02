@@ -190,7 +190,7 @@ namespace Filibusters
                 }
             };
 
-            EventSystem.OnWeaponFiredEvent += (WeaponId weaponId, Vector3 pos) =>
+            EventSystem.OnWeaponFiredEvent += (WeaponId weaponId, Vector3 pos, int ownerIdWhoFired) =>
             {
                 object[] content = new object[] { weaponId, pos };
                 PhotonNetwork.RaiseEvent((byte)PhotonEvents.FIRE_EVT, content, false, null);

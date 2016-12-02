@@ -15,8 +15,10 @@ namespace Filibusters
         [HideInInspector]
         public bool mGrounded = false;
         //[HideInInspector]
+        AimingController mAimingController;
         public WeaponId mWeaponId = WeaponId.DARK_HORSE;
         public Aim mAimingDir = Aim.RIGHT;
+
 
         /*
          * Fields used to linearly interpolate
@@ -38,6 +40,7 @@ namespace Filibusters
             mPositionLerpTime = 0;
             mNumUpdates = 1;
             mTotalTime = .1f;
+            mAimingController = GetComponent<AimingController>();
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

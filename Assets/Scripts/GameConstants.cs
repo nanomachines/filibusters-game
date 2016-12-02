@@ -39,7 +39,8 @@ namespace Filibusters
         LEFT = 4,
         LEFT_DOWN = 5,
         DOWN = 6,
-        RIGHT_DOWN = 7        
+        RIGHT_DOWN = 7,
+        NUM_DIRECTIONS = 8
     }
 
     public class Layers
@@ -70,6 +71,7 @@ namespace Filibusters
         public static readonly string BUTTON = "Button";
         public static readonly string JOIN_TEXT = "JoinText";
         public static readonly string DEATH_EXPLOSION = "DeathExplosion";
+        public static readonly string MUZZLE_FLASH = "MuzzleFlash";
     }
 
     public class Scenes

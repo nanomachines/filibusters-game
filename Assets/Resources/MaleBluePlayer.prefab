@@ -285,6 +285,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012283575982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012595743390}
+  - 212: {fileID: 212000014288140916}
+  - 95: {fileID: 95000013229567022}
+  - 114: {fileID: 114000012073822590}
+  - 114: {fileID: 114000011899845074}
+  m_Layer: 8
+  m_Name: BarrelTip
+  m_TagString: MuzzleFlash
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000012297705918
 GameObject:
   m_ObjectHideFlags: 1
@@ -585,6 +604,7 @@ GameObject:
   - 114: {fileID: 114000011866097066}
   - 114: {fileID: 114000012729707964}
   - 114: {fileID: 114000010870560892}
+  - 114: {fileID: 114000012626892168}
   m_Layer: 8
   m_Name: MaleBluePlayer
   m_TagString: Player
@@ -808,6 +828,7 @@ Transform:
   - {fileID: 224000010115652160}
   - {fileID: 4000010580915418}
   - {fileID: 4000011370682020}
+  - {fileID: 4000012595743390}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000011036166852
@@ -981,6 +1002,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000014005825346}
   m_RootOrder: 5
+--- !u!4 &4000012595743390
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012283575982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011015281184}
+  m_RootOrder: 10
 --- !u!4 &4000012765216670
 Transform:
   m_ObjectHideFlags: 1
@@ -1365,6 +1399,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95000013229567022
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012283575982}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78293c17e1b1759469c93ebbffdec4c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95000013803064906
 Animator:
   serializedVersion: 3
@@ -1510,34 +1561,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158d9dfeac407e44d8dc48904b68a293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDarkHorseBarrelReferences:
-  - {fileID: 1000013935616968}
-  - {fileID: 1000013829668538}
-  - {fileID: 1000012671317332}
-  - {fileID: 1000011641892264}
-  - {fileID: 1000010191892570}
-  - {fileID: 1000013868720498}
-  - {fileID: 1000012822208946}
-  - {fileID: 1000013396833164}
-  mVetoBarrelReferences:
-  - {fileID: 1000010421182122}
-  - {fileID: 1000011639275938}
-  - {fileID: 1000011549102084}
-  - {fileID: 1000012592416708}
-  - {fileID: 1000011942997724}
-  - {fileID: 1000012617582326}
-  - {fileID: 1000013299924822}
-  - {fileID: 1000014024364628}
-  mMagicBulletBarrelReferences:
-  - {fileID: 1000013294388218}
-  - {fileID: 1000013898143026}
-  - {fileID: 1000011885220366}
-  - {fileID: 1000012217059212}
-  - {fileID: 1000010938475712}
-  - {fileID: 1000012797794286}
-  - {fileID: 1000012297705918}
-  - {fileID: 1000010465048436}
-  mAngle: 0
+--- !u!114 &114000011899845074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012283575982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114000011964567098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1550,6 +1598,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SecondsToRespawn: 3
+--- !u!114 &114000012073822590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012283575982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b03a132af45e249b0a8afce31f093a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012082594694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1580,6 +1639,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3bd7a601e711164ea16d3d47c6c3c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000012626892168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013579360384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef48ab3c99357a48ac6126b81b626ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114000012729707964
@@ -2828,6 +2898,39 @@ SpriteRenderer:
   m_SortingLayerID: 1620295617
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 71342d27a364df54bba4b7ef786e6b7e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!212 &212000014288140916
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012283575982}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 1
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e93680c7524c34119b0bf0c62b116f55, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
