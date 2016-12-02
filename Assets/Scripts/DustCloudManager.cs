@@ -20,7 +20,9 @@ namespace Filibusters
             mDustCloudPool = new GameObject[MAX_DUST_CLOUDS];
             for (int i = 0; i < MAX_DUST_CLOUDS; ++i)
             {
-                mDustCloudPool[i] = Instantiate(DustCloudPrefab);
+                var dustCloud = Instantiate(DustCloudPrefab);
+                dustCloud.transform.parent = transform;
+                mDustCloudPool[i] = dustCloud;
             }
             mCurrentDustCloud = 0;
             mPhotonView = GetComponent<PhotonView>();

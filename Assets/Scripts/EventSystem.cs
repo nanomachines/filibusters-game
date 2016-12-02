@@ -34,6 +34,16 @@ namespace Filibusters
             }
         }
 
+        public delegate void WallHitListener(Vector3 pos, Vector3 normal);
+        public static event WallHitListener OnWallHitEvent;
+        public static void OnWallHit(Vector3 pos, Vector3 normal)
+        {
+            if (OnWallHitEvent != null)
+            {
+                OnWallHitEvent(pos, normal);
+            }
+        }
+
         public delegate void JumpListener(Vector3 pos);
         public static event JumpListener OnJumpEvent;
         public static void OnJump(Vector3 pos)
