@@ -24,6 +24,7 @@ GameObject:
   - 114: {fileID: 114000011362751524}
   - 50: {fileID: 50000010613109072}
   - 58: {fileID: 58000012231135390}
+  - 114: {fileID: 114000011352649824}
   m_Layer: 0
   m_Name: VetoBullet
   m_TagString: Untagged
@@ -75,6 +76,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.11
+--- !u!114 &114000011352649824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013038138592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2a452b72cb0c8408840b5b031bc9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011362751524
 MonoBehaviour:
   m_ObjectHideFlags: 1
