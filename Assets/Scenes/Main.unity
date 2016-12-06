@@ -7643,7 +7643,7 @@ RectTransform:
   m_Children:
   - {fileID: 1274905382}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -10940,7 +10940,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012298316216, guid: fb202c0e4daa57e47a02a85da90ea96e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb202c0e4daa57e47a02a85da90ea96e, type: 2}
@@ -22944,6 +22944,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2072278522}
   m_RootOrder: 3
+--- !u!1 &1456370928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1456370929}
+  - 114: {fileID: 1456370930}
+  m_Layer: 0
+  m_Name: WallHitEffectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1456370929
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456370928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.808648, y: 4.0042033, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!114 &1456370930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456370928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928c649d4ae03ac468804e9bbaef4b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WallHitFXPrefab: {fileID: 1000014231369350, guid: 2fc0c477b5b8f4f44b2d4671d7ae5f9d,
+    type: 2}
 --- !u!1 &1456736019
 GameObject:
   m_ObjectHideFlags: 0
@@ -30127,7 +30169,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &1804995334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32395,7 +32437,7 @@ GameObject:
   - 114: {fileID: 1890307116}
   - 114: {fileID: 1890307117}
   m_Layer: 0
-  m_Name: DustCloudEffectSpawner
+  m_Name: DustJumpEffectSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32594,7 +32636,7 @@ Prefab:
     - target: {fileID: 224000010767027480, guid: 956ae8b6c4de39940aa3c300e67ba3ae,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224000010767027480, guid: 956ae8b6c4de39940aa3c300e67ba3ae,
         type: 2}
@@ -34966,7 +35008,7 @@ RectTransform:
   - {fileID: 886325227}
   - {fileID: 1255388563}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -36604,7 +36646,7 @@ Transform:
   - {fileID: 1465140721}
   - {fileID: 581545553}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &2097514891
 GameObject:
   m_ObjectHideFlags: 0
