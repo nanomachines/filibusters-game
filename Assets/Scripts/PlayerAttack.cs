@@ -4,31 +4,20 @@ using WeaponId = Filibusters.GameConstants.WeaponId;
 
 namespace Filibusters
 {
-    public struct ProjectileFXPair
-    {
-        public ProjectileFXPair(string b, string f)
-        {
-            bullet = b;
-            fx = f;
-        }
-        public string bullet;
-        public string fx;
-
-        public static ProjectileFXPair DARK_HORSE = new ProjectileFXPair("DarkHorseBullet", null);
-        public static ProjectileFXPair VETO = new ProjectileFXPair("VetoBullet", "VetoFireFX");
-        public static ProjectileFXPair MAGIC_BULLET = new ProjectileFXPair("MagicBulletBullet", null);
-    }
-
     public class PlayerAttack : MonoBehaviour
     {
         [SerializeField]
-        private LayerMask mWeaponClippingCheck;
+        LayerMask mWeaponClippingCheck;
+        WeaponInventory mWeaponInventory;
+        BarrelTip mBarrelTip;
+        int ownerId;
 
-        private WeaponInventory mWeaponInventory;
 
         void Start()
         {
             mWeaponInventory = GetComponent<WeaponInventory>();
+            mBarrelTip = GetComponent<BarrelTip>();
+            ownerId = GetComponent<PhotonView>().ownerId;
         }
 
         void Update()
@@ -43,18 +32,13 @@ namespace Filibusters
                     // Has ammo
                     if (mWeaponInventory.GetRound())
                     {
-                        ProjectileFXPair projectile = GetProjectilePair(weaponId);
-                        Transform xform = GetComponent<AimingController>().GetWeaponPointTransform();
-                        if (projectile.bullet != null && ProjectileSpawnIsntClipping(transform.position, xform.position))
+                        string projectile = GetProjectileName(weaponId);
+                        Transform xform = mBarrelTip.GetBarrelTransform();
+                        if (ProjectileSpawnIsntClipping(transform.position, xform.position))
                         {
-                            PhotonNetwork.Instantiate(projectile.bullet, xform.position, xform.rotation, 0);
+                            PhotonNetwork.Instantiate(projectile, xform.position, xform.rotation, 0);
                         }
-                        if (projectile.fx != null)
-                        {
-                            GameObject go = PhotonNetwork.Instantiate(projectile.fx, xform.position, Quaternion.identity, 0);
-                            go.transform.parent = gameObject.transform;
-                        }
-                        EventSystem.OnWeaponFired(weaponId, transform.position);
+                        EventSystem.OnWeaponFired(weaponId, transform.position, ownerId);
                     }
                     // Weapon is out of ammo
                     else
@@ -65,18 +49,18 @@ namespace Filibusters
             }
         }
 
-        ProjectileFXPair GetProjectilePair(WeaponId weaponId)
+        string GetProjectileName(WeaponId weaponId)
         {
             switch (weaponId)
             {
                 case WeaponId.DARK_HORSE:
-                    return ProjectileFXPair.DARK_HORSE;
+                    return "DarkHorseBullet";
                 case WeaponId.VETO:
-                    return ProjectileFXPair.VETO;
+                    return "VetoBullet";
                 case WeaponId.MAGIC_BULLET:
-                    return ProjectileFXPair.MAGIC_BULLET;
+                    return "MagicBulletBullet";
                 default:
-                    return ProjectileFXPair.DARK_HORSE;
+                    return "DarkHorseBullet";
             }
         }
 

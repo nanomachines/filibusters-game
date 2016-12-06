@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Filibusters
 {
     public class NetPlayerAnimationController : MonoBehaviour
     {
-        private SpriteRenderer[] mRenderers;
+        List<SpriteRenderer> mRenderers;
+
         [SerializeField]
         private Animator mHeadTorsoAnim;
         [SerializeField]
@@ -57,13 +59,14 @@ namespace Filibusters
         void Start()
         {
             var renderers = GetComponentsInChildren<SpriteRenderer>();
-            mRenderers = new SpriteRenderer[renderers.Length - 1];
-            int i = 0;
+            mRenderers = new List<SpriteRenderer>();
             foreach (SpriteRenderer sr in renderers)
             {
-                if (sr.gameObject.tag != Tags.DEATH_EXPLOSION)
+                UnityEngine.Assertions.Assert.IsNotNull(sr);
+                if (sr.gameObject.tag != Tags.DEATH_EXPLOSION
+                    && sr.gameObject.tag != Tags.MUZZLE_FLASH)
                 {
-                    mRenderers[i++] = sr;
+                    mRenderers.Add(sr);
                 }
             }
             mPlayerState = GetComponent<PlayerState>();

@@ -62,4 +62,6 @@ MonoBehaviour:
   - FireRPC
   - MisfireRPC
   - RunDustEffect
+  - OnWeaponFiredRPC
+  - WeaponFiredRPC
   DisableAutoOpenWizard: 1

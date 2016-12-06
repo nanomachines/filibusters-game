@@ -16,6 +16,7 @@ TagManager:
   - Button
   - JoinText
   - DeathExplosion
+  - MuzzleFlash
   layers:
   - Default
   - TransparentFX
