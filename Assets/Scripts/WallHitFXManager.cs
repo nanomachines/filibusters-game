@@ -40,9 +40,7 @@ namespace Filibusters
             fx.transform.position = pos;
             fx.GetComponent<Animator>().SetTrigger(WALL_HIT_TRIGGER);
             mCurrentFX = (mCurrentFX + 1) % MAX_WALL_HIT_CLOUDS;
-
-            float fxRot = Vector3.Angle(Vector3.left, normal);
-            fx.transform.Rotate(0, 0, fxRot); 
+            fx.transform.rotation = Quaternion.FromToRotation(Vector3.left, normal);
         }
     }
 }
