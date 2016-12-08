@@ -1521,8 +1521,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 12
-  instantiationId: 12
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114000011304187516
 MonoBehaviour:
@@ -1785,8 +1785,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114000011304187516}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 28
-  instantiationId: 28
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114000013807059370
 MonoBehaviour:
@@ -1875,8 +1875,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 23
-  instantiationId: 23
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!212 &212000010351591328
 SpriteRenderer:
