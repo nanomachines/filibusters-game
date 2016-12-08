@@ -76,6 +76,8 @@ namespace Filibusters
         private int mLeadingPlayer = -1;
         private static readonly int TRUMPING_CALL_LIMIT = (int)(GameConstants.AMOUNT_OF_COINS_TO_WIN * .75f);
 
+        private IEnumerator mFadingMusicCoroutine = null;
+
         // Use this for initialization
         void Start()
         {
@@ -104,11 +106,21 @@ namespace Filibusters
             mSource.loop = true;
             if (Utility.AreSceneNamesEqual(s.name, Scenes.MAIN))
             {
-                StartCoroutine(PlayMainGameIntro());
+                if (mFadingMusicCoroutine != null)
+                {
+                    StopCoroutine(mFadingMusicCoroutine);
+                }
+                mFadingMusicCoroutine = PlayMainGameIntro();
+                StartCoroutine(mFadingMusicCoroutine);
             }
             else if (mSource.clip != mMenuMusic)
             {
-                StartCoroutine(FadeAndPlayMusic(mMenuMusic));
+                if (mFadingMusicCoroutine != null)
+                {
+                    StopCoroutine(mFadingMusicCoroutine);
+                }
+                mFadingMusicCoroutine = FadeAndPlayMusic(mMenuMusic);
+                StartCoroutine(mFadingMusicCoroutine);
             }
         }
 
@@ -116,6 +128,7 @@ namespace Filibusters
         {
             yield return StartCoroutine(FadeAndPlayMusic(mMainGameBackgroundMusic));
             mSource.PlayOneShot(mGameStartClip);
+            mFadingMusicCoroutine = null;
         }
 
         private IEnumerator FadeAndPlayMusic(AudioClip clip)
@@ -131,6 +144,7 @@ namespace Filibusters
             mSource.volume = 1f;
             mSource.clip = clip;
             mSource.Play();
+            mFadingMusicCoroutine = null;
         }
 
         private void RegisterEvents()
