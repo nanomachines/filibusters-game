@@ -31,7 +31,7 @@ namespace Filibusters
             // Walls and floors
             if (obj.layer != Layers.PLAYER)
             {
-                EventSystem.OnWallHit(hit.centroid, hit.normal);
+                EventSystem.OnWallHit(hit.point, hit.normal);
                 if (mRicochetTime > 0)
                 {
                     // RICOCHET

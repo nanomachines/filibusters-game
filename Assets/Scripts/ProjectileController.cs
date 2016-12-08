@@ -92,7 +92,7 @@ namespace Filibusters
             if (obj.layer != Layers.PLAYER)
             {
                 Debug.Log("Hit wall");
-                EventSystem.OnWallHit(hit.centroid, hit.normal);
+                EventSystem.OnWallHit(hit.point, hit.normal);
                 mPhotonView.RPC("DestroyBullet", PhotonTargets.Others, mPhotonView.viewID);
                 Destroy(gameObject);
             }
