@@ -24,9 +24,9 @@ namespace Filibusters
 
         public static WeaponAttributes[] WeaponProperties =
         {
-            new WeaponAttributes(15, 0.2f),
+            new WeaponAttributes(30, 0.2f),
             new WeaponAttributes(1, 0.7f),
-            new WeaponAttributes(7, 0.5f)
+            new WeaponAttributes(14, 0.5f)
         };
     }
 
