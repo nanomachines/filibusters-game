@@ -3017,6 +3017,11 @@ Prefab:
       propertyPath: m_Name
       value: Magic Bullet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011005158812, guid: 334ab92d05df61549b71a224e47f96fe,
+        type: 2}
+      propertyPath: SecondsToRespawn
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 334ab92d05df61549b71a224e47f96fe, type: 2}
   m_IsPrefabParent: 0
@@ -14492,6 +14497,11 @@ Prefab:
       propertyPath: instantiationId
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011005158812, guid: 1fc915411093a514395a2608a9061113,
+        type: 2}
+      propertyPath: SecondsToRespawn
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1fc915411093a514395a2608a9061113, type: 2}
   m_IsPrefabParent: 0
@@ -19962,6 +19972,11 @@ Prefab:
       propertyPath: instantiationId
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011005158812, guid: 1fc915411093a514395a2608a9061113,
+        type: 2}
+      propertyPath: SecondsToRespawn
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1fc915411093a514395a2608a9061113, type: 2}
   m_IsPrefabParent: 0
@@ -20904,6 +20919,11 @@ Prefab:
         type: 2}
       propertyPath: instantiationId
       value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011005158812, guid: b71dd54cbeca32142a74e1a0b4ede339,
+        type: 2}
+      propertyPath: SecondsToRespawn
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71dd54cbeca32142a74e1a0b4ede339, type: 2}
@@ -22336,6 +22356,11 @@ Prefab:
         type: 2}
       propertyPath: instantiationId
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011005158812, guid: 334ab92d05df61549b71a224e47f96fe,
+        type: 2}
+      propertyPath: SecondsToRespawn
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 334ab92d05df61549b71a224e47f96fe, type: 2}
@@ -24457,6 +24482,11 @@ Prefab:
         type: 2}
       propertyPath: instantiationId
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011005158812, guid: 334ab92d05df61549b71a224e47f96fe,
+        type: 2}
+      propertyPath: SecondsToRespawn
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 334ab92d05df61549b71a224e47f96fe, type: 2}
@@ -34199,6 +34229,11 @@ Prefab:
         type: 2}
       propertyPath: instantiationId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011005158812, guid: b71dd54cbeca32142a74e1a0b4ede339,
+        type: 2}
+      propertyPath: SecondsToRespawn
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71dd54cbeca32142a74e1a0b4ede339, type: 2}
