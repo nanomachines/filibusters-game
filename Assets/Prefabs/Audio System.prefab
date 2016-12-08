@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000012298316216}
   - 82: {fileID: 82000014103785314}
   - 114: {fileID: 114000012724654780}
+  - 212: {fileID: 212000012810531508}
   m_Layer: 0
   m_Name: Audio System
   m_TagString: Untagged
@@ -146,9 +147,9 @@ MonoBehaviour:
   mEquipMagicBullet: {fileID: 8300000, guid: b39fa44555109704e9e96393999c4b18, type: 3}
   mEquipAnarchy: {fileID: 0}
   mEquipLibelAndSlander: {fileID: 0}
-  mUseDarkhorse: {fileID: 8300000, guid: 010f7ac43445e4540bb4d0e2a4ab8153, type: 3}
+  mUseDarkhorse: {fileID: 8300000, guid: 7c1be3049f8c8d942a80ba9c38a48294, type: 3}
   mUseVeto: {fileID: 8300000, guid: f1ac8d4c7d206ec4d916ae926c9b5553, type: 3}
-  mUseMagicBullet: {fileID: 8300000, guid: f887bf247fc68bb4a901f8e4c6b37315, type: 3}
+  mUseMagicBullet: {fileID: 8300000, guid: 428c8e1856b2f7749af4dacad5ca47ee, type: 3}
   mUseAnarchy: {fileID: 0}
   mUseLibelAndSlander: {fileID: 0}
   mMisfireDarkhorse: {fileID: 8300000, guid: 5bbf0fecb49ccb745bc37a288d289325, type: 3}
@@ -183,3 +184,36 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5387ad2c761cb324f80738a620bf7934, type: 3}
   - {fileID: 8300000, guid: 9e8ab86ff4e5e114b8dd1f56ebd1e08b, type: 3}
   - {fileID: 8300000, guid: bcd0a28499cae7d40b06bcc8796c926f, type: 3}
+--- !u!212 &212000012810531508
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010925832642}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 1
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
