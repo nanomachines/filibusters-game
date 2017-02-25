@@ -5,3 +5,5 @@ Money is power, do whatever you can to collect funds: grab small donations, pand
 Congress is now in session.
 
 Filibusters is a 2D, side-scrolling, arena, shooter, collect-athon game featuring light-hearted political satire and tons of fun!
+
+[Trailer & Download](https://nanomachines.itch.io/filibusters)
